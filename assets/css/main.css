@@ -70,11 +70,12 @@ body,html
   height:100%;
   padding:0 0 60px 0;
   position:relative;
+  z-index:5;
 
 }
 #panorama .surface {
   height:100%;
-  z-index:9;
+  z-index:7;
   width:100%;
   padding:0 0 60px 0;
   position: absolute;
@@ -95,23 +96,186 @@ body,html
   top: 0;
   left: 0;
   transform: translate3d(0, 0, 0);
-  display: table;
+  height: 100%;
+  padding: 0 0 60px 0;
+  display:flex;
+  flex-direction: row;
 }
 #panorama .container .panel {
   height:100%;
-  z-index:8;
-  display:table-cell;
+  z-index:6;
+  /* display:table-cell; */
   transform: translate3d(0, 0, 0);
 }
 
 .nav {
-  height: 60px;
-  width: 100%;
-  background-color: gray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   position:relative;
   top:-60px;
+  width: 100%;
+  height: 60px;
+  background-color: #F7F7F7;
+  z-index:21;
+  padding:0 0 0 12px;
+}
+.nav > div {
+  justify-content: center;
+}
+.nav-title {
+
+}
+.nav-title span {
+  font:16px bebas_r;
+  color:#000000;
+  white-space:nowrap;
+}
+.nav-title span:first-child {
+  font:20px bebas_r;
+  color: #2BBCA0;
 }
 
+.nav-map {
+  display:none;
+  width:100%;
+}
+.nav-menu {
+  position:relative;
+  height:100%;
+  width:100%;
+  text-align: right;
+}
+.nav-menu-toggle {
+  display:inline-block;
+  width:44px;
+  height:100%;
+  padding:6px;
+  background:transparent url(../images/toggle.svg) no-repeat center/32px;
+  cursor:pointer;
+}
+[data-menu='main'] > .nav-menu-toggle,
+[data-menu='sub'] > .nav-menu-toggle {
+  background-color:green;
+}
+
+.nav-menu-container {
+  display:none;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  right:0px;
+  bottom: 60px;
+  background-color: rgba(247, 247, 247, 0.95);
+}
+[data-menu='main'] > .nav-menu-container,
+[data-menu='sub'] > .nav-menu-container {
+  display:flex;
+}
+[data-menu='sub'] > .nav-menu-container > li:not(:first-child) {
+  display:flex;
+  visibility: hidden;
+}
+.nav-menu-container i {
+  display:inline-block;
+  width:24px;
+  height:24px;
+  margin-left:12px;
+}
+.nav-menu-container a span {
+  display:inline-block;
+  width:100%;
+  height:100%;
+  padding:24px 34px 24px 0;
+
+}
+
+.nav-menu-container .about span { background:transparent url(../images/about.svg) no-repeat right/23px; }
+.nav-menu-container .share span { background:transparent url(../images/share.svg) no-repeat right/23px; }
+.nav-menu-container .language span { background:transparent url(../images/language.svg) no-repeat right/23px; }
+.nav-menu-container .behind span { background:transparent url(../images/behind.svg) no-repeat right/23px; }
+
+.nav-menu-container li {
+  height:100%;
+  width: 100%;
+  position:relative;
+}
+.nav-menu-container li:not(:last-child) {
+  border-bottom:1px solid #8E8E8E;
+}
+.nav-menu-container li a {
+  display:inline-block;
+  height:100%;
+  width:100%;
+  font:14px bebas_r;
+  color:#000000;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.nav-menu-container > li > a {
+  padding:0 22px;
+}
+.nav-menu-container li a i {
+
+}
+.nav-sub-menu-toggle[data-current='english'] + ul li a[data-item='english'] { display:none; }
+.nav-sub-menu-toggle[data-current='russian'] + ul li a[data-item='russian'] { display:none; }
+.nav-sub-menu-toggle[data-current='georgian'] + ul li a[data-item='georgian'] { display:none; }
+
+.nav-sub-menu-toggle li a {
+
+}
+.nav-menu-sub-container {
+  display:none;
+  position: absolute;
+  width: 100%;
+}
+.nav-menu-sub-container > li > a {
+  text-align: center;
+  padding:18px 0;
+}
+[data-menu='sub'] .nav-menu-sub-container {
+  display:flex;
+  flex-direction: column;
+}
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {  }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .nav {
+    padding:0px 32px;
+  }
+  .nav-map {
+    display:inherit;
+    background-color:#D8D8D8;
+    width:100%;
+    height: 100%;
+    content: "";
+  }
+  .nav-menu {
+    width:auto;
+  }
+  .nav-menu-container {
+    position:static;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .nav-menu-toggle {
+    display:none;
+  }
+  .nav-title {
+    padding:0 42px 0 0;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
 /* test */
 
 /* .panorama-wrapper {

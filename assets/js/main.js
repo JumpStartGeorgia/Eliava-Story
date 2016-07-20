@@ -35,7 +35,9 @@ $(document).ready(function () {
         console.log(panorama.surface);
       }
     },
-    keyboardOn = true;
+    keyboardOn = true,
+    nav_menu = $(".nav-menu");
+
   function flip (pos) {
     if(pos <= -1 * panorama.offset.right) {
       console.log("flip to beggining");
@@ -92,6 +94,19 @@ $(document).ready(function () {
         if (keycode == Key.LEFT) { console.log("left"); panorama_scroll_left(); }
         if (keycode == Key.RIGHT) { console.log("right"); panorama_scroll_right(); }
       }
+    });
+    $(document).on("mousewheel", function (event) {
+      console.log("scroll");
+        event.deltaY > 0 ? panorama_scroll_left() : panorama_scroll_right();
+    });
+
+    $(".nav-menu-toggle").on("click", function () {
+      var tmp = nav_menu.attr("data-menu");
+      nav_menu.attr("data-menu", tmp === "main" ? "" : "main");
+    });
+    $(".nav-sub-menu-toggle").on("click", function () {
+      var tmp = nav_menu.attr("data-menu");
+      nav_menu.attr("data-menu",  tmp === "main" ? "sub" : "main");
     });
   }
 
