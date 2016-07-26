@@ -47,9 +47,9 @@ $(document).ready(function () {
         play_range: [[0, 25], [25, 50], [50, 75], [75, 100]], // range in percents where specific based on index audio should play
         count: 4,
         current: -1,
-        muted: true,
+        muted: false,
         toggle: $("#sound_toggle"),
-        default_volume: 0.1,
+        default_volume: 0.4,
         volume: function (v) {
           if(v >= 0 && v <= 1) {
             this.elem.forEach(function (el) {
@@ -256,7 +256,7 @@ $(document).ready(function () {
     panorama.container_position = -1 * tmp_w;
     panorama.container
       .css("transform", "translateX(" + (-1 * tmp_w) + "px)");
-    //panorama.audio.play(0);
+    panorama.audio.play(0);
   }
   function load_audio () {
 
