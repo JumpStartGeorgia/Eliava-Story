@@ -1,17 +1,17 @@
 <html>
   <head>
-    <title><%= @story_title %></title>
+    <title><%= @title %></title>
     <meta charset="utf-8">
-    <meta name="description" content="<%= @story_descr %>">
-    <meta property="og:title" content="<%= @story_title %>" />
-    <meta property="og:site_name" content="<%= @share_sitename %>" />
-    <meta property="og:image" content="<%= @story_image %>" />
-    <meta property="og:description" content="<%= @story_descr %>" />
+    <meta name="description" content="<%= @descr %>">
+    <meta property="og:title" content="<%= @title %>" />
+    <meta property="og:site_name" content="<%= @sitename %>" />
+    <meta property="og:image" content="<%= @image %>" />
+    <meta property="og:description" content="<%= @descr %>" />
     <meta property="og:url" content="<%= @share_url %>" />
     <meta property="og:type"   content="website" />
   </head>
   <body>
-    <script>window.location.href = '<%= @url %>';</script>
+    <script>window.location.href = '<%= @url_with_locale %>';</script>
   </body>
 </html>
 
