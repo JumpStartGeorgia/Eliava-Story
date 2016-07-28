@@ -95,12 +95,13 @@ def init
 
   locales.each{|loc|
     #next if loc != "en" # comment on production
+    @locale = loc
 
     json = JSON.parse(File.read("../assets/locale/#{loc}.js").remove_lines(1)[0...-1])
 
-    FileUtils.remove_dir "../#{loc}/share"
-    #FileUtils.mkdir_p "../#{loc}/share"
-
+    fld = "../#{loc}/share"
+    FileUtils.remove_dir fld if File.directory?(fld)
+    FileUtils.mkdir_p fld
 
     url = json["url"]
     @url_with_locale = url + "/" + loc
@@ -114,18 +115,18 @@ def init
     renderer = ERB.new(share_template)
 
 
-    # for story_index in 1..story_count
+    for story_index in 1..story_count
 
-    #   story_data = json["stories"][story_index.to_s]
-    #   id = story_data["title"].to_ascii(key_mapper).downcase.gsub(" ", "-")
-    #   @title = story_data["title"]
-    #   @descr = story_data["description"]
-    #   @share_url = share_dir_url + "/" + id + ".html"
-    #   @image = url + "/assets/images/share/#{story_index}.png"
+      story_data = json["stories"]["s" + story_index.to_s]
+      id = story_data["title"].to_ascii(key_mapper).downcase.gsub(" ", "-")
+      @title = story_data["title"]
+      @descr = story_data["description"]
+      @share_url = share_dir_url + "/" + id + ".html"
+      @image = url + "/assets/images/share/#{story_index}.png"
 
-    #   File.open("../#{loc}/share/#{id}.html", "w") { |file| file.write(renderer.result()) }
+      File.open("../#{loc}/share/#{id}.html", "w") { |file| file.write(renderer.result()) }
 
-    # end
+    end
   }
 end
 

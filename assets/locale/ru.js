@@ -1,4 +1,4 @@
-ka =
+ru =
 {
   "title": "The Eliava Market: Selling the Soviet Past",
   "nav_title_1": "The Eliava Market:",
