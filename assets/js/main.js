@@ -249,7 +249,7 @@ $(document).ready(function () {
       panorama.container.css("transform", "translateX(" + (-1 * (panorama.offset.right - w)) + "px)");
     }
   }
-  * TODO tooltip for object
+  // * TODO tooltip for object
   function bind () {
 
     $(window).resize(function () { resize(); });
