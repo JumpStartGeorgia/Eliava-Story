@@ -132,17 +132,22 @@ body,html
   z-index:5;
   overflow:hidden;
 }
+#panorama .container {
+    position: absolute;
+  top: 0px;
+}
 #panorama .surface {
   height:100%;
   z-index:7;
   width:100%;
-  padding:0 0 60px 0;
+  padding:0;
   position: absolute;
-  top: 0px;
+  top: 0;
   cursor: move; /* fallback if grab cursor is unsupported */
   cursor: grab;
   cursor: -moz-grab;
   cursor: -webkit-grab;
+  pointer-events: all;
 }
 #panorama .surface:active {
     cursor: grabbing;
@@ -165,11 +170,17 @@ body,html
   z-index:6;
   /* display:table-cell; */
   transform: translate3d(0, 0, 0);
+  position:relative;
 }
 #panorama .container .panel object {
   height:100%;
 }
-
+#panorama .container .panel object[data-type="fg"] {
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:8;
+}
 .nav {
   display: flex;
   flex-direction: row;

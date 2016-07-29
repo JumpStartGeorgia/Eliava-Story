@@ -17,17 +17,36 @@
     <link rel="icon" type="image/png" href="../favicon.png">
     <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
   </head>
-  <body ondrop="return false;">
+  <body>
   <div class="wrapper">
     <div id="sound"></div>
     <div id="panorama">
-      <div class="surface">surface</div>
       <div class="container">
-        <div class="panel"><object id="panel_1" type="image/svg+xml"></object></div>
-        <div class="panel"><object id="panel_2" type="image/svg+xml"></object></div>
-        <div class="panel"><object id="panel_3" type="image/svg+xml"></object></div>
-        <div class="panel"><object id="panel_4" type="image/svg+xml"></object></div>
-        <div class="panel"><object id="panel_5" type="image/svg+xml"></object></div>
+        <div class="panel">
+          <object data-panel="1" data-type="bg" type="image/svg+xml"></object>
+          <div class="surface"></div>
+          <object data-panel="1" data-type="fg" type="image/svg+xml"></object>
+        </div>
+        <div class="panel">
+          <object data-panel="2" data-type="bg" type="image/svg+xml"></object>
+          <div class="surface"></div>
+          <object data-panel="2" data-type="fg" type="image/svg+xml"></object>
+        </div>
+        <div class="panel">
+          <object data-panel="3" data-type="bg" type="image/svg+xml"></object>
+          <div class="surface"></div>
+          <object data-panel="3" data-type="fg" type="image/svg+xml"></object>
+        </div>
+        <div class="panel">
+          <object data-panel="4" data-type="bg" type="image/svg+xml"></object>
+          <div class="surface"></div>
+          <object data-panel="4" data-type="fg" type="image/svg+xml"></object>
+        </div>
+        <div class="panel">
+          <object data-panel="5" data-type="bg" type="image/svg+xml"></object>
+          <div class="surface"></div>
+          <object data-panel="5" data-type="fg" type="image/svg+xml"></object>
+        </div>
       </div>
     </div>
     <div class="nav">

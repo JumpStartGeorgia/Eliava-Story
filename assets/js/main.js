@@ -14,6 +14,7 @@ $(document).ready(function () {
       step: 0,
       el: $("#panorama"),
       surface: undefined,
+      // surfaces: [],
       container: undefined,
       surface_position: 0,
       container_position: 0,
@@ -35,7 +36,11 @@ $(document).ready(function () {
       right_width: 0,
       init: function () {
         var t = this;
-        t.surface = t.el.find(".surface");
+          // t.path = t.image.get(0).
+          // $(t.path).css("stroke-dasharray", t.length + "px");
+          // t.length = t.path.getTotalLength();
+
+        //t.surface = t.el.find(".surface");
         t.container = t.el.find(".container");
       },
       audio: {
@@ -253,29 +258,11 @@ $(document).ready(function () {
   function bind () {
 
     $(window).resize(function () { resize(); });
+
     // panorama.surface.click(function () {
     //   story.open(1);
     // });
-    panorama.surface.draggable({
-      axis: "x",
-      drag: function (event, ui) {
-        var pos = panorama.container_position + (ui.position.left - panorama.surface_position);
-        panorama.surface_position = ui.position.left;
 
-        if(pos <= -1 * panorama.offset.right || pos >= w - panorama.offset.left) {
-          flip(pos);
-        }
-        else {
-          panorama.container_position = pos;
-          panorama.container.css("transform", "translateX(" + pos + "px)");
-        }
-        analyze_position(pos);
-      },
-      stop: function (event, ui) {
-        panorama.surface.css("left", 0);
-        panorama.surface_position = 0;
-      }
-    });
 
     function panorama_scroll (direction) {
       var pos = panorama.container_position + -1*direction*panorama.step;
@@ -336,35 +323,100 @@ $(document).ready(function () {
     panorama.origin = w/2;
     story.resize();
   }
+  function finite () {
+    console.log("finite");
+  }
   function load_callback () {
+      //     bg = panorama.container.find("object[data-panel='" + (i+1) + "'][data-type='bg']");
+      // bg.one("load", function (event){ loader.inc(4); if(++cnt === panorama.panels.count*2) { setTimeout(load_audio, 100); } });
+      // bg.attr("data", panorama.panels.path + "bg/" + d + ".svg");
+
+
+      // fg = panorama.container.find("object[data-panel='" + (i+1) + "'][data-type='fg']");
+      // panorama.panels.elem.push(fg);
+      // fg.one("load", function (event){ loader.inc(4); if(++cnt === panorama.panels.count*2) { setTimeout(load_audio, 100); } });
+      // fg.attr("data", panorama.panels.path + "fg/" + d + ".svg");
+
+
     loader.inc(10);
-    var tmp, tmp_w = 0, tmp_i = 0;
+
+    var tmp, tmp_w = 0, tmp_i = 0, pnl, expect_cnt = 0, cnt = 0;
 
     panorama.panels.elem.forEach(function (d){
+      console.dir(d.get(0).contentDocument.documentElement.outerHTML);
       tmp = d.width();
       panorama.panels.w.push(tmp);
       panorama.width += tmp;
     });
     panorama.story_width = panorama.width;
 
+    var template_panel = "<div class='panel'></div>",
+      template_object = "<object data-panel='%id' data-type='%type' type='image/svg+xml'></object>";
+
+    // need count of additional panels for loader
+    while(tmp_w < w) { // for right side
+      ++expect_cnt;
+      tmp_w += panorama.panels.w[tmp_i];
+      tmp_i = ++tmp_i % panorama.panels.count;
+    }
+    tmp_w = 0, tmp_i = panorama.panels.count - 1;
+    while(tmp_w < w) { // for left side
+      ++expect_cnt;
+      tmp_w += panorama.panels.w[tmp_i];
+      if(--tmp_i === 0) tmp_i = panorama.panels.count - 1;
+    }
+
+    var percent_step = 10 / expect_cnt;
+
+    tmp_w = 0, tmp_i = 0;
     while(tmp_w < w) {
-      panorama.container.append("<div class='panel'><object id='panel_r" + (tmp_i + 1) + "' type='image/svg+xml' data='" + panorama.panels.path + panorama.panels.names[tmp_i] + ".svg'></object></div>");
+
+      pnl = $(template_panel).appendTo(panorama.container);
+
+      tmp = $(template_object.replace("%id", "r" + (tmp_i+1)).replace("%type", "fg"));
+      tmp.one("load", function (event) { loader.inc(percent_step); if(++cnt === expect_cnt) { setTimeout(finite, 100); } });
+      tmp.attr("data", (panorama.panels.path + "fg/" + panorama.panels.names[tmp_i] + ".svg"));
+      pnl.append(tmp);
+
+      pnl.append("<div class='surface'></div>");
+
+      tmp = $(template_object.replace("%id", "r" + (tmp_i+1)).replace("%type", "bg"));
+      tmp.one("load", function (event) { loader.inc(percent_step); if(++cnt === expect_cnt) { setTimeout(finite, 100); } });
+      tmp.attr("data", (panorama.panels.path + "bg/" + panorama.panels.names[tmp_i] + ".svg"));
+      pnl.append(tmp);
+
+
       tmp_w += panorama.panels.w[tmp_i];
       tmp_i = ++tmp_i % panorama.panels.count;
     }
     panorama.right_width = tmp_w;
     panorama.width += tmp_w;
 
+
     tmp_w = 0, tmp_i = panorama.panels.count - 1;
-    // console.log(w);
     while(tmp_w < w) {
-      panorama.container.prepend("<div class='panel'><object id='panel_l" + (tmp_i + 1) + "' type='image/svg+xml' data='" + panorama.panels.path + panorama.panels.names[tmp_i] + ".svg'></object></div>");
+
+      pnl = $(template_panel).prependTo(panorama.container);
+
+      tmp = $(template_object.replace("%id", "l" + (tmp_i+1)).replace("%type", "fg"));
+      tmp.one("load", function (event) { loader.inc(percent_step); if(++cnt === expect_cnt) { setTimeout(finite, 100); } });
+      tmp.attr("data", (panorama.panels.path + "fg/" + panorama.panels.names[tmp_i] + ".svg"));
+      pnl.append(tmp);
+
+      pnl.append("<div class='surface'></div>");
+
+      tmp = $(template_object.replace("%id", "l" + (tmp_i+1)).replace("%type", "bg"));
+      tmp.one("load", function (event) { loader.inc(percent_step); if(++cnt === expect_cnt) { setTimeout(finite, 100); } });
+      tmp.attr("data", (panorama.panels.path + "bg/" + panorama.panels.names[tmp_i] + ".svg"));
+      pnl.append(tmp);
+
+
       tmp_w += panorama.panels.w[tmp_i];
-      // console.log(w, panorama.panels.w, tmp_i);
       if(--tmp_i === 0) tmp_i = panorama.panels.count - 1;
     }
     panorama.left_width = tmp_w;
     panorama.width += tmp_w;
+
 
     panorama.offset.right = panorama.width - panorama.right_width;
     panorama.offset.left = panorama.left_width;
@@ -372,6 +424,42 @@ $(document).ready(function () {
     panorama.container_position = -1 * tmp_w;
     panorama.container
       .css("transform", "translateX(" + (-1 * tmp_w) + "px)");
+
+
+
+    panorama.el.find(".surface").draggable(
+      {
+        axis: "x",
+        start:  function (event, ui) {
+          //console.log("start", event, ui);
+          panorama.surface = $(event.target);
+        },
+        drag: function (event, ui) {
+          //console.log("drag", event, ui);
+          var pos = panorama.container_position + (ui.position.left - panorama.surface_position);
+          panorama.surface_position = ui.position.left;
+
+          if(pos <= -1 * panorama.offset.right || pos >= w - panorama.offset.left) {
+            flip(pos);
+          }
+          else {
+            panorama.container_position = pos;
+            panorama.container.css("transform", "translateX(" + pos + "px)");
+          }
+          analyze_position(pos);
+        },
+        stop: function (event, ui) {
+          //console.log("stop", event, ui);
+          panorama.surface.css("left", 0);
+          panorama.surface_position = 0;
+        }
+      }
+    );
+    // console.log(panorama.surfaces);
+
+
+
+
     panorama.audio.play(0);
     panorama.audio.muteToggle();
 
@@ -442,12 +530,17 @@ $(document).ready(function () {
     });
   }
   function load_panels () {
-    var cnt = 0, tmp;
+    var cnt = 0, bg, fg;
     panorama.panels.names.forEach( function (d, i) {
-      tmp = panorama.container.find("#panel_" + (i+1));
-      panorama.panels.elem.push(tmp);
-      tmp.one("load", function (event){ loader.inc(8); if(++cnt === panorama.panels.count) { setTimeout(load_audio, 100); } });
-      tmp.attr("data", panorama.panels.path + d + ".svg");
+      bg = panorama.container.find("object[data-panel='" + (i+1) + "'][data-type='bg']");
+      bg.one("load", function (event){ loader.inc(4); if(++cnt === panorama.panels.count*2) { setTimeout(load_audio, 100); } });
+      bg.attr("data", panorama.panels.path + "bg/" + d + ".svg");
+
+
+      fg = panorama.container.find("object[data-panel='" + (i+1) + "'][data-type='fg']");
+      panorama.panels.elem.push(fg);
+      fg.one("load", function (event){ loader.inc(4); if(++cnt === panorama.panels.count*2) { setTimeout(load_audio, 100); } });
+      fg.attr("data", panorama.panels.path + "fg/" + d + ".svg");
     });
   }
 
