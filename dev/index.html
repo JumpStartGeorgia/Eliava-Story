@@ -18,6 +18,20 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
   </head>
   <body>
+  <div id="loader">
+    <div class="loader-box">
+      <div class="loader-title">
+        <span data-i18n-nav_title_1></span><br/><span data-i18n-nav_title_2></span>
+      </div>
+      <object id="loader_image" type="image/svg+xml" data="../assets/images/loader.svg"></object>
+      <div class="loader-text" data-i18n-loader-text></div>
+    </div>
+    <noscript class="require-js">
+      <div lang="ka" data-i18n-loader-nojs-ka></div>
+      <div lang="en" data-i18n-loader-nojs-en></div>
+      <div lang="ru" data-i18n-loader-nojs-ru></div>
+    </noscript>
+  </div>
   <div class="wrapper">
     <div id="sound"></div>
     <div id="panorama">
@@ -25,27 +39,37 @@
         <div class="panel">
           <object data-panel="1" data-type="bg" type="image/svg+xml"></object>
           <div class="surface"></div>
-          <object data-panel="1" data-type="fg" type="image/svg+xml"></object>
+          <div class="apanel" data-panel="1" data-type="fg">
+            <object  type="image/svg+xml"></object>
+          </div>
         </div>
         <div class="panel">
           <object data-panel="2" data-type="bg" type="image/svg+xml"></object>
           <div class="surface"></div>
-          <object data-panel="2" data-type="fg" type="image/svg+xml"></object>
+          <div class="apanel" data-panel="2" data-type="fg">
+            <object  type="image/svg+xml"></object>
+          </div>
         </div>
         <div class="panel">
           <object data-panel="3" data-type="bg" type="image/svg+xml"></object>
           <div class="surface"></div>
-          <object data-panel="3" data-type="fg" type="image/svg+xml"></object>
+          <div class="apanel" data-panel="3" data-type="fg">
+            <object  type="image/svg+xml"></object>
+          </div>
         </div>
         <div class="panel">
           <object data-panel="4" data-type="bg" type="image/svg+xml"></object>
           <div class="surface"></div>
-          <object data-panel="4" data-type="fg" type="image/svg+xml"></object>
+          <div class="apanel" data-panel="4" data-type="fg">
+            <object  type="image/svg+xml"></object>
+          </div>
         </div>
         <div class="panel">
           <object data-panel="5" data-type="bg" type="image/svg+xml"></object>
           <div class="surface"></div>
-          <object data-panel="5" data-type="fg" type="image/svg+xml"></object>
+          <div class="apanel" data-panel="5" data-type="fg">
+            <object  type="image/svg+xml"></object>
+          </div>
         </div>
       </div>
     </div>
@@ -53,21 +77,27 @@
        <div class="nav-title">
         <span data-i18n-nav_title_1></span><br/><span data-i18n-nav_title_2></span>
        </div>
-       <div class="nav-map">
-
-       </div>
-       <div class="nav-menu">
+       <div class="nav-map"><div class="nav-map-line"></div><object id="nav_map" type="image/svg+xml"></object></div>
+       <div class="nav-menu" data-mobile-menu="" data-desktop-menu="">
           <div class="nav-menu-toggle" title="Toggle"></div>
           <ul class="nav-menu-container">
             <li>
-              <a href="#language" class="nav-sub-menu-toggle" data-current="english"><span data-i18n-en></span><i class="language"></i></a>
+              <a href="#language" class="nav-sub-menu-toggle" data-i18n-selected_language="data-current"><span data-i18n-en></span><i class="language"></i></a>
               <ul class="nav-menu-sub-container">
                 <li><a href="#russian" data-item="russian" data-i18n-ru></a></li>
                 <li><a href="#georgian" data-item="georgian" data-i18n-ge></a></li>
                 <li><a href="#english" data-item="english" data-i18n-en> </a></li>
+                <li><a href="#" class="nav-sub-menu-back"><i></i></a></li>
               </ul>
             </li>
-            <li><a href="#share"><span data-i18n-share></span><i class="share"></i></a></li>
+            <li>
+              <a href="#share" class="nav-sub-menu-toggle"><span data-i18n-share></span><i class="share"></i></a>
+              <ul class="nav-menu-sub-container">
+                <li><a href="#facebook" data-i18n-ru><i></i></a></li>
+                <li><a href="#twitter" data-i18n-ge><i></i></a></li>
+                <li><a href="#other" data-i18n-en><i></i></a></li>
+              </ul>
+            </li>
             <li><a href="#behind" data-popup-target="behind"><span data-i18n-behind-name></span><i class="behind"></i></a></li>
             <li><a href="#about" data-popup-target="about"><span data-i18n-about-name></span><i class="about"></i></a></li>
           </ul>
@@ -116,16 +146,10 @@
     </div>
   </div>
 
-  <div id="loader">
-    <object id="loader_image" type="image/svg+xml" data="../assets/images/loader.svg"></object>
-    <noscript class="require-js">
-      <div lang="ka">ამ აპლიკაციის გამოსაყენებლად თქვენ უნდა ჩართოთ Javascript-ი!</div>
-      <div lang="en">You need to turn on Javascript for this application to work!</div>
-      <div lang="ru">You need to turn on Javascript for this application to work!</div>
-    </noscript>
-  </div>
+
    <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
    <script src="../assets/js/jquery-ui.min.js" type="text/javascript"></script>
+   <script src="../assets/js/jquery-ui.touch-punch.min.js" type="text/javascript"></script>
    <script src="../assets/js/jquery.transform2d.js" type="text/javascript"></script>
    <script src="../assets/js/jquery.mousewheel.min.js" type="text/javascript"></script>
    <!-- \ jquery ui should custom currently using only draggable feature -->

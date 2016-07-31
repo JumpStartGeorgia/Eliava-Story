@@ -6,5 +6,5 @@
    <defs>
     <link href="panel.css" type="text/css" rel="stylesheet" xmlns="http://www.w3.org/1999/xhtml"/>
   </defs>
-  <rect id="radio_animation1" x="1243.5" y="740.5" fill="#FFFFFF" width="314" height="192"/>
+  <rect id="radio_animation1" class="anim-object" x="1243.5" y="740.5" fill="#FFFFFF" width="314" height="192"/>
 </svg>
