@@ -1,0 +1,18 @@
+#layer2 {
+  display:none;
+}
+#layer1 {
+   animation: shaker 10s infinite;
+  -webkit-animation: shaker 10s infinite;
+
+}
+@keyframes shaker {
+  0%, 80%, 100% {
+    transform:  rotate(0); }  //translate(0, 0)
+  20% {
+    transform:  rotate(-10deg); } //translate(0px, 4px)
+  40% {
+    transform:  rotate(10deg); } //translate(-5%, 9px)
+  60% {
+    transform:  rotate(-10deg); } // translate(4px, 10px)
+ }

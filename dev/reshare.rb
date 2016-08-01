@@ -110,7 +110,7 @@ def init
 
     @url_with_locale += "/" # add / to match url rules
 
-    @sitename = json["share_sitename"]
+    @sitename = json["sitename"]
 
     renderer = ERB.new(share_template)
 
