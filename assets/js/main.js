@@ -24,7 +24,8 @@ $(document).ready(function () {
         w: [],
         elem: [],
         path: "../assets/images/panels/",
-        count: 5 // * TODO on panel count change
+        count: 5, // * TODO on panel count change
+        current: 3
       },
       offset: {
         left: 0,
@@ -120,12 +121,16 @@ $(document).ready(function () {
       map: {
         el: $("#nav_map"),
         bind: function () {
+          console.log("map bind");
           var t = this, doc = t.el.get(0).contentDocument;
+          console.log(doc,  $(doc).find(".story-point"));
           $(doc).find(".story-point").click(function () {
+            console.log("click");
             var tt = $(this), p = tt.parent().find(".story-point").removeClass("current");
             story.go_to(+$(this).addClass("current").attr("data-point"));
 
           });
+          //this.el.parent().removeClass("nav-map-visible");
         }
       }
     },
@@ -168,7 +173,7 @@ $(document).ready(function () {
           $(t.path).css("stroke-dasharray", t.length + "px");
           t.length = t.path.getTotalLength();
         }
-        $(t.path).animate({ "stroke-dashoffset": -1*t.length*percent/100 + "px" }, 100);
+        $(t.path).velocity({ "stroke-dashoffset": -1*t.length*percent/100 + "px" }, { duration: 100 });
 
         if(percent >= 100) { t.close(); }
       },
@@ -192,13 +197,13 @@ $(document).ready(function () {
       story_range: [[13, 15], [20, 22], [30, 31]],
       close: function () {
         this.el.attr("data-current", "");
-        this.el.find(".window").animate({ opacity: 0 }, 500);
-        this.panorama.audio.softUnMute();
+        this.el.find(".window").velocity({ opacity: 0 }, { duration: 500 });
+        panorama.audio.softUnMute();
       },
       open: function (id) {
         this.el.attr("data-current", id);
-        this.el.find(".window").animate({ opacity: 1 }, { duration: 1000, easing: "easeInCirc" });
-        this.panorama.audio.softMute();
+        this.el.find(".window").velocity({ opacity: 1 }, { duration: 1000, easing: "easeInCirc" });
+        panorama.audio.softMute();
         global_callback = function() { this.close(); };
         // this.el.addClass("opened");
         this.resize();
@@ -213,7 +218,7 @@ $(document).ready(function () {
           nxt = (cur+1) > t.count ? 1 : (cur+1),
           fir = t.el.find("[data-id='" + cur + "']"),
           sec = t.el.find("[data-id='" + nxt + "']").addClass("second");
-
+        t.go_to(nxt);
         t.content
           .one("webkitAnimationEnd oanimationend msAnimationEnd animationend", function (e) {
             // console.log("end");
@@ -230,7 +235,7 @@ $(document).ready(function () {
           prv = (cur-1) > 0 ? (cur-1): t.count,
           fir = t.el.find("[data-id='" + cur + "']").addClass("second"),
           sec = t.el.find("[data-id='" + prv + "']").addClass("first");
-
+        t.go_to(prv);
         t.content
           .addClass("scroll-right-origin")
           .one("webkitAnimationEnd oanimationend msAnimationEnd animationend", function (e) {
@@ -250,7 +255,16 @@ $(document).ready(function () {
         t.resize();
       },
       go_to: function (id) {
-        console.log("go to story by id", id);
+        console.log("go_to");
+        var st = $("#story" + 6), box = st.get(0).getBBox(), pnl = st.closest(".apanel").attr("data-panel"),
+        tmp_w = 0;
+        for(var i = 0; i < pnl - 1; ++i) {
+          tmp_w += panorama.panels.w[i];
+          console.log(i, panorama.panels.w[i]);
+        }
+        console.log(box.x, panorama.offset.left);
+        panorama_scroll_by_pos(-1*(tmp_w+box.x+panorama.offset.left-w/2-box.width/2));
+        console.log("go to story by id", id, box, pnl);
       }
     },
     // resourceLoaded: false,
@@ -292,6 +306,7 @@ $(document).ready(function () {
     }
   }
   // * TODO tooltip for object
+  var panorama_scroll_by_pos;
   function bind () {
 
     $(window).resize(function () { resize(); });
@@ -300,7 +315,17 @@ $(document).ready(function () {
     //   story.open(1);
     // });
 
-
+    panorama_scroll_by_pos = function panorama_scroll_by_pos (pos) {
+      if(pos <= -1 * panorama.offset.right || pos >= w - panorama.offset.left) {
+        flip(pos);
+      }
+      else {
+        prev = panorama.container_position;
+        panorama.container_position = pos;
+        panorama.container.velocity({ translateX : [pos, prev]}, { duration: 500, easing: "linear" });
+      }
+      analyze_position(pos);
+    }
     function panorama_scroll (direction) {
       var pos = panorama.container_position + -1*direction*panorama.step;
 
@@ -309,7 +334,7 @@ $(document).ready(function () {
       }
       else {
         panorama.container_position = pos;
-        panorama.container.animate({ transform : "translateX(" + pos + "px)" }, { duration: 500 }, "linear");
+        panorama.container.velocity({ translateX : pos}, { duration: 500, easing: "linear" });
       }
       analyze_position(pos);
     }
@@ -367,6 +392,8 @@ $(document).ready(function () {
     });
 
     story.bind();
+
+
   }
 
   function redraw () {
@@ -381,8 +408,81 @@ $(document).ready(function () {
     story.resize();
   }
   function finite () {
-    console.log("finite", $("#layer1"));
-    $("#layer1").animate({transform: "+=matrix(1,0,0,1,100,50)"}, { duration: 500 }, "linear");
+
+    var layer_anim = $(".layer-anim"),
+      color = $(".layer-colored")
+        .addClass("anim-object")
+        .hover(function () {
+          layer_anim.velocity("stop", true);
+          color.velocity("stop", true);
+          animator_js_hover();
+        }, function () {
+          layer_anim.velocity("stop", true);
+          animator();
+        })
+        .click(function () {
+          story.open(+$(this).attr("story-point"));
+        });
+
+    $.Velocity
+      .RegisterEffect("js.shake", {
+        defaultDuration: 100,
+        easing: "linear",
+        calls: [
+          [ { translateX: "+=-1", rotateZ: "+=-2deg" } ],
+          [ { translateX: "+=3" } ],
+          [ { translateX: "+=-6" } ],
+          [ { translateX: "+=8" } ],
+          [ { translateX: "+=-8", rotateZ: "+=4deg" } ],
+          [ { translateX: "+=8" } ],
+          [ { translateX: "+=-8" } ],
+          [ { translateX: "+=6" } ],
+          [ { translateX: "+=-3" } ],
+          [ { translateX: "+=1", rotateZ: "+=-2deg" } ]
+        ],
+        reset: { translateX: 0, rotateZ: 0}
+      })
+      .RegisterEffect("js.hover", {
+        defaultDuration: 1000,
+        easing: "linear",
+        calls: [
+          [ { translateX: "+=2", rotateZ: "+=2deg" } ],
+          [ { translateX: "+=-4", rotateZ: "+=-4deg" } ],
+          [ { translateX: "+=2", rotateZ: "+=2deg" } ]
+        ],
+        reset: { translateX: 0, rotateZ: 0}
+
+      });
+    function animator_js_hover () {
+      layer_anim.velocity("js.hover", { delay: 100, complete: function () { animator_js_hover(); } });
+    }
+    function animator () {
+      layer_anim.velocity("js.shake", { delay: 1000, complete: function () { animator(); } });
+      color.velocity({ opacity: 1}, { delay: 900, duration: 500, reset: { opacity: 0 }}).velocity("reverse", { duration: 500 });
+    }
+    animator();
+
+
+
+
+
+    $('.apanel .layer-colored').qtip({ // Grab some elements to apply the tooltip to
+      content: {
+          text:  function(event, api) {
+            var st = $(this).attr("data-story");
+            return "abc" + st;
+        }
+      },
+      position: {
+          target: 'mouse',
+          effect: false,
+          adjust: {
+            x: 20,
+            y: 20
+          }
+      }
+    })
+
     console.log("finite");
   }
   function load_callback () {
@@ -474,7 +574,12 @@ $(document).ready(function () {
     panorama.offset.right = panorama.width - panorama.right_width;
     panorama.offset.left = panorama.left_width;
 
+
+    for(var i = 0; i < panorama.panels.current - 1; ++i) {
+      tmp_w += panorama.panels.w[i];
+    }
     panorama.container_position = -1 * tmp_w;
+    console.log(panorama.container_position);
     panorama.container
       .css("transform", "translateX(" + (-1 * tmp_w) + "px)");
 
@@ -518,15 +623,11 @@ $(document).ready(function () {
   function load_asset () {
     panorama.map.el.one("load", function (event){
             loader.inc(2);
-            setTimeout(function () {
-              panorama.map.bind();
-              panorama.map.el.parent().removeClass("nav-map-visible");
-              load_callback();
-            }, 100);
+            panorama.map.bind();
+            //
+            setTimeout(function () { load_callback(); }, 100);
           });
-    // console.log(panorama.map.el.attr("type"), $(".nav-map object").attr("type"));
     panorama.map.el.attr("data", "../assets/images/storymap.svg");
-    // setTimeout(function () {  }, 500);
   }
 
   function load_youtube () {

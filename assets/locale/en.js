@@ -35,10 +35,14 @@ en =
   },
   "stories": {
     "s1": {
-      "title": "Story Title 1",
+      "title": "The Poet",
+      "quote": "Perhaps I should enjoy my freedom. But I hate it.",
       "description": "Story Description 1",
       "text": '<div id="player_tbCDQzQ_5Wo" class="youtube" data-yid="tbCDQzQ_5Wo"></div>',
-      "yid": "tbCDQzQ_5Wo"
+      "yid": "tbCDQzQ_5Wo",
+      "name": "Pridon (b.1969)",
+      "job": "sells power motors",
+      "job_start_date": 2006
     },
     "s2": {
       "title": "Story Title 2",
