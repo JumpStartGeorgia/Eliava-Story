@@ -38,7 +38,7 @@ en =
       "title": "The Poet",
       "quote": "Perhaps I should enjoy my freedom. But I hate it.",
       "description": "Story Description 1",
-      "text": '<div id="player_tbCDQzQ_5Wo" class="youtube" data-yid="tbCDQzQ_5Wo"></div>',
+      "text": "<div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
       "yid": "tbCDQzQ_5Wo",
       "name": "Pridon (b.1969)",
       "job": "sells power motors",
@@ -47,14 +47,19 @@ en =
     "s2": {
       "title": "Story Title 2",
       "description": "Story Description 2",
-      "text": 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, cupiditate ex? Accusamus earum, nesciunt praesentium officiis quo ipsa iure ullam illum, quaerat fugit, quis commodi ab fugiat maiores reiciendis facere labore blanditiis itaque at magni animi? Nam eos soluta doloremque distinctio aperiam quia sunt, eveniet nostrum deserunt ut necessitatibus id, vel est voluptate et libero itaque architecto non quisquam tenetur, maiores saepe. Nemo nostrum earum aspernatur mollitia dolor labore officiis sunt! Vel unde accusantium aperiam autem non tempore alias maiores in laudantium, dicta cupiditate dolorum necessitatibus maxime. Blanditiis quam atque minus repellendus adipisci architecto voluptate dolores sed suscipit excepturi. Voluptate.<br/><br/><div id="player_tbCDQzQ_5Wo" class="youtube" data-yid="tAGnKpE4NCI"></div>',
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, cupiditate ex? Accusamus earum, nesciunt praesentium officiis quo ipsa iure ullam illum, quaerat fugit, quis commodi ab fugiat maiores reiciendis facere labore blanditiis itaque at magni animi? Nam eos soluta doloremque distinctio aperiam quia sunt, eveniet nostrum deserunt ut necessitatibus id, vel est voluptate et libero itaque architecto non quisquam tenetur, maiores saepe. Nemo nostrum earum aspernatur mollitia dolor labore officiis sunt! Vel unde accusantium aperiam autem non tempore alias maiores in laudantium, dicta cupiditate dolorum necessitatibus maxime. Blanditiis quam atque minus repellendus adipisci architecto voluptate dolores sed suscipit excepturi. Voluptate.<br/><br/><div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tAGnKpE4NCI'></div>",
       "yid": "tAGnKpE4NCI"
     },
     "s3": {
       "title": "Story Title 3",
       "description": "Story Description 3",
-      "text": 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, cupiditate ex? Accusamus earum, nesciunt praesentium officiis quo ipsa iure ullam illum, quaerat fugit, quis commodi ab fugiat maiores reiciendis facere labore blanditiis itaque at magni animi? Nam eos soluta doloremque distinctio aperiam quia sunt, eveniet nostrum deserunt ut necessitatibus id, vel est voluptate et libero itaque architecto non quisquam tenetur, maiores saepe. Nemo nostrum earum aspernatur mollitia dolor labore officiis sunt! Vel unde accusantium aperiam autem non tempore alias maiores in laudantium, dicta cupiditate dolorum necessitatibus maxime. Blanditiis quam atque minus repellendus adipisci architecto voluptate dolores sed suscipit excepturi. Voluptate.<br/><br/><div id="player_tbCDQzQ_5Wo" class="youtube" data-yid="qPOTEs_yTJo"></div>',
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, cupiditate ex? Accusamus earum, nesciunt praesentium officiis quo ipsa iure ullam illum, quaerat fugit, quis commodi ab fugiat maiores reiciendis facere labore blanditiis itaque at magni animi? Nam eos soluta doloremque distinctio aperiam quia sunt, eveniet nostrum deserunt ut necessitatibus id, vel est voluptate et libero itaque architecto non quisquam tenetur, maiores saepe. Nemo nostrum earum aspernatur mollitia dolor labore officiis sunt! Vel unde accusantium aperiam autem non tempore alias maiores in laudantium, dicta cupiditate dolorum necessitatibus maxime. Blanditiis quam atque minus repellendus adipisci architecto voluptate dolores sed suscipit excepturi. Voluptate.<br/><br/><div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='qPOTEs_yTJo'></div>",
       "yid": "qPOTEs_yTJo"
     }
+  },
+  "label": {
+    "name": "Name: ",
+    "job": "Job: ",
+    "job_start_date": "Started work at Eliava: "
   }
 };

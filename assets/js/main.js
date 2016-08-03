@@ -1,4 +1,4 @@
-/*global  $ debounce I18n YT global_callback */
+/*global  $ debounce I18n YT global_callback exist isNumber js */
 /*eslint camelcase: 0, no-underscore-dangle: 0, no-unused-vars: 0, no-console: 0*/
 var p, youtubePlayers = {}, ld;
 $(document).ready(function () {
@@ -105,6 +105,7 @@ $(document).ready(function () {
           // });
         },
         softMute: function () {
+          console.log(this.elem[this.current]);
           this.soft_muted = true;
           this.elem[this.current].muted = true;
         },
@@ -195,6 +196,7 @@ $(document).ready(function () {
       current: 1,
       count: 3, // * TODO on story count change
       story_range: [[13, 15], [20, 22], [30, 31]],
+      meta: {},
       close: function () {
         this.el.attr("data-current", "");
         this.el.find(".window").velocity({ opacity: 0 }, { duration: 500 });
@@ -204,7 +206,7 @@ $(document).ready(function () {
         this.el.attr("data-current", id);
         this.el.find(".window").velocity({ opacity: 1 }, { duration: 1000, easing: "easeInCirc" });
         panorama.audio.softMute();
-        global_callback = function() { this.close(); };
+        //global_callback = function() { this.close(); };
         // this.el.addClass("opened");
         this.resize();
       },
@@ -265,11 +267,130 @@ $(document).ready(function () {
         console.log(box.x, panorama.offset.left);
         panorama_scroll_by_pos(-1*(tmp_w+box.x+panorama.offset.left-w/2-box.width/2));
         console.log("go to story by id", id, box, pnl);
+      },
+      by_name: function (name) {
+        var id;
+        js.story_titles.forEach(function (st, st_i) {
+          if(st[0] === name || st[1] === name || st[2] === name) {
+            id = st_i + 1;
+          }
+        });
+        if(typeof id !== "undefined") {
+          console.log("by_name story", id);
+          this.open(id);
+        }
+        // console.log(name, js.story_titles);
       }
     },
     // resourceLoaded: false,
     keyboardOn = true,
-    nav_menu = $(".nav-menu");
+    nav_menu = $(".nav-menu"),
+    tooltip = {
+      template: undefined,
+      init: function () {
+        console.log($(".tooltip-template").html());
+        this.template = $(".tooltip-template").html();
+      },
+      text_by_story: function (id) {
+        var st, mt;
+        if(!story.meta.hasOwnProperty(id)) {
+          console.log("here tooltip");
+          st = story.el.find(".story[data-id='" + id + "']");
+          story.meta[id] = {
+            title: st.find(".title").text(),
+            quote: st.find(".quote").text(),
+            name: st.find(".name").text(),
+            job: st.find(".job").text(),
+            job_start_date: st.find(".title").text()
+          };
+        }
+        mt = story.meta[id];
+        return this.template
+          .replace("{{title}}", mt.title)
+          .replace("{{quote}}", mt.quote)
+          .replace("{{name}}", mt.name)
+          .replace("{{job}}", mt.job)
+          .replace("{{job_start_date}}", mt.job_start_date);
+      }
+    },
+    params = {
+      permit: ["story"],
+      trigger: {
+        story: function(v) { story.by_name(v); }
+      },
+      read: function () {
+        var hash = window.location.hash.triml("#"), tmp;
+        if(exist(hash)) {
+          var ahash = hash.split("&");
+          for(var i = 0; i < ahash.length; ++i) {
+            var kv = ahash[i].split("=");
+            if(kv.length==2 && this.permit.indexOf(kv[0]) !== -1) {
+              tmp = isNumber(kv[1]) ? +kv[1] : (kv[1]!="" ? kv[1] : undefined );
+              if(typeof tmp !== "undefined") {
+                params[kv[0]] = tmp;
+                if(this.trigger.hasOwnProperty(kv[0])) { this.trigger[kv[0]](tmp); }
+              }
+            }
+          }
+          return true;
+        }
+        return false;
+      },
+      write: function() {
+        //  window.history.pushState(v, null, window.location.pathname + (params.length ? ("?filter=donation&" + params.join("&")) : ""));
+        // t.download.attr("href", window.location.pathname + "?filter=donation&" + (params.length ? (params.join("&") + "&") : "") + "format=csv")
+      }
+      // write: function (pairs) // object of key value pair { c: "", b: ""}
+      // {
+      //   var hash = window.location.hash.triml("#");
+      //   var hasHash = exist(hash);
+      //   var ahash = hasHash ? hash.split("&").map(function (v, i, a){ return v.split("="); }) : [];
+
+      //   for(var i = 0; i < ahash.length; ++i)
+      //   {
+      //     var kv = ahash[i];
+      //     if(!pairs.hasOwnProperty(kv[0]))
+      //     {
+      //       pairs[kv[0]] = kv[1];
+      //     }
+
+      //   }
+      //   var nhash = this.kv(pairs, "p") + this.kv(pairs, "c") + this.kv(pairs, "b");
+      //   if(nhash[0]=="&") nhash=nhash.substr(1);
+      //   history.pushState({"hash":nhash}, "", window.location.pathname + "#" + nhash);
+      //   var lang_link = $("#lang-link");
+      //   lang_link.attr("href", lang_link.attr("url") + "#" + nhash);
+      // },
+      // clear: function ()
+      // {
+      //   history.pushState({"hash":""}, "", window.location.pathname);
+      // },
+      // resume: function (p)
+      // {
+      //   this.clear();
+      //   var pars = {p:p};
+
+      //   if(p == "national_bank")
+      //   {
+      //     pars["c"] = cur.p2.c.join(",");
+      //   }
+      //   else if(p == "commercial_banks")
+      //   {
+      //     pars["c"] = cur.p3.c;
+      //     pars["b"] = cur.p3.b.join(",");
+      //   }
+      //   this.write(pars);
+      // },
+      // kv: function (obj, prop)
+      // {
+      //   if (obj.hasOwnProperty(prop)) {
+      //     if(!exist(obj[prop])) return "";
+      //     return "&" + prop + "=" + obj[prop];
+      //   }
+      //   return "";
+      // }
+    };
+
 
   function global_callback_function () {
     if(typeof global_callback === "function") {
@@ -463,25 +584,42 @@ $(document).ready(function () {
     animator();
 
 
-
-
-
-    $('.apanel .layer-colored').qtip({ // Grab some elements to apply the tooltip to
-      content: {
-          text:  function(event, api) {
-            var st = $(this).attr("data-story");
-            return "abc" + st;
-        }
-      },
+    $(".apanel .layer-colored").qtip({
+      content: { text: function () { return tooltip.text_by_story(+$(this).attr("data-story")); }, title: false },
       position: {
-          target: 'mouse',
-          effect: false,
-          adjust: {
-            x: 20,
-            y: 20
+        target: "mouse",
+        // effect: false,
+        viewport: $(window),
+        my: 'bottom left',
+        at: 'top right',
+        adjust: {
+          x: 30,
+          y: -40,
+          method: 'flipinvert flipinvert'
+        }
+
+      },
+      style: {
+         tip: { // Requires Tips plugin
+            corner: true, // Use position.my by default
+            width: 10,
+            height: 10,
+            border: true // Detect border from tooltip style
           }
-      }
-    })
+        }
+       // style: { tip: "ABC", corner: true},
+       //  events: {
+       //  hidden: function(event, api) {
+       //    console.log(event,api);}
+       //  }
+
+    });
+
+    redraw();
+    bind();
+    tooltip.init();
+    params.read();
+    console.log(params);
 
     console.log("finite");
   }
@@ -717,10 +855,8 @@ $(document).ready(function () {
     panorama.init();
     p = panorama;
     I18n.init(function (){
-      load_panels();
       resize();
-      redraw();
-      bind();
+      load_panels();
     });
 
   })();

@@ -90,11 +90,12 @@ end
 def init
   share_template = File.read('share_template.erb.html')
   locales = ["en", "ka", "ru"]
-  story_count = 2 # WARNING this should be changed to actual story count
+  story_count = 3 # WARNING this should be changed to actual story count
   key_mapper = key_map
+  story_titles = []
 
-  locales.each{|loc|
-    #next if loc != "en" # comment on production
+  locales.each_with_index{|loc, loc_i|
+    # next if loc != "en" # comment on production
     @locale = loc
 
     json = JSON.parse(File.read("../assets/locale/#{loc}.js").remove_lines(1)[0...-1])
@@ -114,11 +115,14 @@ def init
 
     renderer = ERB.new(share_template)
 
-
     for story_index in 1..story_count
-
       story_data = json["stories"]["s" + story_index.to_s]
       id = story_data["title"].to_ascii(key_mapper).downcase.gsub(" ", "-")
+      if loc == "en"
+        story_titles.push([id,id,id]);
+      else
+        story_titles[story_index-1][loc_i] = id
+      end
       @title = story_data["title"]
       @descr = story_data["description"]
       @share_url = share_dir_url + "/" + id + ".html"
@@ -127,6 +131,7 @@ def init
       File.open("../#{loc}/share/#{id}.html", "w") { |file| file.write(renderer.result()) }
 
     end
+    File.open("../assets/js/meta.js", "w") { |file| file.write("var js = { story_titles: " + story_titles.to_s + "};") }
   }
 end
 

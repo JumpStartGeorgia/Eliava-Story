@@ -1,5 +1,46 @@
 /*------------------------------------------ Common  --------------------------------------*/
-
+  @font-face {
+    font-family: "bebasneue_b";
+    src: url(../fonts/bebasneue_b.otf) format("opentype");
+    font-style: normal;
+    font-weight: 200;
+  }
+  @font-face { /* english */
+    font-family: "titillium";
+    src: url(../fonts/titillium.otf) format("opentype");
+    font-style: normal;
+    font-weight: 200;
+  }
+  @font-face { /* english */
+    font-family: "titillium_b";
+    src: url(../fonts/titillium_b.otf) format("opentype");
+    font-style: normal;
+    font-weight: 200;
+  }
+  @font-face { /* georgian */
+    font-family: "bpgnp";
+    src: url(../fonts/bpgnp.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 200;
+  }
+  @font-face { /* georgian */
+    font-family: "dejavusans_b";
+    src: url(../fonts/dejavusans_b.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 200;
+  }
+  @font-face { /* russian */
+    font-family: "arsenal";
+    src: url(../fonts/arsenal.otf) format("opentype");
+    font-style: normal;
+    font-weight: 200;
+  }
+  @font-face { /* russian */
+    font-family: "arsenal_b";
+    src: url(../fonts/arsenal_b.otf) format("opentype");
+    font-style: normal;
+    font-weight: 200;
+  }
   body, html
   {
     margin:0;
@@ -10,6 +51,24 @@
     overflow:hidden;
   }
   * { box-sizing: border-box; }
+
+/*------------------------------------------ Tooltip  --------------------------------------*/
+
+.tooltip-box { color:#000; }
+.tooltip-box:lang(en) { font:14px titillium; }
+.tooltip-box:lang(ka) { font:14px bpgnp; }
+.tooltip-box:lang(ru) { font:14px arsenal; }
+.tooltip-box .title { font: 24px bebasneue_b; }
+.tooltip-box .quote {
+  color:#2BBCA0;
+  padding-bottom:22px;
+}
+.tooltip-box .quote:lang(en) { font:14px titillium; }
+.tooltip-box .quote:lang(ka) { font:14px bpgnp; }
+.tooltip-box .quote:lang(ru) { font:14px arsenal; }
+.tooltip-box span:lang(en) { font:14px titillium_b; }
+.tooltip-box span:lang(ka) { font:14px dejavusans_b; }
+.tooltip-box span:lang(ru) { font:14px arsenal_b; }
 
 /*------------------------------------------ Loader  --------------------------------------*/
 
@@ -186,16 +245,16 @@
     border-top:1px solid #DDDDDD;
   }
   .nav-title {
-    // flex:0 0;
+    padding-top: 2px;
   }
   .nav-title span {
-    font:16px bebas_r;
+    font:19px bebasneue_b;
     color:#000000;
     white-space:nowrap;
   }
   .nav-title span:first-child {
-    font:20px bebas_r;
-    color: #2BBCA0;
+    font:24px bebasneue_b;
+    color:#2BBCA0;
   }
   .nav-map { display:none; height: 100%;}
   .nav-map-line { display:none; }
@@ -452,7 +511,7 @@
     cursor: pointer;
   }
   .popup .window .caption {
-    font: 30px 'bebasneue_r';
+    font: 30px 'bebasneue_b';
     color:#2bbca0;
     text-align:center;
     padding:0 0 47px;
@@ -586,7 +645,7 @@
 
   }
   .story-popup .window .content .story .title {
-    font: 30px 'bebasneue_r';
+    font: 30px 'bebasneue_b';
     color:#000;
     text-align:center;
     padding:30px 0 15px;
