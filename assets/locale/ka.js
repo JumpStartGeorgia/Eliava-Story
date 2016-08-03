@@ -1,16 +1,16 @@
 ka =
 {
-  "locale": "en",
+  "locale": "ka",
   "selected_locale": "english",
   "title": "The Eliava Market: Selling the Soviet Past",
   "nav_title_1": "The Eliava Market:",
   "nav_title_2": "selling the Soviet past",
   "description": "The Eliava Market - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, hic.",
   "sitename": "The Eliava Market",
-  "url": "http://dev-eliava.jumpstart.ge",
-  "og_url": "http://dev-eliava.jumpstart.ge/en/",
+  "domain": "http://dev-eliava.jumpstart.ge",
+  "url": "http://dev-eliava.jumpstart.ge/en/",
   "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.jpg",
-  "share_url": "share", // http://dev-eliava.jumpstart.ge/en/share
+  "share_path": "share", // http://dev-eliava.jumpstart.ge/en/share
   "loader": {
     "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem architecto voluptatem expedita voluptatum officia. Soluta optio sint laboriosam, enim consequuntur!",
     "nojs": {
@@ -35,7 +35,7 @@ ka =
   },
   "stories": {
     "s1": {
-      "title": "პოეტი",
+      "title": "The Poet",
       "quote": "Perhaps I should enjoy my freedom. But I hate it.",
       "description": "Story Description 1",
       "text": "<div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
@@ -45,7 +45,7 @@ ka =
       "job_start_date": 2006
     },
     "s2": {
-      "title": "ამბავი 2",
+      "title": "Story Title 2",
       "description": "Story Description 2",
       "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, cupiditate ex? Accusamus earum, nesciunt praesentium officiis quo ipsa iure ullam illum, quaerat fugit, quis commodi ab fugiat maiores reiciendis facere labore blanditiis itaque at magni animi? Nam eos soluta doloremque distinctio aperiam quia sunt, eveniet nostrum deserunt ut necessitatibus id, vel est voluptate et libero itaque architecto non quisquam tenetur, maiores saepe. Nemo nostrum earum aspernatur mollitia dolor labore officiis sunt! Vel unde accusantium aperiam autem non tempore alias maiores in laudantium, dicta cupiditate dolorum necessitatibus maxime. Blanditiis quam atque minus repellendus adipisci architecto voluptate dolores sed suscipit excepturi. Voluptate.<br/><br/><div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tAGnKpE4NCI'></div>",
       "yid": "tAGnKpE4NCI"

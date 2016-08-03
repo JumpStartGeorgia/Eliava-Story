@@ -104,10 +104,10 @@ def init
     FileUtils.remove_dir fld if File.directory?(fld)
     FileUtils.mkdir_p fld
 
-    url = json["url"]
+    url = json["domain"]
     @url_with_locale = url + "/" + loc
 
-    share_dir_url = @url_with_locale + "/" + json["share_url"]
+    share_dir_url = @url_with_locale + "/" + json["share_path"]
 
     @url_with_locale += "/" # add / to match url rules
 

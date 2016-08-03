@@ -1,16 +1,15 @@
 ru =
-{
-  "locale": "en",
+  "locale": "ru",
   "selected_locale": "english",
   "title": "The Eliava Market: Selling the Soviet Past",
   "nav_title_1": "The Eliava Market:",
   "nav_title_2": "selling the Soviet past",
   "description": "The Eliava Market - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, hic.",
   "sitename": "The Eliava Market",
-  "url": "http://dev-eliava.jumpstart.ge",
-  "og_url": "http://dev-eliava.jumpstart.ge/en/",
+  "domain": "http://dev-eliava.jumpstart.ge",
+  "url": "http://dev-eliava.jumpstart.ge/en/",
   "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.jpg",
-  "share_url": "share", // http://dev-eliava.jumpstart.ge/en/share
+  "share_path": "share", // http://dev-eliava.jumpstart.ge/en/share
   "loader": {
     "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem architecto voluptatem expedita voluptatum officia. Soluta optio sint laboriosam, enim consequuntur!",
     "nojs": {
@@ -35,7 +34,7 @@ ru =
   },
   "stories": {
     "s1": {
-      "title": "Ляфуф",
+      "title": "The Poet",
       "quote": "Perhaps I should enjoy my freedom. But I hate it.",
       "description": "Story Description 1",
       "text": "<div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",

@@ -5,6 +5,7 @@
 	 width="578px" height="19px" viewBox="0 0 578 19" enable-background="new 0 0 578 19" xml:space="preserve">
 	<defs>
 		<style type="text/css"><![CDATA[
+			svg { height: 59px; }
 			g:hover {
 				cursor:pointer;
 			}

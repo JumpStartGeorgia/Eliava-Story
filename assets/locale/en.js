@@ -7,10 +7,10 @@ en =
   "nav_title_2": "selling the Soviet past",
   "description": "The Eliava Market - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, hic.",
   "sitename": "The Eliava Market",
-  "url": "http://dev-eliava.jumpstart.ge",
-  "og_url": "http://dev-eliava.jumpstart.ge/en/",
+  "domain": "http://dev-eliava.jumpstart.ge",
+  "url": "http://dev-eliava.jumpstart.ge/en/",
   "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.jpg",
-  "share_url": "share", // http://dev-eliava.jumpstart.ge/en/share
+  "share_path": "share", // http://dev-eliava.jumpstart.ge/en/share
   "loader": {
     "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem architecto voluptatem expedita voluptatum officia. Soluta optio sint laboriosam, enim consequuntur!",
     "nojs": {

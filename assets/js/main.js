@@ -49,7 +49,7 @@ $(document).ready(function () {
         current: -1,
         muted: false,
         soft_muted: false,
-        toggle: $("#sound"),
+        toggle: $(".sound-toggle"),
         default_volume: 0.4,
         volume: function (v) {
           if(v >= 0 && v <= 1) {
@@ -122,16 +122,13 @@ $(document).ready(function () {
       map: {
         el: $("#nav_map"),
         bind: function () {
-          console.log("map bind");
           var t = this, doc = t.el.get(0).contentDocument;
-          console.log(doc,  $(doc).find(".story-point"));
           $(doc).find(".story-point").click(function () {
-            console.log("click");
             var tt = $(this), p = tt.parent().find(".story-point").removeClass("current");
             story.go_to(+$(this).addClass("current").attr("data-point"));
 
           });
-          //this.el.parent().removeClass("nav-map-visible");
+          this.el.parent().removeClass("nav-map-visible");
         }
       }
     },
@@ -179,7 +176,7 @@ $(document).ready(function () {
         if(percent >= 100) { t.close(); }
       },
       close: function () {
-        console.log("closed");
+        // console.log("closed");
         var t = this;
         t.closed = true;
         setTimeout(function () {
@@ -213,6 +210,7 @@ $(document).ready(function () {
       resize: function () {
         var t = this;
         this.content.find(".story .text-box").css({ "height": ( t.el.find(".window").height() - t.el.find(".active .text-box").position().top - 20) + "px" });
+        panorama.el.find("object").css("height", h - 60);
       },
       next: function () {
         var t = this,
@@ -257,16 +255,16 @@ $(document).ready(function () {
         t.resize();
       },
       go_to: function (id) {
-        console.log("go_to");
+        // console.log("go_to");
         var st = $("#story" + 6), box = st.get(0).getBBox(), pnl = st.closest(".apanel").attr("data-panel"),
         tmp_w = 0;
         for(var i = 0; i < pnl - 1; ++i) {
           tmp_w += panorama.panels.w[i];
-          console.log(i, panorama.panels.w[i]);
+          // console.log(i, panorama.panels.w[i]);
         }
-        console.log(box.x, panorama.offset.left);
+        // console.log(box.x, panorama.offset.left);
         panorama_scroll_by_pos(-1*(tmp_w+box.x+panorama.offset.left-w/2-box.width/2));
-        console.log("go to story by id", id, box, pnl);
+        // console.log("go to story by id", id, box, pnl);
       },
       by_name: function (name) {
         var id;
@@ -288,7 +286,6 @@ $(document).ready(function () {
     tooltip = {
       template: undefined,
       init: function () {
-        console.log($(".tooltip-template").html());
         this.template = $(".tooltip-template").html();
       },
       text_by_story: function (id) {
@@ -483,6 +480,7 @@ $(document).ready(function () {
     $(".nav-menu-toggle").on("click", function () {
       var tmp = nav_menu.attr("data-menu");
       nav_menu.attr("data-menu", tmp === "main" ? "" : "main");
+      $(this).toggleClass("active");
     });
     $(".nav-sub-menu-toggle").on("click", function () {
       var tmp = nav_menu.attr("data-menu"),
@@ -504,7 +502,7 @@ $(document).ready(function () {
       nav_menu.attr("data-menu", "main");
       $(this).parent().parent().parent().removeClass("active");
     });
-    $("#sound").click(function () { panorama.audio.muteToggle(); });
+    $(".sound-toggle").click(function () { panorama.audio.muteToggle(); });
     I18n.remap();
 
     popup.el.find(".close, .bg").on("click", function () { popup.close(); });
@@ -619,7 +617,7 @@ $(document).ready(function () {
     bind();
     tooltip.init();
     params.read();
-    console.log(params);
+    // console.log(params);
 
     console.log("finite");
   }
@@ -717,7 +715,7 @@ $(document).ready(function () {
       tmp_w += panorama.panels.w[i];
     }
     panorama.container_position = -1 * tmp_w;
-    console.log(panorama.container_position);
+    // console.log(panorama.container_position);
     panorama.container
       .css("transform", "translateX(" + (-1 * tmp_w) + "px)");
 
@@ -769,51 +767,50 @@ $(document).ready(function () {
   }
 
   function load_youtube () {
-    // var tag = document.createElement("script");
-    // tag.src = "https://www.youtube.com/iframe_api";
-    // var firstScriptTag = document.getElementsByTagName("script")[0];
-    // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    // window.onYouTubeIframeAPIReady = function () {
+    window.onYouTubeIframeAPIReady = function () {
 
-    //   // var youtube_watch = d3.behavior.watch()
-    //   //   .on("statechange", function() {
-    //   //     var pl = youtubePlayers[d3.select(this).select("iframe").attr("data-yid")];
-    //   //     if(pl && typeof pl.playVideo === "function") {
-    //   //       if(d3.event.state) { pl.playVideo(); }
-    //   //       else { pl.pauseVideo(); }
-    //   //     }
-    //   //   });
-    //   $("#story_popup .story .youtube[data-yid]").each(function (d, i) {
-    //     var id = this.id, yid = this.dataset.yid;
-    //     youtubePlayers[yid] = new YT.Player(
-    //       id,
-    //       {
-    //         videoId: yid,
-    //         height: "600",
-    //         width: "100%",
-    //         playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }//,
-    //         //events: {
-    //           // 'onReady': onPlayerReady,
-    //           //onStateChange: function (event) {
-    //             // if (event.data == YT.PlayerState.PLAYING) {
-    //             //   if(panorama.audio.muted) {
-    //             //     console.log(youtubePlayers[yid]);
-    //             //     setTimeout(function() { youtubePlayers[yid].mute }, 100);
-    //             //   } //* TODO * mute video if muted
-    //             //   else {
-    //             //    setTimeout(function() { youtubePlayers[yid].unMute }, 100);
-    //             //   }
-    //             // }
-    //           //}
-    //         //}
-    //       }
-    //     );
-    //   });
-    //   setTimeout(load_asset, 100);
-    // };
-    //
-    setTimeout(load_asset, 100);
+      // var youtube_watch = d3.behavior.watch()
+      //   .on("statechange", function() {
+      //     var pl = youtubePlayers[d3.select(this).select("iframe").attr("data-yid")];
+      //     if(pl && typeof pl.playVideo === "function") {
+      //       if(d3.event.state) { pl.playVideo(); }
+      //       else { pl.pauseVideo(); }
+      //     }
+      //   });
+      $("#story_popup .story .youtube[data-yid]").each(function (d, i) {
+        var id = this.id, yid = this.dataset.yid;
+        youtubePlayers[yid] = new YT.Player(
+          id,
+          {
+            videoId: yid,
+            height: "600",
+            width: "100%",
+            playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }//,
+            //events: {
+              // 'onReady': onPlayerReady,
+              //onStateChange: function (event) {
+                // if (event.data == YT.PlayerState.PLAYING) {
+                //   if(panorama.audio.muted) {
+                //     console.log(youtubePlayers[yid]);
+                //     setTimeout(function() { youtubePlayers[yid].mute }, 100);
+                //   } //* TODO * mute video if muted
+                //   else {
+                //    setTimeout(function() { youtubePlayers[yid].unMute }, 100);
+                //   }
+                // }
+              //}
+            //}
+          }
+        );
+      });
+      setTimeout(load_asset, 100);
+    };
+    // setTimeout(load_asset, 100);
   }
   function load_audio () {
     var cnt = 0, tmp,
@@ -851,9 +848,9 @@ $(document).ready(function () {
 
 
   (function init () {
-    ld = loader;
+    // ld = loader;
     panorama.init();
-    p = panorama;
+    // p = panorama;
     I18n.init(function (){
       resize();
       load_panels();

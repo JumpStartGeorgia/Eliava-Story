@@ -8,7 +8,7 @@
     <meta name="description" data-18n-description="content">
     <meta property="og:title" data-i18n-title="content">
     <meta property="og:description" data-18n-description="content">
-    <meta property="og:url" data-18n-og_url="content">
+    <meta property="og:url" data-18n-url="content">
     <meta property="og:image" data-18n-og_image="content">
     <meta property="og:site_name" data-i18n-sitename="content">
     <meta property="og:type" content="website">
@@ -28,13 +28,13 @@
       <div class="loader-text" data-i18n-loader-text></div>
     </div>
     <noscript class="require-js">
-      <div lang="ka" data-i18n-loader-nojs-ka></div>
-      <div lang="en" data-i18n-loader-nojs-en></div>
-      <div lang="ru" data-i18n-loader-nojs-ru></div>
+      <div lang="en" data-i18n-loader-nojs-en>English</div>
+      <div lang="ka" data-i18n-loader-nojs-ka>ქართული</div>
+      <div lang="ru" data-i18n-loader-nojs-ru>Русский</div>
     </noscript>
   </div>
   <div class="wrapper">
-    <div id="sound"></div>
+    <div class="sound-toggle top d"><i class="sound"></i></div>
     <div id="panorama">
       <div class="container">
         <div class="panel">
@@ -75,9 +75,14 @@
       </div>
     </div>
     <div class="nav">
-       <div class="nav-title"><span data-i18n-nav_title_1></span><br/><span data-i18n-nav_title_2></span></div><div class="nav-map nav-map-visible"><div class="nav-map-line"></div><object id="nav_map" type="image/svg+xml"></object></div><div class="nav-menu" data-menu="">
+      <a data-i18n-url="href" class="nav-title">
+        <span data-i18n-nav_title_1></span><br/><span data-i18n-nav_title_2></span>
+      </a>
+       <div class="nav-map nav-map-visible"><div class="nav-map-line"></div><object id="nav_map" type="image/svg+xml"></object></div><div class="nav-menu" data-menu="">
+          <div class="sound-toggle m"><i class="sound"></i></div>
           <div class="nav-menu-toggle" title="Toggle"></div>
           <ul class="nav-menu-container">
+
             <li>
               <a href="#language" class="nav-sub-menu-toggle" data-i18n-selected_locale="data-current"><span data-i18n-en></span><i class="language"></i></a>
               <ul class="nav-menu-sub-container language">
