@@ -558,6 +558,7 @@ $(document).ready(function () {
     panorama.step = w/5;
     panorama.origin = w/2;
     story.resize();
+    panorama.map.bind();
   }
   function finite () {
 
