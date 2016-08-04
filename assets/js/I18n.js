@@ -4,9 +4,9 @@ var I18n = (function () {
   "use strict";
   var dev = true;
   var obj = { };
-  var default_locale = "en";
+  var default_locale = "en"; // deploy change this for each language
   var locale = default_locale;
-  var languages = ["en", "ka"];
+  var languages = ["en", "ka", "ru"];
   var data = null;
   var delve_threshold = 4;
   var protecting = false;

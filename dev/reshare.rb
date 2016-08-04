@@ -90,7 +90,7 @@ end
 def init
   share_template = File.read('share_template.erb.html')
   locales = ["en", "ka", "ru"]
-  story_count = 3 # WARNING this should be changed to actual story count
+  story_count = 11 # deploy TODO WARNING this should be changed to actual story count
   key_mapper = key_map
   story_titles = []
 

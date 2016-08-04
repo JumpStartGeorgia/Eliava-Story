@@ -9,15 +9,13 @@ en =
   "sitename": "The Eliava Market",
   "domain": "http://dev-eliava.jumpstart.ge",
   "url": "http://dev-eliava.jumpstart.ge/en/",
+  "url_en": "http://dev-eliava.jumpstart.ge/en/",
+  "url_ka": "http://dev-eliava.jumpstart.ge/ka/",
+  "url_ru": "http://dev-eliava.jumpstart.ge/ru/",
   "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.jpg",
   "share_path": "share", // http://dev-eliava.jumpstart.ge/en/share
   "loader": {
-    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem architecto voluptatem expedita voluptatum officia. Soluta optio sint laboriosam, enim consequuntur!",
-    "nojs": {
-      "ka": "ამ აპლიკაციის გამოსაყენებლად თქვენ უნდა ჩართოთ Javascript-ი!",
-      "en": "You need to turn on Javascript for this application to work!",
-      "ru": "You need to turn on Javascript for this application to work!"
-    }
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem architecto voluptatem expedita voluptatum officia. Soluta optio sint laboriosam, enim consequuntur!"
   },
   "share": "Share",
   "en": "English",
@@ -35,26 +33,114 @@ en =
   },
   "stories": {
     "s1": {
+      "title": "The Tool Seller",
+      "quote": "The Soviet times were good for me. I had a salary.  Who has a salary now?",
+      "description": "fb description",
+      "text": "<div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
+      "yid": "tbCDQzQ_5Wo",
+      "name": "Tamazi Dudashvili (b.1955)",
+      "job": "sells tools and spare parts",
+      "job_start_date": "1999"
+    },
+    "s2": {
+      "title": "The Cigarette Seller",
+      "quote": "I didn’t know what poverty was (in Soviet times). My children know all about it.",
+      "description": "fb description",
+      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
+      "yid": "tbCDQzQ_5Wo",
+      "name": "Marina Esebua (b.1962)",
+      "job": "sells cigarettes, sweets and snacks",
+      "job_start_date": "1998"
+    },
+    "s3": {
+      "title": "2008 War Volunteer",
+      "quote": "I was proud I had a chance to defend my country",
+      "description": "fb description",
+      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
+      "yid": "tbCDQzQ_5Wo",
+      "name": "Otari Mujiri (b.1983)",
+      "job": "repairs and sells power tools",
+      "job_start_date": "2000"
+    },
+    "s4": {
+      "title": "The Skeptic",
+      "quote": "Not much has changed - the big issues are still decided outside Georgia",
+      "description": "fb description",
+      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
+      "yid": "tbCDQzQ_5Wo",
+      "name": "Eduard Miroian (b.1958)",
+      "job": "sells tools and spare parts",
+      "job_start_date": "1996"
+    },
+    "s5": {
+      "title": "The Europhile",
+      "quote": "Archaeologists have shown Georgia is historically closer to Europe",
+      "description": "fb description",
+      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
+      "yid": "tbCDQzQ_5Wo",
+      "name": "Giorgi Todadze (b.1958)    The Philosopher",
+      "job": "sells tools, electrical equipment and spare parts",
+      "job_start_date": "1996"
+    },
+    "s6": {
+      "title": "The Wrestling Champion",
+      "quote": "There was a little euphoria when the USSR collapsed, as if independence would be good",
+      "description": "fb description",
+      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
+      "yid": "tbCDQzQ_5Wo",
+      "name": "Vazha Jamagidze (b.1958)",
+      "job": "sells reconditioned taps and pipes",
+      "job_start_date": "1998"
+    },
+    "s7": {
+      "title": "The Nuts and Bolts Man",
+      "quote": "We are just ‘speculantz’.",
+      "description": "fb description",
+      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
+      "yid": "tbCDQzQ_5Wo",
+      "name": "Mirian Nozadze (b.1984)     The Joker",
+      "job": "sells Soviet-era nuts, bolts and screws",
+      "job_start_date": "2006"
+    },
+    "s8": {
       "title": "The Poet",
       "quote": "Perhaps I should enjoy my freedom. But I hate it.",
-      "description": "Story Description 1",
-      "text": "<div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
+      "description": "fb description",
+      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
       "yid": "tbCDQzQ_5Wo",
       "name": "Pridon (b.1969)",
       "job": "sells power motors",
-      "job_start_date": 2006
+      "job_start_date": "2006"
     },
-    "s2": {
-      "title": "Story Title 2",
-      "description": "Story Description 2",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, cupiditate ex? Accusamus earum, nesciunt praesentium officiis quo ipsa iure ullam illum, quaerat fugit, quis commodi ab fugiat maiores reiciendis facere labore blanditiis itaque at magni animi? Nam eos soluta doloremque distinctio aperiam quia sunt, eveniet nostrum deserunt ut necessitatibus id, vel est voluptate et libero itaque architecto non quisquam tenetur, maiores saepe. Nemo nostrum earum aspernatur mollitia dolor labore officiis sunt! Vel unde accusantium aperiam autem non tempore alias maiores in laudantium, dicta cupiditate dolorum necessitatibus maxime. Blanditiis quam atque minus repellendus adipisci architecto voluptate dolores sed suscipit excepturi. Voluptate.<br/><br/><div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tAGnKpE4NCI'></div>",
-      "yid": "tAGnKpE4NCI"
+    "s9": {
+      "title": "The Arm Wrestler",
+      "quote": "If the USSR had done something good for us, we wouldn’t have wanted independence",
+      "description": "fb description",
+      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
+      "yid": "tbCDQzQ_5Wo",
+      "name": "Jaba Nakashidze (b.1975)",
+      "job": "sells power motors",
+      "job_start_date": "2001"
     },
-    "s3": {
-      "title": "Story Title 3",
-      "description": "Story Description 3",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, cupiditate ex? Accusamus earum, nesciunt praesentium officiis quo ipsa iure ullam illum, quaerat fugit, quis commodi ab fugiat maiores reiciendis facere labore blanditiis itaque at magni animi? Nam eos soluta doloremque distinctio aperiam quia sunt, eveniet nostrum deserunt ut necessitatibus id, vel est voluptate et libero itaque architecto non quisquam tenetur, maiores saepe. Nemo nostrum earum aspernatur mollitia dolor labore officiis sunt! Vel unde accusantium aperiam autem non tempore alias maiores in laudantium, dicta cupiditate dolorum necessitatibus maxime. Blanditiis quam atque minus repellendus adipisci architecto voluptate dolores sed suscipit excepturi. Voluptate.<br/><br/><div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='qPOTEs_yTJo'></div>",
-      "yid": "qPOTEs_yTJo"
+    "s10": {
+      "title": "The War Veteran",
+      "quote": "We need a friend to stand up to Russia",
+      "description": "fb description",
+      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
+      "yid": "tbCDQzQ_5Wo",
+      "name": "Tariel Saralidze (b.1971)",
+      "job": "sells power motors and welding equipment",
+      "job_start_date": "2006"
+    },
+    "s11": {
+      "title": "The Drinks Seller",
+      "quote": "Nobody wanted the Russians. Why do we want them now?",
+      "description": "fb description",
+      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
+      "yid": "tbCDQzQ_5Wo",
+      "name": "Taso Tsertsvadze (b.1961)",
+      "job": "sells drinks and snacks",
+      "job_start_date": "2001"
     }
   },
   "label": {

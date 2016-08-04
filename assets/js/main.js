@@ -42,15 +42,33 @@ $(document).ready(function () {
       audio: {
         ext: /opera/i.test(navigator.userAgent) || /firefox/i.test(navigator.userAgent) ? "ogg" : "mp3",
         path: "../assets/sounds/",
-        names: ["1", "2", "3", "4"],
+        // names of the files are number between 1 and 'count'
         elem: [],
-        play_range: [[0, 25], [25, 50], [50, 75], [75, 100]], // range in percents where specific based on index audio should play
-        count: 4,
+        play_range: [ [0, 6.8], [6.8, 9.9], [9.9, 13.2], [13.2, 18.1], [18.1, 24.9], [24.9, 32.4], [32.4, 35.8], [35.8, 45.8], [45.8, 51.4], [51.4, 57], [57, 62.3], [62.3, 67.4], [67.4, 77.2], [77.2, 81.5], [81.5, 93.5], [93.5, 100] ], // range in percents where specific based on index audio should play
+        count: 16,
         current: -1,
         muted: false,
         soft_muted: false,
         toggle: $(".sound-toggle"),
         default_volume: 0.4,
+        dev: function () { // * TODO call panorama.audio.dev(); in current context
+          // if need recalculate when audio should play, no pause in between, paste output in play_range
+          var a = [560, 250, 270, 402, 556, 615, 275, 820, 460, 462, 434, 416, 800, 356, 986, 530], // pixels for each audio file to play starting from 0
+            s = 8192, // sum is 8192 calculated based on width of new scan png file
+            c = [], f = 0, tmp;
+          if(this.count !== a.length) {
+            console.log("Audio files count should be same as length of 'a' array.");
+            return;
+          }
+          a.forEach(function (d) {
+            tmp = Math.round10(d*100/s, -1);
+            c.push([f, Math.round10(f+tmp, -1)]);
+            f=Math.round10(f+tmp, -1);
+          });
+          tmp = "";
+          c.forEach(function (d){ tmp += "[" + d[0] + ", " + d[1] +"], "; });
+          console.log("[ " + tmp.substring(0, tmp.length - 2) + " ]" );
+        },
         volume: function (v) {
           if(v >= 0 && v <= 1) {
             this.elem.forEach(function (el) {
@@ -191,9 +209,24 @@ $(document).ready(function () {
       content: $("#story_popup .content"),
       opened: false,
       current: 1,
-      count: 3, // * TODO on story count change
-      story_range: [[13, 15], [20, 22], [30, 31]],
+      count: 11, // * TODO on story count change
+      //story_range: [[13, 15], [20, 22], [30, 31]],
       meta: {},
+      dev: function () { // * TODO if story popup structure change call this and grab copy/paste console output to input.html, generate all locales
+        var html, i;
+        for(i = 1; i <= this.count; ++i) {
+          html += `
+            <div class="story" data-id="${i}" data-i18n-stories-s${i}-yid="data-yid">
+              <div class="title" data-i18n-stories-s${i}-title="text"></div>
+              <div class="quote" data-i18n-stories-s${i}-quote="text"></div>
+              <div class="name" data-i18n-stories-s${i}-name="text"></div>
+              <div class="job" data-i18n-stories-s${i}-job="text"></div>
+              <div class="job_start_date" data-i18n-stories-s${i}-job_start_date="text"></div>
+              <div class="text-box"><div class="text" data-i18n-stories-s${i}-text></div></div>
+            </div>`;
+        }
+        console.log(html);
+      },
       close: function () {
         this.el.attr("data-current", "");
         this.el.find(".window").velocity({ opacity: 0 }, { duration: 500 });
@@ -503,7 +536,7 @@ $(document).ready(function () {
       $(this).parent().parent().parent().removeClass("active");
     });
     $(".sound-toggle").click(function () { panorama.audio.muteToggle(); });
-    I18n.remap();
+    // I18n.remap();
 
     popup.el.find(".close, .bg").on("click", function () { popup.close(); });
     nav_menu.find("a[data-popup-target]").on("click", function () {
@@ -818,7 +851,7 @@ $(document).ready(function () {
       ext = panorama.audio.ext,
       path = panorama.audio.path;
 
-    panorama.audio.names.forEach(function (d) {
+    for(var i = 1; i <= expect_cnt; ++i) {
       panorama.audio.elem.push($("<audio>",
         {
           preload:"auto",
@@ -827,9 +860,9 @@ $(document).ready(function () {
             canplay: function (event) { loader.inc(5); if(++cnt === expect_cnt) { setTimeout(load_youtube, 100); } },
             error: function (e) { console.log(this, e, "error in load audio for one of the file"); }
           },
-          "src": (path + d + "." + ext)
+          "src": (path + i + "." + ext)
         }).get(0));
-    });
+    }
   }
   function load_panels () {
     var cnt = 0, bg, fg;
@@ -851,10 +884,17 @@ $(document).ready(function () {
     // ld = loader;
     panorama.init();
     // p = panorama;
-    I18n.init(function (){
+    //I18n.init(function (){
       resize();
       load_panels();
-    });
+    //});
 
   })();
+  // (function dev_init () {
+  //   // panorama.audio.dev();
+  //   // story.dev();
+  //   I18n.init(function (){ I18n.remap(); });
+  // })();
+
+
 });
