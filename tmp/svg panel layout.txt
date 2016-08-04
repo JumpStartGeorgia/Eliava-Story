@@ -1,0 +1,16 @@
+class="layer-empty"
+    <g class="layer-anim">
+      class="layer-drawing"
+      class="layer-colored" data-story="4"
+    </g>
+
+  <g id="story1">
+    <path class="layer-empty" fill="#FFFFFF" d=""/>
+    <g class="layer-anim">
+      <image overflow="visible" width="606" height="826" class="layer-drawing" xlink:href="" transform="matrix(1 0 0 1 131.5 171)">
+      </image>
+
+      <image overflow="visible" width="606" height="826" class="layer-colored" data-story="1" xlink:href="" transform="matrix(1 0 0 1 131.5 171)">
+      </image>
+    </g>
+  </g>

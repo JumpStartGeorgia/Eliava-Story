@@ -299,9 +299,9 @@
     font:24px bebasneue_b;
     color:#2BBCA0;
   }
-  .nav-map { display:none; height: 100%;}
+  .nav-map { position:absolute; left:-9999999px; flex:none; height: 100%;}
   .nav-map-line { display:none; }
-  .nav-map-visible { display:block !important; }
+  // .nav-map-visible { display:block !important; }
   // .nav-map object { height: 100%; max-height:56px; }
   .nav-menu {
     position:relative;
@@ -624,19 +624,60 @@
     height:48px;
     z-index:34;
   }
-  .story-popup .share-story {
+  .story-popup .share-story-box2 {
     width:100%;
     height:100%;
     max-width: 992px;
     margin: 0 auto;
   }
-  .story-popup .share-story i{
+  .story-popup .share-story {
+    position:relative;
     display:inline-block;
-    background: #f7f7f7 url(../images/story_toggle.svg) no-repeat left/48px;
     width: 48px;
     height: 48px;
+    border-bottom:1px solid transparent;
+  }
+  .story-popup .share-story i {
+    display:inline-block;
+    background: rgba(0,0,0,.7) url(../images/share_story.svg) no-repeat center/28px;
+    width: 48px;
+    height: 47px;
+  }
+  .story-popup .share-story:hover {
+    cursor:pointer;
+    border-bottom:1px solid #fff;
+  }
+  .story-popup .share-story .addthis_sharing_toolbox { display:none; }
+  .story-popup .share-story:hover .addthis_sharing_toolbox {
+    display:initial;
+    background-color: rgba(0,0,0,.7);
+    position:absolute;
+    top:100%;
+    left: 0;
+    margin-top: 1px;
 
   }
+  .story-popup .share-story .addthis_sharing_toolbox .at-share-btn:hover {
+    background-color: rgba(0,0,0,1);
+  }
+
+  .addthis_sharing_toolbox .at-share-btn {
+    display:block;
+    max-width: 38px;
+    max-height: 36px;
+    margin: 0;
+  }
+  .addthis_sharing_toolbox .at-share-btn .at-icon-wrapper {
+    background-color:transparent !important;
+    line-height: 36px !important;
+    height: 36px !important;
+    width: 38px !important;
+    padding: 8px 10px !important;
+  }
+  .addthis_sharing_toolbox .at-share-btn.at-svc-facebook svg { fill: #000; }
+  .addthis_sharing_toolbox .at-share-btn.at-svc-twitter svg { fill: #000; }
+  .addthis_sharing_toolbox .at-share-btn.at-svc-compact svg { fill: #000; }
+
   .story-popup .bg{
     position: fixed;
     top: 0;
@@ -820,6 +861,8 @@
     -webkit-animation-name: scroll-right;
     animation-name: scroll-right;
   }
+
+
   .d { display:none; }
 /*------------------------------------------ Media ----------------------------------------*/
 
@@ -833,12 +876,13 @@
       padding:0 0 0 32px;
     }
     .nav-map {
-      flex-basis:100%;
+      flex: 0 1 100%;
       justify-content: center;
       width:100%;
       height: 100%;
 
       position:relative;
+      left:0;
       display:inherit;
 
       border-left:1px solid #DDDDDD;
