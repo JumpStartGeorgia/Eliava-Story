@@ -10,6 +10,7 @@ $(document).ready(function () {
       RIGHT:  39,
       DOWN:   40
     },
+    lang = "en",
     global_callback = undefined,
     panorama = {
       step: 0,
@@ -123,7 +124,7 @@ $(document).ready(function () {
           // });
         },
         softMute: function () {
-          console.log(this.elem[this.current]);
+          //console.log(this.elem[this.current]);
           this.soft_muted = true;
           this.elem[this.current].muted = true;
         },
@@ -169,9 +170,9 @@ $(document).ready(function () {
       length: 1300,
       progress: 0,
       closed: false,
-      fade_duration: 0,//2000,
+      fade_duration: 0,//2000, // deploy change back this value
       fade_easing: "easeInOutCirc",
-      before_close_duration: 0, //5000,
+      before_close_duration: 0, //5000, // deploy change back this value
       inc: function (percent) {
         var t = this;
         if(t.closed) return;
@@ -288,6 +289,7 @@ $(document).ready(function () {
         t.resize();
       },
       go_to: function (id) {
+        params.write(this.name_by_id(id))
         // console.log("go_to");
         var st = $("#story" + 6), box = st.get(0).getBBox(), pnl = st.closest(".apanel").attr("data-panel"),
         tmp_w = 0;
@@ -307,11 +309,14 @@ $(document).ready(function () {
           }
         });
         if(typeof id !== "undefined") {
-          console.log("by_name story", id);
+          // console.log("by_name story", id);
           this.open(id);
         }
         // console.log(name, js.story_titles);
-      }
+      },
+      name_by_id: function (id) {
+        return js.story_titles[id-1][["en", "ka", "ru"].indexOf(lang)];
+      },
     },
     // resourceLoaded: false,
     keyboardOn = true,
@@ -346,79 +351,29 @@ $(document).ready(function () {
     params = {
       permit: ["story"],
       trigger: {
-        story: function(v) { story.by_name(v); }
+        story: function (v) { story.by_name(v); }
       },
       read: function () {
-        var hash = window.location.hash.triml("#"), tmp;
-        if(exist(hash)) {
-          var ahash = hash.split("&");
-          for(var i = 0; i < ahash.length; ++i) {
-            var kv = ahash[i].split("=");
-            if(kv.length==2 && this.permit.indexOf(kv[0]) !== -1) {
-              tmp = isNumber(kv[1]) ? +kv[1] : (kv[1]!="" ? kv[1] : undefined );
-              if(typeof tmp !== "undefined") {
-                params[kv[0]] = tmp;
-                if(this.trigger.hasOwnProperty(kv[0])) { this.trigger[kv[0]](tmp); }
-              }
+        var query = window.location.search.substring(1),
+          vars = query.split("&"), i, tmp, kv;
+
+        for (i=0;i<vars.length;i++) {
+          kv = vars[i].split("=");
+          if(kv.length==2 && this.permit.indexOf(kv[0]) !== -1) {
+            tmp = isNumber(kv[1]) ? +kv[1] : (kv[1]!="" ? kv[1] : undefined );
+            if(typeof tmp !== "undefined") {
+              params[kv[0]] = tmp;
+              if(this.trigger.hasOwnProperty(kv[0])) { this.trigger[kv[0]](tmp); }
             }
           }
-          return true;
         }
-        return false;
+        console.log(params);
       },
-      write: function() {
-        //  window.history.pushState(v, null, window.location.pathname + (params.length ? ("?filter=donation&" + params.join("&")) : ""));
+      write: function (story_name) {
+        window.history.pushState({ story: story_name }, null, window.location.pathname + "?story=" + story_name);
+        // change share things
         // t.download.attr("href", window.location.pathname + "?filter=donation&" + (params.length ? (params.join("&") + "&") : "") + "format=csv")
       }
-      // write: function (pairs) // object of key value pair { c: "", b: ""}
-      // {
-      //   var hash = window.location.hash.triml("#");
-      //   var hasHash = exist(hash);
-      //   var ahash = hasHash ? hash.split("&").map(function (v, i, a){ return v.split("="); }) : [];
-
-      //   for(var i = 0; i < ahash.length; ++i)
-      //   {
-      //     var kv = ahash[i];
-      //     if(!pairs.hasOwnProperty(kv[0]))
-      //     {
-      //       pairs[kv[0]] = kv[1];
-      //     }
-
-      //   }
-      //   var nhash = this.kv(pairs, "p") + this.kv(pairs, "c") + this.kv(pairs, "b");
-      //   if(nhash[0]=="&") nhash=nhash.substr(1);
-      //   history.pushState({"hash":nhash}, "", window.location.pathname + "#" + nhash);
-      //   var lang_link = $("#lang-link");
-      //   lang_link.attr("href", lang_link.attr("url") + "#" + nhash);
-      // },
-      // clear: function ()
-      // {
-      //   history.pushState({"hash":""}, "", window.location.pathname);
-      // },
-      // resume: function (p)
-      // {
-      //   this.clear();
-      //   var pars = {p:p};
-
-      //   if(p == "national_bank")
-      //   {
-      //     pars["c"] = cur.p2.c.join(",");
-      //   }
-      //   else if(p == "commercial_banks")
-      //   {
-      //     pars["c"] = cur.p3.c;
-      //     pars["b"] = cur.p3.b.join(",");
-      //   }
-      //   this.write(pars);
-      // },
-      // kv: function (obj, prop)
-      // {
-      //   if (obj.hasOwnProperty(prop)) {
-      //     if(!exist(obj[prop])) return "";
-      //     return "&" + prop + "=" + obj[prop];
-      //   }
-      //   return "";
-      // }
     };
 
 
@@ -504,10 +459,16 @@ $(document).ready(function () {
         }
       }
     });
-    $(document).on("mousewheel", function (event) {
-      /*console.log("scroll");*/
-      event.deltaY > 0 ? panorama_scroll_left() : panorama_scroll_right();
+    addWheelListener(document, function (event) {
+      if(event.deltaY !== -0 && event.deltaY !== 0) {
+        event.deltaY <= -0 ? panorama_scroll_left() : panorama_scroll_right();
+      }
     });
+
+    // $(document).on("wheel", function (event) {
+    //   console.log("scroll", event.deltaY > 0);
+    //
+    // });
     $(document).on("click", function (event) { global_callback_function(); });
 
     $(".nav-menu-toggle").on("click", function () {
@@ -536,7 +497,6 @@ $(document).ready(function () {
       $(this).parent().parent().parent().removeClass("active");
     });
     $(".sound-toggle").click(function () { panorama.audio.muteToggle(); });
-    // I18n.remap();
 
     popup.el.find(".close, .bg").on("click", function () { popup.close(); });
     nav_menu.find("a[data-popup-target]").on("click", function () {
@@ -651,6 +611,8 @@ $(document).ready(function () {
     bind();
     tooltip.init();
     params.read();
+    I18n.remap(); // deploy remove this line
+    lang = document.documentElement.lang;
     // console.log(params);
 
     console.log("finite");
@@ -881,17 +843,23 @@ $(document).ready(function () {
   }
 
 
-  (function init () {
+  // (function init () {
+  //   panorama.init();
+  //   resize();
+  //   load_panels();
+  // })();
+
+  (function dev_init () {
     // ld = loader;
     panorama.init();
     // p = panorama;
-    //I18n.init(function (){
+    I18n.init(function (){
       resize();
       load_panels();
-    //});
+    });
 
   })();
-  // (function dev_init () {
+  // (function deploy_init () {
   //   // panorama.audio.dev();
   //   // story.dev();
   //   I18n.init(function (){ I18n.remap(); });
