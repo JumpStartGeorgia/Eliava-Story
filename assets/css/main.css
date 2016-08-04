@@ -301,7 +301,7 @@
   }
   .nav-map { display:none; height: 100%;}
   .nav-map-line { display:none; }
-  .nav-map-visible { display:initial !important; }
+  .nav-map-visible { display:block !important; }
   // .nav-map object { height: 100%; max-height:56px; }
   .nav-menu {
     position:relative;
@@ -364,7 +364,7 @@
   }
   .nav-menu-container > li > a {
     display:flex;
-    height:100%;
+    // height:100%;
     width:100%;
     padding:18px 20px 18px 24px;
     font:18px bebasneue_b;
@@ -984,9 +984,16 @@
 }
 .layer-anim {
   -webkit-transition: translate3d(0,0,0);
+  transition: translate3d(0,0,0);
   webkit-backface-visibility: hidden;
-  transform-origin: bottom;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
 }
+// .layer-anim.origin-center { transform-origin: center; }
+// .layer-anim.origin-bottom { transform-origin: bottom; }
 // layer-anim
 // layer-drawing
 // layer-colored

@@ -1,4 +1,4 @@
-/*global  $ debounce I18n YT global_callback exist isNumber js */
+/*global  $ debounce I18n YT global_callback exist isNumber js getRandomIntInclusive */
 /*eslint camelcase: 0, no-underscore-dangle: 0, no-unused-vars: 0, no-console: 0*/
 var p, youtubePlayers = {}, ld;
 $(document).ready(function () {
@@ -12,6 +12,7 @@ $(document).ready(function () {
     },
     lang = "en",
     global_callback = undefined,
+    dummy = function (){},
     panorama = {
       step: 0,
       el: $("#panorama"),
@@ -51,7 +52,9 @@ $(document).ready(function () {
         muted: false,
         soft_muted: false,
         toggle: $(".sound-toggle"),
-        default_volume: 0.4,
+        default_volume: 0.6,
+        fade_duration: 500,
+        can_play: true,
         dev: function () { // * TODO call panorama.audio.dev(); in current context
           // if need recalculate when audio should play, no pause in between, paste output in play_range
           var a = [560, 250, 270, 402, 556, 615, 275, 820, 460, 462, 434, 416, 800, 356, 986, 530], // pixels for each audio file to play starting from 0
@@ -78,27 +81,46 @@ $(document).ready(function () {
           }
         },
         play: function (ind) {
-          if(typeof ind === "undefined") { ind = 0; }
-          if(ind >= 0 && ind < this.count) {
-            var snd = this.elem[ind];
-            if(typeof snd !== "undefined" && snd.readyState == 4) {
-              console.log("audio play ", ind);
-              this.stop(this.current);
-              snd.volume = this.default_volume;
-              snd.muted = this.muted || this.soft_muted;
-              snd.play();
-              this.current = ind;
+          var t = this;
+          if(t.can_play) {
+            if(typeof ind === "undefined") { ind = 0; }
+            if(ind >= 0 && ind < t.count) {
+              var snd = t.elem[ind];
+              if(typeof snd !== "undefined" && snd.readyState == 4) {
+                //console.log("audio play ", ind);
+                t.stop(t.current);
+                snd.volume = t.default_volume;
+                snd.muted = t.muted || t.soft_muted;
+                snd.play();
+                t.current = ind;
+              }
             }
+          }
+          else {
+            setTimeout(function () { t.play(ind); }, 100);
           }
         },
         stop: function (ind) {
-          if(typeof ind === "undefined") { ind = this.current; }
-          if(ind >= 0 && ind < this.count) {
-            var snd = this.elem[ind];
+          var t = this;
+          if(typeof ind === "undefined") { ind = t.current; }
+          if(ind >= 0 && ind < t.count) {
+            var snd = t.elem[ind];
             if(typeof snd !== "undefined" && snd.readyState == 4) {
-              snd.pause();
-              snd.currentTime = 0;
-             // if (window.chrome) this.sounds[name].load()
+              var step = t.default_volume/10, interval_id, dur = t.fade_duration/10;
+              if(dur < 20) dur = 20;
+              t.can_play = false;
+              interval_id = setInterval(function () {
+                var tmp = snd.volume - step;
+                if(tmp <= 0) {
+                  clearInterval(interval_id);
+                  snd.muted = 0;
+                  snd.pause();
+                  t.can_play = true;
+                }
+                else {
+                  snd.volume = tmp;
+                }
+              }, dur);
             }
           }
         },
@@ -211,6 +233,7 @@ $(document).ready(function () {
       opened: false,
       current: 1,
       count: 11, // * TODO on story count change
+      breath_direction: [1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0], // left 0, right 1
       //story_range: [[13, 15], [20, 22], [30, 31]],
       meta: {},
       dev: function () { // * TODO if story popup structure change call this and grab copy/paste console output to input.html, generate all locales
@@ -229,21 +252,27 @@ $(document).ready(function () {
         console.log(html);
       },
       close: function () {
-        this.el.attr("data-current", "");
-        this.el.find(".window").velocity({ opacity: 0 }, { duration: 500 });
+        var t = this;
+        t.off_animation();
+        t.el.attr("data-current", "");
+        t.el.find(".window").velocity({ opacity: 0 }, { duration: 500 });
         panorama.audio.softUnMute();
       },
+      before_open: function() {},
       open: function (id) {
-        this.el.attr("data-current", id);
-        this.el.find(".window").velocity({ opacity: 1 }, { duration: 1000, easing: "easeInCirc" });
+        var t = this;
+        t.on_animation;
+        t.el.attr("data-current", id);
+        t.el.find(".window").velocity({ opacity: 1 }, { duration: 1000, easing: "easeInCirc" });
         panorama.audio.softMute();
-        //global_callback = function() { this.close(); };
-        // this.el.addClass("opened");
-        this.resize();
+        //global_callback = function() { t.close(); };
+        // t.el.addClass("opened");
+        t.resize();
       },
       resize: function () {
         var t = this;
         this.content.find(".story .text-box").css({ "height": ( t.el.find(".window").height() - t.el.find(".active .text-box").position().top - 20) + "px" });
+        console.log(h, h-60, $(document).height());
         panorama.el.find("object").css("height", h - 60);
       },
       next: function () {
@@ -317,6 +346,14 @@ $(document).ready(function () {
       name_by_id: function (id) {
         return js.story_titles[id-1][["en", "ka", "ru"].indexOf(lang)];
       },
+      off_animation: function () {
+        $(".layer-anim").velocity("stop", true);
+        $(".layer-colored").velocity("stop", true);
+      },
+      on_animation: function () {
+        animator();
+      }
+
     },
     // resourceLoaded: false,
     keyboardOn = true,
@@ -425,7 +462,7 @@ $(document).ready(function () {
         flip(pos);
       }
       else {
-        prev = panorama.container_position;
+        var prev = panorama.container_position;
         panorama.container_position = pos;
         panorama.container.velocity({ translateX : [pos, prev]}, { duration: 500, easing: "linear" });
       }
@@ -438,8 +475,9 @@ $(document).ready(function () {
         flip(pos);
       }
       else {
+        var prev = panorama.container_position;
         panorama.container_position = pos;
-        panorama.container.velocity({ translateX : pos}, { duration: 500, easing: "linear" });
+        panorama.container.velocity({ translateX : [pos, prev]}, { duration: 500, easing: "linear" });
       }
       analyze_position(pos);
     }
@@ -468,14 +506,14 @@ $(document).ready(function () {
     //   console.log("scroll", event.deltaY > 0);
     //
     // });
-    $(document).on("click", function (event) { global_callback_function(); });
-
-    $(".nav-menu-toggle").on("click", function () {
+    //$(document).on("click", function (event) { global_callback_function(); });
+    $(document).on("click", ".nav-menu-toggle", function () {
       var tmp = nav_menu.attr("data-menu");
       nav_menu.attr("data-menu", tmp === "main" ? "" : "main");
       $(this).toggleClass("active");
     });
-    $(".nav-sub-menu-toggle").on("click", function () {
+
+    $(document).on("click", ".nav-sub-menu-toggle", function () {
       var tmp = nav_menu.attr("data-menu"),
         t = $(this), p = t.parent(), // tmp2 = nav_menu.attr("data-desktop-menu"),
         is_active = p.hasClass("active");
@@ -503,7 +541,7 @@ $(document).ready(function () {
     });
 
     story.bind();
-
+    panorama.map.bind();
 
   }
 
@@ -512,22 +550,41 @@ $(document).ready(function () {
   }
 
   function resize () {
-    w = $(document).width();
-    h = $(document).height();
+    w = $(window).width();
+    h = $(window).height();
     panorama.step = w/5;
     panorama.origin = w/2;
     story.resize();
-    panorama.map.bind();
+    console.log("resize");
+  }
+  function animator_js_hover (id) {
+    $("#story" + id + " .layer-anim").velocity("js.hover", { delay: 100, complete: function () { animator_js_hover(id); } });
+  }
+  function animator () {
+    //var delay = getRandomIntInclusive(1, 3) * 1000, shake_id = 2,
+    //origins = ["origin-bottom", "origin-bottom", "origin-center"],
+    var layer_anim = $(".layer-anim"), ln = layer_anim.length;
+
+    layer_anim.each(function (d) {
+      var t = $(this), stid = +t.find("[data-story]").attr("data-story"), dir = story.breath_direction[stid-1] === 0 ? "left" : "right";
+      t.velocity("js.breath_" + dir, { delay: 1000, complete: (d === ln - 1 ? animator : dummy) });
+      $(".layer-colored").velocity({ opacity: 1}, { delay: 900, duration: 4000, easing: "easeInOutCubic", reset: { opacity: 0.1 }}).velocity("reverse", { duration: 2000 });
+      /*+ getRandomIntInclusive(1,3)*/
+      // t.addClass(origins[shake_id-1]);
+    });
   }
   function finite () {
-
+    console.log("finite");
+    loader.inc(1);
     var layer_anim = $(".layer-anim"),
       color = $(".layer-colored")
         .addClass("anim-object")
         .hover(function () {
+          var t = $(this), p = t.parent();
           layer_anim.velocity("stop", true);
+          //layer_anim.removeClass("origin-center origin-bottom");
           color.velocity("stop", true);
-          animator_js_hover();
+          animator_js_hover(+t.attr("data-story"));
         }, function () {
           layer_anim.velocity("stop", true);
           animator();
@@ -537,60 +594,55 @@ $(document).ready(function () {
         });
 
     $.Velocity
-      .RegisterEffect("js.shake1", {
-        defaultDuration: 100,
+      // .RegisterEffect("js.shake1", {
+      //   defaultDuration: 100,
+      //   easing: "linear",
+      //   calls: [
+      //     [ { translateX: "+=-1", rotateZ: "+=-2deg" } ],
+      //     [ { translateX: "+=3" } ],
+      //     [ { translateX: "+=-6" } ],
+      //     [ { translateX: "+=8" } ],
+      //     [ { translateX: "+=-8", rotateZ: "+=4deg" } ],
+      //     [ { translateX: "+=8" } ],
+      //     [ { translateX: "+=-8" } ],
+      //     [ { translateX: "+=6" } ],
+      //     [ { translateX: "+=-3" } ],
+      //     [ { translateX: "+=1", rotateZ: "+=-2deg" } ]
+      //   ],
+      //   reset: { translateX: 0, rotateZ: 0}
+      // })
+      .RegisterEffect("js.breath_left", { // breath for left looking person
+        defaultDuration: 6000,
         easing: "linear",
         calls: [
-          [ { translateX: "+=-1", rotateZ: "+=-2deg" } ],
-          [ { translateX: "+=3" } ],
-          [ { translateX: "+=-6" } ],
-          [ { translateX: "+=8" } ],
-          [ { translateX: "+=-8", rotateZ: "+=4deg" } ],
-          [ { translateX: "+=8" } ],
-          [ { translateX: "+=-8" } ],
-          [ { translateX: "+=6" } ],
-          [ { translateX: "+=-3" } ],
-          [ { translateX: "+=1", rotateZ: "+=-2deg" } ]
+          [ { scale: "+=0.020", rotateZ: "+=2deg" }, .55 ],
+          [ { scale: "+=-0.020", rotateZ: "+=-2deg" }, .45 ]
         ],
-        reset: { translateX: 0, rotateZ: 0}
+        reset: { rotateZ: "0deg", scale: 1 }
       })
-      .RegisterEffect("js.shake2", {
-        defaultDuration: 100,
+      .RegisterEffect("js.breath_right", { // breath for right looking person
+        defaultDuration: 6000,
         easing: "linear",
         calls: [
-          [ { translateX: "+=-1", rotateZ: "+=-2deg" } ],
-          [ { translateX: "+=3" } ],
-          [ { translateX: "+=-6" } ],
-          [ { translateX: "+=8" } ],
-          [ { translateX: "+=-8", rotateZ: "+=4deg" } ],
-          [ { translateX: "+=8" } ],
-          [ { translateX: "+=-8" } ],
-          [ { translateX: "+=6" } ],
-          [ { translateX: "+=-3" } ],
-          [ { translateX: "+=1", rotateZ: "+=-2deg" } ]
+          [ { scale: "+=0.020", rotateZ: "+=-2deg" }, .55 ],
+          [ { scale: "+=-0.020", rotateZ: "+=2deg" }, .45 ]
         ],
-        reset: { translateX: 0, rotateZ: 0}
+        reset: { rotateZ: "0deg", scale: 1 }
       })
       .RegisterEffect("js.hover", {
-        defaultDuration: 1000,
+        defaultDuration: 1300,
         easing: "linear",
         calls: [
-          [ { translateX: "+=2", rotateZ: "+=2deg" } ],
-          [ { translateX: "+=-4", rotateZ: "+=-4deg" } ],
-          [ { translateX: "+=2", rotateZ: "+=2deg" } ]
+          [ { translateX: "+=2", rotateZ: "+=-1.5deg" } ],
+          [ { translateX: "+=-4", rotateZ: "+=3deg" } ],
+          [ { translateX: "+=4", rotateZ: "+=-3deg" } ],
+          [ { translateX: "+=-4", rotateZ: "+=3deg" } ],
+          [ { translateX: "+=2", rotateZ: "+=-1deg" } ]
         ],
-        reset: { translateX: 0, rotateZ: 0}
+        reset: { translateX: 0, rotateZ: "0deg"}
 
       });
-    function animator_js_hover () {
-      layer_anim.velocity("js.hover", { delay: 100, complete: function () { animator_js_hover(); } });
-    }
-    function animator () {
-      var delay = getRandomIntInclusive(1,3) * 1000;
-      console.log(delay);
-      layer_anim.velocity("js.shake2" /*+ getRandomIntInclusive(1,3)*/, { delay: 1000, complete: function () { animator(); } });
-      color.velocity({ opacity: 1}, { delay: 900, duration: 500, reset: { opacity: 0 }}).velocity("reverse", { duration: 500 });
-    }
+
     animator();
 
 
@@ -600,45 +652,34 @@ $(document).ready(function () {
         target: "mouse",
         // effect: false,
         viewport: $(window),
-        my: 'bottom left',
-        at: 'top right',
+        my: "bottom left",
+        at: "top right",
         adjust: {
           x: 30,
           y: -40,
-          method: 'flipinvert flipinvert'
+          method: "flipinvert flipinvert"
         }
-
       },
       style: {
-         tip: { // Requires Tips plugin
-            corner: true, // Use position.my by default
-            width: 10,
-            height: 10,
-            border: true // Detect border from tooltip style
-          }
+        tip: { // Requires Tips plugin
+          corner: true, // Use position.my by default
+          width: 10,
+          height: 10,
+          border: true // Detect border from tooltip style
         }
-       // style: { tip: "ABC", corner: true},
-       //  events: {
-       //  hidden: function(event, api) {
-       //    console.log(event,api);}
-       //  }
-
+      }
     });
 
     redraw();
     bind();
     tooltip.init();
     params.read();
-    I18n.remap(); // deploy remove this line
     lang = document.documentElement.lang;
     // console.log(params);
-
-    console.log("finite");
+    loader.inc(1);
   }
   function load_callback () {
     console.log("load_callback");
-    loader.inc(8);
-
     var tmp, tmp_w = 0, tmp_i = 0, pnl, expect_cnt = 0, cnt = 0, svg;
 
     panorama.panels.elem.forEach(function (d){
@@ -665,7 +706,7 @@ $(document).ready(function () {
       if(--tmp_i === 0) tmp_i = panorama.panels.count - 1;
     }
 
-    var percent_step = 10 / expect_cnt;
+    var percent_step = 4 / (expect_cnt*2);
 
     tmp_w = 0, tmp_i = 0;
     while(tmp_w < w) {
@@ -720,6 +761,7 @@ $(document).ready(function () {
     }
     panorama.left_width = tmp_w;
     panorama.width += tmp_w;
+    if(expect_cnt === 0) { setTimeout(finite, 100); }
 
     panorama.offset.right = panorama.width - panorama.right_width;
     panorama.offset.left = panorama.left_width;
@@ -766,65 +808,61 @@ $(document).ready(function () {
 
     panorama.audio.play(0);
     panorama.audio.muteToggle();
-
-    loader.inc(10);
   }
 
   function load_asset () {
     panorama.map.el.one("load", function (event){
-            loader.inc(2);
-            panorama.map.bind();
-            //
-            setTimeout(function () { load_callback(); }, 100);
-          });
+      loader.inc(2);
+      setTimeout(function () { load_callback(); }, 100);
+    });
     panorama.map.el.attr("data", "../assets/images/storymap.svg");
   }
 
   function load_youtube () {
-    var tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName("script")[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    // var tag = document.createElement("script");
+    // tag.src = "https://www.youtube.com/iframe_api";
+    // var firstScriptTag = document.getElementsByTagName("script")[0];
+    // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    window.onYouTubeIframeAPIReady = function () {
+    // window.onYouTubeIframeAPIReady = function () {
 
-      // var youtube_watch = d3.behavior.watch()
-      //   .on("statechange", function() {
-      //     var pl = youtubePlayers[d3.select(this).select("iframe").attr("data-yid")];
-      //     if(pl && typeof pl.playVideo === "function") {
-      //       if(d3.event.state) { pl.playVideo(); }
-      //       else { pl.pauseVideo(); }
-      //     }
-      //   });
-      $("#story_popup .story .youtube[data-yid]").each(function (d, i) {
-        var id = this.id, yid = this.dataset.yid;
-        youtubePlayers[yid] = new YT.Player(
-          id,
-          {
-            videoId: yid,
-            height: "600",
-            width: "100%",
-            playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }//,
-            //events: {
-              // 'onReady': onPlayerReady,
-              //onStateChange: function (event) {
-                // if (event.data == YT.PlayerState.PLAYING) {
-                //   if(panorama.audio.muted) {
-                //     console.log(youtubePlayers[yid]);
-                //     setTimeout(function() { youtubePlayers[yid].mute }, 100);
-                //   } //* TODO * mute video if muted
-                //   else {
-                //    setTimeout(function() { youtubePlayers[yid].unMute }, 100);
-                //   }
-                // }
-              //}
-            //}
-          }
-        );
-      });
-      setTimeout(load_asset, 100);
-    };
-    // setTimeout(load_asset, 100);
+    //   // var youtube_watch = d3.behavior.watch()
+    //   //   .on("statechange", function() {
+    //   //     var pl = youtubePlayers[d3.select(this).select("iframe").attr("data-yid")];
+    //   //     if(pl && typeof pl.playVideo === "function") {
+    //   //       if(d3.event.state) { pl.playVideo(); }
+    //   //       else { pl.pauseVideo(); }
+    //   //     }
+    //   //   });
+    //   $("#story_popup .story .youtube[data-yid]").each(function (d, i) {
+    //     var id = this.id, yid = this.dataset.yid;
+    //     youtubePlayers[yid] = new YT.Player(
+    //       id,
+    //       {
+    //         videoId: yid,
+    //         height: "600",
+    //         width: "100%",
+    //         playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }//,
+    //         //events: {
+    //           // 'onReady': onPlayerReady,
+    //           //onStateChange: function (event) {
+    //             // if (event.data == YT.PlayerState.PLAYING) {
+    //             //   if(panorama.audio.muted) {
+    //             //     console.log(youtubePlayers[yid]);
+    //             //     setTimeout(function() { youtubePlayers[yid].mute }, 100);
+    //             //   } //* TODO * mute video if muted
+    //             //   else {
+    //             //    setTimeout(function() { youtubePlayers[yid].unMute }, 100);
+    //             //   }
+    //             // }
+    //           //}
+    //         //}
+    //       }
+    //     );
+    //   });
+    //   setTimeout(load_asset, 100);
+    // };
+    setTimeout(load_asset, 100);
   }
   function load_audio () {
     var cnt = 0, tmp,
@@ -838,7 +876,7 @@ $(document).ready(function () {
           preload:"auto",
           loop: true,
           one: {
-            canplay: function (event) { loader.inc(5); if(++cnt === expect_cnt) { setTimeout(load_youtube, 100); } },
+            canplay: function (event) { loader.inc(2); if(++cnt === expect_cnt) { setTimeout(load_youtube, 100); } },
             error: function (e) { console.log(this, e, "error in load audio for one of the file"); }
           },
           "src": (path + i + "." + ext)
@@ -872,6 +910,7 @@ $(document).ready(function () {
     panorama.init();
     // p = panorama;
     I18n.init(function (){
+      I18n.remap();
       resize();
       load_panels();
     });
