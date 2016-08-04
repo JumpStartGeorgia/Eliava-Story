@@ -329,7 +329,6 @@ $(document).ready(function () {
       text_by_story: function (id) {
         var st, mt;
         if(!story.meta.hasOwnProperty(id)) {
-          console.log("here tooltip");
           st = story.el.find(".story[data-id='" + id + "']");
           story.meta[id] = {
             title: st.find(".title").text(),
@@ -538,7 +537,24 @@ $(document).ready(function () {
         });
 
     $.Velocity
-      .RegisterEffect("js.shake", {
+      .RegisterEffect("js.shake1", {
+        defaultDuration: 100,
+        easing: "linear",
+        calls: [
+          [ { translateX: "+=-1", rotateZ: "+=-2deg" } ],
+          [ { translateX: "+=3" } ],
+          [ { translateX: "+=-6" } ],
+          [ { translateX: "+=8" } ],
+          [ { translateX: "+=-8", rotateZ: "+=4deg" } ],
+          [ { translateX: "+=8" } ],
+          [ { translateX: "+=-8" } ],
+          [ { translateX: "+=6" } ],
+          [ { translateX: "+=-3" } ],
+          [ { translateX: "+=1", rotateZ: "+=-2deg" } ]
+        ],
+        reset: { translateX: 0, rotateZ: 0}
+      })
+      .RegisterEffect("js.shake2", {
         defaultDuration: 100,
         easing: "linear",
         calls: [
@@ -570,7 +586,9 @@ $(document).ready(function () {
       layer_anim.velocity("js.hover", { delay: 100, complete: function () { animator_js_hover(); } });
     }
     function animator () {
-      layer_anim.velocity("js.shake", { delay: 1000, complete: function () { animator(); } });
+      var delay = getRandomIntInclusive(1,3) * 1000;
+      console.log(delay);
+      layer_anim.velocity("js.shake2" /*+ getRandomIntInclusive(1,3)*/, { delay: 1000, complete: function () { animator(); } });
       color.velocity({ opacity: 1}, { delay: 900, duration: 500, reset: { opacity: 0 }}).velocity("reverse", { duration: 500 });
     }
     animator();
