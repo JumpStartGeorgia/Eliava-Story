@@ -13,7 +13,7 @@ ru =
   "url_ka": "http://dev-eliava.jumpstart.ge/ka/",
   "url_ru": "http://dev-eliava.jumpstart.ge/ru/",
   "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.jpg",
-  "share_path": "share", // http://dev-eliava.jumpstart.ge/ka/share
+  "share_path": "share",
   "loader": {
     "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem architecto voluptatem expedita voluptatum officia. Soluta optio sint laboriosam, enim consequuntur!"
   },
@@ -46,8 +46,8 @@ ru =
       "title": "The Cigarette Seller",
       "quote": "I didn’t know what poverty was (in Soviet times). My children know all about it.",
       "description": "fb description",
-      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
-      "yid": "tbCDQzQ_5Wo",
+      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='Tj75Arhq5ho'></div>",
+      "yid": "Tj75Arhq5ho",
       "name": "Marina Esebua (b.1962)",
       "job": "sells cigarettes, sweets and snacks",
       "job_start_date": "1998"
@@ -56,8 +56,8 @@ ru =
       "title": "2008 War Volunteer",
       "quote": "I was proud I had a chance to defend my country",
       "description": "fb description",
-      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
-      "yid": "tbCDQzQ_5Wo",
+      "text": "some text and video if exists <div id='player_bg92QpjRcJk' class='youtube' data-yid='bg92QpjRcJk'></div>",
+      "yid": "bg92QpjRcJk",
       "name": "Otari Mujiri (b.1983)",
       "job": "repairs and sells power tools",
       "job_start_date": "2000"
@@ -66,8 +66,8 @@ ru =
       "title": "The Skeptic",
       "quote": "Not much has changed - the big issues are still decided outside Georgia",
       "description": "fb description",
-      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
-      "yid": "tbCDQzQ_5Wo",
+      "text": "some text and video if exists <div id='player_CBJey2dkiAI' class='youtube' data-yid='CBJey2dkiAI'></div>",
+      "yid": "CBJey2dkiAI",
       "name": "Eduard Miroian (b.1958)",
       "job": "sells tools and spare parts",
       "job_start_date": "1996"
@@ -76,8 +76,8 @@ ru =
       "title": "The Europhile",
       "quote": "Archaeologists have shown Georgia is historically closer to Europe",
       "description": "fb description",
-      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
-      "yid": "tbCDQzQ_5Wo",
+      "text": "some text and video if exists <div id='player_PvF9PAxe5Ng' class='youtube' data-yid='PvF9PAxe5Ng'></div>",
+      "yid": "PvF9PAxe5Ng",
       "name": "Giorgi Todadze (b.1958)    The Philosopher",
       "job": "sells tools, electrical equipment and spare parts",
       "job_start_date": "1996"
@@ -86,8 +86,8 @@ ru =
       "title": "The Wrestling Champion",
       "quote": "There was a little euphoria when the USSR collapsed, as if independence would be good",
       "description": "fb description",
-      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
-      "yid": "tbCDQzQ_5Wo",
+      "text": "some text and video if exists <div id='player_fZdfarsWkQ8' class='youtube' data-yid='fZdfarsWkQ8'></div>",
+      "yid": "fZdfarsWkQ8",
       "name": "Vazha Jamagidze (b.1958)",
       "job": "sells reconditioned taps and pipes",
       "job_start_date": "1998"
@@ -96,8 +96,8 @@ ru =
       "title": "The Nuts and Bolts Man",
       "quote": "We are just ‘speculantz’.",
       "description": "fb description",
-      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
-      "yid": "tbCDQzQ_5Wo",
+      "text": "some text and video if exists <div id='player_4FKYsUEuvIo' class='youtube' data-yid='4FKYsUEuvIo'></div>",
+      "yid": "4FKYsUEuvIo",
       "name": "Mirian Nozadze (b.1984)     The Joker",
       "job": "sells Soviet-era nuts, bolts and screws",
       "job_start_date": "2006"
@@ -106,8 +106,8 @@ ru =
       "title": "The Poet",
       "quote": "Perhaps I should enjoy my freedom. But I hate it.",
       "description": "fb description",
-      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
-      "yid": "tbCDQzQ_5Wo",
+      "text": "some text and video if exists <div id='player_NTU6NLovI_Q' class='youtube' data-yid='NTU6NLovI_Q'></div>",
+      "yid": "NTU6NLovI_Q",
       "name": "Pridon (b.1969)",
       "job": "sells power motors",
       "job_start_date": "2006"
@@ -116,8 +116,8 @@ ru =
       "title": "The Arm Wrestler",
       "quote": "If the USSR had done something good for us, we wouldn’t have wanted independence",
       "description": "fb description",
-      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
-      "yid": "tbCDQzQ_5Wo",
+      "text": "some text and video if exists <div id='player_IfRY3SsozuM' class='youtube' data-yid='IfRY3SsozuM'></div>",
+      "yid": "IfRY3SsozuM",
       "name": "Jaba Nakashidze (b.1975)",
       "job": "sells power motors",
       "job_start_date": "2001"
@@ -126,8 +126,8 @@ ru =
       "title": "The War Veteran",
       "quote": "We need a friend to stand up to Russia",
       "description": "fb description",
-      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
-      "yid": "tbCDQzQ_5Wo",
+      "text": "some text and video if exists <div id='player_EFqjDXy9s5A' class='youtube' data-yid='EFqjDXy9s5A'></div>",
+      "yid": "EFqjDXy9s5A",
       "name": "Tariel Saralidze (b.1971)",
       "job": "sells power motors and welding equipment",
       "job_start_date": "2006"
@@ -136,8 +136,8 @@ ru =
       "title": "The Drinks Seller",
       "quote": "Nobody wanted the Russians. Why do we want them now?",
       "description": "fb description",
-      "text": "some text and video if exists <div id='player_tbCDQzQ_5Wo' class='youtube' data-yid='tbCDQzQ_5Wo'></div>",
-      "yid": "tbCDQzQ_5Wo",
+      "text": "some text and video if exists <div id='player_NUAdgt5Glk0' class='youtube' data-yid='NUAdgt5Glk0'></div>",
+      "yid": "NUAdgt5Glk0",
       "name": "Taso Tsertsvadze (b.1961)",
       "job": "sells drinks and snacks",
       "job_start_date": "2001"
