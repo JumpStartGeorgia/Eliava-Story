@@ -24,11 +24,11 @@ $(document).ready(function () {
       container_position: 0,
       origin: 0,
       panels: {
-        names: ["p1", "p2", "p3", "p4", "p5"], // * TODO on panel count change plus need to add div object to layout
+        names: ["p1", "p2", "p3", "p4", "p5"], // * WARNING on panel count change plus need to add div object to layout
         w: [],
         elem: [],
         path: "../assets/images/panels/",
-        count: 5, // * TODO on panel count change
+        count: 5, // * WARNING on panel count change
         current: 3
       },
       offset: {
@@ -57,7 +57,7 @@ $(document).ready(function () {
         default_volume: 0.6,
         fade_duration: 500,
         can_play: true,
-        dev: function () { // * TODO call panorama.audio.dev(); in current context
+        dev: function () { // * WARNING call panorama.audio.dev(); in current context
           // if need recalculate when audio should play, no pause in between, paste output in play_range
           var a = [560, 250, 270, 402, 556, 615, 275, 820, 460, 462, 434, 416, 800, 356, 986, 530], // pixels for each audio file to play starting from 0
             s = 8192, // sum is 8192 calculated based on width of new scan png file
@@ -243,11 +243,11 @@ $(document).ready(function () {
       share: $(".share-story .addthis_sharing_toolbox"),
       opened: false,
       current: 1,
-      count: 11, // * TODO on story count change
+      count: 11, // * WARNING on story count change
       breath_direction: [1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0], // left 0, right 1
       //story_range: [[13, 15], [20, 22], [30, 31]],
       meta: {},
-      dev: function () { // * TODO if story popup structure change call this and grab copy/paste console output to input.html, generate all locales
+      dev: function () { // * WARNING if story popup structure change call this and grab copy/paste console output to input.html, generate all locales
         var html, i;
         for(i = 1; i <= this.count; ++i) {
           html += `
@@ -622,6 +622,7 @@ $(document).ready(function () {
           animator_js_hover(+t.attr("data-story"));
         }, function () {
           layer_anim.velocity("stop", true);
+          $(".layer-colored").velocity({ opacity: 0.1 }, { delay: 900, duration: 4000, easing: "easeInOutCubic", reset: { opacity: 0.1 }});
           animator();
         })
         .click(function () {
@@ -870,27 +871,12 @@ $(document).ready(function () {
             videoId: yid,
             height: "600",
             width: "100%",
-            playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }//,
-            //events: {
-              // 'onReady': onPlayerReady,
-              //onStateChange: function (event) {
-                // if (event.data == YT.PlayerState.PLAYING) {
-                //   if(panorama.audio.muted) {
-                //     console.log(youtubePlayers[yid]);
-                //     setTimeout(function() { youtubePlayers[yid].mute }, 100);
-                //   } //* TODO * mute video if muted
-                //   else {
-                //    setTimeout(function() { youtubePlayers[yid].unMute }, 100);
-                //   }
-                // }
-              //}
-            //}
+            playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }
           }
         );
       });
       setTimeout(load_asset, 100);
     };
-    //setTimeout(load_asset, 100);
   }
   function load_audio () {
     var cnt = 0, tmp,
@@ -927,24 +913,24 @@ $(document).ready(function () {
   }
 
 // for deployed version
-  (function init () {
-    panorama.init();
-    resize();
-    load_panels();
-  })();
+  // (function init () {
+  //   panorama.init();
+  //   resize();
+  //   load_panels();
+  // })();
 
   // for dev version
-  // (function dev_init () {
+  (function dev_init () {
 
-  //   panorama.init();
-  //   // p = panorama;
-  //   I18n.init(function (){
-  //     I18n.remap();
-  //     resize();
-  //     load_panels();
-  //   });
+    panorama.init();
+    // p = panorama;
+    I18n.init(function (){
+      I18n.remap();
+      resize();
+      load_panels();
+    });
 
-  // })();
+  })();
 
   // for deploing process
   // (function deploy_init () {

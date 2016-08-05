@@ -12,7 +12,7 @@ en =
   "url_en": "http://dev-eliava.jumpstart.ge/en/",
   "url_ka": "http://dev-eliava.jumpstart.ge/ka/",
   "url_ru": "http://dev-eliava.jumpstart.ge/ru/",
-  "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.jpg",
+  "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.png",
   "share_path": "share", // http://dev-eliava.jumpstart.ge/en/share
   "loader": {
     "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem architecto voluptatem expedita voluptatum officia. Soluta optio sint laboriosam, enim consequuntur!"
