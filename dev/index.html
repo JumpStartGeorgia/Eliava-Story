@@ -40,20 +40,20 @@
           <div class="panel">
             <object data-panel="1" data-type="bg" type="image/svg+xml"></object>
             <div class="surface"></div>
-            <div class="apanel" data-panel="1" data-type="fg">
+            <div class="apanel noselect" data-panel="1" data-type="fg">
               <object  type="image/svg+xml"></object>
             </div>
           </div>
           <div class="panel">
             <object data-panel="2" data-type="bg" type="image/svg+xml"></object>
             <div class="surface"></div>
-            <div class="apanel" data-panel="2" data-type="fg">
+            <div class="apanel noselect" data-panel="2" data-type="fg">
               <object  type="image/svg+xml"></object>
             </div>
           </div>
           <div class="panel">
             <object data-panel="3" data-type="bg" type="image/svg+xml"></object>
-            <div class="surface"></div>
+            <div class="surface noselect"></div>
             <div class="apanel" data-panel="3" data-type="fg">
               <object  type="image/svg+xml"></object>
             </div>
@@ -61,14 +61,14 @@
           <div class="panel">
             <object data-panel="4" data-type="bg" type="image/svg+xml"></object>
             <div class="surface"></div>
-            <div class="apanel" data-panel="4" data-type="fg">
+            <div class="apanel noselect" data-panel="4" data-type="fg">
               <object type="image/svg+xml"></object>
             </div>
           </div>
           <div class="panel">
             <object data-panel="5" data-type="bg" type="image/svg+xml"></object>
             <div class="surface"></div>
-            <div class="apanel" data-panel="5" data-type="fg">
+            <div class="apanel noselect" data-panel="5" data-type="fg">
               <object  type="image/svg+xml"></object>
             </div>
           </div>
@@ -78,7 +78,25 @@
         <a data-i18n-url="href" class="nav-title">
           <span data-i18n-nav_title_1></span><br/><span data-i18n-nav_title_2></span>
         </a>
-         <div class="nav-map nav-map-visible"><div class="nav-map-line"></div><object id="nav_map" type="image/svg+xml"></object></div><div class="nav-menu" data-menu="">
+        <div class="nav-map">
+          <div class="nav-map-line"></div>
+          <div class="nav-map-points-box">
+            <div class="nav-map-points">
+              <div data-id="1"><i></i></div>
+              <div data-id="2"><i></i></div>
+              <div data-id="3"><i></i></div>
+              <div data-id="4"><i></i></div>
+              <div data-id="5"><i></i></div>
+              <div data-id="6"><i></i></div>
+              <div data-id="7"><i></i></div>
+              <div data-id="8"><i></i></div>
+              <div data-id="9"><i></i></div>
+              <div data-id="10"><i></i></div>
+              <div data-id="11"><i></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-menu" data-menu="">
             <div class="sound-toggle m"><i class="sound"></i></div>
             <div class="nav-menu-toggle" title="Toggle"></div>
             <ul class="nav-menu-container">
@@ -245,7 +263,8 @@
     <script src="../assets/js/qtip.min.js" type="text/javascript"></script>
     <script src="../assets/js/util.js" type="text/javascript"></script>
     <script src="../assets/js/meta.js" type="text/javascript"></script>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57a429bb53a39fd6"></script>
+    <script src="../assets/js/device.min.js" type="text/javascript"></script>
+    <!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57a429bb53a39fd6"></script>
     <!--  deploy end - uncomment this after deploy -->
 
     <script src="../assets/js/main.js" type="text/javascript"></script>

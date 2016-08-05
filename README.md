@@ -70,7 +70,7 @@ In main.js file go to the bottom and comment init and deploy_init if you are usi
       <path class="layer-empty"/>
       <g class="layer-anim">
         <image class="layer-drawing"></image>
-        <image class="layer-colored" data-story="1""></image>
+        <image class="layer-colored" data-story="1"></image>
       </g>
     </g>
     `

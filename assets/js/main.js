@@ -1,4 +1,4 @@
-/*global  $ debounce I18n YT global_callback exist isNumber js getRandomIntInclusive */
+/*global  $ debounce I18n YT global_callback exist isNumber js getRandomIntInclusive device */
 /*eslint camelcase: 0, no-underscore-dangle: 0, no-unused-vars: 0, no-console: 0*/
 var p, youtubePlayers = {}, ld;
 $(document).ready(function () {
@@ -164,23 +164,19 @@ $(document).ready(function () {
       }
     },
     map = {
-      el: $("#nav_map"),
-      content: undefined,
-      points: undefined,
+      el: $(".nav-map-points"),
+      points: $(".nav-map-points > div"),
       bind: function () {
         var t = this;
-        t.content = $(t.el.get(0).contentDocument);
-        t.points = t.content.find(".story-point");
         t.points.click(function () {
           t.points.removeClass("active");
-          story.go_to(+$(this).addClass("active").attr("data-point"), true);
+          story.go_to(+$(this).addClass("active").attr("data-id"), true);
         });
-        this.el.parent().removeClass("nav-map-visible");
       },
       select_by_id: function (id) {
         var t = this;
         t.points.removeClass("active");
-        t.content.find(".story-point[data-point='" + id + "']").addClass("active");
+        t.el.find("[data-id='" + id + "']").addClass("active");
       }
     },
     popup = {
@@ -397,8 +393,8 @@ $(document).ready(function () {
         return js.story_titles[id-1][["en", "ka", "ru"].indexOf(lang)];
       },
       off_animation: function () {
-        $(".layer-anim").velocity("stop", true);
-        $(".layer-colored").velocity("stop", true);
+        $(".layer-anim").velocity("finish");
+        $(".layer-colored").velocity("finish");
       },
       on_animation: function () {
         animator();
@@ -422,7 +418,7 @@ $(document).ready(function () {
             quote: st.find(".quote").text(),
             name: st.find(".name").text(),
             job: st.find(".job").text(),
-            job_start_date: st.find(".title").text()
+            job_start_date: st.find(".job_start_date").text()
           };
         }
         mt = story.meta[id];
@@ -596,18 +592,47 @@ $(document).ready(function () {
     story.resize();
     console.log("resize");
   }
-  function animator_js_hover (id) {
-    $("#story" + id + " .layer-anim").velocity("js.hover", { delay: 100, complete: function () { animator_js_hover(id); } });
-  }
-  function animator () {
-    var layer_anim = $(".layer-anim"), ln = layer_anim.length;
+  var afinished = false;
+  var after_hover_count = 1,
+    animator_id = undefined,
+    hover_animator_id = undefined;
 
-    layer_anim.each(function (d) {
-      var t = $(this), stid = +t.find("[data-story]").attr("data-story"), dir = story.breath_direction[stid-1] === 0 ? "left" : "right";
-      t.velocity("js.breath_" + dir, { delay: 1000, complete: (d === ln - 1 ? animator : dummy) });
-      $(".layer-colored").velocity({ opacity: 1}, { delay: 900, duration: 4000, easing: "easeInOutCubic", reset: { opacity: 0.1 }}).velocity("reverse", { duration: 2000 });
-    });
+  function animator_js_hover (id) {
+    console.log("animator_js_hover");
+    if(after_hover_count !== 1) {
+      hover_animator_id = setTimeout(function () { animator_js_hover(id); }, 100);
+    }
+    else {
+      $("#story" + id + " .layer-anim").velocity("js.hover", { delay: 100, complete: function () { animator_js_hover(id); } });
+    }
   }
+
+  function animator () {
+    if(afinished) return;
+    console.log("animator", after_hover_count);
+    if(after_hover_count !== 1) {
+      animator_id = setTimeout(function () { animator(); }, 100);
+      return;
+    }
+    console.log("animator inside");
+    var layer_anim = $(".layer-anim"), ln = layer_anim.length;
+    after_hover_count = 0;
+    layer_anim.each(function (d) {
+      ++after_hover_count;
+      // console.log("plus one", after_hover_count);
+      var t = $(this), stid = +t.find("[data-story]").attr("data-story"), dir = story.breath_direction[stid-1] === 0 ? "left" : "right";
+      t.velocity("js.breath_" + dir, { delay: 1000, complete: (d === ln - 1 ? function () {console.log("animator end"); animator();} : function () { /*console.log("minus one", d , after_hover_count-1);*/ --after_hover_count; }) });
+    });
+    $(".layer-colored").velocity("js.fade", { delay: 900 });
+  }
+  var hover_out_callback = debounce(function () {
+    console.log("hover out");
+    // if(typeof hover_animator_id !== "undefined") { clearTimeout(hover_animator_id); }
+    // $(".layer-anim").velocity("finish");
+    afinished = false;
+    animator();
+  }, 100);
+
   function finite () {
     console.log("finite");
     loader.inc(1);
@@ -615,16 +640,19 @@ $(document).ready(function () {
       color = $(".layer-colored")
         .addClass("anim-object")
         .hover(function () {
+          console.log("hover in");
           var t = $(this), p = t.parent();
-          layer_anim.velocity("stop", true);
+          afinished = true;
+          if(typeof animator_id !== "undefined") { clearTimeout(animator_id); }
+          layer_anim.velocity("finish");
+          color.velocity("finish");
+          // animator_js_hover(+t.attr("data-story"));
+
+          //layer_anim.velocity("stop", true);
           //layer_anim.removeClass("origin-center origin-bottom");
-          color.velocity("stop", true);
-          animator_js_hover(+t.attr("data-story"));
-        }, function () {
-          layer_anim.velocity("stop", true);
-          $(".layer-colored").velocity({ opacity: 0.1 }, { delay: 900, duration: 4000, easing: "easeInOutCubic", reset: { opacity: 0.1 }});
-          animator();
-        })
+          //color.velocity("stop", true);
+
+        }, hover_out_callback )
         .click(function () {
           story.open(+$(this).attr("data-story"));
         });
@@ -677,7 +705,26 @@ $(document).ready(function () {
         ],
         reset: { translateX: 0, rotateZ: "0deg"}
 
-      });
+      })
+      .RegisterEffect("js.swing", {
+        defaultDuration: 500,
+        easing: "linear",
+        calls: [
+          [ { rotateZ: [0, 360] } ]
+        ],
+        reset: { rotateZ: 0}
+
+      })
+      .RegisterEffect("js.fade", {
+        defaultDuration: 6000,
+        easing: "easeInOutCubic",
+        calls: [
+          [ { opacity: 1 }, .6 ],
+          [ { opacity: .1 }, .4 ]
+        ],
+        reset: { opacity: .1 }
+      });;
+
 
     animator();
 
@@ -755,7 +802,7 @@ $(document).ready(function () {
       pnl.append(tmp);
 
       pnl.append("<div class='surface'></div>");
-      svg = $("<div class='apanel' data-panel='r" + (tmp_i+1) + "' data-type='fg'>").appendTo(pnl);
+      svg = $("<div class='apanel noselect' data-panel='r" + (tmp_i+1) + "' data-type='fg'>").appendTo(pnl);
 
       tmp = $(template_object.replace("%id", "r" + (tmp_i+1)).replace("%type", "bg"));
       tmp.one("load", function (event) {
@@ -783,7 +830,7 @@ $(document).ready(function () {
       pnl.append(tmp);
 
       pnl.append("<div class='surface'></div>");
-      svg = $("<div class='apanel' data-panel='l" + (tmp_i+1) + "' data-type='fg'>").appendTo(pnl);
+      svg = $("<div class='apanel noselect' data-panel='l" + (tmp_i+1) + "' data-type='fg'>").appendTo(pnl);
 
       tmp = $(template_object.replace("%id", "l" + (tmp_i+1)).replace("%type", "fg"));
       tmp.one("load", function (event) {
@@ -847,13 +894,13 @@ $(document).ready(function () {
     panorama.audio.muteToggle();
   }
 
-  function load_asset () {
-    map.el.one("load", function (event){
-      loader.inc(2);
-      setTimeout(function () { load_callback(); }, 100);
-    });
-    map.el.attr("data", "../assets/images/storymap.svg");
-  }
+  // function load_asset () {
+  //   map.el.one("load", function (event){
+  //     loader.inc(2);
+  //     setTimeout(function () { load_callback(); }, 100);
+  //   });
+  //   map.el.attr("data", "../assets/images/storymap.svg");
+  // }
 
   function load_youtube () {
     var tag = document.createElement("script");
@@ -869,13 +916,14 @@ $(document).ready(function () {
           id,
           {
             videoId: yid,
-            height: "600",
+            height: device.mobile() ? "auto" : "600",
             width: "100%",
             playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }
           }
         );
       });
-      setTimeout(load_asset, 100);
+      loader.inc(2);
+      setTimeout(load_callback, 100);
     };
   }
   function load_audio () {

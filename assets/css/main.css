@@ -51,7 +51,15 @@
     overflow:hidden;
   }
   * { box-sizing: border-box; }
-
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                    not supported by any browser */
+  }
 /*------------------------------------------ Tooltip  --------------------------------------*/
 
 .tooltip-box { color:#000; }
@@ -299,10 +307,7 @@
     font:24px bebasneue_b;
     color:#2BBCA0;
   }
-  .nav-map { position:absolute; left:-9999999px; flex:none; height: 100%;}
-  .nav-map-line { display:none; }
-  // .nav-map-visible { display:block !important; }
-  // .nav-map object { height: 100%; max-height:56px; }
+  .nav-map { display:none; }
   .nav-menu {
     position:relative;
     height:100%;
@@ -967,10 +972,30 @@
       background-color:#D8D8D8;
       z-index:23;
     }
-    .nav-map object {
-      max-width:578px;
+    .nav-map-points-box {
+      max-width:500px;
       z-index:24;
       width: 100%;
+    }
+    .nav-map-points {
+      display:flex;
+      flex-direction:row;
+      padding-top: 23px;
+    }
+    .nav-map-points > div {
+      flex:1;
+      text-align: center;
+    }
+    .nav-map-points > div i {
+      display: inline-block;
+      width:15px;
+      height:15px;
+      background:transparent url(../images/cube.svg) no-repeat;
+    }
+    .nav-map-points > div:hover i,
+    .nav-map-points > div.active i {
+      background-position:-16px 0px;
+      cursor:pointer;
     }
 
     // .nav-menu {
