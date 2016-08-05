@@ -50,3 +50,29 @@ In main.js file go to the bottom and comment init and deploy_init if you are usi
 ## In case
   - if story structure that is visible in story popup will change, you can use story.dev(); function to generate that text it will be outputed in console, but change specific variables before (ex: story.count)
   - if audio track amount or range between which audio is played changed, you can generate panorama.audio.play_range array, use comments in panorama.audio.dev() function,  but change specific variables before (ex: panorama.audio.count)
+
+## Layer logic
+  - we have 5 panels, that when join creates full panorama
+  - each rendered panel consist of two svg files
+    * one that is background and is in /assets/images/panels/bg/p[1-5].svg
+    * and another  that is foreground with all objects and sub layers /assets/images/panels/fg/p[1-5].svg that is on top of background
+    * (there is div.surface between them, it's purpose to drag layers
+  - there is a difference between how this two svg's are rendered, background are inserted via object tag where foreground as inline svg
+  - each foreground svg file can have one or more stories
+  - if you open foreground svg file, under svg you will see one or couple <g> tags with id="story#"
+  - each story group have (except big story where inner multiple objects will be grouped differently)
+    * one white cutout of object
+    * one cutout with drawing
+    * one colored object
+  - template:
+    `
+    <g id="story1">
+      <path class="layer-empty"/>
+      <g class="layer-anim">
+        <image class="layer-drawing"></image>
+        <image class="layer-colored" data-story="1""></image>
+      </g>
+    </g>
+    `
+  - naming in raw svg is different so, if panel updated this should be cleaned and fixed by hand
+  - in raw file story group has id, white layer has id layer0, drawing has id layer1 and colored id layer1

@@ -666,7 +666,7 @@ $(document).ready(function () {
         reset: { rotateZ: "0deg", scale: 1 }
       })
       .RegisterEffect("js.hover", {
-        defaultDuration: 1300,
+        defaultDuration: 1500,
         easing: "linear",
         calls: [
           [ { translateX: "+=2", rotateZ: "+=-1.5deg" } ],
