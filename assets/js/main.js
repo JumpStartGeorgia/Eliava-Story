@@ -167,15 +167,20 @@ $(document).ready(function () {
               }
             }
           });
-          if(device.desktop()) {
-            story.x_center.forEach(function (d, i) {
-              if(normalized_pos >= d[0] && normalized_pos <= d[1] && best_w > Math.abs(normalized_pos-d[2])) {
-                best_i = i;
-                best_w = Math.abs(normalized_pos-d[2]);
-              }
-            });
-            map.select_by_id(best_i+1);
-          }
+          // if(device.desktop()) {
+          //   story.x_center.forEach(function (d, i) {
+          //     var pbbox = panorama.container.get(0).getBoundingClientRect(),
+          //       bbox = panorama.container.find("#story" + (i+1)).get(0).getBoundingClientRect();
+
+
+          //     console.log(i+1, bbox, pos, pbbox);
+          //     if(pos >= bbox.left && pos <= bbox.left + bbox.width && best_w > Math.abs(pos-bbox.width)) {
+          //       best_i = i;
+          //       best_w = Math.abs(pos-bbox.width);
+          //     }
+          //   });
+          //   map.select_by_id(best_i+1);
+          // }
         },
         flip: function (pos) {
           if(pos <= -1 * panorama.offset.right) {
@@ -484,25 +489,27 @@ $(document).ready(function () {
             });
           }
         }
-        story.x_center = [];
-        for(i = 1; i <= this.count; ++i) {
-          pnl = t.to_panel[i-1]-1;
-          tmp = panorama.panels.elem[pnl].find("#story" + i + " .layer-colored");
-          bbox = tmp.get(0).getBoundingClientRect();
-          x1 = bbox.left-panorama.left_width;
-          xw = bbox.width;
-          xm = x1 + xw/2;
-          x2 = x1 + xw;
-          story.x_center.push([x1, x2, xm]);
-        }
+        // story.x_center = [];
+        // for(i = 1; i <= this.count; ++i) {
+        //   pnl = t.to_panel[i-1]-1;
+        //   tmp = panorama.panels.elem[pnl].find("#story" + i + " .layer-colored");
+        //   bbox = tmp.get(0).getBoundingClientRect();
+        //   x1 = bbox.left-panorama.left_width;
+        //   xw = bbox.width;
+        //   xm = x1 + xw/2;
+        //   x2 = x1 + xw;
+        //   story.x_center.push([x1, x2, xm]);
+        //   console.log(story.x_center);
+        // }
       },
       go_to: function (id, shake) {
         params.write(this.name_by_id(id));
         var st = $("#story" + id),
           pnl = +st.closest(".apanel").attr("data-panel"),
+          pbbox = panorama.container.get(0).getBoundingClientRect(),
           bbox = st.get(0).getBoundingClientRect();
 
-        panorama.scroll_by_pos(-1*(bbox.left - w/2 + bbox.width/2));
+        panorama.scroll_by_pos((pbbox.left - bbox.left) + w/2 - bbox.width/2);
 
         if(shake === true) {
           story.off_animation();
@@ -515,9 +522,10 @@ $(document).ready(function () {
         params.write(this.name_by_id(id));
         var st = $("#story" + id),
           pnl = +st.closest(".apanel").attr("data-panel"),
+          pbbox = panorama.container.get(0).getBoundingClientRect(),
           bbox = st.get(0).getBoundingClientRect();
 
-        panorama.scroll_by_pos(-1*(bbox.left - w/2 + bbox.width/2));
+        panorama.scroll_by_pos((pbbox.left - bbox.left) + w/2 - bbox.width/2);
         if(story.by_url) {
           helper_hidden = true;
           $("#helper").hide();
@@ -568,9 +576,9 @@ $(document).ready(function () {
           story.meta[id] = {
             title: st.find(".title").text(),
             quote: st.find(".quote").text(),
-            name: st.find(".name").text(),
-            job: st.find(".job").text(),
-            job_start_date: st.find(".job_start_date").text()
+            name: st.find(".name span:last-of-type").text(),
+            job: st.find(".job span:last-of-type").text(),
+            job_start_date: st.find(".job_start_date span:last-of-type").text()
           };
         }
         mt = story.meta[id];
@@ -659,7 +667,8 @@ $(document).ready(function () {
       bind: function () {
         var t = this;
         t.points.click(function () {
-          t.points.removeClass("active");
+          console.log("point lcik");
+          t.points.removeClass("active", $(this).addClass("active").attr("data-id"));
           story.go_to(+$(this).addClass("active").attr("data-id"), true);
         });
       },
@@ -1045,13 +1054,13 @@ $(document).ready(function () {
   })();
 
   // for dev version
-  /*(function dev_init () {
-    I18n.init(function (){
-      I18n.remap();
-      params.parse();
-      load.all();
-    });
-  })();*/
+  // (function dev_init () {
+  //   I18n.init(function (){
+  //     I18n.remap();
+  //     params.parse();
+  //     load.all();
+  //   });
+  // })();
 
   // for deploing process
   /*(function deploy_init () {
