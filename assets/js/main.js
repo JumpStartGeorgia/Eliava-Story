@@ -1045,21 +1045,18 @@ $(document).ready(function () {
   })();
 
   // for dev version
-  // (function dev_init () {
+  /*(function dev_init () {
+    I18n.init(function (){
+      I18n.remap();
+      params.parse();
+      load.all();
+    });
+  })();*/
 
-  //   // p = panorama;
-  //   I18n.init(function (){
-  //     I18n.remap();
-  //     // params.parse();
-  //     // load.all();
-  //   });
-
-  // })();
-// story.dev();
   // for deploing process
-  // (function deploy_init () {
-  //   // panorama.audio.dev();
-  //   // story.dev();
-  //   I18n.init(function (){ I18n.remap(); });
-  // })();
+  /*(function deploy_init () {
+    // panorama.audio.dev();
+    // story.dev();
+    I18n.init(function (){ I18n.remap(); });
+  })();*/
 });
