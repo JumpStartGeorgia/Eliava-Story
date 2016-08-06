@@ -112,6 +112,7 @@
   #loader_image {
     display:block;
     margin: 0 auto;
+    padding:16px 0;
   }
 
   .loader-title span {
@@ -147,6 +148,37 @@
   .require-js div:lang(ka) { font:19px bpgnp; }
   .require-js div:lang(en) { font:19px titillium; }
   .require-js div:lang(ru) { font:19px arsenal; }
+
+/*------------------------------------------ Panorama  ------------------------------------*/
+
+  #helper {
+    display:inline-block;
+    position:fixed;
+    top:50%;
+    left:50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: rgba(255,255,255, .9);
+    border-radius:100%;
+    padding: 50px 52px;
+    text-align: center;
+    z-index:998;
+  }
+  #helper span {
+    display:block;
+    color:#000;
+  }
+  #helper span:lang(ka) { font:16px bpgnp; }
+  #helper span:lang(en) { font:15px titillium; }
+  #helper span:lang(ru) { font:16px arsenal; }
+  #helper i {
+    display:inline-block;
+    background:transparent url(../images/drag.svg) no-repeat center;
+    width:50px;
+    height:42px;
+    position:relative;
+    top:21px;
+  }
 
 /*------------------------------------------ Panorama  ------------------------------------*/
   .wrapper {
@@ -628,6 +660,7 @@
     z-index:31;
 
   }
+
   .story-popup[data-current=''] {
     display:none;
   }
@@ -787,31 +820,60 @@
     flex:1;
 
   }
+  .story-popup .window .content .story .r {
+    padding:24px 21px 0;
+  }
+  .story-popup .window .content .story .c {
+    display:block;
+    color:#000;
+    text-align:left;
+  }
+  .story-popup .window .content .story .c:lang(en) { font:18px titillium; }
+  .story-popup .window .content .story .c:lang(ka) { font:18px bpgnp; }
+  .story-popup .window .content .story .c:lang(ru) { font:18px arsenal; }
+  .story-popup .window .content .story .c .b:lang(en) { font:18px titillium_b; }
+  .story-popup .window .content .story .c .b:lang(ka) { font:18px dejavusans_b; }
+  .story-popup .window .content .story .c .b:lang(ru) { font:18px arsenal_b; }
+  .story-popup .window .content .story .c > div {
+    display:block;
+  }
+  .story-popup .window .content .story .quote {
+    color:#2bbca0;
+    padding:24px 0 30px;
+    text-align:left;
+  }
   .story-popup .window .content .story .title {
     font: 30px 'bebasneue_b';
     color:#000;
     text-align:center;
     padding:30px 0 15px;
   }
-  .story-popup .window .content .story .text-box {
+  .story-popup .window .content .story .scroll-box {
     overflow-y:auto;
-    margin:0 29px;
-
+    width:100%;
+    color:#000;
+    text-align:center;
+   }
+   .story-popup .window .content .story .scroll-box > * {
+      max-width:992px;
+      margin:0 auto;
+    }
+    .story-popup .window .content .story .scroll-box .youtube {
+      max-width: 1100px;
+    }
+  .story-popup .window .content .story .text-box {
+    padding:0 21px;
   }
 
   .story-popup .window .content .story .text {
-    max-width:992px;
-    width:100%;
-    margin:0 auto;
-    color:#000;
     text-align:left;
+
    }
   .story-popup .window .content .story .text:lang(en) { font:18px titillium; }
   .story-popup .window .content .story .text:lang(ka) { font:18px bpgnp; }
   .story-popup .window .content .story .text:lang(ru) { font:18px arsenal; }
-
-
-
+  .story-popup .window .content .story .text p { padding-bottom: 26px; }
+  .story-popup .window .content .story .text p:last-of-type { padding-bottom: 0; }
 
   .story-popup .window .content .story.active {
     display:initial;
@@ -941,6 +1003,7 @@
   }
 
   @media (min-width: 992px) { /* Medium devices (desktops, 992px and up) */
+    #loader_image { padding:16px 0 75px; }
     .d { display:initial; }
     .nav {
       padding:0 0 0 32px;
@@ -1076,6 +1139,19 @@
       left:50px;
       right:50px;
       bottom:105px;
+    }
+    .story-popup .window .content .story {
+      padding: 0 29px;
+    }
+    .story-popup .window .content .story .r {
+      display:flex;
+      flex-direction: row;
+      padding:38px 0 50px;
+      align-items: center;
+    }
+    .story-popup .window .content .story .c {
+      display:block;
+      flex:1;
     }
   }
 

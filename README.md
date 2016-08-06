@@ -30,6 +30,7 @@ In main.js file go to the bottom and comment init and deploy_init if you are usi
 - generate share story files
 - comment init and dev_init in main.js, only deploy_init should be uncommented
 - generate main.min.css minified version via http://csscompressor.com/ based on main.css file
+- generate main.min.js minified version via  based on main.js file
 - in dev/index.html change main.css to main.min.css
 - in dev/index.html comment scripts in the bottom which are ticked with comments deploy start end, comment whole text
 - ['en', 'ka', 'ru'].forEach  {locale}
@@ -39,6 +40,7 @@ In main.js file go to the bottom and comment init and deploy_init if you are usi
   * in browser call localhost/dev
   * in browser devtools go to Elements tab, select <html> tag -> Edit as Html -> Copy whole text
   * open {locale}/index.html and append text
+  * &lt; replace with <; &gt; replace with >
   * remove last script that is under <!-- deploy - remove extra script that points to locale file --> comment
   * uncomment previously commented text (I18n.js script can be deleted not tested but it should work)
   * if it is production change addthis id
@@ -48,7 +50,7 @@ In main.js file go to the bottom and comment init and deploy_init if you are usi
   * in dev/index.html translate into russian and paste 'You need to turn on Javascript for this application to work!' into noscript block
 
 ## In case
-  - if story structure that is visible in story popup will change, you can use story.dev(); function to generate that text it will be outputed in console, but change specific variables before (ex: story.count)
+  - if story structure that is visible in story popup will change, you can use story.dev(); function to generate that text it will be outputed in console, but change specific variables before (ex: story.count). make first story active add class .active to .story
   - if audio track amount or range between which audio is played changed, you can generate panorama.audio.play_range array, use comments in panorama.audio.dev() function,  but change specific variables before (ex: panorama.audio.count)
 
 ## Layer logic
