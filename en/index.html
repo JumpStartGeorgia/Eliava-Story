@@ -344,11 +344,18 @@
       <div class="tooltip-box">
         <div class="title">{{title}}</div>
         <div class="quote">{{quote}}</div>
-        <div class="name"><span>Name: </span>{{name}}</div>
-        <div class="job"><span>Job: </span>{{job}}</div>
-        <div class="job_start_date"><span>Started work at Eliava: </span>{{job_start_date}}</div>
       </div>
     </div>
+    <div class="tooltip-template-orig" style="display:none;">
+      <div class="tooltip-box">
+        <div class="title">{{title}}</div>
+        <div class="quote">{{quote}}</div>
+        <div class="name"><span data-i18n-label-name></span>{{name}}</div>
+        <div class="job"><span data-i18n-label-job></span>{{job}}</div>
+        <div class="job_start_date"><span data-i18n-label-job_start_date></span>{{job_start_date}}</div>
+      </div>
+    </div>
+
     <script src="../assets/js/I18n.js" type="text/javascript" charset="utf-8"></script>
     <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="../assets/js/jquery-ui.min.js" type="text/javascript"></script>
