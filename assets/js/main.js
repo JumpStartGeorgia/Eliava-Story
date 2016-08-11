@@ -209,20 +209,20 @@ $(document).ready(function () {
             return;
           }
           //console.log("animator inside");
-          // var layer_anim = $(".layer-anim"), ln = layer_anim.length;
-          // tp.after_hover_count = 0;
-          // layer_anim.each(function (d) {
-          //   ++tp.after_hover_count;
-          //   // console.log("plus one", after_hover_count);
-          //   var t = $(this), stid = +t.find("[data-story]").attr("data-story"), dir = story.breath_direction[stid-1] === 0 ? "left" : "right";
-          //   t.velocity("js.breath_" + dir, { delay: 1000, complete: (d === ln - 1 ? function () {/*console.log("animator end");*/ tp.play();} : function () { /*console.log("minus one", d , after_hover_count-1);*/ --tp.after_hover_count; }) });
-          // });
+          var layer_anim = $(".layer-anim"), ln = layer_anim.length;
+          tp.after_hover_count = 0;
+          layer_anim.each(function (d) {
+            ++tp.after_hover_count;
+            // console.log("plus one", after_hover_count);
+            var t = $(this), stid = +t.find("[data-story]").attr("data-story"), dir = story.breath_direction[stid-1] === 0 ? "left" : "right";
+            t.velocity("js.breath_" + dir, { delay: 1000, complete: (d === ln - 1 ? function () {/*console.log("animator end");*/ tp.play();} : function () { /*console.log("minus one", d , after_hover_count-1);*/ --tp.after_hover_count; }) });
+          });
           $(".layer-colored").velocity("js.fade", { delay: 900 });
         },
         bind: function (first) {
           var tp = this,
             prefix = first ? "" : ".ghost ",
-            // layer_anim = $(prefix + ".layer-anim"),
+            layer_anim = $(prefix + ".layer-anim"),
             layer_color = $(prefix + ".layer-colored").addClass("anim-object");
 
           if(device.desktop()) {
@@ -230,7 +230,7 @@ $(document).ready(function () {
               var t = $(this), p = t.parent();
               tp.finished = true;
               if(typeof tp.timeout_id !== "undefined") { clearTimeout(tp.timeout_id); }
-              // layer_anim.velocity("finish");
+              layer_anim.velocity("finish");
               layer_color.velocity("finish");
             }, debounce(function () {/* console.log("hover out");*/
               tp.finished = false;
@@ -575,19 +575,19 @@ $(document).ready(function () {
           st = story.el.find(".story[data-id='" + id + "']");
           story.meta[id] = {
             title: st.find(".title").text(),
-            quote: st.find(".quote").text()//,
-            // name: st.find(".name span:last-of-type").text(),
-            // job: st.find(".job span:last-of-type").text(),
-            // job_start_date: st.find(".job_start_date span:last-of-type").text()
+            quote: st.find(".quote").text(),
+            name: st.find(".name span:last-of-type").text(),
+            job: st.find(".job span:last-of-type").text(),
+            job_start_date: st.find(".job_start_date span:last-of-type").text()
           };
         }
         mt = story.meta[id];
         return this.template
           .replace("{{title}}", mt.title)
           .replace("{{quote}}", mt.quote)
-          // .replace("{{name}}", mt.name)
-          // .replace("{{job}}", mt.job)
-          // .replace("{{job_start_date}}", mt.job_start_date);
+          .replace("{{name}}", mt.name)
+          .replace("{{job}}", mt.job)
+          .replace("{{job_start_date}}", mt.job_start_date);
       },
       bind: function (first) {
         if(!device.desktop()) { return; }
