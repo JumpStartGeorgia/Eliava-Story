@@ -5,7 +5,7 @@ ka =
   "title": "The Eliava Market: Selling the Soviet Past",
   "nav_title_1": "The Eliava Market:",
   "nav_title_2": "selling the Soviet past",
-  "description": "The Eliava Market - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, hic.",
+  "description": "The Eliava Market - The stallholders of the Eliava market in Tbilisi make a living selling old Soviet tools and machinery.  25 years after the end of the USSR, this is their story in drawings, video and text.",
   "sitename": "The Eliava Market",
   "domain": "http://dev-eliava.jumpstart.ge",
   "url": "http://dev-eliava.jumpstart.ge/ka/",
@@ -15,7 +15,7 @@ ka =
   "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.png",
   "share_path": "share",
   "loader": {
-    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem architecto voluptatem expedita voluptatum officia. Soluta optio sint laboriosam, enim consequuntur!"
+    "text": "The stallholders of the Eliava market in Tbilisi make a living selling old Soviet tools and machinery.  25 years after the end of the USSR, this is their story in drawings, video and text."
   },
  "drag_or_use": "Drag<br/>or<br/>use arrow keys",
   "share": "Share",
@@ -23,7 +23,7 @@ ka =
   "ge": "Georgian",
   "ru": "Russian",
   "about": {
-    "name": "About",
+    "name": "Story",
     "caption": "Lorem ipsum dolor sit amet, consectetur",
     "text": "This depreciation calculator was made using exchange rates between November 2014 and February 2015. A more recent version of the calculator is available as part of our Lari Explorer application that also includes over 40 currency exchange rates and 20 bank exchange rates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis voluptates, porro ipsa, voluptate perspiciatis delectus tempore dolorum magni hic quibusdam dolor corrupti maiores, fugiat ratione quae. Repellendus dolorum a, veniam, officiis maxime cum quasi! Magnam quas, modi molestias quaerat fuga molestiae nemo possimus nam, repellat iusto libero dicta nisi deserunt cum voluptates eum animi quos esse, labore facere culpa tempore error laudantium eius saepe? Dolorem ratione nemo reiciendis voluptate minima iste doloribus incidunt, asperiores numquam, nam in, velit cumque est distinctio ullam animi totam magnam odit sunt voluptatum corporis pariatur. Sit harum sed repellat illum, saepe maiores asperiores repellendus praesentium!"
   },
