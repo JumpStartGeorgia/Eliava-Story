@@ -952,7 +952,7 @@ $(document).ready(function () {
 
         window.onYouTubeIframeAPIReady = function () {
 
-          $("#story_popup .story .youtube[data-yid]").each(function (d, i) {
+          $("#story_popup .story .youtube[data-yid], #popup .section .youtube[data-yid]").each(function (d, i) {
             var id = this.id, yid = this.dataset.yid;
             youtubePlayers[yid] = new YT.Player(
               id,
