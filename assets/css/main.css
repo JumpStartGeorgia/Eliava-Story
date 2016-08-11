@@ -69,11 +69,11 @@
 .tooltip-box .title { font: 24px bebasneue_b; }
 .tooltip-box .quote {
   color:#2BBCA0;
-  padding-bottom:22px;
+  padding-top: 11px;
 }
-.tooltip-box .quote:lang(en) { font:14px titillium; }
-.tooltip-box .quote:lang(ka) { font:14px bpgnp; }
-.tooltip-box .quote:lang(ru) { font:14px arsenal; }
+.tooltip-box .quote:lang(en) { font:16px titillium; }
+.tooltip-box .quote:lang(ka) { font:16px bpgnp; }
+.tooltip-box .quote:lang(ru) { font:16px arsenal; }
 .tooltip-box span:lang(en) { font:14px titillium_b; }
 .tooltip-box span:lang(ka) { font:14px dejavusans_b; }
 .tooltip-box span:lang(ru) { font:14px arsenal_b; }
