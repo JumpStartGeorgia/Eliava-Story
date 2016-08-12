@@ -958,7 +958,7 @@ $(document).ready(function () {
               id,
               {
                 videoId: yid,
-                height: device.mobile() ? "auto" : "600",
+                height: device.mobile() ? "auto" : "558", // this was 600 but changed it to 558 so captions in video are visible without scrolling
                 width: "100%",
                 playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }
               }
