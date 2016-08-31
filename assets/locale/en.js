@@ -60,15 +60,15 @@ en =
       "quote": "I was proud I had a chance to defend my country",
       "description": "fb description",
       "text": "",
-      "yid": "XLeUvZvuvAs",
-      "player_yid": "XLeUvZvuvAs",
+      "yid": "fpC6dV8ZnMs",
+      "player_yid": "fpC6dV8ZnMs",
       "name": "Otari Mujiri",
       "job": "repairs and sells power tools",
       "job_start_date": "2000"
     },
     "s4": {
       "title": "The Skeptic",
-      "quote": "Not much has changed - the big issues are still decided outside Georgia",
+      "quote": "Before it was Russia. Now America controls Georgia, Eduard believes.",
       "description": "fb description",
       "text": "",
       "yid": "foH0sn_uv4c",
@@ -89,7 +89,7 @@ en =
       "job_start_date": "1996"
     },
     "s6": {
-      "title": "The Wrestling Champion",
+      "title": "The Soviet Wrestling Champion",
       "quote": "There was a little euphoria when the USSR collapsed, as if independence would be good",
       "description": "fb description",
       "text": "",
