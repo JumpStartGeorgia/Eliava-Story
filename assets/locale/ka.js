@@ -17,7 +17,7 @@ ka =
   "loader": {
     "text": "25 years since the end of the USSR: The story of a market like no other"
   },
-  "drag_or_use": "Drag<br/>or<br/>use arrow keys",
+  "drag_or_use": "Drag, scroll<br/>or<br/>use arrow keys",
   "share": "Share",
   "en": "English",
   "ge": "Georgian",

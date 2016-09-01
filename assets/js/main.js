@@ -12,7 +12,6 @@ $(document).ready(function () {
     },
     lang = document.documentElement.lang || "en",
     story_mode = false,
-    helper_hidden = false,
     on_esc = {},
     panorama = {
       step: 0,
@@ -278,8 +277,8 @@ $(document).ready(function () {
         if(first) {
           t.audio.bind();
 
-          var scrl_left = debounce(function () { tooltip.hide(); t.scroll(-1); }, 100),
-            scrl_right = debounce(function () { tooltip.hide(); t.scroll(1); }, 100);
+          var scrl_left = debounce(function () { helper.hide(); tooltip.hide(); t.scroll(-1); }, 100),
+            scrl_right = debounce(function () { helper.hide(); tooltip.hide(); t.scroll(1); }, 100);
 
           $(document).keydown(function ( event ) {
             if (!event) {event = window.event;} // for IE compatible
@@ -299,6 +298,7 @@ $(document).ready(function () {
           addWheelListener(document, function (event) {
             if(!story_mode && event.deltaY !== -0 && event.deltaY !== 0) {
               tooltip.hide();
+              helper.hide();
               event.deltaY <= -0 ? scrl_left() : scrl_right();
             }
           });
@@ -311,7 +311,7 @@ $(document).ready(function () {
             start:  function (event, ui) {
               //console.log("start", event, ui);
               t.surface = $(event.target);
-              if(first && !helper_hidden) { $("#helper").fadeOut(1000); }
+              if(first && !helper.hidden) { helper.hide(); }
             },
             drag: function (event, ui) {
               //console.log("drag", event, ui);
@@ -532,10 +532,14 @@ $(document).ready(function () {
 
         panorama.scroll_by_pos((pbbox.left - bbox.left) + w/2 - bbox.width/2);
         if(story.by_url) {
-          helper_hidden = true;
-          $("#helper").hide();
+          helper.hidden = true;
+          helper.el.hide();
           story.open(id, function () { loader.inc(2); });
           story.by_url = false;
+        }
+        else {
+          helper.hide(4000);
+          loader.inc(2);
         }
       },
       by_name: function (name) {
@@ -790,6 +794,13 @@ $(document).ready(function () {
         loader.start_animation();
         t.el.show();
         t.el.find(".loader-box").show();
+      }
+    },
+    helper = {
+      el: $("#helper"),
+      hidden: false,
+      hide: function (delay) {
+        typeof delay === "undefined" ? this.el.fadeOut(1000) : this.el.delay(delay).fadeOut(1000);
       }
     },
     load = {
