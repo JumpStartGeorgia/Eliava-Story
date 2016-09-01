@@ -377,6 +377,7 @@ $(document).ready(function () {
       },
       close: function () {
         story_mode = false;
+        params.write();
         var t = this;
         t.toggle_youtube(t.current, false);
         t.el.find(".window").velocity({ opacity: 0 }, { duration: 500, complete: function () {
@@ -412,6 +413,7 @@ $(document).ready(function () {
       },
       open: function (id) {
         var t = this;
+        params.write(t.name_by_id(id));
         t.el.attr("data-current", id);
         t.el.find(".content .story.active").removeClass("active");
         t.el.find(".content .story[data-id='" + id + "']").addClass("active");
@@ -431,6 +433,7 @@ $(document).ready(function () {
         t.toggle_youtube(cur, false);
         t.toggle_youtube(nxt, true);
         t.go_to(nxt);
+        params.write(this.name_by_id(nxt));
         t.content
           .one("webkitAnimationEnd oanimationend msAnimationEnd animationend", function (e) {
             t.content.removeClass("scroll-left animated");
@@ -449,6 +452,7 @@ $(document).ready(function () {
         t.toggle_youtube(cur, false);
         t.toggle_youtube(prv, true);
         t.go_to(prv);
+        params.write(this.name_by_id(prv));
         t.content
           .addClass("scroll-right-origin")
           .one("webkitAnimationEnd oanimationend msAnimationEnd animationend", function (e) {
@@ -503,7 +507,6 @@ $(document).ready(function () {
         // }
       },
       go_to: function (id, shake) {
-        params.write(this.name_by_id(id));
         var st = $("#story" + id),
           pnl = +st.closest(".apanel").attr("data-panel"),
           pbbox = panorama.container.get(0).getBoundingClientRect(),
@@ -519,7 +522,7 @@ $(document).ready(function () {
       },
       go_to_and_open_current: function () {
         var id = this.current;
-        params.write(this.name_by_id(id));
+
         var st = $("#story" + id),
           pnl = +st.closest(".apanel").attr("data-panel"),
           pbbox = panorama.container.get(0).getBoundingClientRect(),
@@ -698,7 +701,7 @@ $(document).ready(function () {
         }
       },
       write: function (story_name) {
-        var url = window.location.pathname + "?story=" + story_name;
+        var url = window.location.pathname + (typeof story_name !== "undefined" ? "?story=" + story_name : "");
         window.history.pushState({ story: story_name }, null, url);
         story.share.attr("data-url", url);
       }
@@ -949,7 +952,7 @@ $(document).ready(function () {
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName("script")[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        console.log("youtube");
+
         window.onYouTubeIframeAPIReady = function () {
 
           $("#story_popup .story .youtube[data-yid], #popup .section .youtube[data-yid]").each(function (d, i) {
@@ -960,62 +963,10 @@ $(document).ready(function () {
                 videoId: yid,
                 height: device.mobile() ? "auto" : "558", // this was 600 but changed it to 558 so captions in video are visible without scrolling
                 width: "100%",
-                playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 },
-                events: {
-                  'onReady': onPlayerReady,
-                  'onStateChange': onPlayerStateChange,
-                  'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
-                  'onPlaybackRateChange': onPlayerPlaybackRateChange,
-                  'onError': onPlayerError,
-                  'onApiChange': onPlayerApiChange
-                }
+                playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }
               }
             );
           });
-
-          function onPlayerReady(event) {
-            console.log('player is ready');
-          }
-
-          // The API calls this function when the player's state changes.
-          function onPlayerStateChange(event) {
-            switch (event.data) {
-              case YT.PlayerState.UNSTARTED:
-                console.log('unstarted');
-                break;
-              case YT.PlayerState.ENDED:
-                console.log('ended');
-                break;
-              case YT.PlayerState.PLAYING:
-                console.log('playing');
-                break;
-              case YT.PlayerState.PAUSED:
-                console.log('paused');
-                break;
-              case YT.PlayerState.BUFFERING:
-                console.log('buffering');
-                break;
-              case YT.PlayerState.CUED:
-                console.log('video cued');
-                break;
-            }
-          }
-          function onPlayerPlaybackQualityChange(playbackQuality) {
-           console.log('playback quality changed to ' + playbackQuality.data);
-          }
-
-          function onPlayerPlaybackRateChange(playbackRate) {
-           console.log('playback rate changed to ' + playbackRate.data);
-          }
-
-          function onPlayerError(e) {
-           console.log('An error occurred: ' + e.data);
-          }
-
-          function onPlayerApiChange() {
-           console.log('The player API changed');
-          }
-
 
           loader.inc(2);
           setTimeout(load.effects, 100);

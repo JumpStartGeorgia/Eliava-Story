@@ -5,8 +5,8 @@ en =
   "title": "The Big Draw: Selling the Soviet Past",
   "nav_title_1": "The Big Draw:",
   "nav_title_2": "selling the Soviet past",
-  "description": "The Eliava Market - The stallholders of the Eliava market in Tbilisi make a living selling old Soviet tools and machinery.  25 years after the end of the USSR, this is their story in drawings, video and text.",
-  "sitename": "The Eliava Market",
+  "description": "25 years since the end of the USSR: The story of a market like no other.",
+  "sitename": "The Big Draw: Selling the Soviet Past",
   "domain": "http://dev-eliava.jumpstart.ge",
   "url": "http://dev-eliava.jumpstart.ge/en/",
   "url_en": "http://dev-eliava.jumpstart.ge/en/",
@@ -15,7 +15,7 @@ en =
   "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.png",
   "share_path": "share", // http://dev-eliava.jumpstart.ge/en/share
   "loader": {
-    "text": "The stallholders of the Eliava market in Tbilisi make a living selling old Soviet tools and machinery.  25 years after the end of the USSR, this is their story in drawings, video and text."
+    "text": "25 years since the end of the USSR: The story of a market like no other"
   },
   "drag_or_use": "Drag<br/>or<br/>use arrow keys",
   "share": "Share",
