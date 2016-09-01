@@ -116,12 +116,12 @@
   }
 
   .loader-title span {
-    font:19px bebasneue_b;
+    font:25px bebasneue_b;
     color:#000000;
     white-space:nowrap;
   }
   .loader-title span:first-child {
-    font:24px bebasneue_b;
+    font:32px bebasneue_b;
     color:#2BBCA0;
   }
 
@@ -643,7 +643,6 @@
     padding:0 0 47px;
   }
   .popup .window .author {
-    font: 18px 'titillium';
     color:#2bbca0;
     text-align:center;
     padding:0 0 47px;
@@ -653,9 +652,7 @@
   .popup .window .author:lang(ka) { font:18px bpgnp; }
   .popup .window .author:lang(ru) { font:18px arsenal; }
 
-  .popup .window .text
-   {
-      font:18px 'titillium';
+  .popup .window .text {
       color:#000;
       text-align:left;
       max-width:992px;
@@ -665,43 +662,43 @@
   .popup .window .text:lang(en) { font:18px titillium; }
   .popup .window .text:lang(ka) { font:18px bpgnp; }
   .popup .window .text:lang(ru) { font:18px arsenal; }
-
-  .popup .window .text p
-  {
+  .popup .window .text p {
     margin: 18px 0;
   }
-
-  .popup .window .section.behind .text .team
-  {
-    font-size: 20px;
-    font-weight: bold;
+  .popup .window .section.behind .credits {
     padding:45px 0 36px;
-    text-align: center;
+    text-align:center;
   }
+  .popup .window .section.behind .credits:lang(en) { font:20px titillium_b; }
+  .popup .window .section.behind .credits:lang(ka) { font:20px bpgnp_b; }
+  .popup .window .section.behind .credits:lang(ru) { font:20px arsenal_b; }
 
-  .popup .window .section.behind .text .team-item
-  {
+  .popup .window .section.behind .text ul {
+    width:100%;
+    text-align:center;
+  }
+  .popup .window .section.behind .text ul li {
+    color:#000;
     margin-bottom: 18px;
-    text-align: center;
   }
+  .popup .window .section.behind .text ul li:lang(en) { font:18px titillium; }
+  .popup .window .section.behind .text ul li:lang(ka) { font:18px bpgnp; }
+  .popup .window .section.behind .text ul li:lang(ru) { font:18px arsenal; }
 
-  .popup .window .section.behind .text .team-item .team-header
-  {
-    font-weight: bold;
-  }
+  .popup .window .section.behind .text ul li span:lang(en) { font:18px titillium_b; }
+  .popup .window .section.behind .text ul li span:lang(ka) { font:18px bpgnp_b; }
+  .popup .window .section.behind .text ul li span:lang(ru) { font:18px arsenal_b; }
 
-  .popup .window .footer
+  .popup .window .section.about .footer
    {
-      font:18px 'titillium';
       color:#000;
       text-align:left;
-      max-width:992px;
-      margin:-80px auto 0;
-      padding-bottom:120px;
+      padding:20px 0 0;
+
     }
-  .popup .window .footer:lang(en) { font:18px titillium; }
-  .popup .window .footer:lang(ka) { font:18px bpgnp; }
-  .popup .window .footer:lang(ru) { font:18px arsenal; }
+  .popup .window .section.about .footer:lang(en) { font:18px titillium; }
+  .popup .window .section.about .footer:lang(ka) { font:18px bpgnp; }
+  .popup .window .section.about .footer:lang(ru) { font:18px arsenal; }
 
 /*------------------------------------------ Story Popup ----------------------------------*/
   .story-popup {
@@ -907,9 +904,13 @@
       margin:0 auto;
     }
     .story-popup .window .content .story .scroll-box .youtube,
-    .popup .window .content .section .text .youtube {
+    .popup .window .content .section .youtube {
+      margin:0 auto;
       max-width: 1100px;
     }
+  .popup .window .content .section .youtube-box {
+    text-align:center;
+  }
   .story-popup .window .content .story .text-box {
     padding:0 21px;
   }

@@ -24,13 +24,44 @@ en =
   "ru": "Russian",
   "about": {
     "name": "Story",
-    "caption": "Lorem ipsum dolor sit amet, consectetur",
-    "text": "This depreciation calculator was made using exchange rates between November 2014 and February 2015. A more recent version of the calculator is available as part of our Lari Explorer application that also includes over 40 currency exchange rates and 20 bank exchange rates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis voluptates, porro ipsa, voluptate perspiciatis delectus tempore dolorum magni hic quibusdam dolor corrupti maiores, fugiat ratione quae. Repellendus dolorum a, veniam, officiis maxime cum quasi! Magnam quas, modi molestias quaerat fuga molestiae nemo possimus nam, repellat iusto libero dicta nisi deserunt cum voluptates eum animi quos esse, labore facere culpa tempore error laudantium eius saepe? Dolorem ratione nemo reiciendis voluptate minima iste doloribus incidunt, asperiores numquam, nam in, velit cumque est distinctio ullam animi totam magnam odit sunt voluptatum corporis pariatur. Sit harum sed repellat illum, saepe maiores asperiores repellendus praesentium!"
+    "caption": "The Big Draw: Selling the Soviet Past",
+    "author": "By Andrew North",
+    "text": "\
+            <p>Vazha Jamagidze looked at me curiously over the top of his glasses the first time we met. “Can I draw you?” I had asked him, in halting Georgian.</p>\
+            <p>Vazha works in what you could call a ‘Home Depot’ for the Soviet past, a vast open-air bazaar in the capital Tbilisi, which trades in old tools, machines and household furnishings made in the USSR. His arms and shoulders speak of his past as a champion wrestler in the Soviet Army, but for the past 20 years or so he has been working here, selling a metal smorgasbord of Russian-made saws and wrenches and reconditioned bathroom taps, from a small covered stall in the heart of the market.</p>\
+            <p>When I set out to create a 360-degree panorama of the market, Vazha and his space became the axis.</p>\
+            <p>Known as the Eliava - after the street where it began – the market sprang up after Georgia won independence from the USSR in 1991. They were hard times. Making old things last was a necessity. And then it mushroomed into a giant bazaar, with other businesses arriving to sell more modern implements and construction materials alongside the old. But why draw it?</p>\
+            <p>This is a free market selling the communist past - where some still wish it were the present. So it offers a unique window on Georgia’s transition a quarter century on and its often-turbulent search for a new post-Soviet identity. And as this is place in transition itself, which may not be here much longer, this drawing and the stories that go with it are a snapshot portrait in time.</p>\
+            <p>I stood next to Vazha’s stall for nearly three months to create what became a four metre-long (13 feet) drawing, doing it all on location. As well as the benches stacked with Soviet ‘metallica’ and other objects that I had to draw, there are 14 stallholders and Taso and Marina, two roving drinks and snack-sellers who work this part of the market. Gradually I got to know them all.</p>\
+            <p>We talked about life and family, food and drink - an essential in the country that first invented wine - and what they liked and didn’t like about the new post-Soviet Georgia. Are you pro-West or pro-Russia? In Georgia, it’s an existential question, and a fundamental identifier. Most Georgians now lean West, and deeply resent Moscow’s past and present intrusions. But here in the Eliava many still feel more comfortable with the old imperial master Russia.</p>\
+            <p>There were arguments between the stallholders, and once even a fight. If I was there on one of the key Orthodox Christian holidays, they demanded I stop working and join in the toasting instead. Tariel, whose stall I used to lean on, took my drawing away and locked it up with his store of Soviet electric motors.</p>\
+            <p>“This is not really a business,” Mirian Nozadze said to me ruefully, gesturing at the piles of chunky Soviet-era nuts and bolts that are his mainstay. “We are just speculators,” he added, using a derogatory Russian word for business-people.</p>\
+            <p>What keeps some here is that the Eliava is also a community. It has a church on one side, and restaurants and cafes scattered throughout its labyrinth of passageways. Some stallholders spend more time here than with their families.</p>\
+            <p>There was never going to be a future in recycling the past though. But instead of a mid-way station to something better, the Eliava has become the end of the line for many working there - while the train transforming Georgia into a market economy thunders on. It is a familiar test of wrenching change, and who bears most responsibility to deal with the consequences – the state or the individual.</p>\
+            <p>In the Eliava, opinions divide across the alleyways. Some miss the certainties of communist rule, however oppressive “I didn’t know what poverty was,” says Marina, recalling her childhood, and her job in a Soviet garment factory. “But my children know all about it.” I met many stallholders in the Eliava who migrated from Chiatura, a town in western Georgia that was hammered by the end of a guaranteed Soviet market. None of them wanted the past back though. “We have to cope with the new,” says Taso, a Chiatura native.</p>\
+            <p>Georgia’s best hope, they say, is to get closer to the West and keep pushing to join the European Union and NATO.</p>\
+            <p>“Fish bait” scoffs Vazha. The idea of joining the EU is just talk “to tempt people towards the West. But they will never let us in.” Democracy has brought only “anarchy and licentiousness,” he complains, worrying that Georgia’s Orthodox-Christian traditions are under threat from “Western ideas” like LGBT rights.</p>\
+            <p>One day I went to see Gia Andriadze, who owns part of the market area. We talk on the balcony of his penthouse office, atop a multi-storey retail complex that he has built on space vacated by stallholders who have already given up. The changes are mapped out below – new buildings pressing in on all sides of the drab tin roofs of the original market. Most will be gone in five years, he predicts: “They are selling nostalgia.”</p>\
+            <p>Several stalls closed in the time I was there. And two of the people in the drawing have already moved on. So it is already a historical record.</p>\
+            <div class='footer'>Tbilisi 2016</div>"
   },
   "behind": {
-    "name": "Behind",
-    "caption": "Lorem ipsum dolor sit amet, consectetur",
-    "text": "This depreciation calculator was made using exchange rates between November 2014 and February 2015. A more recent version of the calculator is available as part of our Lari Explorer application that also includes over 40 currency exchange rates and 20 bank exchange rates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis voluptates, porro ipsa, voluptate perspiciatis delectus tempore dolorum magni hic quibusdam dolor corrupti maiores, fugiat ratione quae. Repellendus dolorum a, veniam, officiis maxime cum quasi! Magnam quas, modi molestias quaerat fuga molestiae nemo possimus nam, repellat iusto libero dicta nisi deserunt cum voluptates eum animi quos esse, labore facere culpa tempore error laudantium eius saepe? Dolorem ratione nemo reiciendis voluptate minima iste doloribus incidunt, asperiores numquam, nam in, velit cumque est distinctio ullam animi totam magnam odit sunt voluptatum corporis pariatur. Sit harum sed repellat illum, saepe maiores asperiores repellendus praesentium!"
+    "name": "Behind the Scenes",
+    "caption": "Behind the Scenes",
+    "yid": "k3_tw44QsZQ",
+    "player_yid": "k3_tw44QsZQ-Pjk",
+    "text": "\
+              <div class='credits'>Credits</div>\
+              <ul>\
+                <li><span>Drawing:</span> Andrew North</li>\
+                <li><span>Words and Video:</span> Andrew North</li>\
+                <li><span>Producer:</span> Sophiko Vasadze</li>\
+                <li><span>Design:</span> JumpStart Georgia - Mariam Kobuladze, Anton Kamaryan, Jason Addie, Eric Barrett</li>\
+                <li><span>Editor:</span> Justin Burke/Eurasianet</li>\
+                <li><span>Translations:</span> Sophiko Vasadze, Dmitri Bit-Suleiman</li>\
+                <li>A special thanks to everyone from the Eliava who supported the project, including: Tariel Saralidze, Jaba Nakashidze, Gia Todadze, Miriani Nozadze, Otari Mujiri, Tamazi Dudashvili, Taso Tsertsvadze, Kakha, Marina Esebua, Vazha Jamagidze, Eduard Miroian, Pridon, Pata and Cesar.</li>\
+                <li>For advice and encouragement, a big thank you also to: Kote Sulaberidze, Nino Chilashvili, Irena Popiashvili, Natalia Antelava.</li>\
+              </ul>"
   },
   "stories": {
     "s1": {
