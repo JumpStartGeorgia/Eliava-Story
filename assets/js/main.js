@@ -278,8 +278,8 @@ $(document).ready(function () {
         if(first) {
           t.audio.bind();
 
-          var scrl_left = debounce(function () { t.scroll(-1); }, 100),
-            scrl_right = debounce(function () { t.scroll(1); }, 100);
+          var scrl_left = debounce(function () { tooltip.hide(); t.scroll(-1); }, 100),
+            scrl_right = debounce(function () { tooltip.hide(); t.scroll(1); }, 100);
 
           $(document).keydown(function ( event ) {
             if (!event) {event = window.event;} // for IE compatible
@@ -298,6 +298,7 @@ $(document).ready(function () {
 
           addWheelListener(document, function (event) {
             if(!story_mode && event.deltaY !== -0 && event.deltaY !== 0) {
+              tooltip.hide();
               event.deltaY <= -0 ? scrl_left() : scrl_right();
             }
           });
@@ -617,6 +618,9 @@ $(document).ready(function () {
             }
           }
         });
+      },
+      hide: function () {
+        $(".qtip:visible").qtip("hide");
       }
     },
     popup = {
