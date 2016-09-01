@@ -97,19 +97,22 @@ def init
   locales.each_with_index{|loc, loc_i|
     # next if loc != "en" # comment on production
     @locale = loc
-
-    json = JSON.parse(File.read("../assets/locale/#{loc}.js").remove_lines(1)[0...-1])
+    begin
+      json = JSON.parse(File.read("../assets/locale/#{loc}.js", :quirks_mode => true).remove_lines(1)[0...-1])
+    rescue JSON::ParserError => e
+      pp "#{loc} file is damaged"
+    end
 
     fld = "../#{loc}/share"
     FileUtils.remove_dir fld if File.directory?(fld)
     FileUtils.mkdir_p fld
 
     url = json["domain"]
-    @url_with_locale = url + "/" + loc
+    url_with_locale_orig = url + "/" + loc
 
-    share_dir_url = @url_with_locale + "/" + json["share_path"]
+    share_dir_url = url_with_locale_orig + "/" + json["share_path"]
 
-    @url_with_locale += "/" # add / to match url rules
+    url_with_locale_orig += "/?story=" # add / to match url rules
 
     @sitename = json["sitename"]
 
@@ -127,6 +130,8 @@ def init
       @descr = story_data["description"]
       @share_url = share_dir_url + "/" + id + ".html"
       @image = url + "/assets/images/share/#{story_index}.png"
+
+      @url_with_locale = url_with_locale_orig + id
 
       File.open("../#{loc}/share/#{id}.html", "w") { |file| file.write(renderer.result()) }
 
