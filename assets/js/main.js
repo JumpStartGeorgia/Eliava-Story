@@ -412,7 +412,7 @@ $(document).ready(function () {
           }
         }
       },
-      open: function (id) {
+      open: function (id, cb) {
         var t = this;
         params.write(t.name_by_id(id));
         t.el.attr("data-current", id);
@@ -421,6 +421,7 @@ $(document).ready(function () {
         t.before_open(id);
         t.el.find(".window").velocity({ opacity: 1 }, { duration: 1000, easing: "easeInCirc", complete: function () {
           t.toggle_youtube(id, true);
+          if(typeof cb === "function") { cb(); }
         } });
 
         this.current = id;
@@ -533,7 +534,7 @@ $(document).ready(function () {
         if(story.by_url) {
           helper_hidden = true;
           $("#helper").hide();
-          story.open(id);
+          story.open(id, function () { loader.inc(2); });
           story.by_url = false;
         }
       },
@@ -713,6 +714,7 @@ $(document).ready(function () {
     loader = {
       el: $("#loader"),
       image: $("#loader_image"),
+      progress_label: $("#loader_progress span"),
       path: undefined,
       length: 2133,
       progress: 0,
@@ -721,6 +723,8 @@ $(document).ready(function () {
       fade_easing: "easeInOutCirc",
       before_close_duration: 0, //3000, // deploy change back this value
       aborted: false,
+      animate: true,
+      animate_duration: 5000,
       inc: function (percent) {
         var t = this, init_percent = percent;
         if(t.completed) return;
@@ -732,23 +736,37 @@ $(document).ready(function () {
         else if(percent >= 100) { percent = 100; }
 
         t.progress = percent;
+        t.progress_label.text(t.progress);
+
         // console.log(percent);
+
+        if(percent >= 100) { t.complete(); }
+      },
+      start_animation: function () {
+        var t = this;
         if(!t.path) {
           t.path = t.image.get(0).contentDocument.getElementsByTagName("path")[0];
           $(t.path).css("stroke-dasharray", t.length + "px");
           t.length = t.path.getTotalLength();
         }
-        $(t.path).velocity({ "stroke-dashoffset": "+=" + (-1*t.length*init_percent/100) + "px" }, { duration: 10 });
-
-        if(percent >= 100) { t.complete(); }
+        $(t.path).css("stroke-dashoffset", 0);
+        $(t.path).velocity({ "stroke-dashoffset": -1*t.length + "px" },
+          {
+            duration: t.animate_duration,
+            complete: function () {
+              if(t.animate) { t.start_animation(); }
+            }
+          }
+        );
       },
       complete: function () {
         // console.log("loader.complete");
         var t = this;
 
         setTimeout(function () {
+          t.animate = false;
           t.el.find(".loader-box").hide();
-          t.el.fadeOut({ duration: t.fade_duration, easing: t.fade_easing, complete: function () { ready(); t.completed = true; t.progress = 0; } });
+          t.el.fadeOut({ duration: t.fade_duration, easing: t.fade_easing, complete: function () { t.completed = true; t.progress = 0; } });
         }, t.before_close_duration);
       },
       abort: function () {
@@ -768,6 +786,8 @@ $(document).ready(function () {
         $(t.path).css("stroke-dasharray", t.length + "px");
         t.progress = 0;
         t.completed = false;
+        t.animate = true;
+        loader.start_animation();
         t.el.show();
         t.el.find(".loader-box").show();
       }
@@ -785,7 +805,7 @@ $(document).ready(function () {
           popup.bind();
           load.first_time = false;
         }
-        loader.inc(2);
+        story.go_to_and_open_current();
       },
       callback: function (is_partial) { /*console.log("load.callback");*/
         if(loader.aborted) { loader.abort_complete(); return; }
@@ -1025,12 +1045,13 @@ $(document).ready(function () {
       },
       all: function () { /*console.log("load.all");*/
         $(window).resize(function () { redraw(); });
+        loader.start_animation();
         this.panels();
       }
     };
 
   function ready () {
-    story.go_to_and_open_current();
+
     // panorama.audio.muteToggle();
   }
   var redraw_in_use = false;

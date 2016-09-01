@@ -124,7 +124,11 @@
     font:32px bebasneue_b;
     color:#2BBCA0;
   }
-
+  #loader_progress {
+    display:block;
+    font:25px bebasneue_b;
+    color:#000000;
+  }
   .loader-text {
     color:#000;
     text-align:center;
@@ -1053,7 +1057,8 @@
   }
 
   @media (min-width: 992px) { /* Medium devices (desktops, 992px and up) */
-    #loader_image { padding:16px 0 75px; }
+    #loader_image { padding:16px 0 16px; }
+    #loader_progress { padding:16px 0 75px; }
     .d { display:initial; }
     .nav {
       padding:0 0 0 32px;
