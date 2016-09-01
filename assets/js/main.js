@@ -949,7 +949,7 @@ $(document).ready(function () {
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName("script")[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
+        console.log("youtube");
         window.onYouTubeIframeAPIReady = function () {
 
           $("#story_popup .story .youtube[data-yid], #popup .section .youtube[data-yid]").each(function (d, i) {
@@ -960,10 +960,62 @@ $(document).ready(function () {
                 videoId: yid,
                 height: device.mobile() ? "auto" : "558", // this was 600 but changed it to 558 so captions in video are visible without scrolling
                 width: "100%",
-                playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }
+                playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 },
+                events: {
+                  'onReady': onPlayerReady,
+                  'onStateChange': onPlayerStateChange,
+                  'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+                  'onPlaybackRateChange': onPlayerPlaybackRateChange,
+                  'onError': onPlayerError,
+                  'onApiChange': onPlayerApiChange
+                }
               }
             );
           });
+
+          function onPlayerReady(event) {
+            console.log('player is ready');
+          }
+
+          // The API calls this function when the player's state changes.
+          function onPlayerStateChange(event) {
+            switch (event.data) {
+              case YT.PlayerState.UNSTARTED:
+                console.log('unstarted');
+                break;
+              case YT.PlayerState.ENDED:
+                console.log('ended');
+                break;
+              case YT.PlayerState.PLAYING:
+                console.log('playing');
+                break;
+              case YT.PlayerState.PAUSED:
+                console.log('paused');
+                break;
+              case YT.PlayerState.BUFFERING:
+                console.log('buffering');
+                break;
+              case YT.PlayerState.CUED:
+                console.log('video cued');
+                break;
+            }
+          }
+          function onPlayerPlaybackQualityChange(playbackQuality) {
+           console.log('playback quality changed to ' + playbackQuality.data);
+          }
+
+          function onPlayerPlaybackRateChange(playbackRate) {
+           console.log('playback rate changed to ' + playbackRate.data);
+          }
+
+          function onPlayerError(e) {
+           console.log('An error occurred: ' + e.data);
+          }
+
+          function onPlayerApiChange() {
+           console.log('The player API changed');
+          }
+
 
           loader.inc(2);
           setTimeout(load.effects, 100);
