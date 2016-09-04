@@ -49,7 +49,7 @@ $(document).ready(function () {
         muted: false,
         soft_muted: false,
         toggle: $(".sound-toggle"),
-        default_volume: 0.6,
+        default_volume: 0, // deploy 0.6
         fade_duration: 500,
         can_play: true,
         ok: function () {
@@ -182,15 +182,18 @@ $(document).ready(function () {
           // }
         },
         flip: function (pos) {
-          if(pos <= -1 * panorama.offset.right) {
-            // console.log("flip to beggining");
-            panorama.container_position = -1 * panorama.offset.left;
-            panorama.container.css("transform", "translateX(" + (-1 * panorama.offset.left) + "px)");
+          var tmp;
+          if(pos <= -1 * panorama.offset.right) { //
+            tmp = -1 * panorama.offset.left - (-1*pos - panorama.offset.right); // arrow right moving (left), happens when last panel goes out from left side of the screen, (-1*pos - panorama.offset.right) this is for extra pixels
+            // console.log("flip to beggining", tmp);
+            panorama.container_position = tmp;
+            panorama.container.css("transform", "translateX(" + tmp + "px)");
           }
           else if(pos >= w - panorama.offset.left) {
-            // console.log("flip to the end");
-            panorama.container_position = -1 * (panorama.offset.right - w);
-            panorama.container.css("transform", "translateX(" + (-1 * (panorama.offset.right - w)) + "px)");
+            tmp = -1 * (panorama.offset.right - w - (pos - (w-panorama.offset.left))); // arrow left moving (right), happens when first panel goes out from right side of the screen, (pos - (w-panorama.offset.left)) this is for extra pixels
+            // console.log("flip to the end", tmp);
+            panorama.container_position = tmp;
+            panorama.container.css("transform", "translateX(" + tmp + "px)");
           }
         }
       },
@@ -254,15 +257,17 @@ $(document).ready(function () {
         }
       },
       scroll_by_pos: function (pos) {
-        var t = this;
-        if(pos <= -1 * t.offset.right || pos >= w - t.offset.left) {
-          t.position.flip(pos);
-        }
-        else {
-          var prev = t.container_position;
-          t.container_position = pos;
-          t.container.velocity({ translateX : [pos, prev]}, { duration: 500, easing: "linear" });
-        }
+        var t = this, prev = t.container_position;
+
+        t.container_position = pos;
+        t.container.velocity({ translateX : [pos, prev]}, { duration: 500, easing: "linear",
+          complete: function () {
+            if(pos <= -1 * t.offset.right || pos >= w - t.offset.left) {
+              t.position.flip(pos);
+            }
+          }
+        });
+
         t.position.analyze(pos);
       },
       scroll: function (direction) { /*console.log("panorama_scroll");*/
@@ -297,8 +302,6 @@ $(document).ready(function () {
 
           addWheelListener(document, function (event) {
             if(!story_mode && event.deltaY !== -0 && event.deltaY !== 0) {
-              tooltip.hide();
-              helper.hide();
               event.deltaY <= -0 ? scrl_left() : scrl_right();
             }
           });
@@ -800,7 +803,7 @@ $(document).ready(function () {
       el: $("#helper"),
       hidden: false,
       hide: function (delay) {
-        typeof delay === "undefined" ? this.el.fadeOut(1000) : this.el.delay(delay).fadeOut(1000);
+        typeof delay === "undefined" ? this.el.fadeOut(500) : this.el.delay(delay).fadeOut(1000);
       }
     },
     load = {
@@ -909,7 +912,6 @@ $(document).ready(function () {
 
         panorama.offset.right = panorama.width - panorama.right_width;
         panorama.offset.left = panorama.left_width;
-
         if(expect_cnt === 0) { loader.inc(is_partial ? 98 : 4); setTimeout(load.bind, 100); }
       },
       effects: function () { /*console.log("load.effects");*/
