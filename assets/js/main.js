@@ -12,6 +12,7 @@ $(document).ready(function () {
     },
     lang = document.documentElement.lang || "en",
     story_mode = false,
+    popup_mode = false,
     on_esc = {},
     panorama = {
       step: 0,
@@ -288,8 +289,8 @@ $(document).ready(function () {
           $(document).keydown(function ( event ) {
             if (!event) {event = window.event;} // for IE compatible
             var keycode = event.keyCode || event.which; // also for cross-browser compatible
-            if (keycode == Key.LEFT) { story_mode ? story.prev() : scrl_left(); }
-            if (keycode == Key.RIGHT) { story_mode ? story.next() : scrl_right(); }
+            if (keycode == Key.LEFT && popup_mode) { story_mode ? story.prev() : scrl_left(); }
+            if (keycode == Key.RIGHT && popup_mode) { story_mode ? story.next() : scrl_right(); }
 
             if(keycode === Key.ESC) {
               Object.keys(on_esc).forEach(function (d) {
@@ -301,7 +302,7 @@ $(document).ready(function () {
           });
 
           addWheelListener(document, function (event) {
-            if(!story_mode && event.deltaY !== -0 && event.deltaY !== 0) {
+            if(!popup_mode && event.deltaY !== -0 && event.deltaY !== 0) {
               event.deltaY <= -0 ? scrl_left() : scrl_right();
             }
           });
@@ -381,6 +382,7 @@ $(document).ready(function () {
       },
       close: function () {
         story_mode = false;
+        popup_mode = false;
         params.write();
         var t = this;
         t.toggle_youtube(t.current, false);
@@ -394,6 +396,7 @@ $(document).ready(function () {
       },
       before_open: function (id) {
         story_mode = true;
+        popup_mode = true;
         var t = this;
         panorama.audio.softMute();
         t.off_animation();
@@ -635,13 +638,15 @@ $(document).ready(function () {
       el: $("#popup"),
       content: $("#popup .content"),
       close: function () {
+        popup_mode = false;
         this.el.attr("data-type", "");
         delete on_esc["popup_to_close"];
       },
       open: function (v) {
         var t = this;
+        popup_mode = true;
         t.el.attr("data-type", v);
-        t.content.css({ "height": (h > 760 ? h - 88 - 61 - 60 - 10 : h - 2*61) + "px" });
+        t.content.scrollTop(0).css({ "height": (h > 760 ? h - 88 - 61 - 60 - 10 : h - 2*61) + "px" });
         on_esc["popup_to_close"] = function () { t.close(); };
       },
       bind: function () {
@@ -803,7 +808,7 @@ $(document).ready(function () {
       el: $("#helper"),
       hidden: false,
       hide: function (delay) {
-        typeof delay === "undefined" ? this.el.fadeOut(500) : this.el.delay(delay).fadeOut(1000);
+        typeof delay === "undefined" ? this.el.fadeOut(800) : this.el.delay(delay).fadeOut(1000);
       }
     },
     load = {
