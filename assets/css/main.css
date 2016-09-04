@@ -186,6 +186,8 @@
 
 /*------------------------------------------ Panorama  ------------------------------------*/
   .wrapper {
+    display:flex;
+    flex-direction: column;
     margin:0px auto;
     height:100%;
   }
@@ -240,9 +242,17 @@
 
   // }
 
+  header {
+    width: 100%;
+    min-height: 60px;
+    background-color: #F7F7F7;
+    z-index: 21;
+    padding: 0 0 0 12px;
+    border-bottom: 1px solid #DDDDDD;
+  }
   #panorama {
     height:100%;
-    padding:0 0 60px 0;
+    // padding:60px 0 60px 0;
     position:relative;
     z-index:5;
     overflow:hidden;
@@ -294,7 +304,7 @@
     left: 0;
     transform: translate3d(0, 0, 0);
     height: 100%;
-    padding: 0 0 60px 0;
+    padding: 0;// 0 60px 0;
     display:flex;
     flex-direction: row;
   }
@@ -322,9 +332,9 @@
     flex-direction: row;
     align-items: center;
     position:relative;
-    top:-60px;
+    // top:-60px;
     width: 100%;
-    height: 60px;
+    min-height: 60px;
     background-color: #F7F7F7;
     z-index:21;
     padding:0 0 0 12px;
@@ -342,6 +352,41 @@
   .nav-title span:first-child {
     font:24px bebasneue_b;
     color:#2BBCA0;
+  }
+  .minimap {
+    height:50px;
+    width:624px;
+    position:relative;
+    overflow:hidden;
+    // background: transparent url(../images/map.png) no-repeat center;
+  }
+  .minimap .overlay {
+    display:flex;
+    flex-direction: row;
+    position:absolute;
+    top:0;
+    // left:-50%;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+  }
+  .minimap .overlay .cape {
+    display:inline-block;
+    // width:100%;
+    opacity:0.6;
+    background-color:#000;
+    height: 100%;
+    pointer-events:none;
+  }
+  .minimap .overlay .cape-right {
+    width: 100%;
+  }
+  .minimap .overlay .light {
+    display:inline-block;
+    height:100%;
+    // width:100px;
+    cursor:pointer;
+    pointer-events:all;
   }
   .nav-map { display:none; }
   .nav-menu {
@@ -915,19 +960,6 @@
   .popup .window .content .section .youtube-box {
     text-align:center;
   }
-  .story-popup .window .content .story .text-box {
-    padding:0 21px;
-  }
-
-  .story-popup .window .content .story .text {
-    text-align:left;
-
-   }
-  .story-popup .window .content .story .text:lang(en) { font:18px titillium; }
-  .story-popup .window .content .story .text:lang(ka) { font:18px bpgnp; }
-  .story-popup .window .content .story .text:lang(ru) { font:18px arsenal; }
-  .story-popup .window .content .story .text p { padding-bottom: 26px; }
-  .story-popup .window .content .story .text p:last-of-type { padding-bottom: 0; }
 
   .story-popup .window .content .story.active {
     display:initial;

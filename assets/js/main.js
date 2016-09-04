@@ -211,15 +211,15 @@ $(document).ready(function () {
             tp.timeout_id = setTimeout(function () { tp.play(); }, 100);
             return;
           }
-          //console.log("animator inside");
-          var layer_anim = $(".layer-anim"), ln = layer_anim.length;
-          tp.after_hover_count = 0;
-          layer_anim.each(function (d) {
-            ++tp.after_hover_count;
-            // console.log("plus one", after_hover_count);
-            var t = $(this), stid = +t.find("[data-story]").attr("data-story"), dir = story.breath_direction[stid-1] === 0 ? "left" : "right";
-            t.velocity("js.breath_" + dir, { delay: 1000, complete: (d === ln - 1 ? function () {/*console.log("animator end");*/ tp.play();} : function () { /*console.log("minus one", d , after_hover_count-1);*/ --tp.after_hover_count; }) });
-          });
+          // //console.log("animator inside");
+          // var layer_anim = $(".layer-anim"), ln = layer_anim.length;
+          // tp.after_hover_count = 0;
+          // layer_anim.each(function (d) {
+          //   ++tp.after_hover_count;
+          //   // console.log("plus one", after_hover_count);
+          //   var t = $(this), stid = +t.find("[data-story]").attr("data-story"), dir = story.breath_direction[stid-1] === 0 ? "left" : "right";
+          //   t.velocity("js.breath_" + dir, { delay: 1000, complete: (d === ln - 1 ? function () {/*console.log("animator end");*/ tp.play();} : function () { /*console.log("minus one", d , after_hover_count-1);*/ --tp.after_hover_count; }) });
+          // });
           $(".layer-colored").velocity("js.fade", { delay: 900 });
         },
         bind: function (first) {
@@ -233,7 +233,7 @@ $(document).ready(function () {
               var t = $(this), p = t.parent();
               tp.finished = true;
               if(typeof tp.timeout_id !== "undefined") { clearTimeout(tp.timeout_id); }
-              layer_anim.velocity("finish");
+              // layer_anim.velocity("finish");
               layer_color.velocity("finish");
             }, debounce(function () {/* console.log("hover out");*/
               tp.finished = false;
@@ -278,7 +278,7 @@ $(document).ready(function () {
       bind: function (first) {
         var t = this;
 
-        t.el.find("object, .apanel").css("height", h - 60);
+        t.el.find("object, .apanel").css("height", h - 120);
 
         if(first) {
           t.audio.bind();
@@ -373,7 +373,6 @@ $(document).ready(function () {
                     <div class="quote" data-i18n-stories-s${i}-quote="text"></div>
                   </div>
                 </div>
-                <div class="text-box"><div class="text" data-i18n-stories-s${i}-text></div></div>
               </div>
             </div>`;
         }
@@ -525,7 +524,7 @@ $(document).ready(function () {
         if(shake === true) {
           story.off_animation();
           $("#story" + id + " .layer-colored").velocity({ opacity: 1}, { delay: 300, duration: 1000, easing: "easeInOutCubic", reset: { opacity: 0.1 }});
-          $("#story" + id + " .layer-anim").velocity("js.shake", { delay: 300, complete: function () { panorama.animator.play(); } });
+          //$("#story" + id + " .layer-anim").velocity("js.shake", { delay: 300, complete: function () { panorama.animator.play(); } });
         }
       },
       go_to_and_open_current: function () {
@@ -540,12 +539,12 @@ $(document).ready(function () {
         if(story.by_url) {
           helper.hidden = true;
           helper.el.hide();
-          story.open(id, function () { loader.inc(2); });
+          story.open(id, function () { loader.inc(4); });
           story.by_url = false;
         }
         else {
           helper.hide(4000);
-          loader.inc(2);
+          loader.inc(4);
         }
       },
       by_name: function (name) {
@@ -682,20 +681,63 @@ $(document).ready(function () {
       }
     },
     map = {
-      el: $(".nav-map-points"),
-      points: $(".nav-map-points > div"),
+      el: $(".minimap"),
+      img: $(".minimap img"),
+      light: $(".minimap .overlay .light"),
+      cape_left: $(".minimap .overlay .cape-left"),
+      cape_right: $(".minimap .overlay .cape-right"),
+      cape: {
+        left: 0,
+        right: 0
+      },
       bind: function () {
-        var t = this;
-        t.points.click(function () {
-          console.log("point lcik");
-          t.points.removeClass("active", $(this).addClass("active").attr("data-id"));
-          story.go_to(+$(this).addClass("active").attr("data-id"), true);
+        var t = this, prev_x, img_width = t.img.width(), light_width = Math.ceil(w/panorama.story_width*img_width);
+        if(light_width % 2) { +light_width; }
+        // console.log(w, panorama.story_width, img_width, w/panorama.story_width*img_width);
+        t.light.width(light_width);
+        t.cape.left = (img_width - light_width)/2;
+        t.cape.right = t.cape.left;
+        t.cape_left.width(t.cape.left );
+        t.cape_right.width(t.cape.right);
+        t.img.click(function () {
+          console.log("img clicked");
         });
+
+         t.light.draggable(
+          {
+            axis: "x",
+            start:  function (event, ui) { console.log("start" );prev_x = event.clientX; },
+            drag: function (event, ui) {
+              var diff = event.clientX - prev_x;
+
+              t.cape.left += diff;
+              t.cape_left.css("width", t.cape.left);
+              t.cape.right -= diff;
+              t.cape_right.css("width", t.cape.right);
+
+              prev_x = event.clientX;
+              ui.position.left = 0;
+            },
+            stop: function (event) {
+              var diff = event.clientX - prev_x;
+              t.cape_left.width(function (index, value) { return value + diff; });
+              // if(Math.abs(event.clientX - start_x) > w/2) {
+              //   start_x > event.clientX ? t.next() : t.prev();
+              // }
+
+            }
+          }
+        );
+        // t.points.click(function () {
+        //   console.log("point lcik");
+        //   t.points.removeClass("active", $(this).addClass("active").attr("data-id"));
+        //   story.go_to(+$(this).addClass("active").attr("data-id"), true);
+        // });
       },
       select_by_id: function (id) {
         var t = this;
-        t.points.removeClass("active");
-        if(id !== -1) { t.el.find("[data-id='" + id + "']").addClass("active"); }
+        // t.points.removeClass("active");
+        // if(id !== -1) { t.el.find("[data-id='" + id + "']").addClass("active"); }
       }
     },
     params = {
@@ -748,7 +790,7 @@ $(document).ready(function () {
         else if(percent >= 100) { percent = 100; }
 
         t.progress = percent;
-        t.progress_label.text(t.progress);
+        t.progress_label.text(Math.ceil(t.progress));
 
         // console.log(percent);
 
@@ -814,6 +856,8 @@ $(document).ready(function () {
     load = {
       first_time: true,
       bind: function () { /*console.log("load.bind");*/
+        console.timeEnd("a");
+        console.time("a");
         if(loader.aborted) { loader.abort_complete(); return; }
         panorama.bind(load.first_time);
         tooltip.bind(load.first_time);
@@ -825,8 +869,11 @@ $(document).ready(function () {
           load.first_time = false;
         }
         story.go_to_and_open_current();
+        console.timeEnd("a");
       },
       callback: function (is_partial) { /*console.log("load.callback");*/
+        console.timeEnd("a");
+        console.time("a");
         if(loader.aborted) { loader.abort_complete(); return; }
 
         resize();
@@ -859,7 +906,7 @@ $(document).ready(function () {
           if(--tmp_i === 0) tmp_i = panorama.panels.count - 1;
         }
 
-        var percent_step = (is_partial ? 98 : 4) / (expect_cnt*2);
+        var percent_step = (is_partial ? 96 : 46) / (expect_cnt*2);
 
         tmp_w = 0, tmp_i = 0;
         while(tmp_w < w) {
@@ -917,67 +964,69 @@ $(document).ready(function () {
 
         panorama.offset.right = panorama.width - panorama.right_width;
         panorama.offset.left = panorama.left_width;
-        if(expect_cnt === 0) { loader.inc(is_partial ? 98 : 4); setTimeout(load.bind, 100); }
+        if(expect_cnt === 0) { loader.inc(is_partial ? 96 : 46); setTimeout(load.bind, 100); }
       },
       effects: function () { /*console.log("load.effects");*/
+        console.timeEnd("a");
+        console.time("a");
         $.Velocity
-          .RegisterEffect("js.shake", {
-            defaultDuration: 200,
-            easing: "linear",
-            calls: [
-              [ { translateX: "+=-1", rotateZ: "+=-2deg" } ],
-              [ { translateX: "+=3" } ],
-              [ { translateX: "+=-6" } ],
-              [ { translateX: "+=8" } ],
-              [ { translateX: "+=-8", rotateZ: "+=4deg" } ],
-              [ { translateX: "+=8" } ],
-              [ { translateX: "+=-8" } ],
-              [ { translateX: "+=6" } ],
-              [ { translateX: "+=-3" } ],
-              [ { translateX: "+=1", rotateZ: "+=-2deg" } ]
-            ],
-            reset: { translateX: 0, rotateZ: 0 }
-          })
-          .RegisterEffect("js.breath_left", { // breath for left looking person
-            defaultDuration: 6000,
-            easing: "linear",
-            calls: [
-              [ { scale: "+=0.020", rotateZ: "+=2deg" }, .55 ],
-              [ { scale: "+=-0.020", rotateZ: "+=-2deg" }, .45 ]
-            ],
-            reset: { rotateZ: "0deg", scale: 1 }
-          })
-          .RegisterEffect("js.breath_right", { // breath for right looking person
-            defaultDuration: 6000,
-            easing: "linear",
-            calls: [
-              [ { scale: "+=0.020", rotateZ: "+=-2deg" }, .55 ],
-              [ { scale: "+=-0.020", rotateZ: "+=2deg" }, .45 ]
-            ],
-            reset: { rotateZ: "0deg", scale: 1 }
-          })
-          .RegisterEffect("js.hover", {
-            defaultDuration: 1500,
-            easing: "linear",
-            calls: [
-              [ { translateX: "+=2", rotateZ: "+=-1.5deg" } ],
-              [ { translateX: "+=-4", rotateZ: "+=3deg" } ],
-              [ { translateX: "+=4", rotateZ: "+=-3deg" } ],
-              [ { translateX: "+=-4", rotateZ: "+=3deg" } ],
-              [ { translateX: "+=2", rotateZ: "+=-1deg" } ]
-            ],
-            reset: { translateX: 0, rotateZ: "0deg"}
+          // .RegisterEffect("js.shake", {
+          //   defaultDuration: 200,
+          //   easing: "linear",
+          //   calls: [
+          //     [ { translateX: "+=-1", rotateZ: "+=-2deg" } ],
+          //     [ { translateX: "+=3" } ],
+          //     [ { translateX: "+=-6" } ],
+          //     [ { translateX: "+=8" } ],
+          //     [ { translateX: "+=-8", rotateZ: "+=4deg" } ],
+          //     [ { translateX: "+=8" } ],
+          //     [ { translateX: "+=-8" } ],
+          //     [ { translateX: "+=6" } ],
+          //     [ { translateX: "+=-3" } ],
+          //     [ { translateX: "+=1", rotateZ: "+=-2deg" } ]
+          //   ],
+          //   reset: { translateX: 0, rotateZ: 0 }
+          // })
+          // .RegisterEffect("js.breath_left", { // breath for left looking person
+          //   defaultDuration: 6000,
+          //   easing: "linear",
+          //   calls: [
+          //     [ { scale: "+=0.020", rotateZ: "+=2deg" }, .55 ],
+          //     [ { scale: "+=-0.020", rotateZ: "+=-2deg" }, .45 ]
+          //   ],
+          //   reset: { rotateZ: "0deg", scale: 1 }
+          // })
+          // .RegisterEffect("js.breath_right", { // breath for right looking person
+          //   defaultDuration: 6000,
+          //   easing: "linear",
+          //   calls: [
+          //     [ { scale: "+=0.020", rotateZ: "+=-2deg" }, .55 ],
+          //     [ { scale: "+=-0.020", rotateZ: "+=2deg" }, .45 ]
+          //   ],
+          //   reset: { rotateZ: "0deg", scale: 1 }
+          // })
+          // .RegisterEffect("js.hover", {
+          //   defaultDuration: 1500,
+          //   easing: "linear",
+          //   calls: [
+          //     [ { translateX: "+=2", rotateZ: "+=-1.5deg" } ],
+          //     [ { translateX: "+=-4", rotateZ: "+=3deg" } ],
+          //     [ { translateX: "+=4", rotateZ: "+=-3deg" } ],
+          //     [ { translateX: "+=-4", rotateZ: "+=3deg" } ],
+          //     [ { translateX: "+=2", rotateZ: "+=-1deg" } ]
+          //   ],
+          //   reset: { translateX: 0, rotateZ: "0deg"}
 
-          })
-          .RegisterEffect("js.swing", {
-            defaultDuration: 500,
-            easing: "linear",
-            calls: [
-              [ { rotateZ: [0, 360] } ]
-            ],
-            reset: { rotateZ: 0}
+          // })
+          // .RegisterEffect("js.swing", {
+          //   defaultDuration: 500,
+          //   easing: "linear",
+          //   calls: [
+          //     [ { rotateZ: [0, 360] } ]
+          //   ],
+          //   reset: { rotateZ: 0}
 
-          })
+          // })
           .RegisterEffect("js.fade", {
             defaultDuration: 6000,
             easing: "easeInOutCubic",
@@ -990,6 +1039,8 @@ $(document).ready(function () {
         setTimeout(load.callback, 100);
       },
       youtube: function () { /*console.log("load.youtube");*/
+        console.timeEnd("a");
+        console.time("a");
         var tag = document.createElement("script");
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName("script")[0];
@@ -1010,11 +1061,13 @@ $(document).ready(function () {
             );
           });
 
-          loader.inc(2);
+          loader.inc(6);
           setTimeout(load.effects, 100);
         };
       },
       audio: function () { /*console.log("load.audio");*/
+        console.timeEnd("a");
+        console.time("a");
         var cnt = 0, tmp,
           expect_cnt = panorama.audio.count,
           ext = panorama.audio.ext,
@@ -1026,7 +1079,7 @@ $(document).ready(function () {
               preload:"auto",
               loop: true,
               one: {
-                canplay: function (event) { loader.inc(2); if(++cnt === expect_cnt) { setTimeout(load.youtube, 100); } },
+                canplay: function (event) { loader.inc(.25); if(++cnt === expect_cnt) { setTimeout(load.youtube, 100); } },
                 error: function (e) { console.log(this, e, "error in load audio for one of the file"); }
               },
               "src": (path + i + "." + ext)
@@ -1034,6 +1087,8 @@ $(document).ready(function () {
         }
       },
       panels_process: function () { /*console.log("load.panels_process");*/
+        console.timeEnd("a");
+        console.time("a");
         panorama.panels.elem.forEach(function (d, i){
           panorama.panels.svg.push(d.get(0).contentDocument.documentElement.outerHTML);
           d.replaceWith(panorama.panels.svg[i]);
@@ -1042,16 +1097,17 @@ $(document).ready(function () {
         setTimeout(load.audio, 100);
       },
       panels: function () { /*console.log("load.panels");*/
+      console.time("a");
         var cnt = 0, bg, fg;
         panorama.panels.names.forEach( function (d, i) {
           bg = panorama.container.find("object[data-panel='" + (i+1) + "'][data-type='bg']");
-          bg.one("load", function (event){ loader.inc(6); if(++cnt === panorama.panels.count*2) { setTimeout(load.panels_process, 100); } });
+          bg.one("load", function (event){ loader.inc(4); if(++cnt === panorama.panels.count*2) { setTimeout(load.panels_process, 100); } });
           bg.attr("data", panorama.panels.path + "bg/" + d + ".svg");
 
 
           fg = panorama.container.find(".apanel[data-panel='" + (i+1) + "'][data-type='fg'] object");
           panorama.panels.elem.push(fg);
-          fg.one("load", function (event){ loader.inc(6); if(++cnt === panorama.panels.count*2) { setTimeout(load.panels_process, 100); } });
+          fg.one("load", function (event){ loader.inc(4); if(++cnt === panorama.panels.count*2) { setTimeout(load.panels_process, 100); } });
           fg.attr("data", panorama.panels.path + "fg/" + d + ".svg");
         });
       },

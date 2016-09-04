@@ -35,9 +35,22 @@
       </noscript>
     </div>
     <div id="helper"><span data-i18n-drag_or_use></span><i></i></div>
+    <div class="sound-toggle top d"><i class="sound"></i></div>
     <div class="wrapper">
-      <div class="sound-toggle top d"><i class="sound"></i></div>
-      <div id="panorama">
+      <header>
+        <div class="left">
+          <div class="by">An Interactive Story By<span>Andrew North</span></div>
+        </div>
+        <div class="center">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, cum.
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis!</span>
+        </div>
+        <div class="right">
+          <div class="share"></div>
+          <div class="language"></div>
+        </div>
+      </header>
+      <article id="panorama">
         <div class="container">
           <div class="panel">
             <object data-panel="1" data-type="bg" type="image/svg+xml"></object>
@@ -75,9 +88,24 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="nav">
-        <a data-i18n-url="href" class="nav-title">
+      </article>
+      <footer class="nav">
+        <div class="prev-story"></div>
+        <div class="center">
+          <div class="sound-toggle"></div>
+          <div class="about"></div>
+          <div class="minimap">
+            <img src="../assets/images/map.png"/>
+            <div class="overlay">
+              <div class="cape cape-left"></div>
+              <div class="light"></div>
+              <div class="cape cape-right"></div>
+            </div>
+          </div>
+          <div class="behind"></div>
+        </div>
+        <div class="next-story"></div>
+     <!--    <a data-i18n-url="href" class="nav-title">
           <span data-i18n-nav_title_1></span><br/><span data-i18n-nav_title_2></span>
         </a>
         <div class="nav-map">
@@ -121,8 +149,8 @@
               <li><a href="javascript:void(0)" data-popup-target="behind"><span data-i18n-behind-name></span><i class="behind"></i></a></li>
               <li><a href="javascript:void(0)" data-popup-target="about"><span data-i18n-about-name></span><i class="about"></i></a></li>
             </ul>
-         </div>
-      </div>
+         </div> -->
+      </footer>
     </div>
     <div id="popup" class="popup" data-type="">
       <div class="bg"></div>
@@ -133,7 +161,7 @@
             <div class="caption" data-i18n-about-caption></div>
             <div class="author" data-i18n-about-author></div>
             <div class="text" data-i18n-about-text></div>
-          </div>EL
+          </div>
           <div class="section behind">
             <div class="caption" data-i18n-behind-caption></div>
             <div class="youtube-box"><div class="youtube" data-i18n-behind-yid="data-yid" data-i18n-behind-player_yid="id"></div></div>
