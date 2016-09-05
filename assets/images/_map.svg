@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="623.922px" height="50.993px" viewBox="0 0 623.922 50.993" enable-background="new 0 0 623.922 50.993"
+	 xml:space="preserve">
+    <style>
+    <![CDATA[
+      svg { pointer-events: none; }
+      path { pointer-events:all; }
+    ]]>
+  </style>
+<path id="obj3" class="obj" opacity="0.6" fill="#EA8500" d="M318,50.993c-15.878,4.706-49.051-8.65-28.5-28.993
+	C310.293,1.417,322.61,35.461,318,50.993z"/>
+<path id="obj2" class="obj" opacity="0.5" fill="#EA8500" d="M250,50.993c-19.166,5.247-34.458-20.127-20-33.493
+	C251.543-2.416,251.783,42.229,250,50.993z"/>
+<path id="obj1" class="obj" opacity="0.5" fill="#EA8500" d="M86.5,36.496C72.096,40.23,49.872,24.478,66,10.5
+	C84.548-5.576,89.804,25.363,86.5,36.496z"/>
+<rect id="overlay" opacity="0" fill="#EA8500" width="623.922" height="50.993"/>
+</svg>

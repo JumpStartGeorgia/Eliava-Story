@@ -22,6 +22,7 @@ en =
   "en": "English",
   "ge": "Georgian",
   "ru": "Russian",
+  "story_by": "<span>An Interactive Story By</span><span>Andrew North</span>",
   "about": {
     "name": "Story",
     "caption": "The Big Draw: Selling the Soviet Past",
