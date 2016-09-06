@@ -14,6 +14,7 @@ $(document).ready(function () {
     story_mode = false,
     popup_mode = false,
     on_esc = {},
+    fake = function() {},
     panorama = {
       step: 0,
       el: $("#panorama"),
@@ -301,8 +302,8 @@ $(document).ready(function () {
           $(document).keydown(function ( event ) {
             if (!event) {event = window.event;} // for IE compatible
             var keycode = event.keyCode || event.which; // also for cross-browser compatible
-            if (keycode == Key.LEFT && popup_mode) { story_mode ? story.prev() : scrl_left(); }
-            if (keycode == Key.RIGHT && popup_mode) { story_mode ? story.next() : scrl_right(); }
+            if (keycode == Key.LEFT) { story_mode ? story.prev() : (popup_mode ? fake() : scrl_left()); }
+            if (keycode == Key.RIGHT) { story_mode ? story.next() : (popup_mode ? fake() : scrl_right()); }
 
             if(keycode === Key.ESC) {
               Object.keys(on_esc).forEach(function (d) {
@@ -853,8 +854,9 @@ $(document).ready(function () {
           $(t.path).css("stroke-dasharray", t.length + "px");
           t.length = t.path.getTotalLength();
         }
-        $(t.path).css("stroke-dashoffset", 0);
-        $(t.path).velocity({ "stroke-dashoffset": -1*t.length + "px" },
+        console.log("start animation");
+        // $(t.path).css("stroke-dashoffset", 0);
+        $(t.path).velocity({ "stroke-dashoffset": [-1*t.length, 0] },
           {
             duration: t.animate_duration,
             complete: function () {
@@ -943,7 +945,7 @@ $(document).ready(function () {
         panorama.story_width = panorama.width;
 
         var template_panel = "<div class='panel ghost'></div>",
-          template_object = "<object data-panel='%id' data-type='%type' type='image/svg+xml' height='%heightpx'></object>";
+          template_object = "<object data-panel='%id' data-type='%type' type='image/svg+xml' style='height:%heightpx'></object>";
 
         // need count of additional panels for loader
         while(tmp_w < w) { // for right side
@@ -970,7 +972,7 @@ $(document).ready(function () {
           pnl.append(tmp);
 
           pnl.append("<div class='surface'></div>");
-          svg = $("<div class='apanel noselect' data-panel='r" + (tmp_i+1) + "' data-type='fg' height='" + pnl_height + "px'>").appendTo(pnl);
+          svg = $("<div class='apanel noselect' data-panel='r" + (tmp_i+1) + "' data-type='fg' style='height:" + pnl_height + "px'>").appendTo(pnl);
           tmp = $(template_object.replace("%id", "r" + (tmp_i+1)).replace("%type", "bg"));
           tmp.one("load", { pnl_i: tmp_i }, function (event) {
             $(this).replaceWith(html[event.data.pnl_i].replace(/id\=\"story/g, "id=\"story_r_"));
@@ -998,7 +1000,7 @@ $(document).ready(function () {
           pnl.append(tmp);
 
           pnl.append("<div class='surface noselect'></div>");
-          svg = $("<div class='apanel noselect' data-panel='l" + (tmp_i+1) + "' data-type='fg' height='" + pnl_height + "px'>").appendTo(pnl);
+          svg = $("<div class='apanel noselect' data-panel='l" + (tmp_i+1) + "' data-type='fg' style='height:" + pnl_height + "px'>").appendTo(pnl);
           tmp = $(template_object.replace("%id", "l" + (tmp_i+1)).replace("%type", "fg"));
           tmp.one("load", { pnl_i: tmp_i }, function (event) {
             $(this).replaceWith(html[event.data.pnl_i].replace(/id\=\"story/g, "id=\"story_l_"));
@@ -1146,20 +1148,20 @@ $(document).ready(function () {
   }
 
   // for deployed version
-  (function init () {
-    params.parse();
-    load.all();
-  })();
+  // (function init () {
+  //   params.parse();
+  //   load.all();
+  // })();
 
   // for dev version
-/*  (function dev_init () {
+  (function dev_init () {
     I18n.init(function (){
       window.pn = panorama;
       I18n.remap();
       params.parse();
       load.all();
     });
-  })();*/
+  })();
 
   // for deploing process
 /*  (function deploy_init () {

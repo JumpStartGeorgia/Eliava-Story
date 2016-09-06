@@ -278,8 +278,8 @@
 
 }
   .qtip-content {
-  border-radius:10px;
-  background-color: #fff;
+  // border-radius:10px;
+  background-color: #ff8500;
   color: #555;
   overflow:visible;
   -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.3);
@@ -321,9 +321,9 @@
     position: absolute;
 
     color: #123456;
-    background: #000;
+    background: #ff8500;
     border: 0 dashed transparent;
-    background-color:#0b0b0b;
+    background-color:#ff8500;
   }
 
   .qtip .qtip-tip canvas{ top: 0; left: 0;     background-color:lightblue;}

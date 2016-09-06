@@ -39,13 +39,25 @@
     <div class="wrapper">
       <header class="d">
         <div class="left"><div class="by" data-i18n-story_by></div></div>
-        <div class="center">
+        <a class="center" data-i18n-url="href">
           <span data-i18n-title></span>
           <span data-i18n-description></span>
-        </div>
+        </a>
         <div class="right">
-          <div class="share" data-i18n-share></div>
-          <div class="language" data-i18n-en></div>
+          <div class="header-dropdown">
+            <a href="javascript:void(0)" class="header-dropdown-toggle" data-i18n-selected_locale="data-current"><span data-i18n-en></span><i class="language"></i></a>
+            <ul class="header-dropdown-list language">
+              <li data-item="russian"><a href="javascript:void(0)" data-i18n-url_ru="href" data-i18n-ru></a></li>
+              <li data-item="georgian"><a href="javascript:void(0)" data-i18n-url_ka="href" data-i18n-ge></a></li>
+              <li data-item="english"><a href="javascript:void(0)" data-i18n-url_en="href" data-i18n-en></a></li>
+            </ul>
+          </div>
+          <div class="header-dropdown">
+            <a href="javascript:void(0)" class="header-dropdown-toggle"><span data-i18n-share></span><i class="share"></i></a>
+            <div class="header-dropdown-list share">
+              <div class="addthis_sharing_toolbox" data-i18n-url="data-url"></div>
+            </div>
+          </div>
         </div>
       </header>
       <article id="panorama">
@@ -91,8 +103,7 @@
         <div class="des">
           <div class="nav-prev"></div>
           <div class="center">
-            <div class="sound-toggle"><i class="sound"></i></div>
-            <a href="javascript:void(0)" data-popup-target="about"><span data-i18n-about-name></span><i class="about"></i></a>
+            <a href="javascript:void(0)" data-popup-target="about"><i class="about"></i><span data-i18n-about-name></span></a>
             <div class="minimap">
               <!-- <img src="../assets/images/map.svg"/> -->
               <object type="image/svg+xml" data="../assets/images/map.svg"></object>
@@ -107,7 +118,8 @@
               </div>
               <!-- <object type="image/svg+xml" data="../assets/images/map.svg"></object> -->
             </div>
-            <a href="javascript:void(0)" data-popup-target="behind"><span data-i18n-behind-name></span><i class="behind"></i></a>
+            <a href="javascript:void(0)" data-popup-target="behind"><i class="behind"></i><span data-i18n-behind-name></span></a>
+            <div class="sound-toggle"><i class="sound"></i></div>
           </div>
           <div class="nav-next"></div>
         </div>
