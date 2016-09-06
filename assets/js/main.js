@@ -1,6 +1,6 @@
 /*global  $ debounce I18n YT exist isNumber js getRandomIntInclusive device addWheelListener */
 /*eslint camelcase: 0, no-underscore-dangle: 0, no-unused-vars: 0, no-console: 0*/
-var youtubePlayers = {};
+var youtubePlayers = {}, loaderReady = false;
 $(document).ready(function () {
   var w, h,
     Key = {
@@ -842,13 +842,13 @@ $(document).ready(function () {
 
         t.progress = percent;
         t.progress_label.text(Math.ceil(t.progress));
-        console.log("here", t.progress);
         // console.log(percent);
 
         if(percent >= 100) { t.complete(); }
       },
       start_animation: function () {
         var t = this;
+        if(!loaderReady) { setTimeout(function () { t.start_animation(); }, 100); return; }
         if(!t.path) {
           t.path = t.image.get(0).contentDocument.getElementsByTagName("path")[0];
           $(t.path).css("stroke-dasharray", t.length + "px");
@@ -1145,24 +1145,24 @@ $(document).ready(function () {
   }
 
   // for deployed version
-  (function init () {
+/*  (function init () {
     params.parse();
     load.all();
-  })();
+  })();*/
 
   // for dev version
-  // (function dev_init () {
-  //   I18n.init(function (){
-  //     I18n.remap();
-  //     params.parse();
-  //     load.all();
-  //   });
-  // })();
+/*  (function dev_init () {
+    I18n.init(function (){
+      I18n.remap();
+      params.parse();
+      load.all();
+    });
+  })();*/
 
   // for deploing process
-/*  (function deploy_init () {
+  (function deploy_init () {
     // panorama.audio.dev();
     // story.dev();
     I18n.init(function (){ I18n.remap(); });
-  })();*/
+  })();
 });
