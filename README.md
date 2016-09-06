@@ -44,7 +44,7 @@ In main.js file go to the bottom and comment init and deploy_init if you are usi
   * remove last script that is under <!-- deploy - remove extra script that points to locale file --> comment
   * uncomment previously commented text (I18n.js script can be deleted not tested but it should work)
   * if it is production change addthis id
-
+- In main.js file go to the bottom and comment dev_init and deploy_init, uncomment init
 
 ## TODO
   * in dev/index.html translate into russian and paste 'You need to turn on Javascript for this application to work!' into noscript block

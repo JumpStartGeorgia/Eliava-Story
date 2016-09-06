@@ -164,6 +164,8 @@
     transform: translate(-50%, -50%);
     background-color: rgba(255,255,255, .9);
     border-radius:100%;
+    width:200px;
+    height:200px;
     padding: 50px 52px;
     text-align: center;
     z-index:998;
@@ -358,7 +360,7 @@
     min-height: 60px;
     background-color: #434244; /* #F7F7F7; */
     z-index:21;
-    // padding:0 0 0 12px;
+    padding:0 0 0 12px;
     border-top:1px solid #DDDDDD;
   }
   .nav .mob, .nav .des {
@@ -1153,10 +1155,11 @@
     #loader_image { padding:16px 0 16px; }
     #loader_progress { padding:16px 0 75px; }
     .d { display:initial; }
+    header.d { display: flex; }
     .nav .des { display: flex; }
     .nav .mob { display: none; }
     .nav {
-      // padding:0 0 0 32px;
+      padding:0;
     }
     // .nav-menu {
     //   width:auto;

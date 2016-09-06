@@ -292,7 +292,7 @@ $(document).ready(function () {
       bind: function (first) {
         var t = this;
 
-        t.el.find("object, .apanel").css("height", h - 120);
+        t.el.find("object, .apanel").css("height", h - (h > 992 ? 120 : 60));
 
         if(first) {
           t.audio.bind();
@@ -1145,22 +1145,22 @@ $(document).ready(function () {
   }
 
   // for deployed version
-  // (function init () {
-  //   params.parse();
-  //   load.all();
-  // })();
-
-  // for dev version
-  (function dev_init () {
-    I18n.init(function (){
-      I18n.remap();
-      params.parse();
-      load.all();
-    });
+  (function init () {
+    params.parse();
+    load.all();
   })();
 
+  // for dev version
+  // (function dev_init () {
+  //   I18n.init(function (){
+  //     I18n.remap();
+  //     params.parse();
+  //     load.all();
+  //   });
+  // })();
+
   // for deploing process
-  /*(function deploy_init () {
+/*  (function deploy_init () {
     // panorama.audio.dev();
     // story.dev();
     I18n.init(function (){ I18n.remap(); });
