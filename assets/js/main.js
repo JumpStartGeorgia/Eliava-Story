@@ -1145,10 +1145,10 @@ $(document).ready(function () {
   }
 
   // for deployed version
-/*  (function init () {
+  (function init () {
     params.parse();
     load.all();
-  })();*/
+  })();
 
   // for dev version
 /*  (function dev_init () {
@@ -1160,9 +1160,9 @@ $(document).ready(function () {
   })();*/
 
   // for deploing process
-  (function deploy_init () {
+/*  (function deploy_init () {
     // panorama.audio.dev();
     // story.dev();
     I18n.init(function (){ I18n.remap(); });
-  })();
+  })();*/
 });
