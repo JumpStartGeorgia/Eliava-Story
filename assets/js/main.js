@@ -209,10 +209,10 @@ $(document).ready(function () {
           var tp = this;
           if(tp.finished) return;
           //console.log("animator", after_hover_count);
-          if(tp.after_hover_count !== 1) {
-            tp.timeout_id = setTimeout(function () { tp.play(); }, 100);
-            return;
-          }
+          // if(tp.after_hover_count !== 1) {
+          //   tp.timeout_id = setTimeout(function () { tp.play(); }, 100);
+          //   return;
+          // }
           // //console.log("animator inside");
           // var layer_anim = $(".layer-anim"), ln = layer_anim.length;
           // tp.after_hover_count = 0;
@@ -222,12 +222,12 @@ $(document).ready(function () {
           //   var t = $(this), stid = +t.find("[data-story]").attr("data-story"), dir = story.breath_direction[stid-1] === 0 ? "left" : "right";
           //   t.velocity("js.breath_" + dir, { delay: 1000, complete: (d === ln - 1 ? function () {/*console.log("animator end");*/ tp.play();} : function () { /*console.log("minus one", d , after_hover_count-1);*/ --tp.after_hover_count; }) });
           // });
-          $(".layer-colored").velocity("js.fade", { delay: 900 });
+          $(".layer-colored").velocity("js.fade", { delay: 900, complete: function () { tp.play(); } });
         },
         bind: function (first) {
           var tp = this,
             prefix = first ? "" : ".ghost ",
-            layer_anim = $(prefix + ".layer-anim"),
+            // layer_anim = $(prefix + ".layer-anim"),
             layer_color = $(prefix + ".layer-colored").addClass("anim-object");
 
           if(device.desktop()) {
@@ -589,7 +589,7 @@ $(document).ready(function () {
         return js.story_titles[id-1][["en", "ka", "ru"].indexOf(lang)];
       },
       off_animation: function () {
-        $(".layer-anim").velocity("finish");
+        // $(".layer-anim").velocity("finish");
         $(".layer-colored").velocity("finish");
       },
       on_animation: function () {
@@ -1146,20 +1146,20 @@ $(document).ready(function () {
   }
 
   // for deployed version
-/*  (function init () {
+  (function init () {
     params.parse();
     load.all();
-  })();*/
+  })();
 
   // for dev version
-  (function dev_init () {
+/*  (function dev_init () {
     I18n.init(function (){
       window.pn = panorama;
       I18n.remap();
       params.parse();
       load.all();
     });
-  })();
+  })();*/
 
   // for deploing process
 /*  (function deploy_init () {
