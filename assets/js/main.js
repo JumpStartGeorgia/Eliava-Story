@@ -1148,25 +1148,25 @@ $(document).ready(function () {
   }
 
   // for deployed version
-  // (function init () {
-  //   params.parse();
-  //   load.all();
-  // })();
-
-  // for dev version
-  (function dev_init () {
-    I18n.init(function (){
-      window.pn = panorama;
-      I18n.remap();
-      params.parse();
-      load.all();
-    });
+  (function init () {
+    params.parse();
+    load.all();
   })();
 
+  // for dev version
+  // (function dev_init () {
+  //   I18n.init(function (){
+  //     window.pn = panorama;
+  //     I18n.remap();
+  //     params.parse();
+  //     load.all();
+  //   });
+  // })();
+
   // for deploing process
-/*  (function deploy_init () {
-    // panorama.audio.dev();
-    // story.dev();
-    I18n.init(function (){ I18n.remap(); });
-  })();*/
+  // (function deploy_init () {
+  //   // panorama.audio.dev();
+  //   // story.dev();
+  //   I18n.init(function (){ I18n.remap(); });
+  // })();
 });
