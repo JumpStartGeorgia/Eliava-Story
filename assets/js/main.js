@@ -14,7 +14,8 @@ $(document).ready(function () {
     story_mode = false,
     popup_mode = false,
     on_esc = {},
-    fake = function() {},
+    fake = function () {},
+    fox = /firefox/i.test(navigator.userAgent),
     panorama = {
       step: 0,
       el: $("#panorama"),
@@ -41,7 +42,7 @@ $(document).ready(function () {
       left_width: 0,
       right_width: 0,
       audio: {
-        ext: /opera/i.test(navigator.userAgent) || /firefox/i.test(navigator.userAgent) ? "ogg" : "mp3",
+        ext: /opera/i.test(navigator.userAgent) || fox ? "ogg" : "mp3",
         path: "../assets/sounds/",
         // names of the files are number between 1 and 'count'
         elem: [],
@@ -51,7 +52,7 @@ $(document).ready(function () {
         muted: false,
         soft_muted: false,
         toggle: $(".sound-toggle"),
-        default_volume: 0, // deploy 0.6
+        default_volume: 0.6, // deploy 0.6
         fade_duration: 500,
         can_play: true,
         ok: function () {
@@ -203,61 +204,31 @@ $(document).ready(function () {
       },
       animator: {
         finished: false,
-        timeout_id: undefined,
-        after_hover_count: 1,
-        play: function () {
-          if(!device.desktop()) { return; }
-          var tp = this;
-          if(tp.finished) return;
-          //console.log("animator", after_hover_count);
-          // if(tp.after_hover_count !== 1) {
-          //   tp.timeout_id = setTimeout(function () { tp.play(); }, 100);
-          //   return;
-          // }
-          // //console.log("animator inside");
-          // var layer_anim = $(".layer-anim"), ln = layer_anim.length;
-          // tp.after_hover_count = 0;
-          // layer_anim.each(function (d) {
-          //   ++tp.after_hover_count;
-          //   // console.log("plus one", after_hover_count);
-          //   var t = $(this), stid = +t.find("[data-story]").attr("data-story"), dir = story.breath_direction[stid-1] === 0 ? "left" : "right";
-          //   t.velocity("js.breath_" + dir, { delay: 1000, complete: (d === ln - 1 ? function () {/*console.log("animator end");*/ tp.play();} : function () { /*console.log("minus one", d , after_hover_count-1);*/ --tp.after_hover_count; }) });
-          // });
-          $(".layer-colored").velocity("js.fade", { delay: 900, complete: function () { tp.play(); } });
-        },
+        anims: undefined,
         bind: function (first) {
-          var tp = this,
-            prefix = first ? "" : ".ghost ",
-            // layer_anim = $(prefix + ".layer-anim"),
-            layer_color = $(prefix + ".layer-colored").addClass("anim-object");
-
+          var tp = this;
+          tp.anims = $(".layer-colored");
           if(device.desktop()) {
-            layer_color.hover(function () { /*console.log("hover in");*/
-              var t = $(this), p = t.parent();
-              tp.finished = true;
-              if(typeof tp.timeout_id !== "undefined") { clearTimeout(tp.timeout_id); }
-              // layer_anim.velocity("finish");
-              layer_color.velocity("finish");
-            }, debounce(function () {/* console.log("hover out");*/
-              tp.finished = false;
-              tp.play();
-            }, 100) );
+            tp.anims.hover(
+              function () { tp.stop(); },
+              debounce(function () { tp.start(); },
+            100));
           }
 
-          layer_color.click(function () { story.open(+$(this).attr("data-story")); });
+          tp.anims.click(function () { story.open(+$(this).attr("data-story")); });
         },
-        hover_play: function () {
-          // hover_animator_id = undefined;
-
-          // function animator_js_hover (id) {
-          //   console.log("animator_js_hover");
-          //   if(after_hover_count !== 1) {
-          //     hover_animator_id = setTimeout(function () { animator_js_hover(id); }, 100);
-          //   }
-          //   else {
-          //     $("#story" + id + " .layer-anim").velocity("js.hover", { delay: 100, complete: function () { animator_js_hover(id); } });
-          //   }
-          // }
+        play: function () {
+          if(!device.desktop() || this.finished) { return; }
+          var tp = this;
+          tp.anims.velocity("js.fade", { delay: 900, complete: function () { tp.play(); } });
+        },
+        start: function () {
+          this.finished = false;
+          this.play();
+        },
+        stop: function () {
+          this.finished = true;
+          this.anims.velocity("stop", true).css("opacity", .1);
         }
       },
       scroll_by_pos: function (pos) {
@@ -275,7 +246,6 @@ $(document).ready(function () {
         t.position.analyze(pos);
       },
       scroll_by_pos_direct: function (pos) {
-        console.log("direct", pos);
         var t = this, prev = t.container_position;
 
         t.container_position = pos;
@@ -322,33 +292,43 @@ $(document).ready(function () {
         }
 
         t.animator.bind(first);
-        t.el.find((first ? "" : ".ghost ") + ".surface").draggable(
+
+        var dragend = true,
+          surfs = t.el.find((first ? "" : ".ghost ") + ".surface");
+        if(fox) {
+          surfs.on("mouseleave", function () { dragend = true; });
+        }
+
+        surfs.draggable(
           {
             axis: "x",
             start:  function (event, ui) {
-              //console.log("start", event, ui);
+              dragend = false;
               t.surface = $(event.target);
               if(first && !helper.hidden) { helper.hide(); }
             },
             drag: function (event, ui) {
-              //console.log("drag", event, ui);
-              var pos = t.container_position + (ui.position.left - t.surface_position);
-              t.surface_position = ui.position.left;
+              if(!fox || !dragend) {
+                var pos = t.container_position + (ui.position.left - t.surface_position);
+                t.surface_position = ui.position.left;
 
-              if(pos <= -1 * t.offset.right || pos >= w - t.offset.left) {
-                t.position.flip(pos);
+                if(pos <= -1 * t.offset.right || pos >= w - t.offset.left) {
+                  t.position.flip(pos);
+                }
+                else {
+                  t.container_position = pos;
+                  t.container.css("transform", "translateX(" + pos + "px)");
+                }
+                t.position.analyze(pos);
               }
               else {
-                t.container_position = pos;
-                t.container.css("transform", "translateX(" + pos + "px)");
+                return false;
               }
-              t.position.analyze(pos);
             },
             stop: function (event, ui) {
-              //console.log("stop", event, ui);
-              // t.el.find(".surface").css("left", 0);
               t.surface.css("left", 0);
               t.surface_position = 0;
+              dragend = true;
             }
           }
         );
@@ -535,12 +515,6 @@ $(document).ready(function () {
           bbox = st.get(0).getBoundingClientRect();
 
         panorama.scroll_by_pos((pbbox.left - bbox.left) + w/2 - bbox.width/2);
-
-        if(shake === true) {
-          story.off_animation();
-          $("#story" + id + " .layer-colored").velocity({ opacity: 1}, { delay: 300, duration: 1000, easing: "easeInOutCubic", reset: { opacity: 0.1 }});
-          //$("#story" + id + " .layer-anim").velocity("js.shake", { delay: 300, complete: function () { panorama.animator.play(); } });
-        }
       },
       go_to_and_open_current: function () {
         var id = this.current;
@@ -590,11 +564,10 @@ $(document).ready(function () {
         return js.story_titles[id-1][["en", "ka", "ru"].indexOf(lang)];
       },
       off_animation: function () {
-        // $(".layer-anim").velocity("finish");
-        $(".layer-colored").velocity("finish");
+        panorama.animator.stop();
       },
       on_animation: function () {
-        panorama.animator.play();
+        panorama.animator.start();
       }
     },
     tooltip = {
@@ -667,6 +640,11 @@ $(document).ready(function () {
       bind: function () {
         var t = this;
         t.el.find(".close, .bg").on("click", function () { t.close(); });
+        t.el.find(".about .to-character").click(function (e) {
+          popup.close();
+          story.by_name(story.name_by_id(+$(this).attr("data-id")));
+          e.preventDefault();
+        });
       }
     },
     nav = {
@@ -749,29 +727,47 @@ $(document).ready(function () {
         });
 
 
+        var dragend = true;
+        if(fox) {
+          console.log("not here");
+          t.lights.on("mouseleave", function () { dragend = true; });
+        }
+
         t.lights.draggable(
           {
             axis: "x",
-            start:  function (event, ui) { prev_x = event.clientX; },
-            drag: function (event, ui) {
-              var diff = event.clientX - prev_x, start_pos;
-              t.pos += diff;
-              if(-1*t.pos > (2*t.cape_w + 2*t.light_w)) {
-                t.pos += (t.cape_w + t.light_w);
-              }
-              else if(-1*t.pos < t.cape_w) {
-                t.pos -= (t.cape_w + t.light_w);
-              }
-
-              start_pos = -1 * t.pos - 2 * t.cape_w - t.light_w;
-              if(start_pos > 0) { start_pos = t.img_w - start_pos; }
-
-              t.overlay.css("transform", "translateX(" + t.pos + "px");
-
-              panorama.scroll_by_pos_direct(-1 * (Math.abs(start_pos)/t.img_w * panorama.story_width + panorama.offset.left));
-
+            start: function (event, ui) {
+              dragend = false;
               prev_x = event.clientX;
+            },
+            drag: function (event, ui) {
+              if(!fox || !dragend) {
+                var diff = event.clientX - prev_x, start_pos;
+                t.pos += diff;
+                if(-1*t.pos > (2*t.cape_w + 2*t.light_w)) {
+                  t.pos += (t.cape_w + t.light_w);
+                }
+                else if(-1*t.pos < t.cape_w) {
+                  t.pos -= (t.cape_w + t.light_w);
+                }
+
+                start_pos = -1 * t.pos - 2 * t.cape_w - t.light_w;
+                if(start_pos > 0) { start_pos = t.img_w - start_pos; }
+
+                t.overlay.css("transform", "translateX(" + t.pos + "px");
+
+                panorama.scroll_by_pos_direct(-1 * (Math.abs(start_pos)/t.img_w * panorama.story_width + panorama.offset.left));
+
+                prev_x = event.clientX;
+              }
+              else {
+                console.log("prog stop");
+                return false;
+              }
               ui.position.left = 0;
+            },
+            stop: function (event, ui) {
+              dragend = true;
             }
           }
         );
@@ -780,7 +776,7 @@ $(document).ready(function () {
         var t = this, start_pos;
 
         start_pos = -1 * panorama.container_position - panorama.offset.left;
-        console.log(t.cape_w, t.light_w, start_pos , panorama.story_width , t.img_w);
+        // console.log(t.cape_w, t.light_w, start_pos , panorama.story_width , t.img_w);
         //if(start_pos < 0) { start_pos = panorama.story_width - start_pos; }
         t.pos = -1 * ( 2 * t.cape_w + t.light_w - start_pos / panorama.story_width * t.img_w);
         t.overlay.css("transform", "translateX(" + t.pos + "px");
@@ -854,8 +850,6 @@ $(document).ready(function () {
           $(t.path).css("stroke-dasharray", t.length + "px");
           t.length = t.path.getTotalLength();
         }
-        console.log("start animation");
-        // $(t.path).css("stroke-dashoffset", 0);
         $(t.path).velocity({ "stroke-dashoffset": [-1*t.length, 0] },
           {
             duration: t.animate_duration,

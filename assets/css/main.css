@@ -63,6 +63,9 @@
   a {
     text-decoration:none;
   }
+  .pointer-events-off {
+    pointer-events:none;
+  }
 /*------------------------------------------ Tooltip  --------------------------------------*/
 
 .tooltip-box { color:#fff; }
@@ -314,7 +317,7 @@
     display: inline-block;
   }
   .header-dropdown-toggle i {
-    display:inline-block;
+    display:none;
     width:30px;
     height:28px;
     margin-right:10px;
@@ -450,7 +453,7 @@
     width:100%;
     height:100%;
   }
-  #panorama .apanel svg .anim-object {
+  #panorama .apanel svg .layer-colored {
     pointer-events:all;
     cursor:pointer;
   }
@@ -553,7 +556,7 @@
     display: inline-block;
   }
   .nav .center a i {
-    display:inline-block;
+    display:none;
     width:30px;
     height:28px;
     order:2;
@@ -965,7 +968,9 @@
   .popup .window .section.behind .text ul li span:lang(en) { font:18px titillium_b; }
   .popup .window .section.behind .text ul li span:lang(ka) { font:18px bpgnp_b; }
   .popup .window .section.behind .text ul li span:lang(ru) { font:18px arsenal_b; }
-
+  .popup .window .section.about .text .to-character {
+    color:#E97728;
+  }
   .popup .window .section.about .footer
    {
       color:#000;
@@ -1187,6 +1192,7 @@
     }
   .popup .window .content .section .youtube-box {
     text-align:center;
+    height:100%;
   }
 
   .story-popup .window .content .story.active {
@@ -1421,5 +1427,11 @@
   }
 
   @media (min-width: 1200px) { /* Large devices (large desktops, 1200px and up) */
+    .header-dropdown-toggle i {
+      display:inline-block;
+    }
+    .nav .center a i {
+      display:inline-block;
+    }
   }
 
