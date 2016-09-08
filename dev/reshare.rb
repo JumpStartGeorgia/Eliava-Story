@@ -129,7 +129,8 @@ def init
       @title = story_data["title"]
       @descr = story_data["description"]
       @share_url = share_dir_url + "/" + id + ".html"
-      @image = url + "/assets/images/share/#{story_index}.png"
+      # if each story wlll have it's own file use this @image = url + "/assets/images/share/#{story_index}.jpg"
+      @image = url + "/assets/images/share/fb.jpg"
 
       @url_with_locale = url_with_locale_orig + id
 

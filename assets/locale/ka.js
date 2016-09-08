@@ -12,7 +12,7 @@ ka =
   "url_en": "http://dev-eliava.jumpstart.ge/en/",
   "url_ka": "http://dev-eliava.jumpstart.ge/ka/",
   "url_ru": "http://dev-eliava.jumpstart.ge/ru/",
-  "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.png",
+  "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.jpg",
   "share_path": "share",
   "loader": {
     "text": "25 years since the end of the USSR: The story of a market like no other"

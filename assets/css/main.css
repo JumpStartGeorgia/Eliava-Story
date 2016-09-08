@@ -63,8 +63,18 @@
   a {
     text-decoration:none;
   }
-  .pointer-events-off {
+  .minimap img {
+    width:100%;
+    height:100%;
+  }
+  .minimap .fg {
     pointer-events:none;
+    position:absolute;
+    top:0;
+  }
+  .minimap .fg .to-character { cursor:pointer; pointer-events:all;}
+  .preload-minimap {
+    display:initial !important;
   }
 /*------------------------------------------ Tooltip  --------------------------------------*/
 
@@ -203,21 +213,7 @@
     display: inline-block;
     cursor:pointer;
   }
-  .sound-toggle.d {
-    position:fixed;
-    top:16px;
-    right:20px;
-    width:40px;
-    height:40px;
-    z-index:22;
-    background-color:#fff;
-    border: 1px solid #000;
-    border-radius:10px;
-    transform: rotateZ(45deg);
-  }
-  .sound-toggle.d i {
-    transform: rotateZ(-45deg);
-  }
+
   .sound-toggle.m {
     padding: 9px 9px 8px;
   }
@@ -230,26 +226,6 @@
   .sound-toggle.muted i {
     background:transparent url(../images/soundoff.svg) no-repeat center/25px 23px;
   }
-  // #sound {
-
-  // }
-
-  // #sound:before {
-  //   position:absolute;
-
-  // }
-  // #sound:after {
-  //   position:absolute;
-  //   display:block;
-  //   content:"";
-  //   width:40px;
-  //   height:40px;
-  //   background:transparent url(../images/sound.svg) no-repeat center/25px 23px;
-  // }
-  // #sound.muted:after {
-
-  // }
-
   header {
     display:flex;
     flex-direction: row;
@@ -574,7 +550,7 @@
   }
   .nav-title span {
     font:19px bebasneue_b;
-    color:#000000;
+    color:#fff;
     white-space:nowrap;
   }
   .nav-title span:first-child {
@@ -583,7 +559,7 @@
   }
   .minimap {
     height:50px;
-    width:624px;
+    width:612px;
     position:relative;
     overflow:hidden;
     margin:0 12px;
@@ -661,7 +637,7 @@
     position: fixed;
     right:0px;
     bottom: 60px;
-    background-color: rgba(247, 247, 247, 0.95);
+    background-color: rgba(58, 58, 58, 0.95);
   }
   [data-menu='main'] > .nav-menu-container,
   [data-menu='sub'] > .nav-menu-container {
@@ -685,7 +661,7 @@
     width:100%;
     padding:18px 20px 18px 24px;
     font:18px bebasneue_b;
-    color:#000000;
+    color:#fff;
     text-decoration:none;
     white-space:nowrap;
     align-items: center;
@@ -746,7 +722,7 @@
   .nav-menu-sub-container > li > a {
     display: inline-block;
     font:14px bebasneue_b ;
-    color:#000000;
+    color:#fff;
     text-align: left;
     text-decoration:none;
     white-space:nowrap;
@@ -801,6 +777,7 @@
   }
 
   .nav-menu-sub-container .addthis_sharing_toolbox .at-share-btn {
+    background-color:transparent !important;
     display:block !important;
     max-width: 48px !important;
     max-height: 48px !important;
@@ -816,13 +793,14 @@
   }
 
   .nav-menu-sub-container .addthis_sharing_toolbox .at-share-btn svg {
-    stroke: black !important;
+    stroke: #E97728 !important;
     fill: transparent !important;
   }
   .nav-menu-sub-container .addthis_sharing_toolbox .at-share-btn:hover svg { stroke: #E97728 !important; fill: transparent !important; }
   .nav-menu-sub-container .addthis_sharing_toolbox > div {
     display:flex !important;
     flex-direction: column !important;
+    align-items: center; !important;
   }
   .nav-menu-sub-container .addthis_sharing_toolbox .at-share-btn.at-svc-facebook { order: 3; }
   .nav-menu-sub-container .addthis_sharing_toolbox .at-share-btn.at-svc-twitter { order: 2; }
@@ -886,10 +864,8 @@
 
   .popup .window .content {
     height:100%;
-    margin:61px 28px 0;
-    /* height:100%; */
-    padding: 0px 48px;
-    /* margin: 61px 28px 40px; */
+    margin:61px 0px 0;
+    padding: 0px 21px;
     overflow-y: auto;
   }
   .popup .window .content .section {
@@ -925,7 +901,7 @@
   .popup .window .author {
     color:#E97728;
     text-align:center;
-    padding:0 0 47px;
+    padding:0 0 21px;
     margin-top: -30px;
   }
   .popup .window .author:lang(en) { font:18px titillium; }
@@ -1405,11 +1381,18 @@
       right:88px;
       bottom:60px;
     }
+    .popup .window .content {
+      margin:61px 28px 0;
+      padding: 0px 48px;
+    }
     .story-popup .window {
       top:45px;
       left:50px;
       right:50px;
       bottom:105px;
+    }
+    .popup .window .author {
+      padding:0 0 47px;
     }
     .story-popup .window .content .story {
       padding: 0 29px;

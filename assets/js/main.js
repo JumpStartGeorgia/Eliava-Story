@@ -52,7 +52,7 @@ $(document).ready(function () {
         muted: false,
         soft_muted: false,
         toggle: $(".sound-toggle"),
-        default_volume: 0.6, // deploy 0.6
+        default_volume: 0, // deploy 0.6
         fade_duration: 500,
         can_play: true,
         ok: function () {
@@ -170,21 +170,7 @@ $(document).ready(function () {
               }
             }
           });
-          if(sync_minimap) { map.sync(); }
-          // if(device.desktop()) {
-          //   story.x_center.forEach(function (d, i) {
-          //     var pbbox = panorama.container.get(0).getBoundingClientRect(),
-          //       bbox = panorama.container.find("#story" + (i+1)).get(0).getBoundingClientRect();
-
-
-          //     console.log(i+1, bbox, pos, pbbox);
-          //     if(pos >= bbox.left && pos <= bbox.left + bbox.width && best_w > Math.abs(pos-bbox.width)) {
-          //       best_i = i;
-          //       best_w = Math.abs(pos-bbox.width);
-          //     }
-          //   });
-          //   map.select_by_id(best_i+1);
-          // }
+          if(sync_minimap) { minimap.sync(); }
         },
         flip: function (pos) {
           var tmp;
@@ -348,30 +334,30 @@ $(document).ready(function () {
       meta: {},
       by_url: false,
       to_panel: [1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5], // index is story value is panel #
-      dev: function () { // * WARNING if story popup structure change call this and grab copy/paste console output to input.html, generate all locales
-        var html, i;
-        for(i = 1; i <= this.count; ++i) {
-          html += `
-            <div class="story" data-id="${i}" data-i18n-stories-s${i}-yid="data-yid">
-              <div class="title" data-i18n-stories-s${i}-title="text"></div>
-              <div class="scroll-box">
-                <div class="youtube" data-i18n-stories-s${i}-yid="data-yid" data-i18n-stories-s${i}-player_yid="id"></div>
-                <div class="r">
-                  <div class="c">
-                    <div class="name"><span class="b" data-i18n-label-name></span><span data-i18n-stories-s${i}-name></span></div>
-                    <div class="job"><span class="b" data-i18n-label-job></span><span data-i18n-stories-s${i}-job></span></div>
-                    <div class="job_start_date" ><span class="b" data-i18n-label-job_start_date></span><span data-i18n-stories-s${i}-job_start_date="text"></span></div>
-                  </div>
-                  <div class="c">
-                    <div class="quote" data-i18n-stories-s${i}-quote="text"></div>
-                  </div>
-                </div>
-              </div>
-            </div>`;
-        }
+      // dev: function () { // * WARNING if story popup structure change call this and grab copy/paste console output to input.html, generate all locales
+      //   var html, i;
+      //   for(i = 1; i <= this.count; ++i) {
+      //     html += `
+      //       <div class="story" data-id="${i}" data-i18n-stories-s${i}-yid="data-yid">
+      //         <div class="title" data-i18n-stories-s${i}-title="text"></div>
+      //         <div class="scroll-box">
+      //           <div class="youtube" data-i18n-stories-s${i}-yid="data-yid" data-i18n-stories-s${i}-player_yid="id"></div>
+      //           <div class="r">
+      //             <div class="c">
+      //               <div class="name"><span class="b" data-i18n-label-name></span><span data-i18n-stories-s${i}-name></span></div>
+      //               <div class="job"><span class="b" data-i18n-label-job></span><span data-i18n-stories-s${i}-job></span></div>
+      //               <div class="job_start_date" ><span class="b" data-i18n-label-job_start_date></span><span data-i18n-stories-s${i}-job_start_date="text"></span></div>
+      //             </div>
+      //             <div class="c">
+      //               <div class="quote" data-i18n-stories-s${i}-quote="text"></div>
+      //             </div>
+      //           </div>
+      //         </div>
+      //       </div>`;
+      //   }
 
-        console.log(html);
-      },
+      //   console.log(html);
+      // },
       close: function () {
         story_mode = false;
         popup_mode = false;
@@ -393,7 +379,6 @@ $(document).ready(function () {
         panorama.audio.softMute();
         t.off_animation();
         $(".qtip:visible").qtip("hide");
-        map.select_by_id(id);
         t.content.find(".story .scroll-box").css({ "height": ( t.el.find(".window").height() - t.el.find(".active .scroll-box").position().top - 20) + "px" });
         on_esc["story_to_close"] = function () { t.close(); };
       },
@@ -495,18 +480,6 @@ $(document).ready(function () {
             });
           }
         }
-        // story.x_center = [];
-        // for(i = 1; i <= this.count; ++i) {
-        //   pnl = t.to_panel[i-1]-1;
-        //   tmp = panorama.panels.elem[pnl].find("#story" + i + " .layer-colored");
-        //   bbox = tmp.get(0).getBoundingClientRect();
-        //   x1 = bbox.left-panorama.left_width;
-        //   xw = bbox.width;
-        //   xm = x1 + xw/2;
-        //   x2 = x1 + xw;
-        //   story.x_center.push([x1, x2, xm]);
-        //   console.log(story.x_center);
-        // }
       },
       go_to: function (id, shake) {
         var st = $("#story" + id),
@@ -679,7 +652,7 @@ $(document).ready(function () {
         tp.nv.find("a[data-popup-target]").on("click", function () { popup.open($(this).attr("data-popup-target")); });
       }
     },
-    map = {
+    minimap = {
       el: $(".minimap"),
       img: undefined,
       overlay: undefined,
@@ -696,7 +669,7 @@ $(document).ready(function () {
       // },
       init: function () {
         var t = this;
-        t.img = t.el.find("object");
+        t.img = t.el.find("svg");
 
         t.img_w = t.img.width();
 
@@ -720,8 +693,8 @@ $(document).ready(function () {
 
         t.init();
 
-        cont = $(t.img.get(0).contentDocument);
-        cont.find("path.obj").click(function () {
+        cont = $(t.img); //.get(0).contentDocument
+        cont.find("image.to-character").click(function () {
           story.go_to(+$(this).attr("data-id"));
 
         });
@@ -729,7 +702,6 @@ $(document).ready(function () {
 
         var dragend = true;
         if(fox) {
-          console.log("not here");
           t.lights.on("mouseleave", function () { dragend = true; });
         }
 
@@ -761,7 +733,6 @@ $(document).ready(function () {
                 prev_x = event.clientX;
               }
               else {
-                console.log("prog stop");
                 return false;
               }
               ui.position.left = 0;
@@ -780,11 +751,6 @@ $(document).ready(function () {
         //if(start_pos < 0) { start_pos = panorama.story_width - start_pos; }
         t.pos = -1 * ( 2 * t.cape_w + t.light_w - start_pos / panorama.story_width * t.img_w);
         t.overlay.css("transform", "translateX(" + t.pos + "px");
-      },
-      select_by_id: function (id) {
-        var t = this;
-        // t.points.removeClass("active");
-        // if(id !== -1) { t.el.find("[data-id='" + id + "']").addClass("active"); }
       }
     },
     params = {
@@ -860,7 +826,7 @@ $(document).ready(function () {
         );
       },
       complete: function () {
-        // console.log("loader.complete");
+        console.log("loader.complete");
         var t = this;
 
         setTimeout(function () {
@@ -910,12 +876,12 @@ $(document).ready(function () {
         story.bind(load.first_time);
         if(load.first_time) {
           nav.bind();
-          map.bind();
+          minimap.bind();
           popup.bind();
           load.first_time = false;
         }
         story.go_to_and_open_current();
-        console.timeEnd("a");
+        // console.timeEnd("a");
       },
       callback: function (is_partial) { /*console.log("load.callback");*/
         // console.timeEnd("a");
@@ -954,7 +920,7 @@ $(document).ready(function () {
           if(--tmp_i === 0) tmp_i = panorama.panels.count - 1;
         }
 
-        var percent_step = (is_partial ? 96 : 46) / (expect_cnt*2);
+        var percent_step = (is_partial ? 96 : 44) / (expect_cnt*2);
 
         tmp_w = 0, tmp_i = 0;
         while(tmp_w < w) {
@@ -1012,7 +978,7 @@ $(document).ready(function () {
 
         panorama.offset.right = panorama.width - panorama.right_width;
         panorama.offset.left = panorama.left_width;
-        if(expect_cnt === 0) { loader.inc(is_partial ? 96 : 46); setTimeout(load.bind, 100); }
+        if(expect_cnt === 0) { loader.inc(is_partial ? 96 : 44); setTimeout(load.bind, 100); }
       },
       effects: function () { /*console.log("load.effects");*/
         // console.timeEnd("a");
@@ -1057,7 +1023,7 @@ $(document).ready(function () {
          // loader.inc(6);
          //  setTimeout(load.effects, 100);
       },
-      audio: function () { /*console.log("load.audio");*/
+      audio: function () { console.log("load.audio");
         // console.timeEnd("a");
         // console.time("a");
         var cnt = 0, tmp,
@@ -1090,18 +1056,29 @@ $(document).ready(function () {
       },
       panels: function () { /*console.log("load.panels");*/
       // console.time("a");
-        var cnt = 0, bg, fg;
+        var cnt = 0, bg, fg, mfg, expect_cnt = panorama.panels.count*2+1;
+
+
         panorama.panels.names.forEach( function (d, i) {
           bg = panorama.container.find("object[data-panel='" + (i+1) + "'][data-type='bg']");
-          bg.one("load", function (event){ loader.inc(4); if(++cnt === panorama.panels.count*2) { setTimeout(load.panels_process, 100); } });
+          bg.one("load", function (event){ loader.inc(4); if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
           bg.attr("data", panorama.panels.path + "bg/" + d + ".svg");
 
 
           fg = panorama.container.find(".apanel[data-panel='" + (i+1) + "'][data-type='fg'] object");
           panorama.panels.elem.push(fg);
-          fg.one("load", function (event){ loader.inc(4); if(++cnt === panorama.panels.count*2) { setTimeout(load.panels_process, 100); } });
+          fg.one("load", function (event){ loader.inc(4); if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
           fg.attr("data", panorama.panels.path + "fg/" + d + ".svg");
         });
+
+        mfg = minimap.el.find(".fg object");
+        mfg.one("load", function (event) { // plus load minimap foreground svg
+          $(".preload-minimap").removeClass("preload-minimap");
+          mfg.replaceWith(mfg.get(0).contentDocument.documentElement.outerHTML);
+          loader.inc(2);
+          if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
+        mfg.attr("data", "../assets/images/map_fg.svg");
+
       },
       partial: function () { /*console.log("load.partial");*/
         panorama.audio.stop();
