@@ -1,4 +1,4 @@
-/*global  $ debounce I18n YT exist isNumber js getRandomIntInclusive device addWheelListener */
+/*global  $ debounce I18n YT exist isNumber js getRandomIntInclusive device addWheelListener Scale */
 /*eslint camelcase: 0, no-underscore-dangle: 0, no-unused-vars: 0, no-console: 0*/
 var youtubePlayers = {}, loaderReady = false;
 $(document).ready(function () {
@@ -501,12 +501,12 @@ $(document).ready(function () {
         if(story.by_url) {
           helper.hidden = true;
           helper.el.hide();
-          story.open(id, function () { loader.inc(4); });
+          story.open(id, function () { loader.inc(); });
           story.by_url = false;
         }
         else {
           helper.hide(4000);
-          loader.inc(4);
+          loader.inc();
         }
         story.on_animation();
       },
@@ -792,21 +792,26 @@ $(document).ready(function () {
       aborted: false,
       animate: true,
       animate_duration: 5000,
-      inc: function (percent) {
-        var t = this, init_percent = percent;
+      current_tick_index: 0,
+      scaler: undefined,
+      stable_progress: 0,
+      inc: function () { //percent
+        var t = this, tmp;
         if(t.completed) return;
-        if(typeof percent === "undefined") { percent = 0; }
+        tmp = Math.round(t.scaler(++t.current_tick_index));
+        tmp = t.stable_progress + (isNaN(tmp) ? 1 : tmp) * 5;
+        if(tmp > t.progress) {
+          t.progress = tmp;
+          t.progress_label.text(t.progress);
+        }
 
-        percent += t.progress;
-
-        if(percent < 0) { percent = 0; }
-        else if(percent >= 100) { percent = 100; }
-
-        t.progress = percent;
-        t.progress_label.text(Math.ceil(t.progress));
-        // console.log(percent);
-
-        if(percent >= 100) { t.complete(); }
+        if(t.progress >= 100) { t.complete(); }
+      },
+      retick: function (allocated_ticks, allocated_steps) { // 100 percent was divided by 5 so 20 ticks, each loading peace recieved specific number that reflects amount of ticks for that task, first number is ticks, second amount of real loading peaces
+        var t = this;
+        t.stable_progress = t.progress;
+        t.scaler = new Scale().domain(1, allocated_steps).range(1, allocated_ticks);
+        t.current_tick_index = 0;
       },
       start_animation: function () {
         var t = this;
@@ -825,8 +830,7 @@ $(document).ready(function () {
           }
         );
       },
-      complete: function () {
-        console.log("loader.complete");
+      complete: function () { /*console.log("loader.complete");*/
         var t = this;
 
         setTimeout(function () {
@@ -868,9 +872,8 @@ $(document).ready(function () {
     load = {
       first_time: true,
       bind: function () { /*console.log("load.bind");*/
-        // console.timeEnd("a");
-        // console.time("a");
         if(loader.aborted) { loader.abort_complete(); return; }
+        loader.retick(1, 1);
         panorama.bind(load.first_time);
         tooltip.bind(load.first_time);
         story.bind(load.first_time);
@@ -881,11 +884,8 @@ $(document).ready(function () {
           load.first_time = false;
         }
         story.go_to_and_open_current();
-        // console.timeEnd("a");
       },
       callback: function (is_partial) { /*console.log("load.callback");*/
-        // console.timeEnd("a");
-        // console.time("a");
         if(loader.aborted) { loader.abort_complete(); return; }
 
         resize();
@@ -919,15 +919,16 @@ $(document).ready(function () {
           tmp_w += panorama.panels.w[tmp_i];
           if(--tmp_i === 0) tmp_i = panorama.panels.count - 1;
         }
-
-        var percent_step = (is_partial ? 96 : 44) / (expect_cnt*2);
+        expect_cnt*=2;
+        loader.retick(is_partial ? 19 : 9, expect_cnt);
+        // var percent_step = (is_partial ? 96 : 44) / (expect_cnt*2);
 
         tmp_w = 0, tmp_i = 0;
         while(tmp_w < w) {
           pnl = $(template_panel).appendTo(panorama.container);
 
           tmp = $(template_object.replace("%id", "r" + (tmp_i+1)).replace("%type", "bg").replace("%height", pnl_height));
-          tmp.one("load", function (event) { loader.inc(percent_step); if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
+          tmp.one("load", function (event) { loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
           tmp.attr("data", (panorama.panels.path + "bg/" + panorama.panels.names[tmp_i] + ".svg"));
           pnl.append(tmp);
 
@@ -936,7 +937,7 @@ $(document).ready(function () {
           tmp = $(template_object.replace("%id", "r" + (tmp_i+1)).replace("%type", "bg"));
           tmp.one("load", { pnl_i: tmp_i }, function (event) {
             $(this).replaceWith(html[event.data.pnl_i].replace(/id\=\"story/g, "id=\"story_r_"));
-            loader.inc(percent_step);
+            loader.inc();
             if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
           tmp.attr("data", (panorama.panels.path + "fg/" + panorama.panels.names[tmp_i] + ".svg"));
           svg.append(tmp);
@@ -955,7 +956,7 @@ $(document).ready(function () {
           pnl = $(template_panel).prependTo(panorama.container);
 
           tmp = $(template_object.replace("%id", "l" + (tmp_i+1)).replace("%type", "bg").replace("%height", pnl_height));
-          tmp.one("load", function (event) { loader.inc(percent_step); if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
+          tmp.one("load", function (event) { loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
           tmp.attr("data", (panorama.panels.path + "bg/" + panorama.panels.names[tmp_i] + ".svg"));
           pnl.append(tmp);
 
@@ -964,7 +965,7 @@ $(document).ready(function () {
           tmp = $(template_object.replace("%id", "l" + (tmp_i+1)).replace("%type", "fg"));
           tmp.one("load", { pnl_i: tmp_i }, function (event) {
             $(this).replaceWith(html[event.data.pnl_i].replace(/id\=\"story/g, "id=\"story_l_"));
-            loader.inc(percent_step);
+            loader.inc();
             if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
           tmp.attr("data", (panorama.panels.path + "fg/" + panorama.panels.names[tmp_i] + ".svg"));
           svg.append(tmp);
@@ -978,11 +979,10 @@ $(document).ready(function () {
 
         panorama.offset.right = panorama.width - panorama.right_width;
         panorama.offset.left = panorama.left_width;
-        if(expect_cnt === 0) { loader.inc(is_partial ? 96 : 44); setTimeout(load.bind, 100); }
+        if(expect_cnt === 0) { loader.inc(); setTimeout(load.bind, 100); }
       },
       effects: function () { /*console.log("load.effects");*/
-        // console.timeEnd("a");
-        // console.time("a");
+
         $.Velocity
           .RegisterEffect("js.fade", {
             defaultDuration: 6000,
@@ -996,8 +996,8 @@ $(document).ready(function () {
         setTimeout(load.callback, 100);
       },
       youtube: function () { /*console.log("load.youtube");*/
-        // console.timeEnd("a");
-        // console.time("a");
+
+        loader.retick(1, 1);
         var tag = document.createElement("script");
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName("script")[0];
@@ -1017,27 +1017,23 @@ $(document).ready(function () {
               }
             );
           });
-          loader.inc(6);
+          loader.inc();
           setTimeout(load.effects, 100);
         };
-         // loader.inc(6);
-         //  setTimeout(load.effects, 100);
       },
-      audio: function () { console.log("load.audio");
-        // console.timeEnd("a");
-        // console.time("a");
+      audio: function () { /*console.log("load.audio");*/
         var cnt = 0, tmp,
           expect_cnt = panorama.audio.count,
           ext = panorama.audio.ext,
           path = panorama.audio.path;
-
+        loader.retick(1, 16);
         for(var i = 1; i <= expect_cnt; ++i) {
           panorama.audio.elem.push($("<audio>",
             {
               preload:"auto",
               loop: true,
               one: {
-                canplay: function (event) { loader.inc(.25); if(++cnt === expect_cnt) { setTimeout(load.youtube, 100); } },
+                canplay: function (event) { loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.youtube, 100); } },
                 error: function (e) { console.log(this, e, "error in load audio for one of the file"); }
               },
               "src": (path + i + "." + ext)
@@ -1045,8 +1041,6 @@ $(document).ready(function () {
         }
       },
       panels_process: function () { /*console.log("load.panels_process");*/
-        // console.timeEnd("a");
-        // console.time("a");
         panorama.panels.elem.forEach(function (d, i){
           panorama.panels.svg.push(d.get(0).contentDocument.documentElement.outerHTML);
           d.replaceWith(panorama.panels.svg[i]);
@@ -1055,19 +1049,18 @@ $(document).ready(function () {
         setTimeout(load.audio, 100);
       },
       panels: function () { /*console.log("load.panels");*/
-      // console.time("a");
         var cnt = 0, bg, fg, mfg, expect_cnt = panorama.panels.count*2+1;
 
-
+        loader.retick(8, 11);
         panorama.panels.names.forEach( function (d, i) {
           bg = panorama.container.find("object[data-panel='" + (i+1) + "'][data-type='bg']");
-          bg.one("load", function (event){ loader.inc(4); if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
+          bg.one("load", function (event){ loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
           bg.attr("data", panorama.panels.path + "bg/" + d + ".svg");
 
 
           fg = panorama.container.find(".apanel[data-panel='" + (i+1) + "'][data-type='fg'] object");
           panorama.panels.elem.push(fg);
-          fg.one("load", function (event){ loader.inc(4); if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
+          fg.one("load", function (event){ loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
           fg.attr("data", panorama.panels.path + "fg/" + d + ".svg");
         });
 
@@ -1075,10 +1068,9 @@ $(document).ready(function () {
         mfg.one("load", function (event) { // plus load minimap foreground svg
           $(".preload-minimap").removeClass("preload-minimap");
           mfg.replaceWith(mfg.get(0).contentDocument.documentElement.outerHTML);
-          loader.inc(2);
+          loader.inc();
           if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
         mfg.attr("data", "../assets/images/map_fg.svg");
-
       },
       partial: function () { /*console.log("load.partial");*/
         panorama.audio.stop();
