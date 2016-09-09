@@ -231,7 +231,7 @@ var I18n = (function () {
     allocate();
   };
   obj.init = function(callback) {
-    console.log("I18n");
+    // console.log("I18n");
     init_locale();
     load_locale();
     outerCallback = callback;

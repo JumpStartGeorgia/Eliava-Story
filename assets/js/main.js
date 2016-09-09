@@ -1,4 +1,4 @@
-/*global  $ debounce I18n YT exist isNumber js getRandomIntInclusive device addWheelListener Scale */
+/*global  $ debounce I18n YT exist isNumber js getRandomIntInclusive device addWheelListener Scale transformX */
 /*eslint camelcase: 0, no-underscore-dangle: 0, no-unused-vars: 0, no-console: 0*/
 var youtubePlayers = {}, loaderReady = false;
 $(document).ready(function () {
@@ -52,7 +52,7 @@ $(document).ready(function () {
         muted: false,
         soft_muted: false,
         toggle: $(".sound-toggle"),
-        default_volume: 0, // deploy 0.6
+        default_volume: 0.6, // deploy 0.6
         fade_duration: 500,
         can_play: true,
         ok: function () {
@@ -178,13 +178,13 @@ $(document).ready(function () {
             tmp = -1 * panorama.offset.left - (-1*pos - panorama.offset.right); // arrow right moving (left), happens when last panel goes out from left side of the screen, (-1*pos - panorama.offset.right) this is for extra pixels
             // console.log("flip to beggining", tmp);
             panorama.container_position = tmp;
-            panorama.container.css("transform", "translateX(" + tmp + "px)");
+            panorama.container.css(transformX(tmp));
           }
           else if(pos >= w - panorama.offset.left) {
             tmp = -1 * (panorama.offset.right - w - (pos - (w-panorama.offset.left))); // arrow left moving (right), happens when first panel goes out from right side of the screen, (pos - (w-panorama.offset.left)) this is for extra pixels
             // console.log("flip to the end", tmp);
             panorama.container_position = tmp;
-            panorama.container.css("transform", "translateX(" + tmp + "px)");
+            panorama.container.css(transformX(tmp));
           }
         }
       },
@@ -199,6 +199,9 @@ $(document).ready(function () {
               function () { tp.stop(); },
               debounce(function () { tp.start(); },
             100));
+          }
+          else {
+            this.anims.css("opacity", 1);
           }
 
           tp.anims.click(function () { story.open(+$(this).attr("data-story")); });
@@ -235,7 +238,7 @@ $(document).ready(function () {
         var t = this, prev = t.container_position;
 
         t.container_position = pos;
-        t.container.css("transform", "translateX(" + pos + "px)");
+        t.container.css(transformX(pos));
         if(pos <= -1 * t.offset.right || pos >= w - t.offset.left) {
           t.position.flip(pos);
         }
@@ -303,7 +306,7 @@ $(document).ready(function () {
                 }
                 else {
                   t.container_position = pos;
-                  t.container.css("transform", "translateX(" + pos + "px)");
+                  t.container.css(transformX(pos));
                 }
                 t.position.analyze(pos);
               }
@@ -341,7 +344,6 @@ $(document).ready(function () {
       //       <div class="story" data-id="${i}" data-i18n-stories-s${i}-yid="data-yid">
       //         <div class="title" data-i18n-stories-s${i}-title="text"></div>
       //         <div class="scroll-box">
-      //           <div class="youtube" data-i18n-stories-s${i}-yid="data-yid" data-i18n-stories-s${i}-player_yid="id"></div>
       //           <div class="r">
       //             <div class="c">
       //               <div class="name"><span class="b" data-i18n-label-name></span><span data-i18n-stories-s${i}-name></span></div>
@@ -352,6 +354,7 @@ $(document).ready(function () {
       //               <div class="quote" data-i18n-stories-s${i}-quote="text"></div>
       //             </div>
       //           </div>
+      //           <div class="youtube" data-i18n-stories-s${i}-yid="data-yid" data-i18n-stories-s${i}-player_yid="id"></div>
       //         </div>
       //       </div>`;
       //   }
@@ -379,7 +382,7 @@ $(document).ready(function () {
         panorama.audio.softMute();
         t.off_animation();
         $(".qtip:visible").qtip("hide");
-        t.content.find(".story .scroll-box").css({ "height": ( t.el.find(".window").height() - t.el.find(".active .scroll-box").position().top - 20) + "px" });
+        t.update_height(t.content.find(".story.active"));
         on_esc["story_to_close"] = function () { t.close(); };
       },
       toggle_youtube: function (id, play) {
@@ -420,6 +423,7 @@ $(document).ready(function () {
         t.toggle_youtube(nxt, true);
         t.go_to(nxt);
         if(!no_url_update) { params.write(this.name_by_id(nxt)); }
+        t.update_height(sec);
         t.content
           .one("webkitAnimationEnd oanimationend msAnimationEnd animationend", function (e) {
             t.content.removeClass("scroll-left animated");
@@ -440,6 +444,7 @@ $(document).ready(function () {
         t.toggle_youtube(prv, true);
         t.go_to(prv);
         if(!no_url_update) { params.write(this.name_by_id(prv)); }
+        t.update_height(sec);
         t.content
           .addClass("scroll-right-origin")
           .one("webkitAnimationEnd oanimationend msAnimationEnd animationend", function (e) {
@@ -541,6 +546,17 @@ $(document).ready(function () {
       },
       on_animation: function () {
         panorama.animator.start();
+      },
+      update_height: function (story_el) {
+        var t = this, tmp, tmp_w, tmp_el;
+        tmp_w = t.el.find(".window").height();
+        tmp_el = story_el.find(".scroll-box");
+        tmp = tmp_w - tmp_el.position().top - 20;
+        tmp_el.css({ "height": tmp + "px" });
+        tmp_el = story_el.find(".scroll-box iframe");
+        if(tmp_el.length) {
+          tmp_el.css({ "height": device.mobile() ? "auto" : ( tmp_w - tmp_el.position().top - 25) + "px" });
+        }
       }
     },
     tooltip = {
@@ -604,10 +620,19 @@ $(document).ready(function () {
         delete on_esc["popup_to_close"];
       },
       open: function (v) {
-        var t = this;
+        var t = this, tmp, tmp_w, tmp_el;
         popup_mode = true;
         t.el.attr("data-type", v);
-        t.content.scrollTop(0).css({ "height": (h > 760 ? h - 88 - 61 - 60 - 10 : h - 2*61) + "px" });
+        t.content.scrollTop(0);//.css({ "height": (h > 760 ? h - 88 - 61 - 60 - 10 : h - 2*61) + "px" });
+
+        tmp_w = t.el.find(".window").height();
+        tmp = tmp_w - t.content.position().top - 20;
+        t.content.css({ "height": tmp + "px" });
+        tmp_el = t.content.find("iframe");
+        if(tmp_el.length) {
+          tmp_el.css({ "height": device.mobile() ? "auto" : ( tmp_w - tmp_el.position().top - 25) + "px" });
+        }
+
         on_esc["popup_to_close"] = function () { t.close(); };
       },
       bind: function () {
@@ -685,8 +710,7 @@ $(document).ready(function () {
         t.capes = t.overlay.find(".cape").width(t.img_w-t.light_w);
 
         t.pos = -1*(2*t.cape_w + t.light_w);
-        t.overlay.css("transform", "translateX(" + t.pos + "px");
-
+        t.overlay.css(transformX(t.pos));
       },
       bind: function () {
         var t = this, prev_x, cont;
@@ -726,7 +750,7 @@ $(document).ready(function () {
                 start_pos = -1 * t.pos - 2 * t.cape_w - t.light_w;
                 if(start_pos > 0) { start_pos = t.img_w - start_pos; }
 
-                t.overlay.css("transform", "translateX(" + t.pos + "px");
+                t.overlay.css(transformX(t.pos));
 
                 panorama.scroll_by_pos_direct(-1 * (Math.abs(start_pos)/t.img_w * panorama.story_width + panorama.offset.left));
 
@@ -750,7 +774,7 @@ $(document).ready(function () {
         // console.log(t.cape_w, t.light_w, start_pos , panorama.story_width , t.img_w);
         //if(start_pos < 0) { start_pos = panorama.story_width - start_pos; }
         t.pos = -1 * ( 2 * t.cape_w + t.light_w - start_pos / panorama.story_width * t.img_w);
-        t.overlay.css("transform", "translateX(" + t.pos + "px");
+        t.overlay.css(transformX(t.pos));
       }
     },
     params = {
@@ -1011,7 +1035,7 @@ $(document).ready(function () {
               id,
               {
                 videoId: yid,
-                height: "100%",//device.mobile() ? "auto" : "558", // this was 600 but changed it to 558 so captions in video are visible without scrolling
+                // height: "100%",//device.mobile() ? "auto" : "558", // this was 600 but changed it to 558 so captions in video are visible without scrolling
                 width: "100%",
                 playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }
               }
@@ -1112,24 +1136,23 @@ $(document).ready(function () {
 
   // for deployed version
   (function init () {
+
+    // dev
+    // I18n.init(function (){
+    //   window.pn = panorama;
+    //   I18n.remap();
+    //   params.parse();
+    //   load.all();
+    // });
+
+    // deploy
+    // panorama.audio.dev();
+    // story.dev();
+    // I18n.init(function (){ I18n.remap(); });
+
+    // production
     params.parse();
     load.all();
+
   })();
-
-  // for dev version
-  // (function dev_init () {
-  //   I18n.init(function (){
-  //     window.pn = panorama;
-  //     I18n.remap();
-  //     params.parse();
-  //     load.all();
-  //   });
-  // })();
-
-  // for deploing process
-  // (function deploy_init () {
-  //   // panorama.audio.dev();
-  //   // story.dev();
-  //   I18n.init(function (){ I18n.remap(); });
-  // })();
 });

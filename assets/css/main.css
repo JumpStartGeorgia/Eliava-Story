@@ -944,7 +944,7 @@
   .popup .window .section.behind .text ul li span:lang(en) { font:18px titillium_b; }
   .popup .window .section.behind .text ul li span:lang(ka) { font:18px bpgnp_b; }
   .popup .window .section.behind .text ul li span:lang(ru) { font:18px arsenal_b; }
-  .popup .window .section.about .text .to-character {
+  .popup .window .section.about .text a {
     color:#E97728;
   }
   .popup .window .section.about .footer
@@ -1043,6 +1043,7 @@
   }
 
   .story-popup .share-story .addthis_sharing_toolbox .at-share-btn {
+    background-color: rgba(0,0,0,.7) !important;
     display:block !important;
     max-width: 48px !important;
     max-height: 48px !important;
@@ -1124,7 +1125,7 @@
 
   }
   .story-popup .window .content .story .r {
-    padding:24px 21px 0;
+    padding:10px 21px 0;
   }
   .story-popup .window .content .story .c {
     display:block;
@@ -1142,14 +1143,14 @@
   }
   .story-popup .window .content .story .quote {
     color:#E97728;
-    padding:24px 0 30px;
+    padding:21px 0 21px;
     text-align:left;
   }
   .story-popup .window .content .story .title {
     font: 30px 'bebasneue_b';
     color:#000;
     text-align:center;
-    padding:30px 0 15px;
+    padding:21px 0 15px;
   }
   .story-popup .window .content .story .scroll-box {
     overflow-y:auto;
@@ -1168,7 +1169,6 @@
     }
   .popup .window .content .section .youtube-box {
     text-align:center;
-    height:100%;
   }
 
   .story-popup .window .content .story.active {
@@ -1382,7 +1382,7 @@
       bottom:60px;
     }
     .popup .window .content {
-      margin:61px 28px 0;
+      margin:51px 28px 0;
       padding: 0px 48px;
     }
     .story-popup .window {
@@ -1400,7 +1400,7 @@
     .story-popup .window .content .story .r {
       display:flex;
       flex-direction: row;
-      padding:38px 0 50px;
+      padding:20px 0 10px;
       align-items: center;
     }
     .story-popup .window .content .story .c {

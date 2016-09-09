@@ -24,11 +24,11 @@ Warning: if story count changed varibale story_count should be changed according
 #### application has developer mode, which can be accessed by localhost/dev url
 In this mode index.html behaves like template, it has no content just i18n properties that link to locale/[en|ka|ru].js file.
 By default it uses 'en' locale, so whenever page is reloaded those properties are replaced with appropriate text ( default locale can be edited in I18n.js file `var default_locale = "en";`).
-In main.js file go to the bottom and comment init and deploy_init if you are using dev mode.
+In main.js/init function for dev mode comment deploy and production blocks.
 
 ### deploy
 - generate share story files
-- comment init and dev_init in main.js, only deploy_init should be uncommented
+- comment dev and production block in main.js/init function, only deploy block should be uncommented
 - generate main.min.css minified version via http://csscompressor.com/ based on main.css file
 - generate main.min.js minified version via  based on main.js file
 - in dev/index.html change main.css to main.min.css
@@ -44,7 +44,7 @@ In main.js file go to the bottom and comment init and deploy_init if you are usi
   * remove last script that is under <!-- deploy - remove extra script that points to locale file --> comment
   * uncomment previously commented text (I18n.js script can be deleted not tested but it should work)
   * if it is production change addthis id
-- In main.js file go to the bottom and comment dev_init and deploy_init, uncomment init
+- In main.js/init function comment all except block for production
 
 ## TODO
   * in dev/index.html translate into russian and paste 'You need to turn on Javascript for this application to work!' into noscript block

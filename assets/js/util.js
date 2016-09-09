@@ -123,3 +123,11 @@ function Scale() {
   };
   return s;
 }
+
+function transformX (pos) {
+  var tmp = "translateX(" + pos + "px)", obj = {};
+  obj["-webkit-transform"] = tmp;
+  obj["-ms-transform"] = tmp;
+  obj["transform"] = tmp;
+  return obj;
+}
