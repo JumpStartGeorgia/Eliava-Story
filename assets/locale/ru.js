@@ -31,9 +31,9 @@ ru =
   },
   "behind": {
     "name": "Behind the Scenes",
-    "caption": "Behind the Scenes",
-    "yid": "k3_tw44QsZQ",
-    "player_yid": "k3_tw44QsZQ",
+    "caption": "Three Months. 360 degrees. And One Big Drawing",
+    "yid": "1tLlT_JCayQ",
+    "player_yid": "1tLlT_JCayQ",
     "text": "<div class='credits'>Credits</div> <ul> <li><span>Drawing:</span> Andrew North</li> <li><span>Words and Video:</span> Andrew North</li> <li><span>Producer:</span> Sophiko Vasadze</li> <li><span>Design:</span> JumpStart Georgia - Mariam Kobuladze, Anton Kamaryan, Jason Addie, Eric Barrett</li> <li><span>Editor:</span> Justin Burke/Eurasianet</li> <li><span>Translations:</span> Sophiko Vasadze, Dmitri Bit-Suleiman</li> <li>A special thanks to everyone from the Eliava who supported the project, including: Tariel Saralidze, Jaba Nakashidze, Gia Todadze, Miriani Nozadze, Otari Mujiri, Tamazi Dudashvili, Taso Tsertsvadze, Kakha, Marina Esebua, Vazha Jamagidze, Eduard Miroian, Pridon, Pata and Cesar.</li> <li>For advice and encouragement, a big thank you also to: Kote Sulaberidze, Nino Chilashvili, Irena Popiashvili, Natalia Antelava.</li> </ul>"
   },
   "stories": {
@@ -41,8 +41,8 @@ ru =
       "title": "The Tool Seller",
       "quote": "The Soviet times were good. I had a job, a salary. Now where are the salaries and jobs?",
       "description": "fb description",
-      "yid": "xVCm-RvwNtE",
-      "player_yid": "xVCm-RvwNtE",
+      "yid": "90qn0Bvsyh0",
+      "player_yid": "90qn0Bvsyh0",
       "name": "Tamazi Dudashvili",
       "job": "sells tools and spare parts",
       "job_start_date": "1999"
@@ -61,8 +61,8 @@ ru =
       "title": "2008 War Volunteer",
       "quote": "I was proud I had a chance to defend my country",
       "description": "fb description",
-      "yid": "fpC6dV8ZnMs",
-      "player_yid": "fpC6dV8ZnMs",
+      "yid": "mXNI-DWRhtU",
+      "player_yid": "mXNI-DWRhtU",
       "name": "Otari Mujiri",
       "job": "repairs and sells power tools",
       "job_start_date": "2000"
@@ -71,8 +71,8 @@ ru =
       "title": "The Skeptic",
       "quote": "Before it was Russia. Now America controls Georgia, Eduard believes.",
       "description": "fb description",
-      "yid": "foH0sn_uv4c",
-      "player_yid": "foH0sn_uv4c",
+      "yid": "DB-ANJPqS6s",
+      "player_yid": "DB-ANJPqS6s",
       "name": "Eduard Miroian",
       "job": "sells tools and spare parts",
       "job_start_date": "1996"
@@ -91,8 +91,8 @@ ru =
       "title": "The Soviet Wrestling Champion",
       "quote": "There was a little euphoria when the USSR collapsed, as if independence would be good",
       "description": "fb description",
-      "yid": "0sEUdmtyJ3U",
-      "player_yid": "0sEUdmtyJ3U",
+      "yid": "KyWBpqoxiwk",
+      "player_yid": "KyWBpqoxiwk",
       "name": "Vazha Jamagidze",
       "job": "sells reconditioned taps and pipes",
       "job_start_date": "1998"
@@ -121,8 +121,8 @@ ru =
       "title": "The Motor Seller",
       "quote": "If the USSR had done something good for us, we wouldn’t have wanted independence",
       "description": "fb description",
-      "yid": "zl8pxaxxReo",
-      "player_yid": "zl8pxaxxReo",
+      "yid": "fOuL-ApYPe0",
+      "player_yid": "fOuL-ApYPe0",
       "name": "Jaba Nakashidze",
       "job": "sells power motors",
       "job_start_date": "2001"
