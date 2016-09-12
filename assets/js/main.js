@@ -571,7 +571,7 @@ $(document).ready(function () {
         mt = story.meta[id];
         return this.template
           .replace("{{title}}", mt.title)
-          .replace("{{quote}}", '"' + mt.quote + '"')
+          .replace("{{quote}}", mt.quote)
           .replace("{{name}}", mt.name)
           .replace("{{job}}", mt.job)
           .replace("{{job_start_date}}", mt.job_start_date);
