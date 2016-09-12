@@ -39,7 +39,7 @@ en =
   "stories": {
     "s1": {
       "title": "The Tool Seller",
-      "quote": "The Soviet times were good. I had a job, a salary. Now where are the salaries and jobs?",
+      "quote": "\"The Soviet times were good. I had a job, a salary. Now where are the salaries and jobs?\"",
       "description": "fb description",
       "yid": "90qn0Bvsyh0",
       "player_yid": "90qn0Bvsyh0",
@@ -49,7 +49,7 @@ en =
     },
     "s2": {
       "title": "The Cigarette Seller",
-      "quote": "I didn’t know what poverty was (in Soviet times). My children know all about it.",
+      "quote": "\"I didn’t know what poverty was (in Soviet times). My children know all about it.\"",
       "description": "fb description",
       "yid": "t8b6NXZ-Pjk",
       "player_yid": "t8b6NXZ-Pjk",
@@ -59,7 +59,7 @@ en =
     },
     "s3": {
       "title": "2008 War Volunteer",
-      "quote": "I was proud I had a chance to defend my country",
+      "quote": "\"I was proud I had a chance to defend my country.\"",
       "description": "fb description",
       "yid": "mXNI-DWRhtU",
       "player_yid": "mXNI-DWRhtU",
@@ -79,7 +79,7 @@ en =
     },
     "s5": {
       "title": "The Europhile",
-      "quote": "Archaeologists have shown Georgia is historically closer to Europe",
+      "quote": "\"Archaeologists have shown Georgia is historically closer to Europe.\"",
       "description": "fb description",
       "yid": "washJa8g5TY",
       "player_yid": "washJa8g5TY",
@@ -89,7 +89,7 @@ en =
     },
     "s6": {
       "title": "The Soviet Wrestling Champion",
-      "quote": "There was a little euphoria when the USSR collapsed, as if independence would be good",
+      "quote": "\"There was a little euphoria when the USSR collapsed, as if independence would be good.\"",
       "description": "fb description",
       "yid": "KyWBpqoxiwk",
       "player_yid": "KyWBpqoxiwk",
@@ -99,7 +99,7 @@ en =
     },
     "s7": {
       "title": "The Nuts and Bolts Man",
-      "quote": "We are just speculators",
+      "quote": "\"We are just speculators.\"",
       "description": "fb description",
       "yid": "LtCAixO9iVA",
       "player_yid": "LtCAixO9iVA",
@@ -108,18 +108,8 @@ en =
       "job_start_date": "2006"
     },
     "s8": {
-      "title": "The Poet",
-      "quote": "Perhaps I should enjoy my freedom. But I hate it.",
-      "description": "fb description",
-      "yid": "",
-      "player_yid": "",
-      "name": "Pridon",
-      "job": "sells power motors",
-      "job_start_date": "2006"
-    },
-    "s9": {
       "title": "The Motor Seller",
-      "quote": "If the USSR had done something good for us, we wouldn’t have wanted independence",
+      "quote": "\"If the USSR had done something good for us, we wouldn’t have wanted independence.\"",
       "description": "fb description",
       "yid": "fOuL-ApYPe0",
       "player_yid": "fOuL-ApYPe0",
@@ -127,9 +117,9 @@ en =
       "job": "sells power motors",
       "job_start_date": "2001"
     },
-    "s10": {
+    "s9": {
       "title": "The War Veteran",
-      "quote": "We need a friend to stand up to Russia",
+      "quote": "\"We need a friend to stand up to Russia.\"",
       "description": "fb description",
       "yid": "jUVikQuwsI8",
       "player_yid": "jUVikQuwsI8",
@@ -137,9 +127,9 @@ en =
       "job": "sells power motors and welding equipment",
       "job_start_date": "2006"
     },
-    "s11": {
+    "s10": {
       "title": "The Drinks Seller",
-      "quote": "Nobody wanted the Russians. We wanted independence.",
+      "quote": "\"Nobody wanted the Russians. We wanted independence.\"",
       "description": "fb description",
       "yid": "vyzRWycjB3k",
       "player_yid": "vyzRWycjB3k",

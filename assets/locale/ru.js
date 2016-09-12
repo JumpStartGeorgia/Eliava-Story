@@ -108,16 +108,6 @@ ru =
       "job_start_date": "2006"
     },
     "s8": {
-      "title": "The Poet",
-      "quote": "Perhaps I should enjoy my freedom. But I hate it.",
-      "description": "fb description",
-      "yid": "",
-      "player_yid": "",
-      "name": "Pridon",
-      "job": "sells power motors",
-      "job_start_date": "2006"
-    },
-    "s9": {
       "title": "The Motor Seller",
       "quote": "If the USSR had done something good for us, we wouldn’t have wanted independence",
       "description": "fb description",
@@ -127,7 +117,7 @@ ru =
       "job": "sells power motors",
       "job_start_date": "2001"
     },
-    "s10": {
+    "s9": {
       "title": "The War Veteran",
       "quote": "We need a friend to stand up to Russia",
       "description": "fb description",
@@ -137,7 +127,7 @@ ru =
       "job": "sells power motors and welding equipment",
       "job_start_date": "2006"
     },
-    "s11": {
+    "s10": {
       "title": "The Drinks Seller",
       "quote": "Nobody wanted the Russians. We wanted independence.",
       "description": "fb description",

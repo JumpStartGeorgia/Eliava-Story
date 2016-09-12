@@ -325,18 +325,13 @@ $(document).ready(function () {
     },
     story = {
       el: $("#story_popup"),
-      // content: $("#story_popup .content"),
       content: $("#story_popup .content"),
       share: $(".share-story .addthis_sharing_toolbox"),
       opened: false,
       current: 5,
-      count: 11, // * WARNING on story count change
-      breath_direction: [1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0], // left 0, right 1
-      x_center: [],
-      //story_range: [[13, 15], [20, 22], [30, 31]],
+      count: 10, // * WARNING on story count change
       meta: {},
       by_url: false,
-      to_panel: [1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5], // index is story value is panel #
       // dev: function () { // * WARNING if story popup structure change call this and grab copy/paste console output to input.html, generate all locales
       //   var html, i;
       //   for(i = 1; i <= this.count; ++i) {
@@ -1035,9 +1030,8 @@ $(document).ready(function () {
               id,
               {
                 videoId: yid,
-                // height: "100%",//device.mobile() ? "auto" : "558", // this was 600 but changed it to 558 so captions in video are visible without scrolling
                 width: "100%",
-                playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0 }
+                playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0, cc_load_policy: 1, hl: lang }
               }
             );
           });
@@ -1051,15 +1045,14 @@ $(document).ready(function () {
           ext = panorama.audio.ext,
           path = panorama.audio.path;
         loader.retick(1, 16);
+
         for(var i = 1; i <= expect_cnt; ++i) {
           panorama.audio.elem.push($("<audio>",
             {
               preload:"auto",
               loop: true,
-              one: {
-                canplay: function (event) { loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.youtube, 100); } },
-                error: function (e) { console.log(this, e, "error in load audio for one of the file"); }
-              },
+              canplay: function (e) { loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.youtube, 100); } $(e.target).off("canplay"); },
+              error: function (e) { console.log(this, e, "error in load audio for one of the file"); },
               "src": (path + i + "." + ext)
             }).get(0));
         }
@@ -1074,7 +1067,6 @@ $(document).ready(function () {
       },
       panels: function () { /*console.log("load.panels");*/
         var cnt = 0, bg, fg, mfg, expect_cnt = panorama.panels.count*2+1;
-
         loader.retick(8, 11);
         panorama.panels.names.forEach( function (d, i) {
           bg = panorama.container.find("object[data-panel='" + (i+1) + "'][data-type='bg']");
