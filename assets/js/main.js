@@ -197,10 +197,10 @@ $(document).ready(function () {
           tp.faders = $(".apanel svg");
           tp.anims = $(".layer-colored");
           // if(device.desktop()) {
-            tp.anims.hover(
-              function () { tp.stop(); },
-              debounce(function () { tp.start(); },
-            100));
+          tp.anims.hover(
+            function () { tp.stop(); },
+            debounce(function () { tp.start(); },
+          100));
           // }
           // else {
           //   this.anims.css("opacity", 1);
@@ -1136,12 +1136,12 @@ $(document).ready(function () {
   (function init () {
 
     // dev
-    I18n.init(function (){
-      window.pn = panorama;
-      I18n.remap();
-      params.parse();
-      load.all();
-    });
+    // I18n.init(function (){
+    //   window.pn = panorama;
+    //   I18n.remap();
+    //   params.parse();
+    //   load.all();
+    // });
 
     // deploy
     // panorama.audio.dev();
@@ -1149,8 +1149,8 @@ $(document).ready(function () {
     // I18n.init(function (){ I18n.remap(); });
 
     // production
-    // params.parse();
-    // load.all();
+    params.parse();
+    load.all();
 
   })();
 });
