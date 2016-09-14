@@ -190,34 +190,39 @@ $(document).ready(function () {
       },
       animator: {
         finished: false,
+        faders: undefined,
         anims: undefined,
         bind: function (first) {
           var tp = this;
+          tp.faders = $(".apanel svg");
           tp.anims = $(".layer-colored");
-          if(device.desktop()) {
+          // if(device.desktop()) {
             tp.anims.hover(
               function () { tp.stop(); },
               debounce(function () { tp.start(); },
             100));
-          }
-          else {
-            this.anims.css("opacity", 1);
-          }
+          // }
+          // else {
+          //   this.anims.css("opacity", 1);
+          // }
 
           tp.anims.click(function () { story.open(+$(this).attr("data-story")); });
         },
         play: function () {
-          if(!device.desktop() || this.finished) { return; }
+          if(/*!device.desktop() ||*/ this.finished) { return; }
           var tp = this;
-          tp.anims.velocity("js.fade", { delay: 900, complete: function () { tp.play(); } });
+          tp.faders.velocity("js.fade", { delay: 900, complete: function () { tp.play(); } });
         },
         start: function () {
           this.finished = false;
+          this.faders.css("opacity", .1);
+          this.anims.css("opacity", 1);
           this.play();
         },
         stop: function () {
           this.finished = true;
-          this.anims.velocity("stop", true).css("opacity", .1);
+          this.faders.velocity("stop", true).css("opacity", 1);
+          this.anims.css("opacity", .1);
         }
       },
       scroll_by_pos: function (pos) {
@@ -543,14 +548,14 @@ $(document).ready(function () {
         panorama.animator.start();
       },
       update_height: function (story_el) {
-        var t = this, tmp, tmp_w, tmp_el;
-        tmp_w = t.el.find(".window").height();
+        var t = this, tmp, tmp_h, tmp_el;
+        tmp_h = t.el.find(".window").height();
         tmp_el = story_el.find(".scroll-box");
-        tmp = tmp_w - tmp_el.position().top - 20;
+        tmp = tmp_h - tmp_el.position().top - (device.mobile() ? 0 : 20);
         tmp_el.css({ "height": tmp + "px" });
         tmp_el = story_el.find(".scroll-box iframe");
-        if(tmp_el.length) {
-          tmp_el.css({ "height": device.mobile() ? "auto" : ( tmp_w - tmp_el.position().top - 25) + "px" });
+        if(tmp_el.length && !device.mobile()) {
+          tmp_el.css({ "height": ( tmp_h - tmp_el.position().top - 25) + "px" });
         }
       }
     },
@@ -615,17 +620,17 @@ $(document).ready(function () {
         delete on_esc["popup_to_close"];
       },
       open: function (v) {
-        var t = this, tmp, tmp_w, tmp_el;
+        var t = this, tmp, tmp_h, tmp_el;
         popup_mode = true;
         t.el.attr("data-type", v);
         t.content.scrollTop(0);//.css({ "height": (h > 760 ? h - 88 - 61 - 60 - 10 : h - 2*61) + "px" });
 
-        tmp_w = t.el.find(".window").height();
-        tmp = tmp_w - t.content.position().top - 20;
+        tmp_h = t.el.find(".window").height();
+        tmp = tmp_h - (device.mobile() ? 0 : 20);
         t.content.css({ "height": tmp + "px" });
         tmp_el = t.content.find("iframe");
-        if(tmp_el.length) {
-          tmp_el.css({ "height": device.mobile() ? "auto" : ( tmp_w - tmp_el.position().top - 25) + "px" });
+        if(tmp_el.length && !device.mobile()) {
+          tmp_el.css({ "height": ( tmp_h - tmp_el.position().top - 25) + "px" });
         }
 
         on_esc["popup_to_close"] = function () { t.close(); };
@@ -650,9 +655,10 @@ $(document).ready(function () {
         $(document).on("click", ".nav-next", function () { story.next(true); });
 
         $(document).on("click", ".nav-menu-toggle", function () {
-          var tmp = tp.el.attr("data-menu");
-          tp.el.attr("data-menu", tmp === "main" ? "" : "main");
-          $(this).toggleClass("active");
+          var tmp = tp.el.attr("data-menu"), state = (tmp === "main" || tmp === "sub");
+          tp.el.find(".nav-menu-container > li.active").removeClass("active");
+          tp.el.attr("data-menu", (state ? "" : "main"));
+          $(this).toggleClass("active", !state);
         });
 
         $(document).on("click", ".nav-sub-menu-toggle", function () {
@@ -1130,12 +1136,12 @@ $(document).ready(function () {
   (function init () {
 
     // dev
-    // I18n.init(function (){
-    //   window.pn = panorama;
-    //   I18n.remap();
-    //   params.parse();
-    //   load.all();
-    // });
+    I18n.init(function (){
+      window.pn = panorama;
+      I18n.remap();
+      params.parse();
+      load.all();
+    });
 
     // deploy
     // panorama.audio.dev();
@@ -1143,8 +1149,8 @@ $(document).ready(function () {
     // I18n.init(function (){ I18n.remap(); });
 
     // production
-    params.parse();
-    load.all();
+    // params.parse();
+    // load.all();
 
   })();
 });

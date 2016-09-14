@@ -32,8 +32,8 @@ ka =
   "behind": {
     "name": "Behind the Scenes",
     "caption": "Three Months. 360 degrees. And One Big Drawing",
-    "yid": "3fG2XOcxd3Q",
-    "player_yid": "3fG2XOcxd3Q",
+    "yid": "UHP-fgMYJCc",
+    "player_yid": "UHP-fgMYJCc",
     "text": "<div class='credits'>Credits</div> <ul> <li><span>Drawing:</span> Andrew North</li> <li><span>Words and Video:</span> Andrew North</li> <li><span>Producer:</span> Sophiko Vasadze</li> <li><span>Design:</span> JumpStart Georgia - Mariam Kobuladze, Anton Kamaryan, Jason Addie, Eric Barrett</li> <li><span>Editor:</span> Justin Burke/Eurasianet</li> <li><span>Translations:</span> Sophiko Vasadze, Dmitri Bit-Suleiman</li> <li>A special thanks to everyone from the Eliava who supported the project, including: Tariel Saralidze, Jaba Nakashidze, Gia Todadze, Miriani Nozadze, Otari Mujiri, Tamazi Dudashvili, Taso Tsertsvadze, Kakha, Marina Esebua, Vazha Jamagidze, Eduard Miroian, Pridon, Pata and Cesar.</li> <li>For advice and encouragement, a big thank you also to: Kote Sulaberidze, Nino Chilashvili, Irena Popiashvili, Natalia Antelava.</li> </ul>"
   },
   "stories": {
