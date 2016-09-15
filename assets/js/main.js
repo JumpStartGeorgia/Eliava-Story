@@ -675,7 +675,7 @@ $(document).ready(function () {
           $(this).parent().parent().parent().removeClass("active");
         });
 
-        tp.nv.find("a[data-popup-target]").on("click", function () { popup.open($(this).attr("data-popup-target")); });
+        $("a[data-popup-target]").on("click", function () { popup.open($(this).attr("data-popup-target")); });
       }
     },
     minimap = {

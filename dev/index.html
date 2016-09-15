@@ -37,7 +37,12 @@
     <div id="helper"><span data-i18n-drag_or_use></span><i></i></div>
     <div class="wrapper">
       <header class="d">
-        <div class="left"><div class="by" data-i18n-story_by></div></div>
+        <div class="left">
+          <div class="by">
+            <span data-i18n-story_by></span>
+            <a href="javascript:void(0)" data-popup-target="about" data-i18n-author></a>
+          </div>
+        </div>
         <a class="center" data-i18n-url="href">
           <span data-i18n-title></span>
           <span data-i18n-description></span>
@@ -349,15 +354,6 @@
       <div class="tooltip-box">
         <div class="title">{{title}}</div>
         <div class="quote">{{quote}}</div>
-      </div>
-    </div>
-    <div class="tooltip-template-orig" style="display:none;">
-      <div class="tooltip-box">
-        <div class="title">{{title}}</div>
-        <div class="quote">{{quote}}</div>
-        <div class="name"><span data-i18n-label-name></span>{{name}}</div>
-        <div class="job"><span data-i18n-label-job></span>{{job}}</div>
-        <div class="job_start_date"><span data-i18n-label-job_start_date></span>{{job_start_date}}</div>
       </div>
     </div>
 

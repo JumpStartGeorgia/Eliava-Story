@@ -259,14 +259,14 @@
   header .by {
     padding-top: 4px;
   }
-  header .left span:first-of-type {
-    color:#c5c5c5;
-  }
-  header .left span {
+  header .left span, header .left a {
     display:block;
     font:18px bebasneue_b;
     color:#fff;
     white-space:nowrap;
+  }
+  header .left span {
+    color:#c5c5c5;
   }
   header .center {
     width:100%;
