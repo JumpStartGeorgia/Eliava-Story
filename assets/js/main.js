@@ -10,6 +10,8 @@ $(document).ready(function () {
       RIGHT:  39,
       DOWN:   40
     },
+    is_desktop = device.desktop(),
+    is_mobile = !is_desktop,
     lang = document.documentElement.lang || "en",
     story_mode = false,
     popup_mode = false,
@@ -55,6 +57,19 @@ $(document).ready(function () {
         default_volume: 0.6, // deploy 0.6
         fade_duration: 500,
         can_play: true,
+        ready: is_desktop,
+        init: function () {
+          var t = this;
+          t.elem.forEach(function (d) {
+            if(typeof d !== "undefined" && d.readyState == 4) {
+              d.play();
+              d.pause();
+              d.currentTime = 0;
+            }
+          });
+          t.ready = true;
+          t.play(t.current);
+        },
         ok: function () {
           return this.current >= 1 && this.current <= this.count;
         },
@@ -85,13 +100,13 @@ $(document).ready(function () {
         },
         play: function (ind) {
           var t = this;
+          if(!t.ready) { t.current = ind; return; }
           if(t.can_play) {
             if(typeof ind === "undefined") { ind = 0; }
             if(ind >= 0 && ind < t.count) {
               var snd = t.elem[ind];
-              if(typeof snd !== "undefined" && snd.readyState == 4) {
-                //console.log("audio play ", ind);
-                t.stop(t.current);
+              if(typeof snd !== "undefined" && snd.readyState !== 0) {
+                if(ind !== t.current) { t.stop(t.current); }
                 snd.volume = t.default_volume;
                 snd.muted = t.muted || t.soft_muted;
                 snd.play();
@@ -108,7 +123,7 @@ $(document).ready(function () {
           if(typeof ind === "undefined") { ind = t.current; }
           if(ind >= 0 && ind < t.count) {
             var snd = t.elem[ind];
-            if(typeof snd !== "undefined" && snd.readyState == 4) {
+            if(typeof snd !== "undefined" && snd.readyState !== 0) {
               var step = t.default_volume/10, interval_id, dur = t.fade_duration/10;
               if(dur < 20) dur = 20;
               t.can_play = false;
@@ -196,7 +211,7 @@ $(document).ready(function () {
           var tp = this;
           tp.faders = $(".apanel svg");
           tp.anims = $(".layer-colored");
-          // if(device.desktop()) {
+          // if(is_desktop) {
           tp.anims.hover(
             function () { tp.stop(); },
             debounce(function () { tp.start(); },
@@ -209,7 +224,7 @@ $(document).ready(function () {
           tp.anims.click(function () { story.open(+$(this).attr("data-story")); });
         },
         play: function () {
-          if(/*!device.desktop() ||*/ this.finished) { return; }
+          if(/*!is_desktop ||*/ this.finished) { return; }
           var tp = this;
           tp.faders.velocity("js.fade", { delay: 900, complete: function () { tp.play(); } });
         },
@@ -461,7 +476,7 @@ $(document).ready(function () {
           t.el.find(".prev-toggle").click(function () { t.prev(); });
           t.el.find(".next-toggle").click(function () { t.next(); });
           t.el.find(".close, .bg").click(function () { t.close(); });
-          if(!device.desktop()) {
+          if(!is_desktop) {
             var start_x, prev_y;
             t.el.find(".story .scroll-box").draggable({
               start:  function (event, ui) { start_x = event.clientX; prev_y = ui.position.top; },
@@ -582,7 +597,7 @@ $(document).ready(function () {
           .replace("{{job_start_date}}", mt.job_start_date);
       },
       bind: function (first) {
-        if(!device.desktop()) { return; }
+        if(!is_desktop) { return; }
         $((first ? "" : ".ghost" ) + ".apanel .layer-colored").qtip({
           content: { text: function () { return tooltip.text_by_story(+$(this).attr("data-story")); }, title: false },
           position: {
@@ -916,8 +931,23 @@ $(document).ready(function () {
     helper = {
       el: $("#helper"),
       hidden: false,
+      bind: function () {
+        var t = this;
+        if(is_mobile) {
+          $(document).one("touchstart.waiting_gesture", t.interact.bind(t));
+        }
+      },
+      interact: function () {
+        var t = this;
+        if(is_mobile) {
+          panorama.audio.init();
+        }
+        t.el.fadeOut(800);
+      },
       hide: function (delay) {
-        typeof delay === "undefined" ? this.el.fadeOut(800) : this.el.delay(delay).fadeOut(1000);
+        if(is_desktop) {
+          typeof delay === "undefined" ? this.el.fadeOut(800) : this.el.delay(delay).fadeOut(1000);
+        }
       }
     },
     load = {
@@ -932,6 +962,7 @@ $(document).ready(function () {
           nav.bind();
           minimap.bind();
           popup.bind();
+          helper.bind();
           load.first_time = false;
         }
         story.go_to_and_open_current();
@@ -1081,8 +1112,9 @@ $(document).ready(function () {
         for(var i = 1; i <= expect_cnt; ++i) {
           panorama.audio.elem.push($("<audio>",
             {
-              preload:"auto",
+              preload: "auto",
               loop: true,
+              muted: true,
               canplay: function (e) { loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.youtube, 100); } $(e.target).off("canplay"); },
               error: function (e) { console.log(this, e, "error in load audio for one of the file"); },
               "src": (path + i + "." + ext)
@@ -1162,12 +1194,12 @@ $(document).ready(function () {
   (function init () {
 
     // dev
-    // I18n.init(function (){
-    //   window.pn = panorama;
-    //   I18n.remap();
-    //   params.parse();
-    //   load.all();
-    // });
+    I18n.init(function (){
+      window.pn = panorama;
+      I18n.remap();
+      params.parse();
+      load.all();
+    });
 
     // deploy
     // panorama.audio.dev();
@@ -1175,8 +1207,8 @@ $(document).ready(function () {
     // I18n.init(function (){ I18n.remap(); });
 
     // production
-    params.parse();
-    load.all();
+    // params.parse();
+    // load.all();
 
   })();
 });
