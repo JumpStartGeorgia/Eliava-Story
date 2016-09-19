@@ -139,6 +139,20 @@ en =
       "job_start_date": "2001"
     }
   },
+  "gears": {
+    "tools": {
+      "title": "Tools",
+      "quote": "Russian-made saws and other Soviet-era tools"
+    },
+    "welding": {
+      "title": "Welding",
+      "quote": "Reconditioned 1970s arc-welding machine"
+    },
+    "power": {
+      "title": "Power",
+      "quote": "Russian induction motors from 1960s - for powering escalators and engineering workshops"
+    },
+  },
   "label": {
     "name": "Name: ",
     "job": "Job: ",

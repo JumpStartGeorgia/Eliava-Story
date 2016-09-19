@@ -73,24 +73,24 @@ $(document).ready(function () {
         ok: function () {
           return this.current >= 1 && this.current <= this.count;
         },
-        dev: function () { // * WARNING call panorama.audio.dev(); in current context
-          // if need recalculate when audio should play, no pause in between, paste output in play_range
-          var a = [560, 250, 270, 402, 556, 615, 275, 820, 460, 462, 434, 416, 800, 356, 986, 530], // pixels for each audio file to play starting from 0
-            s = 8192, // sum is 8192 calculated based on width of new scan png file
-            c = [], f = 0, tmp;
-          if(this.count !== a.length) {
-            console.log("Audio files count should be same as length of 'a' array.");
-            return;
-          }
-          a.forEach(function (d) {
-            tmp = Math.round10(d*100/s, -1);
-            c.push([f, Math.round10(f+tmp, -1)]);
-            f=Math.round10(f+tmp, -1);
-          });
-          tmp = "";
-          c.forEach(function (d){ tmp += "[" + d[0] + ", " + d[1] +"], "; });
-          console.log("[ " + tmp.substring(0, tmp.length - 2) + " ]" );
-        },
+        // dev: function () { // * WARNING call panorama.audio.dev(); in current context
+        //   // if need recalculate when audio should play, no pause in between, paste output in play_range
+        //   var a = [560, 250, 270, 402, 556, 615, 275, 820, 460, 462, 434, 416, 800, 356, 986, 530], // pixels for each audio file to play starting from 0
+        //     s = 8192, // sum is 8192 calculated based on width of new scan png file
+        //     c = [], f = 0, tmp;
+        //   if(this.count !== a.length) {
+        //     console.log("Audio files count should be same as length of 'a' array.");
+        //     return;
+        //   }
+        //   a.forEach(function (d) {
+        //     tmp = Math.round10(d*100/s, -1);
+        //     c.push([f, Math.round10(f+tmp, -1)]);
+        //     f=Math.round10(f+tmp, -1);
+        //   });
+        //   tmp = "";
+        //   c.forEach(function (d){ tmp += "[" + d[0] + ", " + d[1] +"], "; });
+        //   console.log("[ " + tmp.substring(0, tmp.length - 2) + " ]" );
+        // },
         volume: function (v) {
           if(v >= 0 && v <= 1) {
             this.elem.forEach(function (el) {
@@ -347,11 +347,11 @@ $(document).ready(function () {
       el: $("#story_popup"),
       content: $("#story_popup .content"),
       share: $(".share-story .addthis_sharing_toolbox"),
-      opened: false,
       current: 5,
       count: 10, // * WARNING on story count change
       meta: {},
       by_url: false,
+      max_width: 992,
       // dev: function () { // * WARNING if story popup structure change call this and grab copy/paste console output to input.html, generate all locales
       //   var html, i;
       //   for(i = 1; i <= this.count; ++i) {
@@ -359,17 +359,17 @@ $(document).ready(function () {
       //       <div class="story" data-id="${i}" data-i18n-stories-s${i}-yid="data-yid">
       //         <div class="title" data-i18n-stories-s${i}-title="text"></div>
       //         <div class="scroll-box">
+      //           <div class="youtube" data-i18n-stories-s${i}-yid="data-yid" data-i18n-stories-s${i}-player_yid="id"></div>
       //           <div class="r">
-      //             <div class="c">
+      //             <div class="c meta-info">
       //               <div class="name"><span class="b" data-i18n-label-name></span><span data-i18n-stories-s${i}-name></span></div>
       //               <div class="job"><span class="b" data-i18n-label-job></span><span data-i18n-stories-s${i}-job></span></div>
       //               <div class="job_start_date" ><span class="b" data-i18n-label-job_start_date></span><span data-i18n-stories-s${i}-job_start_date="text"></span></div>
       //             </div>
-      //             <div class="c">
+      //             <div class="c meta-quote">
       //               <div class="quote" data-i18n-stories-s${i}-quote="text"></div>
       //             </div>
       //           </div>
-      //           <div class="youtube" data-i18n-stories-s${i}-yid="data-yid" data-i18n-stories-s${i}-player_yid="id"></div>
       //         </div>
       //       </div>`;
       //   }
@@ -563,43 +563,65 @@ $(document).ready(function () {
         panorama.animator.start();
       },
       update_height: function (story_el) {
-        var t = this, tmp, tmp_h, tmp_el;
-        tmp_h = t.el.find(".window").height();
-        tmp_el = story_el.find(".scroll-box");
+        var t = this, tmp,
+          tmp_h = t.el.find(".window").height(),
+          tmp_el = story_el.find(".scroll-box iframe"),
+          cnt_w = t.el.find(".content").width();
+
         tmp = tmp_h - tmp_el.position().top - (device.mobile() ? 0 : 20);
-        tmp_el.css({ "height": tmp + "px" });
-        tmp_el = story_el.find(".scroll-box iframe");
-        if(tmp_el.length && !device.mobile()) {
-          tmp_el.css({ "height": ( tmp_h - tmp_el.position().top - 25) + "px" });
+
+        var tmp_w = tmp/9*16;
+        var m_width = cnt_w > t.max_width ? t.max_width : cnt_w;
+        while(tmp_w > m_width) {
+          --tmp;
+          tmp_w = tmp/9*16;
         }
+        tmp_el.css({ "width": tmp_w + "px", "height": tmp + "px" });
       }
     },
     tooltip = {
       template: $(".tooltip-template").html(),
-      text_by_story: function (id) {
-        var st, mt;
+      text_by_story: function (id, type) {
+        console.log(id, type);
+        var st, mt, init_id = id;
+        if(type === "gear") { id = "g" + id; }
         if(!story.meta.hasOwnProperty(id)) {
-          st = story.el.find(".story[data-id='" + id + "']");
-          story.meta[id] = {
-            title: st.find(".title").text(),
-            quote: st.find(".quote").text(),
-            name: st.find(".name span:last-of-type").text(),
-            job: st.find(".job span:last-of-type").text(),
-            job_start_date: st.find(".job_start_date span:last-of-type").text()
-          };
+          if(type === "story") {
+            st = story.el.find(".story[data-id='" + id + "']");
+            story.meta[id] = {
+              title: st.find(".title").text(),
+              quote: st.find(".quote").text()//,
+              // name: st.find(".name span:last-of-type").text(),
+              // job: st.find(".job span:last-of-type").text(),
+              // job_start_date: st.find(".job_start_date span:last-of-type").text()
+            };
+          }
+          else {
+            st = $(".gears [data-gear='" + init_id + "']");
+            story.meta[id] = {
+              title: st.attr("data-title"),
+              quote: st.attr("data-quote")//,
+              // name: st.find(".name span:last-of-type").text(),
+              // job: st.find(".job span:last-of-type").text(),
+              // job_start_date: st.find(".job_start_date span:last-of-type").text()
+            };
+          }
+
         }
         mt = story.meta[id];
         return this.template
           .replace("{{title}}", mt.title)
-          .replace("{{quote}}", mt.quote)
-          .replace("{{name}}", mt.name)
-          .replace("{{job}}", mt.job)
-          .replace("{{job_start_date}}", mt.job_start_date);
+          .replace("{{quote}}", mt.quote);
+          // .replace("{{name}}", mt.name)
+          // .replace("{{job}}", mt.job)
+          // .replace("{{job_start_date}}", mt.job_start_date);
       },
       bind: function (first) {
         if(!is_desktop) { return; }
         $((first ? "" : ".ghost" ) + ".apanel .layer-colored").qtip({
-          content: { text: function () { return tooltip.text_by_story(+$(this).attr("data-story")); }, title: false },
+          content: { text: function () {
+            var tmp = $(this).attr("data-story") ? "story" : "gear";
+            return tooltip.text_by_story(+$(this).attr("data-" + tmp), tmp); }, title: false },
           position: {
             target: "mouse",
             // effect: false,
@@ -1087,7 +1109,34 @@ $(document).ready(function () {
 
         window.onYouTubeIframeAPIReady = function () {
 
-          $("#story_popup .story .youtube[data-yid], #popup .section .youtube[data-yid]").each(function (d, i) {
+          story.el.find(".story .youtube[data-yid]").each(function (d, i) {
+            var id = this.id, yid = this.dataset.yid, p = $(d).parent().find(".r");
+            youtubePlayers[yid] = new YT.Player(
+              id,
+              {
+                videoId: yid,
+                width: "100%",
+                playerVars:{ showinfo: 0, loop: 1, autoplay: 0, rel: 0, cc_load_policy: 1, hl: lang },
+                events: {
+                  onStateChange: function (event) {
+                    if(is_mobile) { return; }
+                    var dt = event.target.getVideoData(),
+                      meta = story.el.find(".story .youtube[data-yid='" + dt.video_id + "']").parent().find(".r"),
+                      played = meta.hasClass("played");
+                    if(event.data === YT.PlayerState.PLAYING) {
+                      if(!played) { meta.addClass("played"); }
+                      meta.fadeOut(played ? 400 : 3000);
+                    }
+                    else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+                      meta.fadeIn(400);
+                    }
+                  }
+                }
+              }
+            );
+          });
+
+          $("#popup .section .youtube[data-yid]").each(function (d, i) {
             var id = this.id, yid = this.dataset.yid;
             youtubePlayers[yid] = new YT.Player(
               id,
@@ -1198,6 +1247,7 @@ $(document).ready(function () {
       window.pn = panorama;
       I18n.remap();
       params.parse();
+      panorama.audio.muted = true;
       load.all();
     });
 
