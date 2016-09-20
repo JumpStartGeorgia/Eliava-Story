@@ -10,6 +10,7 @@ $(document).ready(function () {
       RIGHT:  39,
       DOWN:   40
     },
+    timestamp = "?v=1474315200000",
     is_desktop = device.desktop(),
     is_mobile = !is_desktop,
     lang = document.documentElement.lang || "en",
@@ -44,7 +45,7 @@ $(document).ready(function () {
       left_width: 0,
       right_width: 0,
       audio: {
-        ext: /opera/i.test(navigator.userAgent) || fox ? "ogg" : "mp3",
+        ext: (/opera/i.test(navigator.userAgent) || fox ? "ogg" : "mp3"),
         path: "../assets/sounds/",
         // names of the files are number between 1 and 'count'
         elem: [],
@@ -1054,7 +1055,6 @@ $(document).ready(function () {
         }
         expect_cnt*=2;
         loader.retick(is_partial ? 19 : 9, expect_cnt);
-        // var percent_step = (is_partial ? 96 : 44) / (expect_cnt*2);
 
         tmp_w = 0, tmp_i = 0;
         while(tmp_w < w) {
@@ -1062,7 +1062,7 @@ $(document).ready(function () {
 
           tmp = $(template_object.replace("%id", "r" + (tmp_i+1)).replace("%type", "bg").replace("%height", pnl_height));
           tmp.one("load", function (event) { loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
-          tmp.attr("data", (panorama.panels.path + "bg/" + panorama.panels.names[tmp_i] + ".svg"));
+          tmp.attr("data", (panorama.panels.path + "bg/" + panorama.panels.names[tmp_i] + ".svg" + timestamp));
           pnl.append(tmp);
 
           pnl.append("<div class='surface'></div>");
@@ -1072,7 +1072,7 @@ $(document).ready(function () {
             $(this).replaceWith(html[event.data.pnl_i].replace(/id\=\"story/g, "id=\"story_r_"));
             loader.inc();
             if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
-          tmp.attr("data", (panorama.panels.path + "fg/" + panorama.panels.names[tmp_i] + ".svg"));
+          tmp.attr("data", (panorama.panels.path + "fg/" + panorama.panels.names[tmp_i] + ".svg" + timestamp));
           svg.append(tmp);
 
 
@@ -1090,7 +1090,7 @@ $(document).ready(function () {
 
           tmp = $(template_object.replace("%id", "l" + (tmp_i+1)).replace("%type", "bg").replace("%height", pnl_height));
           tmp.one("load", function (event) { loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
-          tmp.attr("data", (panorama.panels.path + "bg/" + panorama.panels.names[tmp_i] + ".svg"));
+          tmp.attr("data", (panorama.panels.path + "bg/" + panorama.panels.names[tmp_i] + ".svg" + timestamp));
           pnl.append(tmp);
 
           pnl.append("<div class='surface noselect'></div>");
@@ -1100,7 +1100,7 @@ $(document).ready(function () {
             $(this).replaceWith(html[event.data.pnl_i].replace(/id\=\"story/g, "id=\"story_l_"));
             loader.inc();
             if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
-          tmp.attr("data", (panorama.panels.path + "fg/" + panorama.panels.names[tmp_i] + ".svg"));
+          tmp.attr("data", (panorama.panels.path + "fg/" + panorama.panels.names[tmp_i] + ".svg" + timestamp));
           svg.append(tmp);
 
 
@@ -1195,7 +1195,7 @@ $(document).ready(function () {
               muted: true,
               canplay: function (e) { loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.youtube, 100); } $(e.target).off("canplay"); },
               error: function (e) { console.log(this, e, "error in load audio for one of the file"); },
-              "src": (path + i + "." + ext)
+              "src": (path + i + "." + ext + timestamp)
             }).get(0));
         }
       },
@@ -1213,13 +1213,13 @@ $(document).ready(function () {
         panorama.panels.names.forEach( function (d, i) {
           bg = panorama.container.find("object[data-panel='" + (i+1) + "'][data-type='bg']");
           bg.one("load", function (event){ loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
-          bg.attr("data", panorama.panels.path + "bg/" + d + ".svg");
+          bg.attr("data", panorama.panels.path + "bg/" + d + ".svg" + timestamp);
 
 
           fg = panorama.container.find(".apanel[data-panel='" + (i+1) + "'][data-type='fg'] object");
           panorama.panels.elem.push(fg);
           fg.one("load", function (event){ loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
-          fg.attr("data", panorama.panels.path + "fg/" + d + ".svg");
+          fg.attr("data", panorama.panels.path + "fg/" + d + ".svg" + timestamp);
         });
 
         mfg = minimap.el.find(".fg object");
@@ -1228,7 +1228,7 @@ $(document).ready(function () {
           mfg.replaceWith(mfg.get(0).contentDocument.documentElement.outerHTML);
           loader.inc();
           if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
-        mfg.attr("data", "../assets/images/map_fg.svg");
+        mfg.attr("data", "../assets/images/map_fg.svg" + timestamp);
       },
       partial: function () { /*console.log("load.partial");*/
         panorama.audio.stop();

@@ -207,7 +207,7 @@
   #helper span:lang(ru) { font:16px arsenal; }
   #helper i {
     display:inline-block;
-    background:transparent url(../images/drag.svg) no-repeat center;
+    background:transparent url(../images/drag.svg?v=1474315200000) no-repeat center;
     width:50px;
     height:42px;
     position:relative;
@@ -233,10 +233,10 @@
     display:inline-block;
     width:39px !important;
     height:39px !important;
-    background:transparent url(../images/sound.svg) no-repeat center/25px 23px;
+    background:transparent url(../images/sound.svg?v=1474315200000) no-repeat center/25px 23px;
   }
   .sound-toggle.muted i {
-    background:transparent url(../images/soundoff.svg) no-repeat center/25px 23px;
+    background:transparent url(../images/soundoff.svg?v=1474315200000) no-repeat center/25px 23px;
   }
   header {
     display:flex;
@@ -312,8 +312,8 @@
   }
 
 
-  .header-dropdown-toggle i.share { background:transparent url(../images/share.svg) no-repeat; }
-  .header-dropdown-toggle i.language { background:transparent url(../images/language.svg) no-repeat; }
+  .header-dropdown-toggle i.share { background:transparent url(../images/share.svg?v=1474315200000) no-repeat; }
+  .header-dropdown-toggle i.language { background:transparent url(../images/language.svg?v=1474315200000) no-repeat; }
   .header-dropdown-toggle:hover i {
     background-position:-31px 0;
   }
@@ -503,7 +503,7 @@
   }
   .nav .des { display:none; }
   .nav-prev {
-    background:transparent url(../images/arrow_left.svg) left;
+    background:transparent url(../images/arrow_left.svg?v=1474315200000) left;
     background-size:cover;
     width:50px;
     height:50px;
@@ -512,7 +512,7 @@
   }
 
   .nav-next {
-    background:transparent url(../images/arrow_right.svg) right;
+    background:transparent url(../images/arrow_right.svg?v=1474315200000) right;
     background-size:cover;
     width:50px;
     height:50px;
@@ -554,8 +554,8 @@
     margin-right:14px;
 
   }
-  .nav .center a i.about { background:transparent url(../images/about.svg) no-repeat; }
-  .nav .center a i.behind { background:transparent url(../images/behind.svg) no-repeat; }
+  .nav .center a i.about { background:transparent url(../images/about.svg?v=1474315200000) no-repeat; }
+  .nav .center a i.behind { background:transparent url(../images/behind.svg?v=1474315200000) no-repeat; }
   .nav .center a:hover i {
     background-position:-31px 0;
   }
@@ -578,7 +578,6 @@
     position:relative;
     overflow:hidden;
     margin:0 12px;
-    // background:transparent url(../images/map.png) no-repeat center;
   }
   .minimap .overlay {
     display:flex;
@@ -602,31 +601,15 @@
     cursor:-webkit-grab;
     pointer-events:all;
   }
-  .minimap .overlay .light-main {
-    // background-color:purple;
-    // opacity:0.1;
-  }
-/*   .minimap object {
-  position:absolute;
-  top:0;
-  height:100%;
-} */
   .nav-menu {
     position:relative;
     height:100%;
-    // width:100%;
     text-align:right;
     flex-basis:100%;
-
-    // flex:0 0;
   }
   .nav-menu > div {
     vertical-align:top;
   }
-  // [data-menu='main'] > .nav-menu-toggle:before,
-  // [data-menu='sub'] > .nav-menu-toggle:before {
-  //   background-position:-33px 0;
-  // }
   .nav-menu-toggle {
     display:inline-block;
     width:57px;
@@ -637,7 +620,7 @@
   .nav-menu-toggle:before {
     display:inline-block;
     content:"";
-    background:transparent url(../images/toggle.svg) no-repeat;
+    background:transparent url(../images/toggle.svg?v=1474315200000) no-repeat;
     background-position:0 0;
     width:32px;
     height:26px;
@@ -707,10 +690,10 @@
     background-position:-31px 0;
   }
 
-  .nav-menu-container i.about { background:transparent url(../images/about.svg) no-repeat; }
-  .nav-menu-container i.share { background:transparent url(../images/share.svg) no-repeat; }
-  .nav-menu-container i.language { background:transparent url(../images/language.svg) no-repeat; }
-  .nav-menu-container i.behind { background:transparent url(../images/behind.svg) no-repeat; }
+  .nav-menu-container i.about { background:transparent url(../images/about.svg?v=1474315200000) no-repeat; }
+  .nav-menu-container i.share { background:transparent url(../images/share.svg?v=1474315200000) no-repeat; }
+  .nav-menu-container i.language { background:transparent url(../images/language.svg?v=1474315200000) no-repeat; }
+  .nav-menu-container i.behind { background:transparent url(../images/behind.svg?v=1474315200000) no-repeat; }
 
 
 
@@ -761,7 +744,7 @@
   }
   .nav-sub-menu-back i {
     display:inline-block;
-    background:transparent url(../images/back.svg) no-repeat center/22px 13px;
+    background:transparent url(../images/back.svg?v=1474315200000) no-repeat center/22px 13px;
     width:48px !important;
     height:48px !important;
     padding:0px 20px 0 24px;
@@ -849,7 +832,7 @@
     z-index:33;
   }
   .popup .window .close {
-    background:transparent url(../images/close.svg) center/24px;
+    background:transparent url(../images/close.svg?v=1474315200000) center/24px;
     width:24px;
     height:24px;
     position:absolute;
@@ -952,7 +935,7 @@
 
   .story-popup .prev-toggle {
     position:absolute;
-    background:transparent url(../images/story_toggle.svg) left;
+    background:transparent url(../images/story_toggle.svg?v=1474315200000) left;
     background-size:cover;
     width:44px;
     height:88px;
@@ -964,7 +947,7 @@
   }
   .story-popup .next-toggle {
     position:absolute;
-    background:transparent url(../images/story_toggle.svg) right;
+    background:transparent url(../images/story_toggle.svg?v=1474315200000) right;
     background-size:cover;
     width:44px;
     height:88px;
@@ -1001,7 +984,7 @@
   }
   .story-popup .share-story i {
     display:inline-block;
-    background:rgba(0,0,0,.7) url(../images/share_story.svg) no-repeat center/28px;
+    background:rgba(0,0,0,.7) url(../images/share_story.svg?v=1474315200000) no-repeat center/28px;
     width:48px;
     height:47px;
   }
@@ -1073,7 +1056,7 @@
    */
   }
   .story-popup .window .close {
-    background:#f7f7f7 url(../images/close.svg) center/24px;
+    background:#f7f7f7 url(../images/close.svg?v=1474315200000) center/24px;
     width:24px;
     height:24px;
     position:absolute;
