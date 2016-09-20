@@ -2,11 +2,11 @@ ka =
 {
   "locale": "ka",
   "selected_locale": "georgian",
-  "title": "The Big Draw: Selling the Soviet Past",
-  "nav_title_1": "The Big Draw:",
-  "nav_title_2": "selling the Soviet past",
-  "description": "25 years since the end of the USSR: The story of a market like no other.",
-  "sitename": "The Big Draw: Selling the Soviet Past",
+  "title": "დიდი ნახატი: საბჭოთა წარსულის გაყიდვა",
+  "nav_title_1": "დიდი ნახატი:",
+  "nav_title_2": "საბჭოთა წარსულის გაყიდვა",
+  "description": "საბჭოთა კავშირის დასრულებიდან 25 წლის შემდეგ: ყველაზე განსხვავებული ბაზრის ამბავი.",
+  "sitename": "დიდი ნახატი: საბჭოთა წარსულის გაყიდვა",
   "domain": "http://dev-eliava.jumpstart.ge",
   "url": "http://dev-eliava.jumpstart.ge/ka/",
   "url_en": "http://dev-eliava.jumpstart.ge/en/",
@@ -15,133 +15,137 @@ ka =
   "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.jpg",
   "share_path": "share",
   "loader": {
-    "text": "25 years since the end of the USSR: The story of a market like no other"
+    "text": "საბჭოთა კავშირის დასრულებიდან 25 წლის შემდეგ: ყველაზე განსხვავებული ბაზრის ამბავი"
   },
-  "drag_or_use": "Drag, scroll<br/>or<br/>use arrow keys",
-  "share": "Share",
+  "drag_or_use": "გადაიტანე, ჩამოსქროლე<br/>or<br/>გამოიყენეთ ისარი",
+  "share": "გააზიარე",
   "en": "English",
-  "ge": "Georgian",
-  "ru": "Russian",
-  "story_by": "An Interactive Story By",
-  "author": "Andrew North",
+  "ge": "ქართული",
+  "ru": "Русский",
+  "story_by": "ინტერაქტიული ამბავი, ავტორი",
+  "author": "ენდრიუ ნორთი",
   "about": {
-    "name": "The Story",
-    "caption": "The Big Draw: Selling the Soviet Past",
-    "author": "By Andrew North",
-    "text": "<p>You won’t find it in the Tbilisi guidebooks, and it’s well beyond the tourist trail. But the first time I came to this sprawling open-air hardware market in the Georgian capital, I thought to myself: “I’ve got to draw this place.”</p> <p>I had come as a customer, to buy some things for a home DIY job. But I found myself in a ‘Home Depot’ for the Soviet past, and the artist in me was fascinated.</p> <p>Hidden behind an outer row of newer shops is a vast labyrinth of tightly-packed stalls trading in Soviet-era engines, electrical equipment and heavy tools. Known as the Eliava (after a nearby street), it sprang up in the hard years after Georgia won its independence from the USSR in 1991. There are hundreds of stallholders, with an inventory that ranges from Russian nuts and bolts, to gearboxes and septuagenarian power motors that once drove Soviet Metro escalators. And I decided to turn this mass of history into a drawing.</p> <p>I focused on one part of the market and set about creating a 360-degree panorama of everyone and everything in my field of view. And after nearly four months of work, always standing in the same place, it became a 4 metre-long ink drawing.</p> <p>I started with <a href='#' class='to-character' data-id='6'>Vazha Jamagidze</a> and the metal smorgasbord of Russian-made hand-tools and reconditioned bathroom taps that he sells from two small benches. He has worked here for more than 20 years, but his solid arms and shoulders speak of another life before that, when he was a Soviet Army wrestling champion. And as I got to know him and the other stallholders, the journalist in me saw a wider story here.</p> <p>This is a free market selling the communist past - where some still wish it were the present. So it offers a unique window on Georgia’s transition and its often-tortured search for a new post-Soviet identity, pulled between West and East.</p> <p>Everyone in the drawing grew up in Soviet-run Georgia; and some have struggled to adjust to the fast-changing country that has replaced it. Whereas most Georgians now lean west and resent Moscow’s past and present intrusions, among the denizens of the Eliava there is a more sympathetic attitude towards Russia and Soviet rule. It’s also more complex than that.</p> <p>Democracy and capitalism have brought only “anarchy and filth” complains Vazha, worrying that Georgia’s Christian-Orthodox traditions are under threat from “Western ideas” like LGBT rights. But other stallholders had turned against Moscow precisely because of the communists’ persecution of the Orthodox Church. Getting closer to the West - and getting into the European Union and NATO - they said, was now the only way to secure Georgia’s identity and sovereignty.</p> <p>At first I was the one answering questions about my identity. “What village are you from?” I was asked. I felt rootless by comparison as I explained how I was born in one city in Britain, but then never returned.</p> <p>The bigger challenge was drawing each person in my 360-degree frame, working as quickly as I could before they moved, with the added pressure that they could see the result as soon as I had finished. That’s the paradox and the excitement of drawing. It is both slow and immediate.</p> <p>That made it an attraction too, as the panorama took shape, with stallholders coming from further away to look and laugh at how I had portrayed their friends. “It’s not bad,” smiled one visitor as he looked at my version of <a href='#' class='to-character' data-id='4'>Eduard</a>. “But you haven’t made his nose big enough.”</p> <p>Sometimes there were arguments, once even a fight. If I happened to be there on a key Orthodox holiday, such as ‘Mariamoba’, or someone’s birthday, I could forget working. They took my pens away and gave me wine instead. And <a href='#' class='to-character' data-id='10'>Tariel</a>, whose collection of muscular Russian motors I drew early on, locked away the drawing in his storeroom.</p> <p>Once their homemade wine started flowing though, I could barely walk in a straight line, let alone draw one. The Eliava is as much a culture and a community as a market.</p> <p>There was never going to be a future in recycling the past though, and many stallholders are struggling. More people can afford new hardware now, rather than making do with secondhand. “This is not really a business,” <a href='#' class='to-character' data-id='7'>Mirian Nozadze</a> said to me ruefully, gesturing at the piles of chunky Soviet nuts and bolts that are his mainstay. “We are just speculators,” he added, using a derogatory communist-era term for business-people.</p> <p>But instead of a mid-way station to something better, the Eliava has become the end of the line for many working there - while the train turning Georgia into a market economy thunders on. It is a familiar test of wrenching change, and who bears most responsibility to deal with the consequences – the state or the individual.</p> <p>“Who will bring back the old times?” sighs <a href='#' class='to-character' data-id='11'>Taso Tsertsvadze</a>. Like many who work in the Eliava, she is originally from Chiatura, a mining town in western Georgia that was hammered by the end of the Soviet Union and the collapse of the guaranteed market it provided. Now she runs a one-woman tea and coffee delivery service around the market.  She wishes she could return home, but says “we have to cope with the new.” </p> <p>The ‘new’ keeps coming. Several stalls closed while I was working on the project and two people in the drawing have moved on.  So it is already a historical record.</p> <p>One day I went to see Gia Andriadze, one of the market’s owners. We talked on the balcony of his penthouse office; atop a multi-storey retail complex he has built on space vacated by stallholders who have already given up. The future is mapped out below – new buildings are pressing in on all sides of the drab tin roofs of the original Eliava.</p> <p>Most of those stalls will be gone in five years, he predicts: “They are selling nostalgia.”</p> <br/><br/> <p>Andrew North is a British journalist based in Tbilisi.  Find him on Twitter <a href='https://twitter.com/NorthAndrew' target='_blank'>@NorthAndrew</a> and see more of his work at: <a href='http://sketchyreports.com/' target='_blank'>sketchyreports.com</a></p>"
+    "name": "ამბავი",
+    "caption": "დიდი ნახატი: საბჭოთა წარსულის გაყიდვა",
+    "author": "ენდრიუ ნორთის მიერ",
+    "text": "<p>თქვენ ვერ იპოვით მას თბილისის შესახებ ბუკლეტებში, და ის ტურისტული ბილიკებიდან საკმაოდ შორსაა. მაგრამ როცა პირველად ჩამოვედი საქართველოს დედაქალაქში ღია ცის ქვეშ გაშლილ ტექნიკის ბაზარზე, გავიფიქრე: “მე ეს ადგილი უნდა დავხატო”.</p> <p>მე მოვედი, როგორც მომხმარებელი, სახლში საკუთრაი ხელით მუშაობისთვსი რამდენიმე ნივთი უნდა შემეძინა. მაგრამ საბჭოთა წარსულის “მთავარ დეპოში” აღმოვჩნდი და ჩემში არსებული მხატვარი მოიხიბლა.</p> <p>ახალი მაღაზიების უკან დიდი ლაბირინთი იმალება, მჭიდროდ შეფუთული სსაბჭოთა ეპოქის ძრავებით, ელექტრო მოწყობილობებითა და მძიმე ინსტრუმენტებით. ცნობილი, როგორც ელიავა (მიმდებარე ქუჩის მსგავსად), აღმოჩენდა საქართველოსთვის  მძიმე წლებში, მას შემდეგ რაც ქვეყანამ დამოუკიდებლობა მოიპოვა 1991 წელს. აქ ასობით დახლია, რომლებზეც რუსული სახრახნისები და ჭანჭიკებიდან დაწყებული, სიჩქარის გადაცემათა კოლოფით და ძრავებით დასრულებული, რომლებიც ერთ დროს საბჭოთა მეტროს ესკალატორებს ამუშავებდნენ. მე გადავწყვიტე ამ მასის ისტორია ნახატად მექცია.</p> <p> ბაზრის ერთ ნაწილზე გადავწყვიტე ფოკუსირება და 360 გრადუსიანი პანორამის დასახატად დავჯექი, რომელიც მხედველობის არეში ყველაფერს არწერდა. დაახლოებით ოთხთვიანი მუშაობისა და ყოველთვის ერთ ადგილზე დგომის შედეგად 4 მეტრიანი მელნის ნახატი გამოვიდა.</p> <p>მე დავიწყე <a href='#' class='to-character' data-id='6'>ვაჟა ჯამაგიძით</a> და მრავალფეროვანი,  რუსეთში დამზადებული ლითონის ხელსაწყოებითა და განახლებული აბაზანის ონკანებით, რომლებსაც ის ორ პატარა სკამზე ყიდის. ის აქ  20 წელზე მეტია მუშაობს, თუმცა მისი მკლავები და მხრები სხვა ცხოვრებაზე გიყვებია, როცა ის საბჭოთა არმიის ჩემპიონი იყო ჭიდაობაში. როდესაც ის და დახლების სხვა მფლობელები გავიცანი, ჩემში არსებულმა ჯურნალისმა მათში უფრო ღრმა ამბავი დაინახა.</p> <p> ეს არის თავისუფალი ბაზარი, სადაც კომუნისტურ წარულს ყიდიან და ბევრს უნდა რომ კომუნიზმი აწმყო იყოს. ეს ადგილი გაძლევს საქართველოს გარდასახვასა და ძიებაზე დაკვირვების საშუალებას, როგორ ცდილობს ქვეყანა თავისი პოსტ-საბჭოური იდენტობის პოვნას, აღმოსავლეთსა და დასავლეთს შორის. .</p> <p>ნახატზე ასახული ყველა პიროვნება საბჭოთა საქართველოში დაიბადა  და ზოგიერთს მოუწიე მორგებოდა იმ სწრაფ ცვლილებებს, რომლებიც მის შემცვლელ ქვეყანაში იყო. მიუხედავად იმისა, რომ ქართველების დიდი ნაწილი დასავლეთს  ემხრობა და მოსკოვი წარსულსა თუ აწმყოში არაერთხელ შემოჭრილა საქართველოში, ელიავას მოვაჭრეების დიდ ნაწილს რუსეთისა და საბჭოთა კავშირის მიმართ სიმპატიები აქვთ. თუმცა ყველაფერი უფრო რთულადაა.</p> <p>კაპიტალიზმი და დემოკრატია მოიტანა მხოლოდ "ანარქია და სიბინძურე" ჩივის ვაჟა და შეშფოტებულია, რომ საქართველოს ქრისტიანულ-მართლმადიდებლური ტრადიციები  "დასავლური იდეების", საფრთხის ქვეშ არიან, ისეთების როგორიც ლგბტ უფლებებია. მაგრამ სხვა დახლის მფლობელები მოსკოვის წინააღმდეგი სწორედ იმიტომ არიან, რომ კომუნისტები მართლმადიდებელ ეკლესიას დევნიდნენ. დაახლოება დასავლეთთან, ევროკავშირსა და ნატოში შესვლა, მათი განცხადებით, ახლა ერთადერთი გზაა, საქართველოს იდენტობისა და სუვერენიტეტის უზრუნველყოფისთვის.</p> <p>თავიდან მე ვპასუხობდი კითხვებს ჩემ შესახებ. “რომელი სოფლიდან ხარ?” - მკითხეს. თავს ფესვების გარეშე ვგრძნობდი, როცა ვუხსნიდი, როგორ დავიბადე ბრიტანეთის ერთერთ ქალაქში, რომელშიც არასოდეს დავბრუნებულვარ. </p> <p>უფრო დიდი გამოწვევა 360 გრადუსიან ჩარჩოში ადამიანების დახატვა იყო. ვცდილობდი რაც შეიძლება სწრაფად მემუშავა, სანამ მოძრაობას დაიწყებდნენ. ამას კიდევ ერთი ზეწოლა ემატებოდა, ხატვის დასრულებისთანავე მოვაჭრეებს მისი დანახვა შეეძლოთ. ეს იყო პარადოქსი და ხატვის ამაღელვებელი პროცესი. ეს არის როგორც ძალიან ნელი, ასევე დაუყონებლივიც.</p> <p>ამით ის უფრო მომხიბვლელი გახდა, როცა პანორანამ უკვე ფორმას იღებდა, მოვაჭრეები სხვა, შორი ადგილებიდან მოდიოდნენ, რომ მათი მეგობრების გამოსახულება ენახათ და დაეცინათ. “ცუდი არ არის” გაიღიმა ერთმა სტუმარმა როცა ჩემს ნახატზე შეხედა <a href='#' class='to-character' data-id='4'>ედუარდის</a>. “მაგრამ მისი ცხვირი საკმარისად დიდი არ დაგიხატავს.”</p> <p>ხანდახან უთანხმოებებიც იყო, ერთ ჩხუბიც. თუ რომელიმე მართლმადიდებლურ დრესასწაულზე მივიდოდი, ისეთებზე როგორიც მარიამობაა, ან ვინმეს დაბადების დღე, მუშაობა უნდა დამევიწყებინა. ისინი მართმევდნენ კალამს და სანაცვლოდ ჭიქას მაძლევდნენ. Da   They took my pens away and gave me wine instead. And <a href='#' class='to-character' data-id='9'>ტარიელიl</a>, რომლის რუსული ძრვაბის კოლექციაც ადრე დავხატე, ჩემს ნახატს სათავსოში კეტავდა.</p> <p>მას შემდეგ, რაც მათი სახლში დამზადებული ღვინო ჩემში დაიწყებდა დინებას, სწორ ხაზზე სიარული მიჭირდა, რომ არაფერი ვთქვათ ხატვაზე. ელიავა იმდენადაა კულტურა და საზოგადოება, როგორც ბაზარი.</p> <p>წარსულის გადამუშავებას მომავალი არასდროს ჰქონია, თუმცა ბევრი დახლის მფლობელი ჯერ კიდევ ინრძვის. უფრო მეტ ადამიანს შეუძლია ახალი ტექნიკის ყიდვა, ვიდრე მეორადის გამოყენება. “ეს ბიზნესი ნამდვილად არ არის” მითხრა<a href='#' class='to-character' data-id='7'>მირიან ნოზაძემ </a> სევდიანად, როცა საბჭოთა დროინდელ ხრახნებსა და ჭანჭიკებს დახედა, რომლებიც მისი შემოსავლის ძირითადი წყაროა. “ჩვენ უბრალოდ სპეკულანტები ვართ,” დაამატა მან, კომუნისტურ ეპოქაში დამკვიდრებული, ბიზნესმენების დამამცირებელი სიტყვის გამოყენებით.</p> <p>მაგრამ ნაცვლად სადგურისა, რომელიც რაღაც უკეთესისკენ მიდის, ელიავას გახდა ბოლო სადგური მრავალი იქ მუშავისთვის - მაშინ, როდესაც მატარებელი რომელსაც საქართველო საბაზრო ეკონომიკისკენ მიყავს ქუხს.</p> <p>“ვინ დაგვაბრუნებს ძველ დროში?” ოხრავს <a href='#' class='to-character' data-id='10'>ტასო ცერცვაძე</a>. ისევე როგორც მრავალი ელიავაზე მომუშავე, იგი წარმოშობით ჭიათურიდანაა,  სამთო ქალაქიდან დასავლეთ საქართველოში რომელიც საბჭოთა კავშირის დაშლისა და გარანტირებული ბაზრის დაკარგვის შემდეგ დაზარალდა. ახლა მას ყავის და ჩაის მიტანის ერთქალიანი ბიზნესი აქვს. ის სახლში დაბრუნებას ნატრობს მაგრამ როგორც ამბობს “ახალს უნდა გამოუკავდეს” </p> <p> “ახალი” კი მუდმივად მოდის. რამდენიმე დახლი დაიხურა სანამ მე ვმუშაობდი და ჩემი ნახატიდან ორმა ადამიანმა დატოვა ბაზარი. ასე რომ, ეს ნამდვილად ისტორიული მასალა.</p> <p>ერთ დღეს ბაზრის ერთერთ მეპატრონესთან, გია ანდრიაძესთან მივედი. ჩვენ მისი ოფისის აივანზე ვისაუბრეთ, მრავალსართულიანი საცალო კომპლექსის პენტჰაუსში, რომელიც მან იმ ადგილას ააშენა, რომელიც მოვაჭრეებმა დატოვეს. მომავალი რუქებზე უკვე დატანილია - ახალი შენობები ყველა მხარიდან აწვებიან ელიავას ორიგინალურ თუნუქის სახურავებს.</p> <p>ამ თუნუქების დიდი ნაწილი ხუთ წელიწადში გაქრება, წინასწარმეტყველებს ის: “ისინი ნოსტალგიას ყიდიან.” </p> <br/><br/> <p>ენდრიუ ნორთი საქართველოში მცხოვრები ბრიტანელი ჟურნალისტია. იპოვეთ ის ტვიტერზე <a href='https://twitter.com/NorthAndrew' target='_blank'>@NorthAndrew</a> და იხილეთ მისი ნამუშევრები: <a href='http://sketchyreports.com/' target='_blank'>sketchyreports.com</a></p>"
   },
   "behind": {
-    "name": "Behind the Scenes",
-    "caption": "Three Months. 360 degrees. And One Big Drawing",
+    "name": "კადრს მიღმა",
+    "caption": " სამი თვე. 360 გრადუსი. და ერთი დიდი ნახატი.",
     "yid": "pjH0vlGTPk8",
     "player_yid": "pjH0vlGTPk8",
-    "text": "<div class='credits'>Credits</div> <ul> <li><span>Drawing:</span> Andrew North</li> <li><span>Words and Video:</span> Andrew North</li> <li><span>Producer:</span> Sophiko Vasadze</li> <li><span>Design:</span> JumpStart Georgia - Mariam Kobuladze, Anton Kamaryan, Jason Addie, Eric Barrett</li> <li><span>Editor:</span> Justin Burke/Eurasianet</li> <li><span>Translations:</span> Sophiko Vasadze, Dmitri Bit-Suleiman</li> <li>A special thanks to everyone from the Eliava who supported the project, including: Tariel Saralidze, Jaba Nakashidze, Gia Todadze, Miriani Nozadze, Otari Mujiri, Tamazi Dudashvili, Taso Tsertsvadze, Kakha, Marina Esebua, Vazha Jamagidze, Eduard Miroian, Pridon, Pata and Cesar.</li> <li>For advice and encouragement, a big thank you also to: Kote Sulaberidze, Nino Chilashvili, Irena Popiashvili, Natalia Antelava.</li> </ul>"
+    "text": "<div class='credits'>Credits</div> <ul> <li><span>ნახატი:</span> ენდრიუ ნორთი</li> <li><span>სიტყვები და ვიდეო:</span> ენდრიუ ნორთი</li> <li><span>პროდიუსერიr:</span> სოფიკო ვასაძე</li> <li><span>დიზაინი:</span> ჯამპსტარტ საქართველო - მარიამ კობულაძე, ანტონ კამარიანი, ჯეისონ ედი, ერიკ ბარეტი</li> <li><span>რედაქტორიr:</span> ჯასტი ბერკი/Eurasianet</li> <li><span>თარგმანი:</span> სოფიკო ვასაძე, დიმიტრი ბით-სულეიმანი</li> <li> განსაკუთრებული მადლობა ყველას ელიავადან, ვინც პროექტს უჭერდა მხარს: ტარიელ სარალიძე, ჯაბა ნაკაშიძე, გია თოთაძე, მირიან ნოზაძე, ოთარ მუჯირი, თამაზ დუდაშვილი, ტასო ცერცვაძე, კახა, მარინა ესებუა, ვაჟა ჯამაგიძე, ედუარდ მიროიანი, ფრიდონი, პაატა და ცეზარი..</li> <li>რჩევისთვის და მხარდაჭერისთვის დიდი მადლობა ასევე: კოტე სულაბერიძეს, ნინო ჭილაშვილს, ირენა პოპიაშილს, ნატალია ანთელავას.</li> </ul>"
   },
   "stories": {
     "s1": {
-      "title": "The Tool Seller",
-      "quote": "The Soviet times were good. I had a job, a salary. Now where are the salaries and jobs?",
-      "description": "fb description",
+      "title": "ხელსაწყოების გამყიდველი",
+      "quote": "\"საბჭოთა კავშირის დრო კარგი იყო. სამსახური და ხელფასი მქონდა.  ახლა სად არის ხელფასები და სამსახურები?\"",
       "yid": "90qn0Bvsyh0",
       "player_yid": "90qn0Bvsyh0",
-      "name": "Tamazi Dudashvili",
-      "job": "sells tools and spare parts",
+      "name": "თამაზი დუდაშვილი",
+      "job": "ყიდის ხელსაწყოებს და სატადარიგო ნაწილებს",
       "job_start_date": "1999"
     },
     "s2": {
-      "title": "The Cigarette Seller",
-      "quote": "I didn’t know what poverty was (in Soviet times). My children know all about it.",
-      "description": "fb description",
+      "title": "სიგარეტის გამყიდველი",
+      "quote": "\"სიღარიბე რა იყო არ ვიცოდი (საბჭოთა კავშირის დროს). ჩემმა შვილებმა კი ყველაფერი იციან სიღარიბეზე.\"",
       "yid": "t8b6NXZ-Pjk",
       "player_yid": "t8b6NXZ-Pjk",
-      "name": "Marina Esebua",
-      "job": "sells cigarettes, sweets and snacks",
+      "name": "მარინა ესებუა",
+      "job": "ყიდის სიგარეტს და ტკბილეულს",
       "job_start_date": "2008"
     },
     "s3": {
-      "title": "2008 War Volunteer",
-      "quote": "I was proud I had a chance to defend my country",
-      "description": "fb description",
+      "title": " მოხალისე 2008 წლის ომში",
+      "quote": "\"ამაყი ვიყავი, რომ ჩემი ქვეყნის დაცვის შესაძლებლობა მქონდა.\"",
       "yid": "mXNI-DWRhtU",
       "player_yid": "mXNI-DWRhtU",
-      "name": "Otari Mujiri",
-      "job": "repairs and sells power tools",
+      "name": "ოთარ მუჯირი",
+      "job": "აკეთებს და ყიდის ელექტრო მოწყობილობებს",
       "job_start_date": "2000"
     },
     "s4": {
-      "title": "The Skeptic",
-      "quote": "Before it was Russia. Now America controls Georgia, Eduard believes.",
-      "description": "fb description",
+      "title": "სკეპტიკოსი",
+      "quote": "აქამდე რუსეთი იყო. ახლა ამერიკა აკონტროლებს საქართველოს, სჯერა ედუარდს.",
       "yid": "DB-ANJPqS6s",
       "player_yid": "DB-ANJPqS6s",
-      "name": "Eduard Miroian",
-      "job": "sells tools and spare parts",
+      "name": "ედუარდ მირონიანი",
+      "job": "ყიდის ხელსაწყოებს და სათადარიგო ნაწილებს",
       "job_start_date": "1996"
     },
     "s5": {
-      "title": "The Europhile",
-      "quote": "Archaeologists have shown Georgia is historically closer to Europe",
-      "description": "fb description",
+      "title": "ევროფილი",
+      "quote": "\"არქეოლოგებმა დაადგინეს, რომ ისტორიულად, საქართველოს ევროპასთან უფრო ახლოსაა.\"",
       "yid": "washJa8g5TY",
       "player_yid": "washJa8g5TY",
-      "name": "Giorgi Todadze",
-      "job": "sells tools, electrical equipment and spare parts",
+      "name": "გიორგი თოდაძე",
+      "job": "ყიდის ხელსაწყოებს, ელექტრო აღჭურვილობას და სათადარიგო ნაწილებს",
       "job_start_date": "1996"
     },
     "s6": {
-      "title": "The Soviet Wrestling Champion",
-      "quote": "There was a little euphoria when the USSR collapsed, as if independence would be good",
-      "description": "fb description",
+      "title": "საბჭოთა კავშირის ჩემპრიონი ჭიდაობაში",
+      "quote": "\"პატარა ეიფორია იყო საბჭოთა კავშირის დაშლისა, თითქოს დამოუკიდებლობა კარგი იქნებოდა.\"",
       "yid": "KyWBpqoxiwk",
       "player_yid": "KyWBpqoxiwk",
-      "name": "Vazha Jamagidze",
-      "job": "sells reconditioned taps and pipes",
+      "name": "ვაჟა ჯამაგიძე",
+      "job": "ყიდის განახლებულ ონკანებს და მილებს",
       "job_start_date": "1998"
     },
     "s7": {
-      "title": "The Nuts and Bolts Man",
-      "quote": "We are just speculators",
-      "description": "fb description",
+      "title": "ხრახნებისა და ჭანჭიკების კაცი",
+      "quote": "\"ჩვენ უბრალოდ ვაჭრები ვართ.\"",
       "yid": "LtCAixO9iVA",
       "player_yid": "LtCAixO9iVA",
-      "name": "Mirian Nozadze",
-      "job": "sells Soviet-era nuts, bolts and screws",
+      "name": "მირიან ნოზაძე",
+      "job": "ყიდის საბჭოთა დროინდელ ხრახნებს და ჭანჭიკებს",
       "job_start_date": "2006"
     },
     "s8": {
-      "title": "The Motor Seller",
-      "quote": "If the USSR had done something good for us, we wouldn’t have wanted independence",
-      "description": "fb description",
+      "title": "ძრავების გამყიდველი",
+      "quote": "\"საბჭოთა კავშირს ჩვენთვის კარგი რომ გაეკეთებინა, თავისუფლება არ მოგვინდებოდა.\"",
       "yid": "fOuL-ApYPe0",
       "player_yid": "fOuL-ApYPe0",
-      "name": "Jaba Nakashidze",
-      "job": "sells power motors",
+      "name": "ჯაბა ნაკაშიძე",
+      "job": "ყიდის ელექტრო ძრავებს",
       "job_start_date": "2001"
     },
     "s9": {
-      "title": "The War Veteran",
-      "quote": "We need a friend to stand up to Russia",
-      "description": "fb description",
+      "title": "ომის ვეტერანი",
+      "quote": "\"ჩვენ გვჭირდება მეგობარი, რომ რუსეთს წინ აღვუდგეთ.\"",
       "yid": "jUVikQuwsI8",
       "player_yid": "jUVikQuwsI8",
-      "name": "Tariel Saralidze",
-      "job": "sells power motors and welding equipment",
+      "name": "ტარიელ სარალიძე",
+      "job": "ყიდის ელექტრო ძრავებს და შედურების მოწყობილობებს",
       "job_start_date": "2006"
     },
     "s10": {
-      "title": "The Drinks Seller",
-      "quote": "Nobody wanted the Russians. We wanted independence.",
-      "description": "fb description",
+      "title": "სასმელების გამყიდველი",
+      "quote": "\"არავის უნდოდა რუსები. ჩვენ დამოუკიდებლობა გვინდოდა.\"",
       "yid": "vyzRWycjB3k",
       "player_yid": "vyzRWycjB3k",
-      "name": "Taso Tsertsvadze",
-      "job": "sells drinks and snacks",
+      "name": "ტასო ცერცვაძე",
+      "job": "ყიდის სასმელს და საჭმელს",
       "job_start_date": "2001"
     }
   },
+  "gears": {
+    "tools": {
+      "title": "ხელსაწყოები",
+      "quote": "რუსეთში დამზადებული ხერხები და საბჭოთა დროინდელი სხვა ხელსაწყოები"
+    },
+    "welding": {
+      "title": "შემდუღებელი",
+      "quote": "1970-იანი წლების განახლებული ელექტრო შემდუღებელი მანქანა"
+    },
+    "power": {
+      "title": "ძრავი",
+      "quote": "1960-იანი წლების რუსული ინდუქციური ძრავები - ესკალატორებისა და საინჟინრო დანადგარების მუშაობისთვის"
+    }
+  },
   "label": {
-    "name": "Name: ",
-    "job": "Job: ",
-    "job_start_date": "Working here since: "
+    "name": "სახელი: ",
+    "job": "სამსახური: ",
+    "job_start_date": "დაიწყო მუშაობა ელიავაზე: "
   }
 };

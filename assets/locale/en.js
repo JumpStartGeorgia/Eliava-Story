@@ -20,15 +20,15 @@ en =
   "drag_or_use": "Drag, scroll<br/>or<br/>use arrow keys",
   "share": "Share",
   "en": "English",
-  "ge": "Georgian",
-  "ru": "Russian",
+  "ge": "ქართული",
+  "ru": "Русский",
   "story_by": "An Interactive Story By",
   "author": "Andrew North",
   "about": {
     "name": "The Story",
     "caption": "The Big Draw: Selling the Soviet Past",
     "author": "By Andrew North",
-    "text": "<p>You won’t find it in the Tbilisi guidebooks, and it’s well beyond the tourist trail. But the first time I came to this sprawling open-air hardware market in the Georgian capital, I thought to myself: “I’ve got to draw this place.”</p> <p>I had come as a customer, to buy some things for a home DIY job. But I found myself in a ‘Home Depot’ for the Soviet past, and the artist in me was fascinated.</p> <p>Hidden behind an outer row of newer shops is a vast labyrinth of tightly-packed stalls trading in Soviet-era engines, electrical equipment and heavy tools. Known as the Eliava (after a nearby street), it sprang up in the hard years after Georgia won its independence from the USSR in 1991. There are hundreds of stallholders, with an inventory that ranges from Russian nuts and bolts, to gearboxes and septuagenarian power motors that once drove Soviet Metro escalators. And I decided to turn this mass of history into a drawing.</p> <p>I focused on one part of the market and set about creating a 360-degree panorama of everyone and everything in my field of view. And after nearly four months of work, always standing in the same place, it became a 4 metre-long ink drawing.</p> <p>I started with <a href='#' class='to-character' data-id='6'>Vazha Jamagidze</a> and the metal smorgasbord of Russian-made hand-tools and reconditioned bathroom taps that he sells from two small benches. He has worked here for more than 20 years, but his solid arms and shoulders speak of another life before that, when he was a Soviet Army wrestling champion. And as I got to know him and the other stallholders, the journalist in me saw a wider story here.</p> <p>This is a free market selling the communist past - where some still wish it were the present. So it offers a unique window on Georgia’s transition and its often-tortured search for a new post-Soviet identity, pulled between West and East.</p> <p>Everyone in the drawing grew up in Soviet-run Georgia; and some have struggled to adjust to the fast-changing country that has replaced it. Whereas most Georgians now lean west and resent Moscow’s past and present intrusions, among the denizens of the Eliava there is a more sympathetic attitude towards Russia and Soviet rule. It’s also more complex than that.</p> <p>Democracy and capitalism have brought only “anarchy and filth” complains Vazha, worrying that Georgia’s Christian-Orthodox traditions are under threat from “Western ideas” like LGBT rights. But other stallholders had turned against Moscow precisely because of the communists’ persecution of the Orthodox Church. Getting closer to the West - and getting into the European Union and NATO - they said, was now the only way to secure Georgia’s identity and sovereignty.</p> <p>At first I was the one answering questions about my identity. “What village are you from?” I was asked. I felt rootless by comparison as I explained how I was born in one city in Britain, but then never returned.</p> <p>The bigger challenge was drawing each person in my 360-degree frame, working as quickly as I could before they moved, with the added pressure that they could see the result as soon as I had finished. That’s the paradox and the excitement of drawing. It is both slow and immediate.</p> <p>That made it an attraction too, as the panorama took shape, with stallholders coming from further away to look and laugh at how I had portrayed their friends. “It’s not bad,” smiled one visitor as he looked at my version of <a href='#' class='to-character' data-id='4'>Eduard</a>. “But you haven’t made his nose big enough.”</p> <p>Sometimes there were arguments, once even a fight. If I happened to be there on a key Orthodox holiday, such as ‘Mariamoba’, or someone’s birthday, I could forget working. They took my pens away and gave me wine instead. And <a href='#' class='to-character' data-id='10'>Tariel</a>, whose collection of muscular Russian motors I drew early on, locked away the drawing in his storeroom.</p> <p>Once their homemade wine started flowing though, I could barely walk in a straight line, let alone draw one. The Eliava is as much a culture and a community as a market.</p> <p>There was never going to be a future in recycling the past though, and many stallholders are struggling. More people can afford new hardware now, rather than making do with secondhand. “This is not really a business,” <a href='#' class='to-character' data-id='7'>Mirian Nozadze</a> said to me ruefully, gesturing at the piles of chunky Soviet nuts and bolts that are his mainstay. “We are just speculators,” he added, using a derogatory communist-era term for business-people.</p> <p>But instead of a mid-way station to something better, the Eliava has become the end of the line for many working there - while the train turning Georgia into a market economy thunders on. It is a familiar test of wrenching change, and who bears most responsibility to deal with the consequences – the state or the individual.</p> <p>“Who will bring back the old times?” sighs <a href='#' class='to-character' data-id='11'>Taso Tsertsvadze</a>. Like many who work in the Eliava, she is originally from Chiatura, a mining town in western Georgia that was hammered by the end of the Soviet Union and the collapse of the guaranteed market it provided. Now she runs a one-woman tea and coffee delivery service around the market.  She wishes she could return home, but says “we have to cope with the new.” </p> <p>The ‘new’ keeps coming. Several stalls closed while I was working on the project and two people in the drawing have moved on.  So it is already a historical record.</p> <p>One day I went to see Gia Andriadze, one of the market’s owners. We talked on the balcony of his penthouse office; atop a multi-storey retail complex he has built on space vacated by stallholders who have already given up. The future is mapped out below – new buildings are pressing in on all sides of the drab tin roofs of the original Eliava.</p> <p>Most of those stalls will be gone in five years, he predicts: “They are selling nostalgia.”</p> <br/><br/> <p>Andrew North is a British journalist based in Tbilisi.  Find him on Twitter <a href='https://twitter.com/NorthAndrew' target='_blank'>@NorthAndrew</a> and see more of his work at: <a href='http://sketchyreports.com/' target='_blank'>sketchyreports.com</a></p>"
+    "text": "<p>You won’t find it in the Tbilisi guidebooks, and it’s well beyond the tourist trail. But the first time I came to this sprawling open-air hardware market in the Georgian capital, I thought to myself: “I’ve got to draw this place.”</p> <p>I had come as a customer, to buy some things for a home DIY job. But I found myself in a ‘Home Depot’ for the Soviet past, and the artist in me was fascinated.</p> <p>Hidden behind an outer row of newer shops is a vast labyrinth of tightly-packed stalls trading in Soviet-era engines, electrical equipment and heavy tools. Known as the Eliava (after a nearby street), it sprang up in the hard years after Georgia won its independence from the USSR in 1991. There are hundreds of stallholders, with an inventory that ranges from Russian nuts and bolts, to gearboxes and septuagenarian power motors that once drove Soviet Metro escalators. And I decided to turn this mass of history into a drawing.</p> <p>I focused on one part of the market and set about creating a 360-degree panorama of everyone and everything in my field of view. And after nearly four months of work, always standing in the same place, it became a 4 metre-long ink drawing.</p> <p>I started with <a href='#' class='to-character' data-id='6'>Vazha Jamagidze</a> and the metal smorgasbord of Russian-made hand-tools and reconditioned bathroom taps that he sells from two small benches. He has worked here for more than 20 years, but his solid arms and shoulders speak of another life before that, when he was a Soviet Army wrestling champion. And as I got to know him and the other stallholders, the journalist in me saw a wider story here.</p> <p>This is a free market selling the communist past - where some still wish it were the present. So it offers a unique window on Georgia’s transition and its often-tortured search for a new post-Soviet identity, pulled between West and East.</p> <p>Everyone in the drawing grew up in Soviet-run Georgia; and some have struggled to adjust to the fast-changing country that has replaced it. Whereas most Georgians now lean west and resent Moscow’s past and present intrusions, among the denizens of the Eliava there is a more sympathetic attitude towards Russia and Soviet rule. It’s also more complex than that.</p> <p>Democracy and capitalism have brought only “anarchy and filth” complains Vazha, worrying that Georgia’s Christian-Orthodox traditions are under threat from “Western ideas” like LGBT rights. But other stallholders had turned against Moscow precisely because of the communists’ persecution of the Orthodox Church. Getting closer to the West - and getting into the European Union and NATO - they said, was now the only way to secure Georgia’s identity and sovereignty.</p> <p>At first I was the one answering questions about my identity. “What village are you from?” I was asked. I felt rootless by comparison as I explained how I was born in one city in Britain, but then never returned.</p> <p>The bigger challenge was drawing each person in my 360-degree frame, working as quickly as I could before they moved, with the added pressure that they could see the result as soon as I had finished. That’s the paradox and the excitement of drawing. It is both slow and immediate.</p> <p>That made it an attraction too, as the panorama took shape, with stallholders coming from further away to look and laugh at how I had portrayed their friends. “It’s not bad,” smiled one visitor as he looked at my version of <a href='#' class='to-character' data-id='4'>Eduard</a>. “But you haven’t made his nose big enough.”</p> <p>Sometimes there were arguments, once even a fight. If I happened to be there on a key Orthodox holiday, such as ‘Mariamoba’, or someone’s birthday, I could forget working. They took my pens away and gave me wine instead. And <a href='#' class='to-character' data-id='9'>Tariel</a>, whose collection of muscular Russian motors I drew early on, locked away the drawing in his storeroom.</p> <p>Once their homemade wine started flowing though, I could barely walk in a straight line, let alone draw one. The Eliava is as much a culture and a community as a market.</p> <p>There was never going to be a future in recycling the past though, and many stallholders are struggling. More people can afford new hardware now, rather than making do with secondhand. “This is not really a business,” <a href='#' class='to-character' data-id='7'>Mirian Nozadze</a> said to me ruefully, gesturing at the piles of chunky Soviet nuts and bolts that are his mainstay. “We are just speculators,” he added, using a derogatory communist-era term for business-people.</p> <p>But instead of a mid-way station to something better, the Eliava has become the end of the line for many working there - while the train turning Georgia into a market economy thunders on. It is a familiar test of wrenching change, and who bears most responsibility to deal with the consequences – the state or the individual.</p> <p>“Who will bring back the old times?” sighs <a href='#' class='to-character' data-id='10'>Taso Tsertsvadze</a>. Like many who work in the Eliava, she is originally from Chiatura, a mining town in western Georgia that was hammered by the end of the Soviet Union and the collapse of the guaranteed market it provided. Now she runs a one-woman tea and coffee delivery service around the market.  She wishes she could return home, but says “we have to cope with the new.” </p> <p>The ‘new’ keeps coming. Several stalls closed while I was working on the project and two people in the drawing have moved on.  So it is already a historical record.</p> <p>One day I went to see Gia Andriadze, one of the market’s owners. We talked on the balcony of his penthouse office; atop a multi-storey retail complex he has built on space vacated by stallholders who have already given up. The future is mapped out below – new buildings are pressing in on all sides of the drab tin roofs of the original Eliava.</p> <p>Most of those stalls will be gone in five years, he predicts: “They are selling nostalgia.”</p> <br/><br/> <p>Andrew North is a British journalist based in Tbilisi.  Find him on Twitter <a href='https://twitter.com/NorthAndrew' target='_blank'>@NorthAndrew</a> and see more of his work at: <a href='http://sketchyreports.com/' target='_blank'>sketchyreports.com</a></p>"
   },
   "behind": {
     "name": "Behind the Scenes",
@@ -41,7 +41,6 @@ en =
     "s1": {
       "title": "The Tool Seller",
       "quote": "\"The Soviet times were good. I had a job, a salary. Now where are the salaries and jobs?\"",
-      "description": "fb description",
       "yid": "90qn0Bvsyh0",
       "player_yid": "90qn0Bvsyh0",
       "name": "Tamazi Dudashvili",
@@ -51,7 +50,6 @@ en =
     "s2": {
       "title": "The Cigarette Seller",
       "quote": "\"I didn’t know what poverty was (in Soviet times). My children know all about it.\"",
-      "description": "fb description",
       "yid": "t8b6NXZ-Pjk",
       "player_yid": "t8b6NXZ-Pjk",
       "name": "Marina Esebua",
@@ -61,7 +59,6 @@ en =
     "s3": {
       "title": "2008 War Volunteer",
       "quote": "\"I was proud I had a chance to defend my country.\"",
-      "description": "fb description",
       "yid": "mXNI-DWRhtU",
       "player_yid": "mXNI-DWRhtU",
       "name": "Otari Mujiri",
@@ -71,7 +68,6 @@ en =
     "s4": {
       "title": "The Skeptic",
       "quote": "Before it was Russia. Now America controls Georgia, Eduard believes.",
-      "description": "fb description",
       "yid": "DB-ANJPqS6s",
       "player_yid": "DB-ANJPqS6s",
       "name": "Eduard Miroian",
@@ -81,7 +77,6 @@ en =
     "s5": {
       "title": "The Europhile",
       "quote": "\"Archaeologists have shown Georgia is historically closer to Europe.\"",
-      "description": "fb description",
       "yid": "washJa8g5TY",
       "player_yid": "washJa8g5TY",
       "name": "Giorgi Todadze",
@@ -91,7 +86,6 @@ en =
     "s6": {
       "title": "The Soviet Wrestling Champion",
       "quote": "\"There was a little euphoria when the USSR collapsed, as if independence would be good.\"",
-      "description": "fb description",
       "yid": "KyWBpqoxiwk",
       "player_yid": "KyWBpqoxiwk",
       "name": "Vazha Jamagidze",
@@ -101,7 +95,6 @@ en =
     "s7": {
       "title": "The Nuts and Bolts Man",
       "quote": "\"We are just speculators.\"",
-      "description": "fb description",
       "yid": "LtCAixO9iVA",
       "player_yid": "LtCAixO9iVA",
       "name": "Mirian Nozadze",
@@ -111,7 +104,6 @@ en =
     "s8": {
       "title": "The Motor Seller",
       "quote": "\"If the USSR had done something good for us, we wouldn’t have wanted independence.\"",
-      "description": "fb description",
       "yid": "fOuL-ApYPe0",
       "player_yid": "fOuL-ApYPe0",
       "name": "Jaba Nakashidze",
@@ -121,7 +113,6 @@ en =
     "s9": {
       "title": "The War Veteran",
       "quote": "\"We need a friend to stand up to Russia.\"",
-      "description": "fb description",
       "yid": "jUVikQuwsI8",
       "player_yid": "jUVikQuwsI8",
       "name": "Tariel Saralidze",
@@ -131,7 +122,6 @@ en =
     "s10": {
       "title": "The Drinks Seller",
       "quote": "\"Nobody wanted the Russians. We wanted independence.\"",
-      "description": "fb description",
       "yid": "vyzRWycjB3k",
       "player_yid": "vyzRWycjB3k",
       "name": "Taso Tsertsvadze",
@@ -151,7 +141,7 @@ en =
     "power": {
       "title": "Power",
       "quote": "Russian induction motors from 1960s - for powering escalators and engineering workshops"
-    },
+    }
   },
   "label": {
     "name": "Name: ",

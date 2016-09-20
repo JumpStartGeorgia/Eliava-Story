@@ -127,7 +127,7 @@ def init
         story_titles[story_index-1][loc_i] = id
       end
       @title = story_data["title"]
-      @descr = story_data["description"]
+      @descr = story_data["quote"]
       @share_url = share_dir_url + "/" + id + ".html"
       # if each story wlll have it's own file use this @image = url + "/assets/images/share/#{story_index}.jpg"
       @image = url + "/assets/images/share/fb.jpg"

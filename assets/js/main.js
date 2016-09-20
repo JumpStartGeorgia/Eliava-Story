@@ -221,7 +221,7 @@ $(document).ready(function () {
           //   this.anims.css("opacity", 1);
           // }
 
-          tp.anims.click(function () { story.open(+$(this).attr("data-story")); });
+          tp.anims.filter("[data-story]").click(function () { story.open(+$(this).attr("data-story")); });
         },
         play: function () {
           if(/*!is_desktop ||*/ this.finished) { return; }
@@ -566,9 +566,10 @@ $(document).ready(function () {
         var t = this, tmp,
           tmp_h = t.el.find(".window").height(),
           tmp_el = story_el.find(".scroll-box iframe"),
-          cnt_w = t.el.find(".content").width();
+          cnt_w = t.el.find(".content").width(),
+          title_h = story_el.find("> .title").outerHeight();
 
-        tmp = tmp_h - tmp_el.position().top - (device.mobile() ? 0 : 20);
+        tmp = tmp_h - title_h - (is_mobile ? 0 : 20);
 
         var tmp_w = tmp/9*16;
         var m_width = cnt_w > t.max_width ? t.max_width : cnt_w;
@@ -577,12 +578,15 @@ $(document).ready(function () {
           tmp_w = tmp/9*16;
         }
         tmp_el.css({ "width": tmp_w + "px", "height": tmp + "px" });
+        if(is_mobile) {
+          tmp = tmp_h - title_h;
+          story_el.find(".scroll-box").css({"height": tmp + "px"});
+        }
       }
     },
     tooltip = {
       template: $(".tooltip-template").html(),
       text_by_story: function (id, type) {
-        console.log(id, type);
         var st, mt, init_id = id;
         if(type === "gear") { id = "g" + id; }
         if(!story.meta.hasOwnProperty(id)) {
@@ -617,8 +621,7 @@ $(document).ready(function () {
           // .replace("{{job_start_date}}", mt.job_start_date);
       },
       bind: function (first) {
-        if(!is_desktop) { return; }
-        $((first ? "" : ".ghost" ) + ".apanel .layer-colored").qtip({
+        $((first ? "" : ".ghost" ) + ".apanel .layer-colored" + (is_mobile ? "[data-gear]" : "")).qtip({
           content: { text: function () {
             var tmp = $(this).attr("data-story") ? "story" : "gear";
             return tooltip.text_by_story(+$(this).attr("data-" + tmp), tmp); }, title: false },
@@ -662,18 +665,44 @@ $(document).ready(function () {
         delete on_esc["popup_to_close"];
       },
       open: function (v) {
-        var t = this, tmp, tmp_h, tmp_el;
+        var t = this, tmp;
         popup_mode = true;
         t.el.attr("data-type", v);
+
+        var tmp_h = t.content.height(),
+          tmp_el = t.content.find("iframe"),
+          cnt_w = t.content.width(),
+          title_h = t.content.find(".caption").outerHeight();
         t.content.scrollTop(0);//.css({ "height": (h > 760 ? h - 88 - 61 - 60 - 10 : h - 2*61) + "px" });
 
-        tmp_h = t.el.find(".window").height();
-        tmp = tmp_h - (device.mobile() ? 0 : 20);
-        t.content.css({ "height": tmp + "px" });
-        tmp_el = t.content.find("iframe");
-        if(tmp_el.length && !device.mobile()) {
-          tmp_el.css({ "height": ( tmp_h - tmp_el.position().top - 25) + "px" });
+        console.log(tmp_h, tmp_el, cnt_w, title_h);
+
+        tmp = tmp_h - 61 - (is_mobile ? 0 : 20);
+        var tmp_w = tmp/9*16;
+        var m_width = cnt_w > t.max_width ? t.max_width : cnt_w;
+        while(tmp_w > m_width) {
+          --tmp;
+          tmp_w = tmp/9*16;
         }
+        tmp_el.css({ "width": tmp_w + "px", "height": tmp + "px" });
+
+        // if(is_mobile) {
+        //   tmp = tmp_h - title_h;
+        //   t.content.css({"height": tmp + "px"});
+        // }
+
+        // tmp_h = ;
+        // t.content.css({ "height": tmp + "px" });
+        // tmp_el = ;
+
+        // if(tmp_el.length && !is_mobile) {
+        //   tmp_el.css({ "height": ( tmp_h - tmp_el.position().top - 25) + "px" });
+        // }
+
+
+
+      // }
+
         story.off_animation();
         panorama.audio.softMute();
         if(v === "behind") {
@@ -1136,7 +1165,7 @@ $(document).ready(function () {
             );
           });
 
-          $("#popup .section .youtube[data-yid]").each(function (d, i) {
+          popup.el.find(".youtube[data-yid]").each(function (d, i) {
             var id = this.id, yid = this.dataset.yid;
             youtubePlayers[yid] = new YT.Player(
               id,

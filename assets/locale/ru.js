@@ -20,8 +20,8 @@ ru =
   "drag_or_use": "Drag, scroll<br/>or<br/>use arrow keys",
   "share": "Share",
   "en": "English",
-  "ge": "Georgian",
-  "ru": "Russian",
+  "ge": "ქართული",
+  "ru": "Русский",
   "story_by": "An Interactive Story By",
   "author": "Andrew North",
   "about": {
@@ -40,8 +40,7 @@ ru =
   "stories": {
     "s1": {
       "title": "The Tool Seller",
-      "quote": "The Soviet times were good. I had a job, a salary. Now where are the salaries and jobs?",
-      "description": "fb description",
+      "quote": "\"The Soviet times were good. I had a job, a salary. Now where are the salaries and jobs?\"",
       "yid": "90qn0Bvsyh0",
       "player_yid": "90qn0Bvsyh0",
       "name": "Tamazi Dudashvili",
@@ -50,8 +49,7 @@ ru =
     },
     "s2": {
       "title": "The Cigarette Seller",
-      "quote": "I didn’t know what poverty was (in Soviet times). My children know all about it.",
-      "description": "fb description",
+      "quote": "\"I didn’t know what poverty was (in Soviet times). My children know all about it.\"",
       "yid": "t8b6NXZ-Pjk",
       "player_yid": "t8b6NXZ-Pjk",
       "name": "Marina Esebua",
@@ -60,8 +58,7 @@ ru =
     },
     "s3": {
       "title": "2008 War Volunteer",
-      "quote": "I was proud I had a chance to defend my country",
-      "description": "fb description",
+      "quote": "\"I was proud I had a chance to defend my country.\"",
       "yid": "mXNI-DWRhtU",
       "player_yid": "mXNI-DWRhtU",
       "name": "Otari Mujiri",
@@ -71,7 +68,6 @@ ru =
     "s4": {
       "title": "The Skeptic",
       "quote": "Before it was Russia. Now America controls Georgia, Eduard believes.",
-      "description": "fb description",
       "yid": "DB-ANJPqS6s",
       "player_yid": "DB-ANJPqS6s",
       "name": "Eduard Miroian",
@@ -80,8 +76,7 @@ ru =
     },
     "s5": {
       "title": "The Europhile",
-      "quote": "Archaeologists have shown Georgia is historically closer to Europe",
-      "description": "fb description",
+      "quote": "\"Archaeologists have shown Georgia is historically closer to Europe.\"",
       "yid": "washJa8g5TY",
       "player_yid": "washJa8g5TY",
       "name": "Giorgi Todadze",
@@ -90,8 +85,7 @@ ru =
     },
     "s6": {
       "title": "The Soviet Wrestling Champion",
-      "quote": "There was a little euphoria when the USSR collapsed, as if independence would be good",
-      "description": "fb description",
+      "quote": "\"There was a little euphoria when the USSR collapsed, as if independence would be good.\"",
       "yid": "KyWBpqoxiwk",
       "player_yid": "KyWBpqoxiwk",
       "name": "Vazha Jamagidze",
@@ -100,8 +94,7 @@ ru =
     },
     "s7": {
       "title": "The Nuts and Bolts Man",
-      "quote": "We are just speculators",
-      "description": "fb description",
+      "quote": "\"We are just speculators.\"",
       "yid": "LtCAixO9iVA",
       "player_yid": "LtCAixO9iVA",
       "name": "Mirian Nozadze",
@@ -110,8 +103,7 @@ ru =
     },
     "s8": {
       "title": "The Motor Seller",
-      "quote": "If the USSR had done something good for us, we wouldn’t have wanted independence",
-      "description": "fb description",
+      "quote": "\"If the USSR had done something good for us, we wouldn’t have wanted independence.\"",
       "yid": "fOuL-ApYPe0",
       "player_yid": "fOuL-ApYPe0",
       "name": "Jaba Nakashidze",
@@ -120,8 +112,7 @@ ru =
     },
     "s9": {
       "title": "The War Veteran",
-      "quote": "We need a friend to stand up to Russia",
-      "description": "fb description",
+      "quote": "\"We need a friend to stand up to Russia.\"",
       "yid": "jUVikQuwsI8",
       "player_yid": "jUVikQuwsI8",
       "name": "Tariel Saralidze",
@@ -130,13 +121,26 @@ ru =
     },
     "s10": {
       "title": "The Drinks Seller",
-      "quote": "Nobody wanted the Russians. We wanted independence.",
-      "description": "fb description",
+      "quote": "\"Nobody wanted the Russians. We wanted independence.\"",
       "yid": "vyzRWycjB3k",
       "player_yid": "vyzRWycjB3k",
       "name": "Taso Tsertsvadze",
       "job": "sells drinks and snacks",
       "job_start_date": "2001"
+    }
+  },
+  "gears": {
+    "tools": {
+      "title": "Tools",
+      "quote": "Russian-made saws and other Soviet-era tools"
+    },
+    "welding": {
+      "title": "Welding",
+      "quote": "Reconditioned 1970s arc-welding machine"
+    },
+    "power": {
+      "title": "Power",
+      "quote": "Russian induction motors from 1960s - for powering escalators and engineering workshops"
     }
   },
   "label": {
