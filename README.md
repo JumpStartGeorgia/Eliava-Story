@@ -4,6 +4,7 @@
 
   'WARNING' - string across files is flag that warns, pay attention if that string need to be changed
 
+
 ### share story
 #### when text for story is new or meta data for shared page is changed, share files should be generated.
 `
@@ -45,6 +46,9 @@ In main.js/init function for dev mode comment deploy and production blocks.
   * uncomment previously commented text (I18n.js script can be deleted not tested but it should work)
   * if it is production change addthis id
 - In main.js/init function comment all except block for production
+- In case any asset (css, js, image, sound) was changed for client browser to refresh all assets change asset version.
+  * generate new version based on current date (new Date()).getTime() ex: 1474438073705
+  * replace current version (1474315200000) to new for all files
 
 ## TODO
   * in dev/index.html translate into russian and paste 'You need to turn on Javascript for this application to work!' into noscript block

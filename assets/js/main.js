@@ -11,8 +11,8 @@ $(document).ready(function () {
       DOWN:   40
     },
     timestamp = "?v=1474315200000",
-    is_desktop = device.desktop(),
-    is_mobile = !is_desktop,
+    is_desktop = undefined,
+    is_mobile = undefined,
     lang = document.documentElement.lang || "en",
     story_mode = false,
     popup_mode = false,
@@ -1237,6 +1237,8 @@ $(document).ready(function () {
         this.callback(true);
       },
       all: function () { /*console.log("load.all");*/
+        is_desktop = device.desktop();
+        is_mobile = !is_desktop;
         $(window).resize(function () { redraw(); });
         loader.start_animation();
         this.panels();
@@ -1272,13 +1274,13 @@ $(document).ready(function () {
   (function init () {
 
     // dev
-    I18n.init(function (){
-      window.pn = panorama;
-      I18n.remap();
-      params.parse();
-      panorama.audio.muted = true;
-      load.all();
-    });
+    // I18n.init(function (){
+    //   window.pn = panorama;
+    //   I18n.remap();
+    //   params.parse();
+    //   panorama.audio.muted = true;
+    //   load.all();
+    // });
 
     // deploy
     // panorama.audio.dev();
@@ -1286,8 +1288,8 @@ $(document).ready(function () {
     // I18n.init(function (){ I18n.remap(); });
 
     // production
-    // params.parse();
-    // load.all();
+    params.parse();
+    load.all();
 
   })();
 });
