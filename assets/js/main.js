@@ -58,7 +58,7 @@ $(document).ready(function () {
         default_volume: 0.6, // deploy 0.6
         fade_duration: 500,
         can_play: true,
-        ready: is_desktop,
+        ready: undefined,
         init: function () {
           var t = this;
           t.elem.forEach(function (d) {
@@ -102,6 +102,7 @@ $(document).ready(function () {
         play: function (ind) {
           var t = this;
           if(!t.ready) { t.current = ind; return; }
+          console.log("playing");
           if(t.can_play) {
             if(typeof ind === "undefined") { ind = 0; }
             if(ind >= 0 && ind < t.count) {
@@ -110,6 +111,7 @@ $(document).ready(function () {
                 if(ind !== t.current) { t.stop(t.current); }
                 snd.volume = t.default_volume;
                 snd.muted = t.muted || t.soft_muted;
+                console.log("playing");
                 snd.play();
                 t.current = ind;
               }
@@ -1239,6 +1241,7 @@ $(document).ready(function () {
       all: function () { /*console.log("load.all");*/
         is_desktop = device.desktop();
         is_mobile = !is_desktop;
+        panorama.audio.ready = is_desktop;
         $(window).resize(function () { redraw(); });
         loader.start_animation();
         this.panels();
