@@ -13,12 +13,14 @@ $(document).ready(function () {
     timestamp = "?v=1474315200000",
     is_desktop = undefined,
     is_mobile = undefined,
+    is_mac = isMacintosh(),
     lang = document.documentElement.lang || "en",
     story_mode = false,
     popup_mode = false,
     on_esc = {},
     fake = function () {},
     fox = /firefox/i.test(navigator.userAgent),
+    redraw_in_use = false,
     panorama = {
       step: 0,
       el: $("#panorama"),
@@ -59,6 +61,7 @@ $(document).ready(function () {
         fade_duration: 500,
         can_play: true,
         ready: undefined,
+        next: -1,
         init: function () {
           var t = this;
           t.elem.forEach(function (d) {
@@ -100,40 +103,50 @@ $(document).ready(function () {
           }
         },
         play: function (ind) {
-          var t = this;
+          var t = this, snd;
+          if(typeof ind === "undefined") { ind = t.current; }
+          if(!(ind >= 0 && ind < t.count)) { return; }
+          t.next = ind;
           if(!t.ready) { t.current = ind; return; }
           if(t.can_play) {
-            if(typeof ind === "undefined") { ind = 0; }
-            if(ind >= 0 && ind < t.count) {
-              var snd = t.elem[ind];
-              if(typeof snd !== "undefined" && snd.readyState !== 0) {
-                if(ind !== t.current) { t.stop(t.current); }
-                snd.volume = t.default_volume;
-                snd.muted = t.muted || t.soft_muted;
-                snd.play();
-                t.current = ind;
-              }
-            }
+            if(ind !== t.current) { t.stop(t.current, true); }
+            else { t.actual_play(); }
           }
           else {
             setTimeout(function () { t.play(ind); }, 100);
           }
         },
-        stop: function (ind) {
-          var t = this;
-          if(typeof ind === "undefined") { ind = t.current; }
-          if(ind >= 0 && ind < t.count) {
-            var snd = t.elem[ind];
-            if(typeof snd !== "undefined" && snd.readyState !== 0) {
+        actual_play: function () {
+          var t = this, snd = t.elem[t.next];
+          if(typeof snd !== "undefined" && snd.readyState > 0) {
+            snd.volume = t.default_volume;
+            snd.muted = t.muted || t.soft_muted;
+            console.log("stopping", t.next);
+            snd.play();
+            t.current = t.next;
+          }
+        },
+        stop: function (ind, play_after) {
+          var t = this, f = false, snd;
+          if(typeof ind === "undefined" || !(ind >= 0 && ind < t.count)) { ind = t.current; }
+          if(ind !== -1) {
+            t.can_play = false;
+
+            snd = t.elem[ind];
+
+            if(typeof snd !== "undefined" && snd.readyState > 0) {
+              f = true;
               var step = t.default_volume/10, interval_id, dur = t.fade_duration/10;
-              if(dur < 20) dur = 20;
-              t.can_play = false;
+              if(dur < 20) { dur = 20; }
+
               interval_id = setInterval(function () {
                 var tmp = snd.volume - step;
                 if(tmp <= 0) {
                   clearInterval(interval_id);
                   snd.muted = 0;
+                  // console.log("stopping", ind);
                   snd.pause();
+                  if(play_after === true) { t.actual_play.call(t); }
                   t.can_play = true;
                 }
                 else {
@@ -142,6 +155,8 @@ $(document).ready(function () {
               }, dur);
             }
           }
+          // console.log(f);
+          if(!f) { t.can_play = true; if(play_after === true) { t.actual_play.call(t); } } // console.log("Unexpected Behaviour: Audio index is out of range or audio object is not ready"); }
         },
         mute: function () {
           this.muted = true;
@@ -231,6 +246,7 @@ $(document).ready(function () {
         },
         start: function () {
           this.finished = false;
+          //console.log(this, this.faders);
           this.faders.css("opacity", .1);
           this.anims.css("opacity", 1);
           this.play();
@@ -245,7 +261,7 @@ $(document).ready(function () {
         var t = this, prev = t.container_position;
 
         t.container_position = pos;
-        t.container.velocity({ translateX : [pos, prev]}, { duration: 500, easing: "linear",
+        t.container.velocity({ translateX : [pos, prev]}, { duration: 300, easing: "linear",
           complete: function () {
             if(pos <= -1 * t.offset.right || pos >= w - t.offset.left) {
               t.position.flip(pos);
@@ -267,7 +283,7 @@ $(document).ready(function () {
       },
       scroll: function (direction) { /*console.log("panorama_scroll");*/
         var t = this;
-        console.log(t.container_position + -1*direction*t.step);
+        // console.log(t.container_position + -1*direction*t.step);
         t.scroll_by_pos(t.container_position + -1*direction*t.step);
       },
       bind: function (first) {
@@ -296,6 +312,7 @@ $(document).ready(function () {
 
           addWheelListener(document, function (event) {
             if(!popup_mode && event.deltaY !== -0 && event.deltaY !== 0) {
+              if(is_mac && Math.abs(event.deltaY) < 10) { return; }
               event.deltaY <= -0 ? scrl_left() : scrl_right();
             }
           });
@@ -1011,6 +1028,7 @@ $(document).ready(function () {
         tooltip.bind(load.first_time);
         story.bind(load.first_time);
         if(load.first_time) {
+          page.bind();
           nav.bind();
           minimap.bind();
           popup.bind();
@@ -1154,7 +1172,7 @@ $(document).ready(function () {
                       played = meta.hasClass("played");
                     if(event.data === YT.PlayerState.PLAYING) {
                       if(!played) { meta.addClass("played"); }
-                      meta.fadeOut(played ? 400 : 3000);
+                      meta.fadeOut(played ? 400 : 7000);
                     }
                     else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
                       meta.fadeIn(400);
@@ -1244,13 +1262,38 @@ $(document).ready(function () {
         loader.start_animation();
         this.panels();
       }
+    },
+    page = {
+      bind: function () {
+        var t = this,
+          hidden,
+          visibilityChange,
+          hiddens = ["hidden", "mozHidden", "msHidden", "webkitHidden"],
+          visibilityChanges = ["visibilitychange", "mozvisibilitychange", "msvisibilitychange", "webkitvisibilitychange"];
+
+        hiddens.forEach(function (d, i) {
+          if(typeof document[d] !== "undefined") {
+            hidden = d;
+            visibilityChange = visibilityChanges[i];
+            return;
+          }
+        });
+
+        if (typeof document[hidden] === "undefined") {
+          document[hidden] = document.hasFocus();
+        }
+        else {
+          $(document).on(visibilityChange, function () { t.toggle(!document[hidden]); });
+        }
+        // $(window).on("focus", function () { console.log("focus"); t.toggle(true); });
+        // $(window).on("blur", function () { console.log("blur"); t.toggle(false); });
+      },
+      toggle: function (state) {
+        if(state) { panorama.audio.play(); }
+        else { panorama.audio.stop();}
+      }
     };
 
-  function ready () {
-
-    // panorama.audio.muteToggle();
-  }
-  var redraw_in_use = false;
   function redraw (programmatic) {/* console.log("redraw", programmatic, redraw_in_use);*/
     if(!programmatic && redraw_in_use) { return; }
     if(loader.completed) {
@@ -1275,13 +1318,13 @@ $(document).ready(function () {
   (function init () {
 
     // dev
-    // I18n.init(function (){
-    //   window.pn = panorama;
-    //   I18n.remap();
-    //   params.parse();
-    //   panorama.audio.muted = true;
-    //   load.all();
-    // });
+    I18n.init(function (){
+      window.pn = panorama;
+      I18n.remap();
+      params.parse();
+      //panorama.audio.muted = true;
+      load.all();
+    });
 
     // deploy
     // panorama.audio.dev();
@@ -1289,8 +1332,8 @@ $(document).ready(function () {
     // I18n.init(function (){ I18n.remap(); });
 
     // production
-    params.parse();
-    load.all();
+    // params.parse();
+    // load.all();
 
   })();
 });
