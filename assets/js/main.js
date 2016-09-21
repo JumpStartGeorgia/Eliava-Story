@@ -102,7 +102,6 @@ $(document).ready(function () {
         play: function (ind) {
           var t = this;
           if(!t.ready) { t.current = ind; return; }
-          console.log("playing");
           if(t.can_play) {
             if(typeof ind === "undefined") { ind = 0; }
             if(ind >= 0 && ind < t.count) {
@@ -111,7 +110,6 @@ $(document).ready(function () {
                 if(ind !== t.current) { t.stop(t.current); }
                 snd.volume = t.default_volume;
                 snd.muted = t.muted || t.soft_muted;
-                console.log("playing");
                 snd.play();
                 t.current = ind;
               }
