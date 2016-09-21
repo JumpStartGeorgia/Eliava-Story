@@ -1111,9 +1111,9 @@
     font:30px 'bebasneue_b';
     color:#000;
     text-align:center;
-    padding:21px 0 15px;
+    padding:21px 48px 15px;
     max-width:992px;
-    margin: 0px 48px;
+    margin: 0px auto;
   }
   .story-popup .window .content .story .scroll-box {
     display:inline-block;
