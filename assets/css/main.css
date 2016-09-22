@@ -435,10 +435,6 @@
     height:100%;
   }
   #panorama .bpanel {
-    position:absolute;
-    top:0;
-    left:0;
-    display:block;
   }
   #panorama .bpanel svg {
     width:auto;

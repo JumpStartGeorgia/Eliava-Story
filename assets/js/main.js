@@ -39,7 +39,8 @@ $(document).ready(function () {
         count: 5, // * WARNING on panel count change
         current: 3,
         svg: [],
-        bg_svg: []
+        bg_svg: [],
+        init_w: [2218, 1786, 2968, 2795, 2476]
       },
       offset: {
         left: 0,
@@ -1074,7 +1075,7 @@ $(document).ready(function () {
         panorama.width = 0;
 
         panorama.panels.elem.forEach(function (d, i){
-          tmp = d.width();
+          tmp = Math.floor(pnl_height * panorama.panels.init_w[i] / 1000);
           panorama.el.find(".panel[data-panel='" + (i+1) + "']").css("width", tmp);
           panorama.panels.w.push(tmp);
           panorama.width += tmp;
