@@ -1067,7 +1067,7 @@ $(document).ready(function () {
         resize();
         var pnl_height = h - (w > 992 ? 120 : 60);
         panorama.el.find(".panel").css("height", pnl_height);
-
+        alert(pnl_height);
         var tmp, tmp_w = 0, tmp_i = 0, pnl, expect_cnt = 0, cnt = 0, svg, html = panorama.panels.svg,
           bg_html = panorama.panels.bg_svg;
         panorama.container.find(".panel.ghost").remove();
