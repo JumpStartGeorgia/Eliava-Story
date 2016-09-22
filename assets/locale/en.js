@@ -86,8 +86,8 @@ en =
     "s6": {
       "title": "The Soviet Wrestling Champion",
       "quote": "\"There was a little euphoria when the USSR collapsed, as if independence would be good.\"",
-      "yid": "KyWBpqoxiwk",
-      "player_yid": "KyWBpqoxiwk",
+      "yid": "9Ucvb2uD87Y",
+      "player_yid": "9Ucvb2uD87Y",
       "name": "Vazha Jamagidze",
       "job": "sells reconditioned taps and pipes",
       "job_start_date": "1998"

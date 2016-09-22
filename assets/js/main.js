@@ -1,4 +1,4 @@
-/*global  $ debounce I18n YT exist isNumber js getRandomIntInclusive device addWheelListener Scale transformX */
+/*global  $ debounce I18n YT exist isNumber js getRandomIntInclusive device addWheelListener Scale transformX isMacintosh */
 /*eslint camelcase: 0, no-underscore-dangle: 0, no-unused-vars: 0, no-console: 0*/
 var youtubePlayers = {}, loaderReady = false;
 $(document).ready(function () {
@@ -14,6 +14,7 @@ $(document).ready(function () {
     is_desktop = undefined,
     is_mobile = undefined,
     is_mac = isMacintosh(),
+    is_ios = undefined,
     lang = document.documentElement.lang || "en",
     story_mode = false,
     popup_mode = false,
@@ -77,9 +78,6 @@ $(document).ready(function () {
           t.ready = true;
           t.play(t.current);
         },
-        ok: function () {
-          return this.current >= 1 && this.current <= this.count;
-        },
         // dev: function () { // * WARNING call panorama.audio.dev(); in current context
         //   // if need recalculate when audio should play, no pause in between, paste output in play_range
         //   var a = [560, 250, 270, 402, 556, 615, 275, 820, 460, 462, 434, 416, 800, 356, 986, 530], // pixels for each audio file to play starting from 0
@@ -115,28 +113,21 @@ $(document).ready(function () {
             if(ind !== t.current) { t.stop(t.current, true); }
             else { t.actual_play(); }
           }
-          // else {
-          //   setTimeout(function () { t.play(ind); }, 100);
-          // }
         },
         actual_play: function () {
-          var t = this, snd = t.elem[t.next];
+          var t = this, snd = t.elem[t.next], st;
           if(typeof snd !== "undefined" && snd.readyState > 0 && snd.paused) {
-
-            snd.volume = t.default_volume;
-            snd.muted = t.muted || t.soft_muted;
-            console.log("playing", t.next);
-            // t.elem.forEach(function (d, i) {
-            //   if(!d.paused && t.next != i) {
-            //     console.log("Not pauseedddddddddddddddddddddddddddddddddddddddd", t.next, i);
-            //   }
-            // });
-            snd.play();
+            st = t.muted || t.soft_muted;
+            if(!(is_ios && st)) {
+              snd.volume = t.default_volume;
+              snd.muted = st;
+              // console.log("playing", t.next);
+              snd.play();
+            }
             t.current = t.next;
           }
         },
         stop: function (ind, play_after) {
-          console.log("called");
           var t = this, f = false, snd, has_params = typeof ind !== "undefined";
           if(has_params || !(ind >= 0 && ind < t.count)) { ind = t.current; }
           if(ind !== -1) {
@@ -146,7 +137,7 @@ $(document).ready(function () {
 
             if(typeof snd !== "undefined" && snd.readyState > 0) {
               f = true;
-              if(has_params) {
+              if(has_params && !is_ios) {
                 var step = t.default_volume/10, interval_id, dur = t.fade_duration/10;
                 if(dur < 20) { dur = 20; }
 
@@ -155,7 +146,7 @@ $(document).ready(function () {
                   if(tmp <= 0) {
                     clearInterval(interval_id);
                     snd.muted = 0;
-                    console.log("stopping", ind);
+                    // console.log("stopping", ind);
                     snd.pause();
                     if(play_after === true) { t.actual_play.call(t); }
                     t.can_play = true;
@@ -167,8 +158,9 @@ $(document).ready(function () {
               }
               else {
                 snd.muted = 0;
-                console.log("stopping", ind);
+                // console.log("stopping", ind);
                 snd.pause();
+                if(play_after === true) { t.actual_play.call(t); }
                 t.can_play = true;
               }
             }
@@ -176,24 +168,34 @@ $(document).ready(function () {
           // console.log(f);
           if(!f) { t.can_play = true; if(play_after === true) { t.actual_play.call(t); } } // console.log("Unexpected Behaviour: Audio index is out of range or audio object is not ready"); }
         },
+        toggle_mute: function (state) {
+          if(this.current >= 1 && this.current <= this.count) {
+            if(is_ios) {
+              state ? this.elem[this.current].pause() : this.elem[this.current].play();
+            }
+            else {
+              this.elem[this.current].muted = state;
+            }
+          }
+        },
         mute: function () {
           this.muted = true;
-          if(this.ok()) { this.elem[this.current].muted = true; }
+          this.toggle_mute(true);
           this.toggle.addClass("muted");
         },
         unmute: function () {
           this.muted = false;
-          if(this.ok()) { this.elem[this.current].muted = false; }
+          this.toggle_mute(false);
           this.toggle.removeClass("muted");
         },
         softMute: function () {
           this.soft_muted = true;
-          if(this.ok()) { this.elem[this.current].muted = true; }
+          this.toggle_mute(true);
         },
         softUnMute: function () {
           this.soft_muted = false;
           if(!this.muted) {
-            if(this.ok()) { this.elem[this.current].muted = false; }
+            this.toggle_mute(false);
           }
         },
         muteToggle: function () {
@@ -201,7 +203,7 @@ $(document).ready(function () {
         },
         bind: function () {
           var t = this;
-          $(".sound-toggle").click(function () { t.muteToggle(); });
+          t.toggle.click(function () { t.muteToggle(); });
         }
       },
       position: {
@@ -242,6 +244,7 @@ $(document).ready(function () {
         anims: undefined,
         bind: function (first) {
           var tp = this;
+
           tp.faders = $(".apanel svg");
           tp.anims = $(".layer-colored");
           // if(is_desktop) {
@@ -263,7 +266,7 @@ $(document).ready(function () {
         },
         start: function () {
           this.finished = false;
-          //console.log(this, this.faders);
+          console.log("faders", this, this.faders);
           this.faders.css("opacity", .1);
           this.anims.css("opacity", 1);
           this.play();
@@ -411,6 +414,14 @@ $(document).ready(function () {
 
       //   console.log(html);
       // },
+      // dev_story_thumbnail: function () { // * WARNING if about thumbnail list structure change call this and grab copy/paste console output to input.html, generate all locales, behind link should be generated by hand
+      //   var html, i;
+      //   for(i = 1; i <= this.count; ++i) {
+      //     html += `
+      //       <a href="#" class="to-character" data-id="${i}"><img src="../assets/images/thumbnails/${i}.jpg?v=1474315200000"><div class="thumbnail-overlay" data-i18n-stories-s${i}-quote="prefix[text]"><span data-i18n-stories-s${i}-title></span></div></a>`;
+      //   }
+      //   console.log(html);
+      // },
       close: function () {
         story_mode = false;
         popup_mode = false;
@@ -443,7 +454,7 @@ $(document).ready(function () {
         if(typeof yid !== "undefined" && youtubePlayers.hasOwnProperty(yid)) {
           pl = youtubePlayers[yid];
           if(pl) {
-            if(play && typeof pl.playVideo === "function") { pl.playVideo(); }
+            if(is_desktop && play && typeof pl.playVideo === "function") { pl.playVideo(); }
             else if(!play && typeof pl.pauseVideo === "function") { pl.pauseVideo(); }
           }
         }
@@ -536,13 +547,25 @@ $(document).ready(function () {
           }
         }
       },
-      go_to: function (id, shake) {
+      go_to: function (id) {
         var st = $("#story" + id),
           pnl = +st.closest(".apanel").attr("data-panel"),
           pbbox = panorama.container.get(0).getBoundingClientRect(),
           bbox = st.get(0).getBoundingClientRect();
 
         panorama.scroll_by_pos((pbbox.left - bbox.left) + w/2 - bbox.width/2);
+      },
+      go_to_prev: function () {
+        var t = this, c = t.current,
+          p = (c-1) > 0 ? (c-1): t.count;
+        t.go_to(p);
+        t.current = p;
+      },
+      go_to_next: function () {
+        var t = this, c = t.current,
+          n = (c+1) > t.count ? 1 : (c+1);
+        t.go_to(n);
+        t.current = n;
       },
       go_to_and_open_current: function () {
         var id = this.current;
@@ -753,7 +776,7 @@ $(document).ready(function () {
             }
           }
         }
-      },
+      }
     },
     nav = {
       nv: $(".nav"),
@@ -761,8 +784,8 @@ $(document).ready(function () {
       bind: function () {
         var tp = this;
 
-        $(document).on("click", ".nav-prev", function () { story.prev(true); });
-        $(document).on("click", ".nav-next", function () { story.next(true); });
+        $(document).on("click", ".nav-prev", function () { story.go_to_prev(); });
+        $(document).on("click", ".nav-next", function () { story.go_to_next(); });
 
         $(document).on("click", ".nav-menu-toggle", function () {
           var tmp = tp.el.attr("data-menu"), state = (tmp === "main" || tmp === "sub");
@@ -1049,7 +1072,6 @@ $(document).ready(function () {
         panorama.container.find(".panel.ghost").remove();
         panorama.panels.w = [];
         panorama.width = 0;
-        console.log("here1");
 
         panorama.panels.elem.forEach(function (d, i){
           tmp = d.width();
@@ -1252,6 +1274,7 @@ $(document).ready(function () {
       all: function () { /*console.log("load.all");*/
         is_desktop = device.desktop();
         is_mobile = !is_desktop;
+        is_ios = device.ios();
         panorama.audio.ready = is_desktop;
         $(window).resize(function () { redraw(); });
         loader.start_animation();
@@ -1284,8 +1307,8 @@ $(document).ready(function () {
         // $(window).on("blur", function () { console.log("blur"); t.toggle(false); });
       },
       toggle: function (state) {
-        if(state) { console.log("visible2"); panorama.audio.play(); }
-        else { console.log("hidden"); panorama.audio.stop(); }
+        if(state) { panorama.audio.play(); }
+        else { panorama.audio.stop(); }
       }
     };
 
@@ -1317,13 +1340,14 @@ $(document).ready(function () {
       window.pn = panorama;
       I18n.remap();
       params.parse();
-      //panorama.audio.muted = true;
+      // panorama.audio.muted = true;
       load.all();
     });
 
     // deploy
     // panorama.audio.dev();
     // story.dev();
+    // story.dev_story_thumbnail();
     // I18n.init(function (){ I18n.remap(); });
 
     // production
