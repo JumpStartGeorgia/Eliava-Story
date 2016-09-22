@@ -425,69 +425,122 @@
     display:flex;
     flex-direction:row;
   }
-  #panorama .surface {
-    z-index:7;
-    // width:100%;
-    // height:100%;
-    padding:0;
+  #panorama .panel {
+    position:relative;
+  }
+  #panorama .bpanel,
+  #panorama .dpanel,
+  #panorama .fpanel {
+    width:100%;
+    height:100%;
+  }
+  #panorama .bpanel {
     position:absolute;
     top:0;
-    // right:0;
-    // bottom:0;
     left:0;
+    display:block;
+  }
+  #panorama .bpanel svg {
+    width:auto;
+    height:100%;
+  }
+  #panorama .dpanel {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:7;
     cursor:move; /* fallback if grab cursor is unsupported */
     cursor:grab;
     cursor:-moz-grab;
     cursor:-webkit-grab;
     pointer-events:all;
   }
-  #panorama .apanel {
-    z-index:8;
-    // width:100%;
-    // height:100%;
-    padding:0;
-    position:absolute;
-    top:0;
-    // right:0;
-    // bottom:0;
-    left:0;
-    pointer-events:none;
-  }
-  #panorama .bpanel {
-    height:100%;
-    // width:auto;
-    border:1px blue solid;
-  }
-  #panorama .bpanel svg, #panorama .apanel svg {
-    width:auto;
-    height:100%;
-  }
-  #panorama .apanel svg .layer-colored {
-    pointer-events:all;
-    cursor:pointer;
-  }
-  #panorama .apanel svg .layer-colored[data-gear] {
-    cursor:not-allowed;
-  }
-  #panorama .surface {
-    // border:1px red solid;
-  }
-  #panorama .surface:active {
+  #panorama .dpanel:active {
     cursor:grabbing;
     cursor:-moz-grabbing;
     cursor:-webkit-grabbing;
   }
-
-  // #panorama .apanel svg {
-  //   transform:translate3d(0, 0, 0);
-  // }
-  #panorama .container .panel {
-    height:100%;
-    z-index:6;
-    /* display:table-cell; */
-
-    position:relative;
+  #panorama .fpanel {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:8;
+    pointer-events:none;
   }
+  #panorama .fpanel svg {
+    width:auto;
+    height:100%;
+  }
+  #panorama .fpanel svg .layer-colored {
+    pointer-events:all;
+    cursor:pointer;
+  }
+  #panorama .fpanel svg .layer-colored[data-gear] {
+    cursor:not-allowed;
+  }
+  // #panorama .surface {
+  //   z-index:7;
+  //   // width:100%;
+  //   // height:100%;
+  //   padding:0;
+  //   position:absolute;
+  //   top:0;
+  //   // right:0;
+  //   // bottom:0;
+  //   left:0;
+  //   cursor:move; /* fallback if grab cursor is unsupported */
+  //   cursor:grab;
+  //   cursor:-moz-grab;
+  //   cursor:-webkit-grab;
+  //   pointer-events:all;
+  // }
+  // #panorama .apanel {
+  //   z-index:8;
+  //   // width:100%;
+  //   // height:100%;
+  //   padding:0;
+  //   position:absolute;
+  //   top:0;
+  //   // right:0;
+  //   // bottom:0;
+  //   left:0;
+  //   pointer-events:none;
+  // }
+  // #panorama .bpanel {
+  //   height:100%;
+  //   // width:auto;
+  //   border:1px blue solid;
+  // }
+  // #panorama .bpanel svg, #panorama .apanel svg {
+  //   width:auto;
+  //   height:100%;
+  // }
+  // #panorama .apanel svg .layer-colored {
+  //   pointer-events:all;
+  //   cursor:pointer;
+  // }
+  // #panorama .apanel svg .layer-colored[data-gear] {
+  //   cursor:not-allowed;
+  // }
+  // #panorama .surface {
+  //   // border:1px red solid;
+  // }
+  // #panorama .surface:active {
+  //   cursor:grabbing;
+  //   cursor:-moz-grabbing;
+  //   cursor:-webkit-grabbing;
+  // }
+
+  // // #panorama .apanel svg {
+  // //   transform:translate3d(0, 0, 0);
+  // // }
+  // #panorama .container .panel {
+  //   height:100%;
+  //   z-index:6;
+  //   /* display:table-cell; */
+
+  //   position:relative;
+  // }
 
 /*------------------------------------------ Nav ------------------------------------------*/
 
