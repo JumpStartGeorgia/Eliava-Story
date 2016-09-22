@@ -33,10 +33,12 @@ $(document).ready(function () {
         names: ["p1", "p2", "p3", "p4", "p5"], // * WARNING on panel count change plus need to add div object to layout
         w: [],
         elem: [],
+        bg_elem: [],
         path: "../assets/images/panels/",
         count: 5, // * WARNING on panel count change
         current: 3,
-        svg: []
+        svg: [],
+        bg_svg: []
       },
       offset: {
         left: 0,
@@ -62,6 +64,7 @@ $(document).ready(function () {
         can_play: true,
         ready: undefined,
         next: -1,
+        timeout_id: undefined,
         init: function () {
           var t = this;
           t.elem.forEach(function (d) {
@@ -112,23 +115,30 @@ $(document).ready(function () {
             if(ind !== t.current) { t.stop(t.current, true); }
             else { t.actual_play(); }
           }
-          else {
-            setTimeout(function () { t.play(ind); }, 100);
-          }
+          // else {
+          //   setTimeout(function () { t.play(ind); }, 100);
+          // }
         },
         actual_play: function () {
           var t = this, snd = t.elem[t.next];
-          if(typeof snd !== "undefined" && snd.readyState > 0) {
+          if(typeof snd !== "undefined" && snd.readyState > 0 && snd.paused) {
+
             snd.volume = t.default_volume;
             snd.muted = t.muted || t.soft_muted;
-            console.log("stopping", t.next);
+            console.log("playing", t.next);
+            // t.elem.forEach(function (d, i) {
+            //   if(!d.paused && t.next != i) {
+            //     console.log("Not pauseedddddddddddddddddddddddddddddddddddddddd", t.next, i);
+            //   }
+            // });
             snd.play();
             t.current = t.next;
           }
         },
         stop: function (ind, play_after) {
-          var t = this, f = false, snd;
-          if(typeof ind === "undefined" || !(ind >= 0 && ind < t.count)) { ind = t.current; }
+          console.log("called");
+          var t = this, f = false, snd, has_params = typeof ind !== "undefined";
+          if(has_params || !(ind >= 0 && ind < t.count)) { ind = t.current; }
           if(ind !== -1) {
             t.can_play = false;
 
@@ -136,23 +146,31 @@ $(document).ready(function () {
 
             if(typeof snd !== "undefined" && snd.readyState > 0) {
               f = true;
-              var step = t.default_volume/10, interval_id, dur = t.fade_duration/10;
-              if(dur < 20) { dur = 20; }
+              if(has_params) {
+                var step = t.default_volume/10, interval_id, dur = t.fade_duration/10;
+                if(dur < 20) { dur = 20; }
 
-              interval_id = setInterval(function () {
-                var tmp = snd.volume - step;
-                if(tmp <= 0) {
-                  clearInterval(interval_id);
-                  snd.muted = 0;
-                  // console.log("stopping", ind);
-                  snd.pause();
-                  if(play_after === true) { t.actual_play.call(t); }
-                  t.can_play = true;
-                }
-                else {
-                  snd.volume = tmp;
-                }
-              }, dur);
+                interval_id = setInterval(function () {
+                  var tmp = snd.volume - step;
+                  if(tmp <= 0) {
+                    clearInterval(interval_id);
+                    snd.muted = 0;
+                    console.log("stopping", ind);
+                    snd.pause();
+                    if(play_after === true) { t.actual_play.call(t); }
+                    t.can_play = true;
+                  }
+                  else {
+                    snd.volume = tmp;
+                  }
+                }, dur);
+              }
+              else {
+                snd.muted = 0;
+                console.log("stopping", ind);
+                snd.pause();
+                t.can_play = true;
+              }
             }
           }
           // console.log(f);
@@ -196,9 +214,8 @@ $(document).ready(function () {
           percent = normalized_pos * 100 / panorama.story_width;
           panorama.audio.play_range.forEach(function (d, i) {
             if(percent >= d[0] && percent < d[1]) {
-              if(i !== panorama.audio.current) {
-                panorama.audio.play(i);
-              }
+              panorama.audio.play(i);
+              return;
             }
           });
           if(sync_minimap) { minimap.sync(); }
@@ -704,23 +721,6 @@ $(document).ready(function () {
         }
         tmp_el.css({ "width": tmp_w + "px", "height": tmp + "px" });
 
-        // if(is_mobile) {
-        //   tmp = tmp_h - title_h;
-        //   t.content.css({"height": tmp + "px"});
-        // }
-
-        // tmp_h = ;
-        // t.content.css({ "height": tmp + "px" });
-        // tmp_el = ;
-
-        // if(tmp_el.length && !is_mobile) {
-        //   tmp_el.css({ "height": ( tmp_h - tmp_el.position().top - 25) + "px" });
-        // }
-
-
-
-      // }
-
         story.off_animation();
         panorama.audio.softMute();
         if(v === "behind") {
@@ -1042,12 +1042,14 @@ $(document).ready(function () {
 
         resize();
         var pnl_height = h - (w > 992 ? 120 : 60);
-        panorama.el.find("object, .apanel").css("height", pnl_height);
+        panorama.el.find(".bpanel, .apanel").css("height", pnl_height);
 
-        var tmp, tmp_w = 0, tmp_i = 0, pnl, expect_cnt = 0, cnt = 0, svg, html = panorama.panels.svg;
+        var tmp, tmp_w = 0, tmp_i = 0, pnl, expect_cnt = 0, cnt = 0, svg, html = panorama.panels.svg,
+          bg_html = panorama.panels.bg_svg;
         panorama.container.find(".panel.ghost").remove();
         panorama.panels.w = [];
         panorama.width = 0;
+        console.log("here1");
 
         panorama.panels.elem.forEach(function (d, i){
           tmp = d.width();
@@ -1056,8 +1058,8 @@ $(document).ready(function () {
         });
         panorama.story_width = panorama.width;
 
-        var template_panel = "<div class='panel ghost'></div>",
-          template_object = "<object data-panel='%id' data-type='%type' type='image/svg+xml' style='height:%heightpx'></object>";
+        var template_panel = "<div class='panel ghost'></div>";
+          //template_object = "<object data-panel='%id' data-type='%type' type='image/svg+xml' style='height:%heightpx'></object>";
 
         // need count of additional panels for loader
         while(tmp_w < w) { // for right side
@@ -1073,26 +1075,20 @@ $(document).ready(function () {
         }
         expect_cnt*=2;
         loader.retick(is_partial ? 19 : 9, expect_cnt);
-
         tmp_w = 0, tmp_i = 0;
         while(tmp_w < w) {
           pnl = $(template_panel).appendTo(panorama.container);
 
-          tmp = $(template_object.replace("%id", "r" + (tmp_i+1)).replace("%type", "bg").replace("%height", pnl_height));
-          tmp.one("load", function (event) { loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
-          tmp.attr("data", (panorama.panels.path + "bg/" + panorama.panels.names[tmp_i] + ".svg" + timestamp));
-          pnl.append(tmp);
+          svg = $("<div class='bpanel' data-panel='r" + (tmp_i+1) + "' data-type='bg' style='height:" + pnl_height + "px'>").appendTo(pnl);
+          svg.html(bg_html[tmp_i]);
+          loader.inc();
+          if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
 
           pnl.append("<div class='surface'></div>");
           svg = $("<div class='apanel noselect' data-panel='r" + (tmp_i+1) + "' data-type='fg' style='height:" + pnl_height + "px'>").appendTo(pnl);
-          tmp = $(template_object.replace("%id", "r" + (tmp_i+1)).replace("%type", "bg"));
-          tmp.one("load", { pnl_i: tmp_i }, function (event) {
-            $(this).replaceWith(html[event.data.pnl_i].replace(/id\=\"story/g, "id=\"story_r_"));
-            loader.inc();
-            if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
-          tmp.attr("data", (panorama.panels.path + "fg/" + panorama.panels.names[tmp_i] + ".svg" + timestamp));
-          svg.append(tmp);
-
+          svg.html(html[tmp_i].replace(/id\=\"story/g, "id=\"story_r_"));
+          loader.inc();
+          if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
 
           tmp_w += panorama.panels.w[tmp_i];
           tmp_i = ++tmp_i % panorama.panels.count;
@@ -1106,21 +1102,16 @@ $(document).ready(function () {
 
           pnl = $(template_panel).prependTo(panorama.container);
 
-          tmp = $(template_object.replace("%id", "l" + (tmp_i+1)).replace("%type", "bg").replace("%height", pnl_height));
-          tmp.one("load", function (event) { loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
-          tmp.attr("data", (panorama.panels.path + "bg/" + panorama.panels.names[tmp_i] + ".svg" + timestamp));
-          pnl.append(tmp);
+          svg = $("<div class='bpanel' data-panel='l" + (tmp_i+1) + "' data-type='bg' style='height:" + pnl_height + "px'>").appendTo(pnl);
+          svg.html(bg_html[tmp_i]);
+          loader.inc();
+          if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
 
           pnl.append("<div class='surface noselect'></div>");
           svg = $("<div class='apanel noselect' data-panel='l" + (tmp_i+1) + "' data-type='fg' style='height:" + pnl_height + "px'>").appendTo(pnl);
-          tmp = $(template_object.replace("%id", "l" + (tmp_i+1)).replace("%type", "fg"));
-          tmp.one("load", { pnl_i: tmp_i }, function (event) {
-            $(this).replaceWith(html[event.data.pnl_i].replace(/id\=\"story/g, "id=\"story_l_"));
-            loader.inc();
-            if(++cnt === expect_cnt) { setTimeout(load.bind, 100); } });
-          tmp.attr("data", (panorama.panels.path + "fg/" + panorama.panels.names[tmp_i] + ".svg" + timestamp));
-          svg.append(tmp);
-
+          svg.html(html[tmp_i].replace(/id\=\"story/g, "id=\"story_l_"));
+          loader.inc();
+          if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
 
           tmp_w += panorama.panels.w[tmp_i];
           if(--tmp_i === 0) tmp_i = panorama.panels.count - 1;
@@ -1133,7 +1124,6 @@ $(document).ready(function () {
         if(expect_cnt === 0) { loader.inc(); setTimeout(load.bind, 100); }
       },
       effects: function () { /*console.log("load.effects");*/
-
         $.Velocity
           .RegisterEffect("js.fade", {
             defaultDuration: 6000,
@@ -1220,7 +1210,9 @@ $(document).ready(function () {
       panels_process: function () { /*console.log("load.panels_process");*/
         panorama.panels.elem.forEach(function (d, i){
           panorama.panels.svg.push(d.get(0).contentDocument.documentElement.outerHTML);
+          panorama.panels.bg_svg.push(panorama.panels.bg_elem[i].get(0).contentDocument.documentElement.outerHTML);
           d.replaceWith(panorama.panels.svg[i]);
+          panorama.panels.bg_elem[i].replaceWith(panorama.panels.bg_svg[i]);
           panorama.panels.elem[i] = panorama.container.find(".apanel[data-panel='" + (i+1) + "'][data-type='fg'] svg");
         });
         setTimeout(load.audio, 100);
@@ -1229,24 +1221,27 @@ $(document).ready(function () {
         var cnt = 0, bg, fg, mfg, expect_cnt = panorama.panels.count*2+1;
         loader.retick(8, 11);
         panorama.panels.names.forEach( function (d, i) {
-          bg = panorama.container.find("object[data-panel='" + (i+1) + "'][data-type='bg']");
+
+          bg = $("<object type='image/svg+xml' data='" + (panorama.panels.path + "bg/" + d + ".svg" + timestamp) + "'>");
+          panorama.panels.bg_elem.push(bg);
           bg.one("load", function (event){ loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
-          bg.attr("data", panorama.panels.path + "bg/" + d + ".svg" + timestamp);
+          panorama.container.find(".bpanel[data-panel='" + (i+1) + "'][data-type='bg']").append(bg);
 
-
-          fg = panorama.container.find(".apanel[data-panel='" + (i+1) + "'][data-type='fg'] object");
+          fg = $("<object type='image/svg+xml' data='" + (panorama.panels.path + "fg/" + d + ".svg" + timestamp) + "'>");
           panorama.panels.elem.push(fg);
           fg.one("load", function (event){ loader.inc(); if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
-          fg.attr("data", panorama.panels.path + "fg/" + d + ".svg" + timestamp);
+          panorama.container.find(".apanel[data-panel='" + (i+1) + "'][data-type='fg']").append(fg);
+
         });
 
-        mfg = minimap.el.find(".fg object");
+        mfg = $("<object type='image/svg+xml' data='" + ("../assets/images/map_fg.svg" + timestamp) + "'>");
+
         mfg.one("load", function (event) { // plus load minimap foreground svg
           $(".preload-minimap").removeClass("preload-minimap");
           mfg.replaceWith(mfg.get(0).contentDocument.documentElement.outerHTML);
           loader.inc();
           if(++cnt === expect_cnt) { setTimeout(load.panels_process, 100); } });
-        mfg.attr("data", "../assets/images/map_fg.svg" + timestamp);
+        minimap.el.find(".fg").append(mfg);
       },
       partial: function () { /*console.log("load.partial");*/
         panorama.audio.stop();
@@ -1289,8 +1284,8 @@ $(document).ready(function () {
         // $(window).on("blur", function () { console.log("blur"); t.toggle(false); });
       },
       toggle: function (state) {
-        if(state) { panorama.audio.play(); }
-        else { panorama.audio.stop();}
+        if(state) { console.log("visible2"); panorama.audio.play(); }
+        else { console.log("hidden"); panorama.audio.stop(); }
       }
     };
 
