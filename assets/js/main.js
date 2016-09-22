@@ -1101,7 +1101,7 @@ $(document).ready(function () {
         tmp_w = 0, tmp_i = 0;
         while(tmp_w < w) {
           pnl = $(template_panel.replace("%data-panel", ("r" + (tmp_i+1)))).appendTo(panorama.container);
-          pnl.css({ width: panorama.panels.w[tmp+1], height: pnl_height});
+          pnl.css({ width: panorama.panels.w[tmp_i+1], height: pnl_height});
           // svg = $("<div class='bpanel' data-panel='r" + (tmp_i+1) + "' data-type='bg' style='height:" + pnl_height + "px'>").appendTo(pnl);
           pnl.find(".bpanel").html(bg_html[tmp_i]);
           loader.inc();
@@ -1129,7 +1129,7 @@ $(document).ready(function () {
         while(tmp_w < w) {
 
           pnl = $(template_panel.replace("%data-panel", ("l" + (tmp_i+1)))).prependTo(panorama.container);
-          pnl.css({ width: panorama.panels.w[tmp+1], height: pnl_height});
+          pnl.css({ width: panorama.panels.w[tmp_i+1], height: pnl_height});
           pnl.find(".bpanel").html(bg_html[tmp_i]);
           loader.inc();
           if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
