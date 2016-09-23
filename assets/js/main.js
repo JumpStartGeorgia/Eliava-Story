@@ -13,7 +13,7 @@ $(document).ready(function () {
     timestamp = "?v=1474315200000",
     is_desktop = undefined,
     is_mobile = undefined,
-    is_mac = isMacintosh(),
+    is_mac = undefined,
     is_ios = undefined,
     lang = document.documentElement.lang || "en",
     story_mode = false,
@@ -166,7 +166,6 @@ $(document).ready(function () {
               }
             }
           }
-          // console.log(f);
           if(!f) { t.can_play = true; if(play_after === true) { t.actual_play.call(t); } } // console.log("Unexpected Behaviour: Audio index is out of range or audio object is not ready"); }
         },
         toggle_mute: function (state) {
@@ -210,7 +209,6 @@ $(document).ready(function () {
       position: {
         analyze: function (pos, sync_minimap) {
           if(typeof sync_minimap !== "boolean") { sync_minimap = true; }
-          // console.log(pos);
           var normalized_pos = -1*((pos + panorama.left_width) % panorama.story_width), percent, best_i = -2, best_w = 99999999999;
           if(normalized_pos < 0) { normalized_pos = panorama.story_width + normalized_pos; }
           normalized_pos += panorama.origin;
@@ -267,8 +265,9 @@ $(document).ready(function () {
         },
         start: function () {
           this.finished = false;
-          console.log("faders", this, this.faders);
-          this.faders.css("opacity", .1);
+          if(this.faders.length) { // Unexpected behaviour found: sometimes faders is empty and it raise app stop
+            this.faders.css("opacity", .1);
+          }
           this.anims.css("opacity", 1);
           this.play();
         },
@@ -734,8 +733,6 @@ $(document).ready(function () {
           title_h = t.content.find(".caption").outerHeight();
         t.content.scrollTop(0);//.css({ "height": (h > 760 ? h - 88 - 61 - 60 - 10 : h - 2*61) + "px" });
 
-        console.log(tmp_h, tmp_el, cnt_w, title_h);
-
         tmp = tmp_h - 61 - (is_mobile ? 0 : 20);
         var tmp_w = tmp/9*16;
         var m_width = cnt_w > t.max_width ? t.max_width : cnt_w;
@@ -904,10 +901,7 @@ $(document).ready(function () {
       },
       sync: function () {
         var t = this, start_pos;
-
         start_pos = -1 * panorama.container_position - panorama.offset.left;
-        // console.log(t.cape_w, t.light_w, start_pos , panorama.story_width , t.img_w);
-        //if(start_pos < 0) { start_pos = panorama.story_width - start_pos; }
         t.pos = -1 * ( 2 * t.cape_w + t.light_w - start_pos / panorama.story_width * t.img_w);
         t.overlay.css(transformX(t.pos));
       }
@@ -1067,7 +1061,6 @@ $(document).ready(function () {
         resize();
         var pnl_height = h - (w > 992 ? 120 : 60);
         panorama.el.find(".panel").css("height", pnl_height);
-        alert(pnl_height);
         var tmp, tmp_w = 0, tmp_i = 0, pnl, expect_cnt = 0, cnt = 0, svg, html = panorama.panels.svg,
           bg_html = panorama.panels.bg_svg;
         panorama.container.find(".panel.ghost").remove();
@@ -1288,6 +1281,7 @@ $(document).ready(function () {
         is_desktop = device.desktop();
         is_mobile = !is_desktop;
         is_ios = device.ios();
+        is_mac = isMacintosh();
         panorama.audio.ready = is_desktop;
         $(window).resize(function () { redraw(); });
         loader.start_animation();
@@ -1349,13 +1343,13 @@ $(document).ready(function () {
   (function init () {
 
     // dev
-    I18n.init(function (){
-      window.pn = panorama;
-      I18n.remap();
-      params.parse();
-      panorama.audio.muted = true;
-      load.all();
-    });
+    // I18n.init(function (){
+    //   window.pn = panorama;
+    //   I18n.remap();
+    //   params.parse();
+    //   panorama.audio.muted = true;
+    //   load.all();
+    // });
 
     // deploy
     // panorama.audio.dev();
@@ -1364,8 +1358,8 @@ $(document).ready(function () {
     // I18n.init(function (){ I18n.remap(); });
 
     // production
-    // params.parse();
-    // load.all();
+    params.parse();
+    load.all();
 
   })();
 });
