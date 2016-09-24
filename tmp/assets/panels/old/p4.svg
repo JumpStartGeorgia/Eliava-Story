@@ -4,7 +4,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="2795px" height="1000px" viewBox="0 0 2795 1000" enable-background="new 0 0 2795 1000" xml:space="preserve">
   <g id="story8">
-    <image overflow="visible" width="120" height="182" class="layer-colored" data-story="8" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAC2CAYAAAAShkkWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="120" height="182" class="layer-colored" data-story="8" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAC2CAYAAAAShkkWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
       bWFnZVJlYWR5ccllPAAAVFlJREFUeNrsnQd4XVV27/ftuuqSbcmyLcu9V1ywDRgbGwymDMwAwwTI
       BDIhDCSPTBIyIS95mZdMecwk08kwAQLM0G3wDL0bbNxx7122utV7udK9b//WOfvq6PrKFVx1+PQJ
       S/eee7TXXu2//mttpS6iKxKJ9NVfwYvo71WuC+WPqaqq8uprdE1NTd6RI0dyXS7XgGAwmBsKhQa2
@@ -388,7 +388,7 @@
     </image>
   </g>
   <g id="story9">
-    <image overflow="visible" width="157" height="198" class="layer-colored" data-story="9" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ0AAADGCAYAAADIb4LiAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="157" height="198" class="layer-colored" data-story="9" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ0AAADGCAYAAADIb4LiAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
       bWFnZVJlYWR5ccllPAAAgoVJREFUeNrsnQecnVWZ/88t00umZkomyWSSmfSekJ4QCCAgvSsg6uq6
       f8X212XVdVddG7qigqiogCDSQu8ppCek914mbTKZ3nu59/98n/c9N28mAffvum4S5uUzZMq97z3v
       Ob/ze/pzfKb3+quvUMPJDBOMTfHFJHYbfzBWflUpX7U+n6+7d3be//L1TsF/7QqHwwWhin2f6Ko7
@@ -979,7 +979,7 @@
     </image>
   </g>
   <g id="gears">
-    <image overflow="visible" enable-background="new    " width="189" height="527" class="layer-colored" data-gear="1" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL0AAAIPCAYAAAFRTe/xAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="189" height="527" class="layer-colored" data-gear="1" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL0AAAIPCAYAAAFRTe/xAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
       bWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
       bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
       eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0
@@ -3483,7 +3483,7 @@
       O3CovaGXHHHkyVfIYcSPYqC+skqaPV0S26pgQlSFioGzLCCHsRwDliudfxpvKJrRNGPIhXsG56fn
       mP91d+p/An8nI/LS8KhyAAAAAElFTkSuQmCC" transform="matrix(1 0 0 1 73.0056 165.0183)">
     </image>
-    <image overflow="visible" enable-background="new    " width="253" height="304" class="layer-colored" data-gear="2" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP0AAAEwCAYAAAELM0e0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="253" height="304" class="layer-colored" data-gear="2" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP0AAAEwCAYAAAELM0e0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
       bWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
       bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
       eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0
@@ -5838,7 +5838,7 @@
       ipojxpiRlmpfK9FaAUj5zpQMZCO6nPSLiyooShcncnd2piKMCFtA9xlJRVbQTOvtxVY1KBaOzJF6
       GpS7uv6oOfTJceXsf/z9zSok2v1GpanYX2X219T9Xz6L/wLsZg1tW0f+wAAAAABJRU5ErkJggg==" transform="matrix(1 0 0 1 1264.9822 423.9495)">
     </image>
-    <image overflow="visible" enable-background="new    " width="235" height="244" class="layer-colored" data-gear="3" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOsAAAD0CAYAAAENjeENAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="235" height="244" class="layer-colored" data-gear="3" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOsAAAD0CAYAAAENjeENAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
       bWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
       bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
       eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0

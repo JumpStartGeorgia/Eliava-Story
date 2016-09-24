@@ -130,7 +130,7 @@ def init
       @descr = story_data["quote"]
       @share_url = share_dir_url + "/" + id + ".html"
       # if each story wlll have it's own file use this @image = url + "/assets/images/share/#{story_index}.jpg"
-      @image = url + "/assets/images/share/fb.jpg?v=1474622048885"
+      @image = url + "/assets/images/share/fb.jpg?v=1474748242482"
 
       @url_with_locale = url_with_locale_orig + id
 

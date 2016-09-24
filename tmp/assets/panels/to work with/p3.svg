@@ -4,7 +4,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="2968px" height="1000px" viewBox="0 0 2968 1000" enable-background="new 0 0 2968 1000" xml:space="preserve">
   <g id="story4">
-    <image overflow="visible" enable-background="new    " width="345" height="679" class="layer-colored" data-story="4" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVoAAAKoCAYAAAA24zf5AAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="345" height="679" class="layer-colored" data-story="4" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVoAAAKoCAYAAAA24zf5AAAACXBIWXMAAAsSAAALEgHS3X78AAAA
       GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAEh9tJREFUeNrsvXmQZNl13ndzXyuX
       qsra9+qq6qpep6dn3wAMCUIEV5mwIImyQotlR9iKcITsoBkhh4MRDiP0l2UqZClAhWTKDhoO0VKY
       NCAQGwHMDGZ6Znrfq6u79n3PWnLP9Pmd+15NTWMINsgBCJLvAjlVlZX53n2vOr/73e985xyf+Qs4
@@ -5219,7 +5219,7 @@
     </image>
   </g>
   <g id="story5">
-    <image overflow="visible" enable-background="new    " width="102" height="266" class="layer-colored" data-story="5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAELCAYAAADEAJhsAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="102" height="266" class="layer-colored" data-story="5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAELCAYAAADEAJhsAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
       GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAWb5JREFUeNrsvXl0ZPl1HnbfUvsK
       FPat957u6dk55MxQpDia0ZBiRDOSItmKmEWUFNNHsuIoR4l0ouNznJN/LFtHsZNYUiwrR0lsS7El
       yxJFUzIXUSSH5OwzvXcD6MYOFGrft1fv5X73vVcLgO5GL+hB96CGRaCBqkLV73v33u/uCu2jW/m1
@@ -5628,7 +5628,7 @@
     </image>
   </g>
   <g id="story6">
-    <image overflow="visible" enable-background="new    " width="564" height="502" class="layer-colored" data-story="6" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjUAAAH3CAYAAABD3a66AAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="564" height="502" class="layer-colored" data-story="6" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjUAAAH3CAYAAABD3a66AAAACXBIWXMAAAsSAAALEgHS3X78AAAA
       GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAD/69JREFUeNrsvXmQ5dlV53ffvme+
       93Lft8rM2qu6qnpvqWm11KglDQoLBGMGC48JE45hFGGMMWET+A8iHGEiTDARCtsEgQkPxmAznmGA
       QS1aai29d+17Vu77+nJ9mW/ffD/n/n7VJSFgBGihdQ88ZVbme7/f/f1eZt9Pfs/3nONRNmzY+L5G
@@ -10231,7 +10231,7 @@
     </image>
   </g>
   <g id="story7">
-    <image overflow="visible" enable-background="new    " width="103" height="62" class="layer-colored" data-story="7" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAA+CAYAAAA2wAXGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="103" height="62" class="layer-colored" data-story="7" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAA+CAYAAAA2wAXGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
       bWFnZVJlYWR5ccllPAAAI4tJREFUeNrsXQdwXeWVPve+rt4ly5K7bAsX3DBgujHNQCAQwrIJCTtZ
       MoHZLNnJhM1MFrKbmYRJNsxuQsI6kM1iagBTbIcYG2xs3OUiW7ZkWcWSJVvF6tJ7T6+/Pd+593+6
       epZMLwm5zJsn3/r/p3znO+c/96HF43HCpmka/aVvPJc0/nLwx80fTzgcplgsZu/u7k4/fvw4BQIB

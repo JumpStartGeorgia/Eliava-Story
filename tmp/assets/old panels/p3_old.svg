@@ -9398,7 +9398,7 @@
 			s-1,36.375-1,36.375s10.25,0.632,11.5,0.632s1.25-7.007,2-12.382s1.75-19.875,2.25-24.5s2.162-32.928,2.162-32.931
 			c1.195-0.591,2.354-1.909,3.338-4.861c1.666-5,2.5-29.831,2.668-37.664C1524.666,501.836,1522,485.503,1522,482.503z"/>
     <g class="layer-anim">
-			<image overflow="visible" enable-background="new    " width="102" height="266" class="layer-drawing" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAELCAYAAADEAJhsAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+			<image overflow="visible" width="102" height="266" class="layer-drawing" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAELCAYAAADEAJhsAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
 				GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAXqNJREFUeNrsvQeUZOlVJnjfi4gX
 				3kekifS+vOmq9t10q6VWy4BGLYQ5IIYBsRoxsAu7s8MyO8wMnBXsHs7OwtnD2dHssAMMYoURLEIS
 				QsiAWt1q312VVem9jcgM7/17e+9974XJyqquqq6szjKvT3RWZkZmRvz33Xu/674rwCG6dqM7sLm5
@@ -9828,7 +9828,7 @@
 				QmCC" transform="matrix(1 0 0 1 1425.3335 356.0068)">
 			</image>
 
-			<image overflow="visible" enable-background="new    " width="102" height="266" class="layer-colored" data-story="5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAELCAYAAADEAJhsAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+			<image overflow="visible" width="102" height="266" class="layer-colored" data-story="5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAELCAYAAADEAJhsAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
 				GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAWh1JREFUeNrsvQmUpflVH3a/9e37
 				UvvSVb1Nz64ZjTaDkIQkhEBGQphVEBJLIKMYYnJy4jh2wMcmHB87ghN8BI4NBMsZCDhByKCAAC0j
 				jWbt6em1urq69uXt+/q9b8m99/veUkt3V/d09VT31Jt5p7qq3nv13vf733t/dxfgEN2yl74qlJsd

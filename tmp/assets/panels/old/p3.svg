@@ -4,7 +4,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="2968px" height="1000px" viewBox="0 0 2968 1000" enable-background="new 0 0 2968 1000" xml:space="preserve">
   <g id="story4">
-    <image overflow="visible" width="345" height="679" class="layer-colored" data-story="4" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVkAAAKnCAYAAAAsgj4vAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="345" height="679" class="layer-colored" data-story="4" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVkAAAKnCAYAAAAsgj4vAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
       bWFnZVJlYWR5ccllPAAEkFRJREFUeNrsvQd4nPd15ntmBjPovffGAhAk2DslSqK6bEm25dixnTjZ
       lE3ZTfYmu0+Se7N3Hd/nWV/H2dzEe2828dqJk3hl2ZabLMmSJUqiSJFiBwtIAAQIgui9d2Dmnt/5
       vg+CaCWWHbnE/v56RgPMzFfBef/v/z3vOScgP4Vj7vAnA/oUcH/lOZpw6A9i/9TnP/3pT0eGh4dr
@@ -5256,7 +5256,7 @@
     </image>
   </g>
   <g id="story5">
-    <image overflow="visible" width="102" height="266" class="layer-colored" data-story="5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAEKCAYAAADgniD3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="102" height="266" class="layer-colored" data-story="5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAEKCAYAAADgniD3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
       bWFnZVJlYWR5ccllPAAAV5pJREFUeNrsvQd0ZOdxJlr3ds6NRqORc5wcmYMSqWhrRcnWvpV3bcle
       r2w/efcFnfW+c94ehyd7JXut9dNatlfed2RZlBUsiaJEiqTIYRhyOJmTZxAGOQOdc76vqu693bcx
       AAaYGQwxM7g6rQGBBrr71l9VX6WvBNhEV/z4t/T+tO790UTyAxaz9YAIhe7xycmGoeFhvX/RD1Ix
@@ -5655,7 +5655,7 @@
     </image>
   </g>
   <g id="story6">
-    <image overflow="visible" width="564" height="502" class="layer-colored" data-story="6" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjQAAAH2CAYAAABnQxYhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="564" height="502" class="layer-colored" data-story="6" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjQAAAH2CAYAAABnQxYhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
       bWFnZVJlYWR5ccllPAAD9LtJREFUeNrsvQd4nOd153uAGfTeeyUqQRDsVYWqFlVsy1WxHTm2k107
       Gz13HT8bJZtsbrJ389zNs7nr+CZ2FMdxHCuxbFlWtQolSuydIAkSAEEARCF67xhgMADu+zvf99E0
       o9QbF9Hv8TMGOOVrM6P3h//5n3PCVldX5b0QYWFhYsPGrRgLb/9xvPmxGn3Pk3P/gudGmB8p5pbq
@@ -10209,7 +10209,7 @@
     </image>
   </g>
   <g id="story7">
-    <image overflow="visible" width="103" height="62" class="layer-colored" data-story="7" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAA+CAYAAAA2wAXGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="103" height="62" class="layer-colored" data-story="7" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAA+CAYAAAA2wAXGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
       bWFnZVJlYWR5ccllPAAAI4tJREFUeNrsXQdwXeWVPve+rt4ly5K7bAsX3DBgujHNQCAQwrIJCTtZ
       MoHZLNnJhM1MFrKbmYRJNsxuQsI6kM1iagBTbIcYG2xs3OUiW7ZkWcWSJVvF6tJ7T6+/Pd+593+6
       epZMLwm5zJsn3/r/p3znO+c/96HF43HCpmka/aVvPJc0/nLwx80fTzgcplgsZu/u7k4/fvw4BQIB

@@ -1090,26 +1090,19 @@ $(document).ready(function () {
           if(--tmp_i === 0) tmp_i = panorama.panels.count - 1;
         }
         expect_cnt*=2;
-        loader.retick(is_partial ? 19 : 9, expect_cnt);
+        loader.retick(is_partial ? 19 : 5, expect_cnt);
         tmp_w = 0, tmp_i = 0;
         while(tmp_w < w) {
           pnl = $(template_panel.replace("%data-panel", ("r" + (tmp_i+1)))).appendTo(panorama.container);
-          pnl.css({ width: panorama.panels.w[tmp_i+1], height: pnl_height});
-          // svg = $("<div class='bpanel' data-panel='r" + (tmp_i+1) + "' data-type='bg' style='height:" + pnl_height + "px'>").appendTo(pnl);
+          pnl.css({ height: pnl_height, width: panorama.panels.w[tmp_i] });
+
           pnl.find(".bpanel").html(bg_html[tmp_i]);
           loader.inc();
           if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
 
-
           pnl.find(".fpanel").html(html[tmp_i].replace(/id\=\"story/g, "id=\"story_r_"));
           loader.inc();
           if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
-          // pnl.append("<div class='surface'></div>");
-          //
-          // svg = $("<div class='apanel noselect' data-panel='r" + (tmp_i+1) + "' data-type='fg' style='height:" + pnl_height + "px'>").appendTo(pnl);
-          // svg.html(html[tmp_i].replace(/id\=\"story/g, "id=\"story_r_"));
-          // loader.inc();
-          // if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
 
           tmp_w += panorama.panels.w[tmp_i];
           tmp_i = ++tmp_i % panorama.panels.count;
@@ -1120,9 +1113,9 @@ $(document).ready(function () {
 
         tmp_w = 0, tmp_i = panorama.panels.count - 1;
         while(tmp_w < w) {
-
           pnl = $(template_panel.replace("%data-panel", ("l" + (tmp_i+1)))).prependTo(panorama.container);
-          pnl.css({ width: panorama.panels.w[tmp_i+1], height: pnl_height});
+          pnl.css({ height: pnl_height, width: panorama.panels.w[tmp_i] });
+
           pnl.find(".bpanel").html(bg_html[tmp_i]);
           loader.inc();
           if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
@@ -1130,16 +1123,6 @@ $(document).ready(function () {
           pnl.find(".fpanel").html(html[tmp_i].replace(/id\=\"story/g, "id=\"story_l_"));
           loader.inc();
           if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
-          // svg = $("<div class='bpanel' data-panel='l" + (tmp_i+1) + "' data-type='bg' style='height:" + pnl_height + "px'>").appendTo(pnl);
-          // svg.html(bg_html[tmp_i]);
-          // loader.inc();
-          // if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
-
-          // pnl.append("<div class='surface noselect'></div>");
-          // svg = $("<div class='apanel noselect' data-panel='l" + (tmp_i+1) + "' data-type='fg' style='height:" + pnl_height + "px'>").appendTo(pnl);
-          // svg.html(html[tmp_i].replace(/id\=\"story/g, "id=\"story_l_"));
-          // loader.inc();
-          // if(++cnt === expect_cnt) { setTimeout(load.bind, 100); }
 
           tmp_w += panorama.panels.w[tmp_i];
           if(--tmp_i === 0) tmp_i = panorama.panels.count - 1;
@@ -1236,18 +1219,26 @@ $(document).ready(function () {
         }
       },
       panels_process: function () { /*console.log("load.panels_process");*/
+        var f_tmp, b_tmp, flg, serializer = typeof window.XMLSerializer !== "undefined" ? new XMLSerializer() : undefined;
         panorama.panels.elem.forEach(function (d, i){
-          panorama.panels.svg.push(d.get(0).contentDocument.documentElement.outerHTML);
-          panorama.panels.bg_svg.push(panorama.panels.bg_elem[i].get(0).contentDocument.documentElement.outerHTML);
+          f_tmp = d.get(0).contentDocument.documentElement;
+          b_tmp = panorama.panels.bg_elem[i].get(0).contentDocument.documentElement;
+          flg = f_tmp.hasOwnProperty("outerHTML") && typeof serializer !== "undefined";
+
+          panorama.panels.svg.push(flg ? f_tmp.outerHTML : serializer.serializeToString(f_tmp));
           d.replaceWith(panorama.panels.svg[i]);
+
+          panorama.panels.bg_svg.push(flg ? b_tmp.outerHTML : serializer.serializeToString(b_tmp));
           panorama.panels.bg_elem[i].replaceWith(panorama.panels.bg_svg[i]);
+
           panorama.panels.elem[i] = panorama.container.find(".panel[data-panel='" + (i+1) + "'] .fpanel svg");
         });
+
         setTimeout(load.audio, 100);
       },
       panels: function () { /*console.log("load.panels");*/
         var cnt = 0, bg, fg, mfg, expect_cnt = panorama.panels.count*2+1;
-        loader.retick(8, 11);
+        loader.retick(12, 11);
         panorama.panels.names.forEach( function (d, i) {
 
           bg = $("<object type='image/svg+xml' data='" + (panorama.panels.path + "bg/" + d + ".svg" + timestamp) + "'>");
@@ -1310,8 +1301,6 @@ $(document).ready(function () {
         else {
           $(document).on(visibilityChange, function () { t.toggle(!document[hidden]); });
         }
-        // $(window).on("focus", function () { console.log("focus"); t.toggle(true); });
-        // $(window).on("blur", function () { console.log("blur"); t.toggle(false); });
       },
       toggle: function (state) {
         if(state) { panorama.audio.play(); }
@@ -1347,7 +1336,7 @@ $(document).ready(function () {
     //   window.pn = panorama;
     //   I18n.remap();
     //   params.parse();
-    //   panorama.audio.muted = true;
+    // panorama.audio.muted = true;
     //   load.all();
     // });
 

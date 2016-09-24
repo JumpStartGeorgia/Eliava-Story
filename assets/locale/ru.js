@@ -1,6 +1,7 @@
 ru =
 {
   "locale": "ru",
+  "locale_text": "Русский",
   "selected_locale": "russian",
   "title": "The Big Draw: Selling the Soviet Past",
   "nav_title_1": "The Big Draw:",

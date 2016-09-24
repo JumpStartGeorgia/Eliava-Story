@@ -23,7 +23,7 @@
 		c3.69,3.331,1.42,6.653,1.483,10.079c0.05,2.648,0.205,5.418,1.014,7.905c1.896,5.837,4.539,11.439,6.295,17.312
 		c4.19,14.016,8.263,28.074,11.9,42.24C763.053,979.378,762.638,984.174,762.993,989.757z"/>
     <g class="layer-anim">
-		<image overflow="visible" enable-background="new    " width="345" height="679" class="layer-drawing" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVkAAAKnCAYAAAAsgj4vAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+		<image overflow="visible" width="345" height="679" class="layer-drawing" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVkAAAKnCAYAAAAsgj4vAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
 bWFnZVJlYWR5ccllPAAEEPdJREFUeNrs3Qewbn1R7/kNvIKAGBAxICigIkiQICYQAUUUwUBGBH1B
 EcU0V525M9dwa5yScRS9ZhSQJEFBoiKYAyqYwRxAAXPOYsBZn1X7e6pddz177/O+B+se6qyqp569
 n7XWP3b/uv/973/3VX7pl37p6N/+7d+O/v3f/339/rM/+7OjX/u1Xzv63d/93aNrX/vaR7e5zW2O
@@ -10137,7 +10137,7 @@ sJ1NRz1NSn8LMABeW3NfJ9p41AAAAABJRU5ErkJggg==" transform="matrix(1 0 0 1 549.5 31
 		s1.25-7.007,2-12.382s1.75-19.875,2.25-24.5s2.162-32.928,2.162-32.931c1.195-0.592,2.354-1.909,3.338-4.861
 		c1.666-5,2.5-29.831,2.668-37.664C1524.666,501.836,1522,485.503,1522,482.503z"/>
     <g class="layer-anim">
-		<image overflow="visible" enable-background="new    " width="103" height="267" class="layer-drawing" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAELCAYAAADEAJhsAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+		<image overflow="visible" width="103" height="267" class="layer-drawing" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAELCAYAAADEAJhsAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
 GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAXqNJREFUeNrsvQeUZOlVJnjfi4gX
 3kekifS+vOmq9t10q6VWy4BGLYQ5IIYBsRoxsAu7s8MyO8wMnBXsHs7OwtnD2dHssAMMYoURLEIS
 QsiAWt1q312VVem9jcgM7/17e+9974XJyqquqq6szjKvT3RWZkZmRvz33Xu/674rwCG6dqM7sLm5
@@ -10567,7 +10567,7 @@ zDP9VKfps2azuVYG8uvBl16ajj9wbu6GoSKmpr40oub7s1zvjwADAL3R5QP14MUSAAAAAElFTkSu
 QmCC" transform="matrix(0.9903 0 0 0.9963 1425.334 356.0059)">
 	</image>
 
-		<image overflow="visible" enable-background="new    " width="103" height="267" class="layer-colored" data-story="5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAAEPCAYAAACumoH3AAAACXBIWXMAAAs6AAALOgFkf1cNAAAA
+		<image overflow="visible" width="103" height="267" class="layer-colored" data-story="5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAAEPCAYAAACumoH3AAAACXBIWXMAAAs6AAALOgFkf1cNAAAA
 GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAXehJREFUeNrsvXm0ZflVHrbPdM85
 dx7fPNXc89xCszCSkGQJgbAQEIbYxssEm8ReJitOSLKM18py/omXyQoJJjGBGEGDQQYJGRmEkJBA
 tKRWD9Vdc9WbpzsP505nzt77nDu8V6+quqqrql9V9+11+716793pfL+997dnAQ7ZrXzmy0KzZ8t9
@@ -11027,7 +11027,7 @@ d5kVoG4NQJX+WNfV734gNQHkPlMdGxX3iwHoSqP7PNg24OlD2PNJG4YpFZoQx6Un4CCMz817ftrn
 		c-8.191-2.999-16.147-6.686-24.052-10.409c-2.629-1.237-4.805-3.438-7.26-5.251c2.474-5.854,5.946-7.655,11.793-7.89
 		c20.117-0.805,39.642,2.563,59.356,6.478C2071.503,728.752,2070.345,731.278,2066.997,732.719z"/>
     <g class="layer-anim">
-		<image overflow="visible" enable-background="new    " width="564" height="502" class="layer-drawing" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjQAAAH2CAYAAABnQxYhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+		<image overflow="visible" width="564" height="502" class="layer-drawing" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjQAAAH2CAYAAABnQxYhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
 bWFnZVJlYWR5ccllPAADy2xJREFUeNrs3QnUvtd4P/o3pX8zpYOxhJIKImJIgobELCSEIOahhv7p
 4PT0WOf8Vw9tT5fTUz3aai3DMaXEEEISc1QMDRGVFCVoE9rSqqrSRiktzv7c//ebddn2/TzP+/v9
 aN703ms963nf+7nvva893Pv67mvc7zvf+c7Wbiivec1rtm5729tu3ehGN9rab7/9pmv/9m//tvWn
@@ -19967,7 +19967,7 @@ dk5ZEJOvNcP23RkAzXAMx4sd/xZgALRJqtCvrl8SAAAAAElFTkSuQmCC" transform="matrix(1 0 
 		c3.099-2.302,6.63-3.612,10.649-3.44c3.144,0.134,6.337,0.237,9.444-0.147c9.538-1.179,16.356,2.755,22.249,10.067
 		c6.654,8.255,12.104,17.018,14.724,27.296C2082.036,331.966,2082.152,336.316,2082.744,340.95z"/>
     <g class="layer-anim">
-		<image overflow="visible" enable-background="new    " width="103" height="62" class="layer-drawing" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAA+CAYAAAA2wAXGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+		<image overflow="visible" width="103" height="62" class="layer-drawing" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAA+CAYAAAA2wAXGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
 bWFnZVJlYWR5ccllPAAAH4FJREFUeNq0nHmMFdWex6ub23TTdEuzuaACiiCgqCC2IrghgoArCEqM
 Cj4VMb7RYAZjZvDp/GNixozBZyaYSEQFI4j6REFkEQQR9w0QEXdB3FgV3MD5fc7c782vT1fdvhCt
 pHLvrTp1zm/fzq9u2R9//JFw8FlWVpbs67F3797wybP787zW51nm4jef/C4vLw/3fvnll/DZvHnz

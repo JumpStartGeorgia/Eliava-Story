@@ -1,6 +1,7 @@
 en =
 {
   "locale": "en",
+  "locale_text": "English",
   "selected_locale": "english",
   "title": "The Big Draw: Selling the Soviet Past",
   "nav_title_1": "The Big Draw",

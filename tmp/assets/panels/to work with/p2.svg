@@ -4,7 +4,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="1786px" height="1000px" viewBox="0 0 1786 1000" enable-background="new 0 0 1786 1000" xml:space="preserve">
   <g id="story2">
-    <image overflow="visible" enable-background="new    " width="262" height="404" class="layer-colored" data-story="2" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQcAAAGVCAYAAADzBTTvAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="262" height="404" class="layer-colored" data-story="2" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQcAAAGVCAYAAADzBTTvAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
       GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAABwMVJREFUeNrsvQd0ZOl5pvffyglA
       oQpAIadGo3OYHDlDchgkrkiJWivYu15ZPrsKXq50ju09tI/3yDpaUlRYW2v5yJbWkm2JsnalVSaH
       pGY5nBlO7u7pnBto5IxCqELlcP0/3723urqnexhEShzM/XnABqpu3bq3pr73f7/3S0q5y13uctdd
@@ -2025,7 +2025,7 @@
     </image>
   </g>
   <g id="story3">
-    <image overflow="visible" enable-background="new    " width="204" height="155" class="layer-colored" data-story="3" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAM0AAACdCAYAAAAXMvyeAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+    <image preserveAspectRatio="xMinYMin meet" overflow="visible" width="204" height="155" class="layer-colored" data-story="3" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAM0AAACdCAYAAAAXMvyeAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
       GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAnCpJREFUeNrsvQd0pOlZ5/tWVkkl
       lXKWWuqce6Yn9eQZj8OMGae1MYsNFy6w7F6W3cMFgzln2QPsmj3Y3OUCCxzg3APnYmObaxuwx54x
       nhw756BWzqEUSlWqKqly3ff3vO+nVmt6xgGPe2zqs2ukLlV98fk/4f+E16X+FW9ra2uu/v7++ng8
