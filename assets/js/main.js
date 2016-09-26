@@ -1171,7 +1171,7 @@ $(document).ready(function () {
                       played = meta.hasClass("played");
                     if(event.data === YT.PlayerState.PLAYING) {
                       if(!played) { meta.addClass("played"); }
-                      meta.fadeOut(played ? 400 : 7000);
+                      meta.delay(7000).fadeOut(played ? 400 : 1000);
                     }
                     else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
                       meta.fadeIn(400);
