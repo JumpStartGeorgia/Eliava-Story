@@ -50,7 +50,7 @@ en =
     },
     "s2": {
       "title": "The Cigarette Seller",
-      "quote": "\"I didn’t know what poverty was (in Soviet times). My children know all about it.\"",
+      "quote": "\"I didn’t know what poverty was. My children know all about it.\"",
       "yid": "t8b6NXZ-Pjk",
       "player_yid": "t8b6NXZ-Pjk",
       "name": "Marina Esebua",
