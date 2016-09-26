@@ -69,8 +69,8 @@ $(document).ready(function () {
         timeout_id: undefined,
         init: function () {
           var t = this;
-          t.elem.forEach(function (d) {
-            if(typeof d !== "undefined" && d.readyState == 4) {
+          t.elem.forEach(function (d, i) {
+            if(typeof d !== "undefined" && d.readyState > 0) {
               d.play();
               d.pause();
               d.currentTime = 0;
@@ -122,7 +122,6 @@ $(document).ready(function () {
             if(!(is_ios && st)) {
               snd.volume = t.default_volume;
               snd.muted = st;
-              // console.log("playing", t.next);
               snd.play();
             }
             t.current = t.next;
@@ -147,7 +146,6 @@ $(document).ready(function () {
                   if(tmp <= 0) {
                     clearInterval(interval_id);
                     snd.muted = 0;
-                    // console.log("stopping", ind);
                     snd.pause();
                     if(play_after === true) { t.actual_play.call(t); }
                     t.can_play = true;
@@ -1336,7 +1334,7 @@ $(document).ready(function () {
     //   window.pn = panorama;
     //   I18n.remap();
     //   params.parse();
-    // panorama.audio.muted = true;
+    //   //panorama.audio.muted = true;
     //   load.all();
     // });
 
