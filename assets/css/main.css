@@ -202,6 +202,9 @@
   #helper:lang(ka) {
     padding:38px 10px;
   }
+  #helper:lang(ru) {
+    padding:50px 20px;
+  }
   #helper span {
     display:block;
     color:#000;
