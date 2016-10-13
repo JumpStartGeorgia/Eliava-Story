@@ -3,11 +3,11 @@ ru =
   "locale": "ru",
   "locale_text": "Русский",
   "selected_locale": "russian",
-  "title": "The Big Draw: Selling the Soviet Past",
-  "nav_title_1": "The Big Draw:",
-  "nav_title_2": "selling the Soviet past",
-  "description": "25 years since the end of the USSR: The story of a market like no other.",
-  "sitename": "The Big Draw: Selling the Soviet Past",
+  "title": "Большая картина: Рынок советского прошлого",
+  "nav_title_1": "Большая картина:",
+  "nav_title_2": "Рынок советского прошлого",
+  "description": "Через 25 лет после развала СССР: История уникального в своем роде рынка.",
+  "sitename": "Большая картина: Рынок советского прошлого",
   "domain": "http://dev-eliava.jumpstart.ge",
   "url": "http://dev-eliava.jumpstart.ge/ru/",
   "url_en": "http://dev-eliava.jumpstart.ge/en/",
@@ -16,137 +16,137 @@ ru =
   "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.jpg",
   "share_path": "share",
   "loader": {
-    "text": "25 years since the end of the USSR: The story of a market like no other"
+    "text": "Через 25 лет после развала СССР: История уникального в своем роде рынка"
   },
   "drag_or_use": "Drag, scroll<br/>or<br/>use arrow keys",
   "share": "Share",
   "en": "English",
   "ge": "ქართული",
   "ru": "Русский",
-  "story_by": "An Interactive Story By",
-  "author": "Andrew North",
+  "story_by": "Автор",
+  "author": "Эндрю Норт",
   "about": {
-    "name": "The Story",
-    "caption": "The Big Draw: Selling the Soviet Past",
-    "author": "By Andrew North",
-    "text": "<p>You won’t find it in the Tbilisi guidebooks, and it’s well beyond the tourist trail. But the first time I came to this sprawling open-air hardware market in the Georgian capital, I thought to myself: “I’ve got to draw this place.”</p> <p>I had come as a customer, to buy some things for a home DIY job. But I found myself in a ‘Home Depot’ for the Soviet past, and the artist in me was fascinated.</p> <p>Hidden behind an outer row of newer shops is a vast labyrinth of tightly-packed stalls trading in Soviet-era engines, electrical equipment and heavy tools. Known as the Eliava (after a nearby street), it sprang up in the hard years after Georgia won its independence from the USSR in 1991. There are hundreds of stallholders, with an inventory that ranges from Russian nuts and bolts, to gearboxes and septuagenarian power motors that once drove Soviet Metro escalators. And I decided to turn this mass of history into a drawing.</p> <p>I focused on one part of the market and set about creating a 360-degree panorama of everyone and everything in my field of view. And after nearly four months of work, always standing in the same place, it became a 4 metre-long ink drawing.</p> <p>I started with <a href='#' class='to-character' data-id='6'>Vazha Jamagidze</a> and the metal smorgasbord of Russian-made hand-tools and reconditioned bathroom taps that he sells from two small benches. He has worked here for more than 20 years, but his solid arms and shoulders speak of another life before that, when he was a Soviet Army wrestling champion. And as I got to know him and the other stallholders, the journalist in me saw a wider story here.</p> <p>This is a free market selling the communist past - where some still wish it were the present. So it offers a unique window on Georgia’s transition and its often-tortured search for a new post-Soviet identity, pulled between West and East.</p> <p>Everyone in the drawing grew up in Soviet-run Georgia; and some have struggled to adjust to the fast-changing country that has replaced it. Whereas most Georgians now lean west and resent Moscow’s past and present intrusions, among the denizens of the Eliava there is a more sympathetic attitude towards Russia and Soviet rule. It’s also more complex than that.</p> <p>Democracy and capitalism have brought only “anarchy and filth” complains Vazha, worrying that Georgia’s Christian-Orthodox traditions are under threat from “Western ideas” like LGBT rights. But other stallholders had turned against Moscow precisely because of the communists’ persecution of the Orthodox Church. Getting closer to the West - and getting into the European Union and NATO - they said, was now the only way to secure Georgia’s identity and sovereignty.</p> <p>At first I was the one answering questions about my identity. “What village are you from?” I was asked. I felt rootless by comparison as I explained how I was born in one city in Britain, but then never returned.</p> <p>The bigger challenge was drawing each person in my 360-degree frame, working as quickly as I could before they moved, with the added pressure that they could see the result as soon as I had finished. That’s the paradox and the excitement of drawing. It is both slow and immediate.</p> <p>That made it an attraction too, as the panorama took shape, with stallholders coming from further away to look and laugh at how I had portrayed their friends. “It’s not bad,” smiled one visitor as he looked at my version of <a href='#' class='to-character' data-id='4'>Eduard</a>. “But you haven’t made his nose big enough.”</p> <p>Sometimes there were arguments, once even a fight. If I happened to be there on a key Orthodox holiday, such as ‘Mariamoba’, or someone’s birthday, I could forget working. They took my pens away and gave me wine instead. And <a href='#' class='to-character' data-id='10'>Tariel</a>, whose collection of muscular Russian motors I drew early on, locked away the drawing in his storeroom.</p> <p>Once their homemade wine started flowing though, I could barely walk in a straight line, let alone draw one. The Eliava is as much a culture and a community as a market.</p> <p>There was never going to be a future in recycling the past though, and many stallholders are struggling. More people can afford new hardware now, rather than making do with secondhand. “This is not really a business,” <a href='#' class='to-character' data-id='7'>Mirian Nozadze</a> said to me ruefully, gesturing at the piles of chunky Soviet nuts and bolts that are his mainstay. “We are just speculators,” he added, using a derogatory communist-era term for business-people.</p> <p>But instead of a mid-way station to something better, the Eliava has become the end of the line for many working there - while the train turning Georgia into a market economy thunders on. It is a familiar test of wrenching change, and who bears most responsibility to deal with the consequences – the state or the individual.</p> <p>“Who will bring back the old times?” sighs <a href='#' class='to-character' data-id='11'>Taso Tsertsvadze</a>. Like many who work in the Eliava, she is originally from Chiatura, a mining town in western Georgia that was hammered by the end of the Soviet Union and the collapse of the guaranteed market it provided. Now she runs a one-woman tea and coffee delivery service around the market.  She wishes she could return home, but says “we have to cope with the new.” </p> <p>The ‘new’ keeps coming. Several stalls closed while I was working on the project and two people in the drawing have moved on.  So it is already a historical record.</p> <p>One day I went to see Gia Andriadze, one of the market’s owners. We talked on the balcony of his penthouse office; atop a multi-storey retail complex he has built on space vacated by stallholders who have already given up. The future is mapped out below – new buildings are pressing in on all sides of the drab tin roofs of the original Eliava.</p> <p>Most of those stalls will be gone in five years, he predicts: “They are selling nostalgia.”</p> <br/><br/> <p>Andrew North is a British journalist based in Tbilisi.  Find him on Twitter <a href='https://twitter.com/NorthAndrew' target='_blank'>@NorthAndrew</a> and see more of his work at: <a href='http://sketchyreports.com/' target='_blank'>sketchyreports.com</a></p>"
+    "name": "Сюжет",
+    "caption": "Большая картина: Рынок советского прошлого",
+    "author": "Автор: Эндрю Норт",
+    "text": "<p>Это место не найдешь в путеводителях для гостей Тбилиси. Оно находится далеко от протоптанных туристами дорожек. Но когда я впервые попал на этот огромный рынок технического оборудования под открытым небом в грузинской столице, я сразу подумал: «Я должен нарисовать это место». </p> <p>Сначала я пришел сюда в качестве покупателя, в поисках необходимого для ремонта в доме. Но затем оказался в своего рода эквиваленте американского гипермаркета Home Depot, с той лишь разницей, что здесь продается советское прошлое. Во мне проснулся художник, на которого все это оказало глубокое впечатление.</p> <p>За внешним рядом новых магазинов прячется огромный лабиринт тесно прислонившихся друг к другу лавок, в которых продаются еще советские двигатели, электрическое оборудование и инструменты. Рынок «Элиава» (прозванный так по названию соседней улицы) разросся в тяжелые годы после обретения Грузией независимости в 1991 году. Здесь торгуют сотни лавочников, продающих все от российских запчастей до коробок передач и семидесятилетних двигателей от советских эскалаторов в метро. И я решил превратить эту массу истории в картину.</p> <p>Я выбрал точку на рынке и решил создать круговую панораму всего вокруг, насколько хватает глаз. Результатом четырехмесячных трудов стал четырехметровый рисунок тушью.</p> <p>Я начал с <a href='#' class='to-character' data-id='6'>Важи Джамагидзе</a> и «шведского стола» из ручных инструментов и отремонтированных ванных смесителей, которыми он торгует с двух маленьких прилавков. Он работает здесь на протяжении уже более 20 лет, но его мускулистые руки и плечи являются напоминанием о его предыдущей жизни, когда он был чемпионом Советской армии по борьбе. Когда я поближе познакомился с ним и другими торговцами, журналист во мне увидел потенциал для создания чего-то большего, чем просто картина.</p> <p>Это свободный рынок, торгующий коммунистическим прошлым, хотя кое-кто здесь хотел бы, чтобы это прошлое все еще было настоящим. Поэтому это место с уникального ракурса отображает пережитый Грузией переходный период и ее порой нелегкий путь в поисках своей постсоветской идентичности, разрывающейся между стремлением к Западу и Востоку.</p> <p>Все персонажи картины родились еще в советские времена, и многим трудно было адаптироваться к быстро меняющейся стране, которая пришла на смену Грузинской ССР. Хотя большинство жителей Грузии склонны поддерживать сближение с Западом и испытывать возмущение по поводу вмешательства Москвы в прошлом и настоящем, обитатели рынка «Элиава» относятся к России и советскому периоду с большей симпатией. Но, как всегда, все не так просто.</p> <p>Демократия и капитализм принесли только «анархию и грязь», посетовал Важа, выразивший опасения по поводу того, что православным традициям в Грузии угрожают «западные идеалы», вроде прав ЛГБТ. Между тем другие работающие здесь лавочники недолюбливают Москву именно за преследование Православной церкви при коммунистах. По их словам, сближение с Западом, и вступление в Евросоюз и НАТО, являются единственным способом защитить идентичность и суверенитет Грузии.</p> <p>Но сначала мне самому пришлось отвечать на вопросы о своей идентичности. «Из какой ты деревни?», – спрашивали меня. В сравнении мне казалось, что у меня нет корней, т.к. мне приходилось объяснять, что я родился в одном городе в Великобритании, но затем покинул его и никогда больше туда не возвращался.</p> <p>Много сложностей создавала необходимость рисовать каждого человека на моем панорамном холсте. Нужно было работать быстро, пока человек не сдвинулся с места. Дополнительные трудности возникали из-за того, что люди могли взглянуть на результат сразу после окончания мной набросков. В этом состоит парадокс и волнительная сторона создания картины – это процесс одновременно долгий и немедленный. <p>По мере того, как панорама начинала принимать окончательную форму, владельцы лавок с других частей рынка стали подходить, чтобы посмотреть, как я изобразил их друзей, и посмеяться над этим. «Неплохо, – сказал с улыбкой один такой гость, глядя на изображение <a href='#' class='to-character' data-id='4'>Эдуарда</a>. – Но на картине у него нос меньше, чем в жизни».</p> <p>Иногда возникали споры. Однажды даже произошла драка. А если я оказывался там в какой-нибудь важный православный праздник, вроде Дня Святой Богородицы, или в чей-либо день рождения, то работать мне не давали. У меня отбирали ручки и давали мне вместо них вино. А <a href='#' class='to-character' data-id='10'>Тариэль</a>, чью коллекцию мощных российских моторов я изобразил в самом начале работы над картиной, закрывал ее на своем складе.</p> <p>А когда начинало литься вино, то я не мог не то что рисовать, а просто твердо стоять на ногах. «Элиава» – это не только рынок, но и община с собственной культурой.</p> <p>Но у возвращения в оборот прошлого нет будущего, и поэтому многие торговцы здесь столкнулись с трудностями. Многие покупатели сейчас могут позволить себе новое оборудование и не хотят довольствоваться подержанным. «Это не настоящий бизнес», – сказал мне с сожалением <a href='#' class='to-character' data-id='7'>Мириан Нозадзе</a>, указывая на продаваемые им груды советских запчастей. «Мы просто спекулянты», – добавил он, использовав бытовавший в советские времена по отношению к предпринимателям унизительный термин.</p> <p>Вместо того, чтобы послужить ступенью к чему-то лучшему, для многих рынок «Элиава» стал конечной станцией, а поезд, несущий Грузию к рыночной экономике, пронесся мимо. Это знакомая дилемма: кто несет бóльшую ответственность за крутые перемены и их последствия – человек или государство?</p> <p>«Кто может вернуть былые времена?» – сказала со вздохом <a href='#' class='to-character' data-id='11'>Тасо Церцвадзе</a>. Как и многие на рынке, она приехала из Чиатуры, шахтерского городка на западе Грузии, пришедшего в упадок после развала СССР и последовавшего разрыва экономических связей. Теперь Тасо руководит службой по доставке чая и кофе, в которой она единственный работник. Она хотела бы вернуться домой, но говорит, что пока «нам приходится справляться с новыми [временами]».</p> <p>А новые времена продолжают свой марш. Пока я работал над картиной, несколько лавок закрылись, и двоим продавцам прошлось искать работу в другом месте. Поэтому картина уже стала историческим свидетельством. </p> <p>Как то раз я пошел навестить Гию Андриадзе, одного из владельцев рынка. Мы общались на балконе его красивого офиса, разместившегося на верхнем этаже многоэтажного торгового комплекса, построенного там, где раньше стояли ларьки торговцев, которым пришлось бросить эту работу. С высоты было видно будущее «Элиавы»: новые строения со всех сторон наседали на старые, ржавые крыши изначального рынка.</p> <p>Многие из этих лавок закроются в течение следующих пяти лет, сказал он. «Они продают ностальгию». </p> <br/><br/> <p>Эндрю Норт является работающим в Тбилиси британским журналистом. См. его страницу в Twitter здесь <a href='https://twitter.com/NorthAndrew' target='_blank'>@NorthAndrew</a>, а по этой ссылке можно ознакомиться с другими работами этого автора: <a href='http://sketchyreports.com/' target='_blank'>sketchyreports.com</a></p>"
   },
   "behind": {
-    "name": "Behind the Scenes",
-    "caption": "Three Months. 360 degrees. And One Big Drawing",
+    "name": "За кулисами",
+    "caption": "Три месяца. 360 градусов. И одна большая картина",
     "yid": "pjH0vlGTPk8",
     "player_yid": "pjH0vlGTPk8",
-    "text": "<div class='credits'>Credits</div> <ul> <li><span>Drawing:</span> Andrew North</li> <li><span>Words and Video:</span> Andrew North</li> <li><span>Producer:</span> Sophiko Vasadze</li> <li><span>Design:</span> JumpStart Georgia - Mariam Kobuladze, Anton Kamaryan, Jason Addie, Eric Barrett</li> <li><span>Editor:</span> Justin Burke/Eurasianet</li> <li><span>Translations:</span> Sophiko Vasadze, Dmitri Bit-Suleiman</li> <li>A special thanks to everyone from the Eliava who supported the project, including: Tariel Saralidze, Jaba Nakashidze, Gia Todadze, Miriani Nozadze, Otari Mujiri, Tamazi Dudashvili, Taso Tsertsvadze, Kakha, Marina Esebua, Vazha Jamagidze, Eduard Miroian, Pridon, Pata and Cesar.</li> <li>For advice and encouragement, a big thank you also to: Kote Sulaberidze, Nino Chilashvili, Irena Popiashvili, Natalia Antelava.</li> </ul>"
+    "text": "<div class='credits'>Участники проекта</div> <ul> <li><span>Картина:</span> Эндрю Норт</li> <li><span>Текст и видео:</span> Эндрю Норт </li> <li><span>Продюсер:</span> Софико Васадзе</li> <li><span>Дизайн:</span> JumpStart Georgia – Мариам Кобуладзе, Антон Камарян, Джейсон Эди, Эрик Барретт</li> <li><span>Редактор:</span> Джастин Бёрк/EurasiaNet</li> <li><span>Переводчики:</span> Софико Васадзе, Дмитри Бит-Сулейман</li> <li>Особая благодарность выражается всем с рынка «Элиава», оказавшим поддержку при осуществлении данного проекта, включая Тариэля Саралидзе, Джабу Накашидзе, Гию Тодадзе, Мириани Нозадзе, Отари Муджири, Тамази Дудашвили, Тасо Церцвадзе, Каху, Марину Эсебуа, Важу Джамагидзе, Эдуарда Мирояна, Придона, Пату и Цезаря.</li> <li>Также огромная благодарность за советы и поддержку выражается Коте Сулаберидзе, Нино Чилашвили, Ирене Попиашвили и Наталье Антелава.</li> </ul>"
   },
   "stories": {
     "s1": {
-      "title": "The Tool Seller",
-      "quote": "\"The Soviet times were good. I had a job, a salary. Now where are the salaries and jobs?\"",
+      "title": "Продавец инструментов",
+      "quote": "\"В советские времена было хорошо. У меня была работа, зарплата. Где теперь зарплаты и рабочие места?\"",
       "yid": "90qn0Bvsyh0",
       "player_yid": "90qn0Bvsyh0",
-      "name": "Tamazi Dudashvili",
-      "job": "sells tools and spare parts",
-      "job_start_date": "1999"
+      "name": "Тамази Дудашвили",
+      "job": "торгует инструментами и запчастями",
+      "job_start_date": "1999 г."
     },
     "s2": {
-      "title": "The Cigarette Seller",
-      "quote": "\"I didn’t know what poverty was. My children know all about it.\"",
+      "title": "Продавщица сигарет",
+      "quote": "\"Я не знала бедности. А мои дети познали ее сполна.\"",
       "yid": "t8b6NXZ-Pjk",
       "player_yid": "t8b6NXZ-Pjk",
-      "name": "Marina Esebua",
-      "job": "sells cigarettes, sweets and snacks",
-      "job_start_date": "2008"
+      "name": "Марина Эсебуа",
+      "job": "торгует сигаретами, сладостями и легкими закусками",
+      "job_start_date": "2008 г."
     },
     "s3": {
-      "title": "2008 War Volunteer",
-      "quote": "\"I was proud I had a chance to defend my country.\"",
+      "title": "Доброволец, принявший участие в войне 2008 года",
+      "quote": "\"Я горд тем, что мне выдалась возможность защищать свою страну.\"",
       "yid": "mXNI-DWRhtU",
       "player_yid": "mXNI-DWRhtU",
-      "name": "Otari Mujiri",
-      "job": "repairs and sells power tools",
-      "job_start_date": "2000"
+      "name": "Отари Муджири",
+      "job": "ремонтирует и продает автоматические инструменты",
+      "job_start_date": "2000 г."
     },
     "s4": {
-      "title": "The Skeptic",
-      "quote": "Before it was Russia. Now America controls Georgia, Eduard believes.",
+      "title": "Скептик",
+      "quote": "Раньше была Россия. Теперь Грузию контролирует Америка.",
       "yid": "DB-ANJPqS6s",
       "player_yid": "DB-ANJPqS6s",
-      "name": "Eduard Miroian",
-      "job": "sells tools and spare parts",
-      "job_start_date": "1996"
+      "name": "Эдуард Мироян",
+      "job": "торгует инструментами и запчастями",
+      "job_start_date": "1996 г."
     },
     "s5": {
-      "title": "The Europhile",
-      "quote": "\"Archaeologists have shown Georgia is historically closer to Europe.\"",
+      "title": "Сторонник Европы",
+      "quote": "\"Археологи продемонстрировали, что Грузия исторически ближе к Европе.\"",
       "yid": "washJa8g5TY",
       "player_yid": "washJa8g5TY",
-      "name": "Giorgi Todadze",
-      "job": "sells tools, electrical equipment and spare parts",
-      "job_start_date": "1996"
+      "name": "Георгий Тодадзе",
+      "job": "торгует инструментами, электрическим оборудованием и запчастями",
+      "job_start_date": "1996 г."
     },
     "s6": {
-      "title": "The Soviet Wrestling Champion",
-      "quote": "\"There was a little euphoria when the USSR collapsed, as if independence would be good.\"",
+      "title": "Советский чемпион по борьбе",
+      "quote": "\"После развала СССР была некая эйфория, казалось, что независимость принесет что-то хорошее.\"",
       "yid": "9Ucvb2uD87Y",
       "player_yid": "9Ucvb2uD87Y",
-      "name": "Vazha Jamagidze",
-      "job": "sells reconditioned taps and pipes",
-      "job_start_date": "1998"
+      "name": "Важа Джамаридзе",
+      "job": "торгует отремонтированными смесителями и трубами",
+      "job_start_date": "1998 г."
     },
     "s7": {
-      "title": "The Nuts and Bolts Man",
-      "quote": "\"We are just speculators.\"",
+      "title": "Продавец запчастей",
+      "quote": "\"Мы просто спекулянты.\"",
       "yid": "LtCAixO9iVA",
       "player_yid": "LtCAixO9iVA",
-      "name": "Mirian Nozadze",
-      "job": "sells Soviet-era nuts, bolts and screws",
-      "job_start_date": "2006"
+      "name": "Мириан Нозадзе",
+      "job": "торгует советскими запчастями и шурупами",
+      "job_start_date": "2006 г."
     },
     "s8": {
-      "title": "The Motor Seller",
-      "quote": "\"If the USSR had done something good for us, we wouldn’t have wanted independence.\"",
+      "title": "Продавец моторов",
+      "quote": "\"Если бы СССР сделал для нас что-то хорошее, мы бы не захотели независимости.\"",
       "yid": "fOuL-ApYPe0",
       "player_yid": "fOuL-ApYPe0",
-      "name": "Jaba Nakashidze",
-      "job": "sells power motors",
-      "job_start_date": "2001"
+      "name": "Джаба Накашидзе",
+      "job": "торгует моторами",
+      "job_start_date": "2001 г."
     },
     "s9": {
-      "title": "The War Veteran",
-      "quote": "\"We need a friend to stand up to Russia.\"",
+      "title": "Ветеран войны",
+      "quote": "\"Нам нужен друг, чтобы противостоять России.\"",
       "yid": "jUVikQuwsI8",
       "player_yid": "jUVikQuwsI8",
-      "name": "Tariel Saralidze",
-      "job": "sells power motors and welding equipment",
-      "job_start_date": "2006"
+      "name": "Тариэль Саралидзе",
+      "job": "торгует моторами и сварочным оборудованием",
+      "job_start_date": "2006 г."
     },
     "s10": {
-      "title": "The Drinks Seller",
-      "quote": "\"Nobody wanted the Russians. We wanted independence.\"",
+      "title": "Продавщица напитков",
+      "quote": "\"Никому не нужны были русские. Мы хотели независимости.\"",
       "yid": "vyzRWycjB3k",
       "player_yid": "vyzRWycjB3k",
-      "name": "Taso Tsertsvadze",
-      "job": "sells drinks and snacks",
-      "job_start_date": "2001"
+      "name": "Тасо Церцвадзе",
+      "job": "торгует напитками и закусками",
+      "job_start_date": "2001 г."
     }
   },
   "gears": {
     "tools": {
-      "title": "Tools",
-      "quote": "Russian-made saws and other Soviet-era tools"
+      "title": "Инструменты",
+      "quote": "Пилы и прочие инструменты советской эпохи"
     },
     "welding": {
-      "title": "Welding",
-      "quote": "Reconditioned 1970s arc-welding machine"
+      "title": "Сварка",
+      "quote": "Отремонтированный сварочный аппарат 1970 года"
     },
     "power": {
-      "title": "Power",
-      "quote": "Russian induction motors from 1960s - for powering escalators and engineering workshops"
+      "title": "Двигатели",
+      "quote": "Индукционный электродвигатель 1960-х годов, использовавшийся в эскалаторах и конструкторских цехах"
     }
   },
   "label": {
-    "name": "Name: ",
-    "job": "Job: ",
-    "job_start_date": "Working here since: "
+    "name": "Имя: ",
+    "job": "Профессия: ",
+    "job_start_date": "Работает на рынке с: "
   }
 };

@@ -72,7 +72,7 @@
     position:absolute;
     top:0;
   }
-  .minimap .fg .to-character { cursor:pointer; pointer-events:all;}
+  .minimap .fg .to-character { cursor:pointer; pointer-events:all; }
   .preload-minimap {
     display:initial !important;
   }
@@ -1016,6 +1016,7 @@
     bottom:0;
     left:0;
     background-color: rgba(0,0,0,0.8);
+    cursor:pointer;
   }
   .popup .thumbnails a .thumbnail-overlay:lang(en) { font:16px titillium; }
   .popup .thumbnails a .thumbnail-overlay:lang(ka) { font:16px bpgnp; }
