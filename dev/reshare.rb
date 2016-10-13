@@ -77,9 +77,9 @@ def key_map
     'ч' => 'ch',
     'ш' => 'sh',
     'щ' => 'Shch',
-    'ъ' => '"',
+    'ъ' => '',
     'ы' => "y",
-    'ь' => "'",
+    'ь' => "",
     'э' => 'e',
     'ю' => 'yu',
     'я' => 'ya',
@@ -127,10 +127,10 @@ def init
         story_titles[story_index-1][loc_i] = id
       end
       @title = story_data["title"]
-      @descr = story_data["quote"]
+      @descr = story_data["quote"].gsub('\\', "").gsub('"', "")
       @share_url = share_dir_url + "/" + id + ".html"
       # if each story wlll have it's own file use this @image = url + "/assets/images/share/#{story_index}.jpg"
-      @image = url + "/assets/images/share/fb.jpg?v=1474889297700"
+      @image = url + "/assets/images/share/#{loc}.jpg?v=1476367233212"
 
       @url_with_locale = url_with_locale_orig + id
 

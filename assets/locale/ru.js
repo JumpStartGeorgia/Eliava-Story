@@ -13,13 +13,13 @@ ru =
   "url_en": "http://dev-eliava.jumpstart.ge/en/",
   "url_ka": "http://dev-eliava.jumpstart.ge/ka/",
   "url_ru": "http://dev-eliava.jumpstart.ge/ru/",
-  "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.jpg",
+  "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/ru.jpg",
   "share_path": "share",
   "loader": {
     "text": "Через 25 лет после развала СССР: История уникального в своем роде рынка"
   },
-  "drag_or_use": "Drag, scroll<br/>or<br/>use arrow keys",
-  "share": "Share",
+  "drag_or_use": "Потяните, прокрутите<br/>или<br/>используйте стрелки",
+  "share": "Поделиться",
   "en": "English",
   "ge": "ქართული",
   "ru": "Русский",

@@ -13,7 +13,7 @@ ka =
   "url_en": "http://dev-eliava.jumpstart.ge/en/",
   "url_ka": "http://dev-eliava.jumpstart.ge/ka/",
   "url_ru": "http://dev-eliava.jumpstart.ge/ru/",
-  "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/fb.jpg",
+  "og_image": "http://dev-eliava.jumpstart.ge/assets/images/share/ka.jpg",
   "share_path": "share",
   "loader": {
     "text": "საბჭოთა კავშირის დასრულებიდან 25 წლის შემდეგ: ყველაზე განსხვავებული ბაზრის ამბავი"
