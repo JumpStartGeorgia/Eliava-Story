@@ -28,6 +28,7 @@ By default it uses 'en' locale, so whenever page is reloaded those properties ar
 In main.js/init function for dev mode comment deploy and production blocks.
 
 ### deploy
+- site url on production deploy in assets/locale/{locale}.js files should be updated to have instead of http://dev-eliava.jumpstart.ge real production url
 - generate share story files
 - comment dev and production block in main.js/init function, only deploy block should be uncommented
 - generate main.min.css minified version via http://csscompressor.com/ based on main.css file
