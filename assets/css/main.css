@@ -944,6 +944,10 @@
     padding:45px 0 36px;
     text-align:center;
   }
+  .popup .window .section.behind a {
+    text-decoration:none;
+    color:#E97728;
+  }
   .popup .window .section.behind .credits:lang(en) { font:20px titillium_b; }
   .popup .window .section.behind .credits:lang(ka) { font:20px bpgnp_b; }
   .popup .window .section.behind .credits:lang(ru) { font:20px arsenal_b; }
