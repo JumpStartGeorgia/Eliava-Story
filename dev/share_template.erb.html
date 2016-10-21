@@ -9,10 +9,14 @@
     <meta property="og:description" content="<%= @descr %>" />
     <meta property="og:url" content="<%= @share_url %>" />
     <meta property="og:type"   content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@eurasianet">
+    <meta name="twitter:title" content="<%= @title %>">
+    <meta name="twitter:description" content="<%= @descr %>">
+    <meta name="twitter:image" content="<%= @image %>">
+    <meta name="twitter:creator" content="@NorthAndrew">
   </head>
   <body>
     <script>window.location.href = '<%= @url_with_locale %>';</script>
   </body>
 </html>
-
-
