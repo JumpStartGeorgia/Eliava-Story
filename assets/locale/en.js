@@ -18,7 +18,7 @@ en =
   "loader": {
     "text": "25 years since the end of the USSR: The story of a market like no other"
   },
-  "drag_or_use": "Drag, scroll<br/>or<br/>use arrow keys",
+  "drag_or_use": "This is a panorama drawing of a unique market in Tbilisi, Georgia that sells old Soviet hardware.<br/> </br/> Click on the orange characters to get the video stories of the stallholders, and drag, scroll or use arrow keys to view the drawing.",
   "share": "Share",
   "en": "English",
   "ge": "ქართული",

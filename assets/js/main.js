@@ -581,7 +581,7 @@ $(document).ready(function () {
           story.by_url = false;
         }
         else {
-          helper.hide(4000);
+          helper.hide(5000);
           loader.inc();
         }
         story.on_animation();

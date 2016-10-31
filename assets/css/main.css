@@ -193,32 +193,40 @@
     transform:translate(-50%, -50%);
     background-color:rgba(255,255,255, .9);
     border-radius:100%;
-    width:200px;
-    height:200px;
-    padding:50px 52px;
     text-align:center;
     z-index:998;
   }
+  #helper:lang(en) {
+    width: 300px;
+    height: 300px;
+    padding: 75px 40px;
+  }
   #helper:lang(ka) {
-    padding:38px 10px;
+    width: 300px;
+    height: 300px;
+    padding: 60px 30px;
   }
   #helper:lang(ru) {
-    padding:50px 20px;
+    width: 300px;
+    height: 300px;
+    padding: 42px 30px;
   }
   #helper span {
     display:block;
     color:#000;
   }
-  #helper span:lang(ka) { font:16px bpgnp; }
-  #helper span:lang(en) { font:15px titillium; }
-  #helper span:lang(ru) { font:16px arsenal; }
+  #helper span:lang(ka) { font:14px bpgnp; }
+  #helper span:lang(en) { font:13px titillium; }
+  #helper span:lang(ru) { font:14px arsenal; }
   #helper i {
     display:inline-block;
     background:transparent url(../images/drag.svg?v=1477031376972) no-repeat center;
     width:50px;
     height:42px;
     position:relative;
-    top:21px;
+    top:10px;
+  }
+  #helper:lang(ru) i {
   }
 
 /*------------------------------------------ Panorama  ------------------------------------*/
@@ -1424,6 +1432,27 @@
     *::-webkit-scrollbar-thumb {
       border-radius:3px;
     }
+    #helper:lang(en) {
+      width: 340px;
+      height: 340px;
+      padding: 95px 50px 85px;
+    }
+    #helper:lang(ka) {
+      width: 360px;
+      height: 360px;
+      padding: 70px 40px;
+    }
+    #helper:lang(ru) {
+      width: 360px;
+      height: 360px;
+      padding: 60px 40px;
+    }
+    #helper i {
+      top:21px;
+    }
+    #helper span:lang(ka) { font:16px bpgnp; }
+    #helper span:lang(en) { font:15px titillium; }
+    #helper span:lang(ru) { font:16px arsenal; }
   }
 
   @media (min-width:1200px) { /* Large devices (large desktops, 1200px and up) */
