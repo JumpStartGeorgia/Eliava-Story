@@ -1023,6 +1023,9 @@ $(document).ready(function () {
         if(is_mobile) {
           $(document).one("touchstart.waiting_gesture", t.interact.bind(t));
         }
+        else if(is_desktop) {
+          $(document).one("click.waiting_gesture", t.hide.bind(t));
+        }
       },
       interact: function () {
         var t = this;
