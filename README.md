@@ -49,10 +49,7 @@ In main.js/init function for dev mode comment deploy and production blocks.
 - In main.js/init function comment all except block for production
 - In case any asset (css, js, image, sound) was changed for client browser to refresh all assets change asset version.
   * generate new version based on current date (new Date()).getTime() ex: 1474438073705
-  * replace current version (1477031376972) to new for all files
-
-## TODO
-  * in dev/index.html translate into russian and paste 'You need to turn on Javascript for this application to work!' into noscript block
+  * replace current version (1478327947603) to new for all files
 
 ## In case
   - if story structure that is visible in story popup will change, you can use story.dev(); function to generate that text it will be outputed in console, but change specific variables before (ex: story.count). make first story active add class .active to .story
