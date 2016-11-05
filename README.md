@@ -51,9 +51,6 @@ In main.js/init function for dev mode comment deploy and production blocks.
   * generate new version based on current date (new Date()).getTime() ex: 1474438073705
   * replace current version (1477031376972) to new for all files
 
-## TODO
-  * in dev/index.html translate into russian and paste 'You need to turn on Javascript for this application to work!' into noscript block
-
 ## In case
   - if story structure that is visible in story popup will change, you can use story.dev(); function to generate that text it will be outputed in console, but change specific variables before (ex: story.count). make first story active add class .active to .story
   - if audio track amount or range between which audio is played changed, you can generate panorama.audio.play_range array, use comments in panorama.audio.dev() function,  but change specific variables before (ex: panorama.audio.count)
