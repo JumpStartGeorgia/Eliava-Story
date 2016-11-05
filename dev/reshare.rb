@@ -130,7 +130,7 @@ def init
       @descr = story_data["quote"].gsub('\\', "").gsub('"', "")
       @share_url = share_dir_url + "/" + id + ".html"
       # if each story wlll have it's own file use this @image = url + "/assets/images/share/#{story_index}.jpg"
-      @image = url + "/assets/images/share/#{loc}.jpg?v=1477031376972"
+      @image = url + "/assets/images/share/#{loc}.jpg?v=1478327947603"
 
       @url_with_locale = url_with_locale_orig + id
 
